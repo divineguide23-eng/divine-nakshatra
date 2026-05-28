@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Divine Nakshatra - India's No.1 Jyotish App</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #D4AF37;
+    --gold-light: #F5D96B;
+    --gold-dark: #9A7B1A;
+    --saffron: #FF6B2B;
+    --deep-purple: #0A0612;
+    --mid-purple: #130D24;
+    --card-bg: rgba(255,255,255,0.04);
+    --border: rgba(212,175,55,0.25);
+    --text-dim: rgba(255,255,255,0.55);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--deep-purple);
+    color: #fff;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ========== STARFIELD ========== */
+  #stars-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ========== SCREENS ========== */
+  .screen {
+    display: none;
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+  }
+  .screen.active { display: flex; flex-direction: column; }
+
+  /* ========== SCREEN 1: WELCOME ========== */
+  #screen-welcome {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 24px;
+    position: relative;
+  }
+
+  .mandala-ring {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 32px;
+    position: relative;
+    animation: mandala-spin 30s linear infinite;
+  }
+  .mandala-ring svg { width: 100%; height: 100%; }
+
+  @keyframes mandala-spin { to { transform: rotate(360deg); } }
+
+  .welcome-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, rgba(212,175,55,0.15), rgba(255,107,43,0.1));
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 6px 16px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--gold-light);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  .welcome-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(32px, 8vw, 48px);
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, var(--saffron) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .welcome-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--text-dim);
+    margin-bottom: 12px;
+  }
+
+  .india-no1 {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(135deg, var(--saffron), #FF9500);
+    border-radius: 999px;
+    padding: 4px 14px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #fff;
+    margin-bottom: 36px;
+    text-transform: uppercase;
+  }
+
+  .question-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  .question-btn {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto 12px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px 20px;
+    color: rgba(255,255,255,0.85);
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-align: left;
+  }
+  .question-btn:hover, .question-btn:active {
+    background: rgba(212,175,55,0.1);
+    border-color: var(--gold);
+    transform: translateX(4px);
+  }
+  .question-btn .q-icon { font-size: 24px; flex-shrink: 0; }
+
+  /* Inline profile form on welcome */
+  .home-form-section {
+    width: 100%;
+    max-width: 420px;
+    margin: 28px auto 0;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 22px 20px 18px;
+  }
+  .home-form-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-align: center;
+    margin-bottom: 18px;
+  }
+  .home-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .home-form-grid .full { grid-column: 1 / -1; }
+  .hf-label {
+    display: block;
+    font-size: 11px;
+    color: var(--gold-light);
+    margin-bottom: 5px;
+    letter-spacing: 0.5px;
+  }
+  .hf-input, .hf-select {
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(212,175,55,0.2);
+    border-radius: 10px;
+    padding: 11px 12px;
+    color: #fff;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 13px;
+    outline: none;
+    transition: all 0.2s;
+    -webkit-appearance: none;
+  }
+  .hf-input::placeholder { color: rgba(255,255,255,0.28); font-size: 12px; }
+  .hf-input:focus, .hf-select:focus {
+    border-color: var(--gold);
+    background: rgba(212,175,55,0.07);
+  }
+  .hf-select option { background: #1a0f2e; color: #fff; }
+  .hf-select-wrap { position: relative; }
+  .hf-select-wrap::after {
+    content: '▾';
+    position: absolute;
+    right: 10px; top: 50%;
+    transform: translateY(-50%);
+    color: var(--gold);
+    pointer-events: none;
+    font-size: 12px;
+  }
+
+  .start-btn {
+    margin-top: 14px;
+    width: 100%;
+    max-width: 420px;
+    padding: 18px;
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light));
+    border: none;
+    border-radius: 16px;
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #0A0612;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 40px rgba(212,175,55,0.3);
+    letter-spacing: 1px;
+  }
+  .start-btn:hover { transform: scale(1.02); box-shadow: 0 0 60px rgba(212,175,55,0.5); }
+
+  /* ========== SCREEN 2: PROFILE ========== */
+  #screen-profile {
+    padding: 0 0 40px;
+  }
+
+  .profile-header {
+    text-align: center;
+    padding: 50px 24px 32px;
+    position: relative;
+  }
+  .profile-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 120px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .section-icon {
+    font-size: 36px;
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(20px, 5vw, 28px);
+    background: linear-gradient(135deg, var(--gold-light), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 6px;
+  }
+
+  .section-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--text-dim);
+    font-size: 15px;
+  }
+
+  .lang-bar {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    padding: 20px 24px;
+  }
+  .lang-btn {
+    padding: 8px 18px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--card-bg);
+    color: rgba(255,255,255,0.7);
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .lang-btn.active {
+    background: linear-gradient(135deg, rgba(212,175,55,0.2), rgba(255,107,43,0.1));
+    border-color: var(--gold);
+    color: var(--gold-light);
+    font-weight: 600;
+  }
+
+  .form-wrap {
+    padding: 0 20px;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .form-group {
+    margin-bottom: 18px;
+  }
+
+  .form-label {
+    display: block;
+    font-size: 13px;
+    color: var(--gold-light);
+    margin-bottom: 8px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+
+  .form-input, .form-select {
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(212,175,55,0.2);
+    border-radius: 12px;
+    padding: 14px 16px;
+    color: #fff;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 15px;
+    outline: none;
+    transition: all 0.2s;
+    -webkit-appearance: none;
+  }
+  .form-input::placeholder { color: rgba(255,255,255,0.3); }
+  .form-input:focus, .form-select:focus {
+    border-color: var(--gold);
+    background: rgba(212,175,55,0.07);
+    box-shadow: 0 0 0 3px rgba(212,175,55,0.1);
+  }
+  .form-select option { background: #1a0f2e; color: #fff; }
+
+  .select-wrap { position: relative; }
+  .select-wrap::after {
+    content: '▾';
+    position: absolute;
+    right: 14px; top: 50%;
+    transform: translateY(-50%);
+    color: var(--gold);
+    pointer-events: none;
+  }
+
+  /* Topics grid in profile screen */
+  .topics-section {
+    padding: 32px 20px 0;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .topics-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 15px;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .topics-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .topic-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 14px 12px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
+  }
+  .topic-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(212,175,55,0.08), transparent);
+    transition: left 0.4s ease;
+  }
+  .topic-card:hover::before { left: 100%; }
+  .topic-card:hover, .topic-card.active {
+    background: rgba(212,175,55,0.12);
+    border-color: var(--gold);
+    transform: scale(1.02);
+  }
+  .topic-card.premium {
+    border-color: rgba(212,175,55,0.15);
+    opacity: 0.75;
+  }
+  .topic-icon { font-size: 20px; flex-shrink: 0; }
+  .topic-text { font-size: 12px; line-height: 1.4; }
+  .topic-text .hi { color: rgba(255,255,255,0.9); font-size: 12px; }
+  .topic-text .en { color: var(--text-dim); font-size: 10px; }
+  .topic-crown {
+    position: absolute;
+    top: 6px; right: 8px;
+    font-size: 10px;
+  }
+
+  /* ========== PREMIUM BANNER ========== */
+  .premium-banner {
+    max-width: 480px;
+    margin: 24px auto 0;
+    padding: 0 20px;
+  }
+  .premium-card {
+    background: linear-gradient(135deg, rgba(212,175,55,0.12) 0%, rgba(255,107,43,0.08) 100%);
+    border: 1px solid rgba(212,175,55,0.4);
+    border-radius: 18px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .premium-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .premium-crown { font-size: 36px; }
+  .premium-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 16px;
+    color: var(--gold-light);
+  }
+  .premium-desc { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+  .premium-actions { display: flex; gap: 10px; }
+  .btn-join {
+    flex: 1;
+    padding: 14px;
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light));
+    border: none;
+    border-radius: 12px;
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #0A0612;
+    cursor: pointer;
+    transition: all 0.25s;
+    box-shadow: 0 4px 20px rgba(212,175,55,0.3);
+  }
+  .btn-join:hover { transform: scale(1.03); box-shadow: 0 4px 30px rgba(212,175,55,0.5); }
+  .free-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 12px;
+    font-size: 12px;
+    color: var(--text-dim);
+    white-space: nowrap;
+  }
+  .free-dot { width: 8px; height: 8px; background: #FF4444; border-radius: 50%; }
+
+  /* ========== SCREEN 3: READING ========== */
+  #screen-reading {
+    padding: 40px 20px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 100vh;
+  }
+
+  .reading-orb {
+    width: 120px; height: 120px;
+    margin: 0 auto 28px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--gold-light) 0%, var(--gold) 40%, var(--gold-dark) 70%, transparent 100%);
+    box-shadow: 0 0 60px rgba(212,175,55,0.4), 0 0 120px rgba(212,175,55,0.2);
+    animation: orb-pulse 2s ease-in-out infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+  }
+  @keyframes orb-pulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 60px rgba(212,175,55,0.4); }
+    50% { transform: scale(1.05); box-shadow: 0 0 80px rgba(212,175,55,0.6); }
+  }
+
+  .reading-loading {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 20px;
+    color: var(--text-dim);
+    margin-bottom: 16px;
+  }
+
+  .reading-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+  .reading-dots span {
+    width: 8px; height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+    animation: dot-bounce 1.2s ease-in-out infinite;
+  }
+  .reading-dots span:nth-child(2) { animation-delay: 0.2s; }
+  .reading-dots span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes dot-bounce {
+    0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+    40% { transform: scale(1); opacity: 1; }
+  }
+
+  .reading-box {
+    max-width: 480px;
+    width: 100%;
+    background: linear-gradient(135deg, rgba(212,175,55,0.06), rgba(255,107,43,0.04));
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 28px 24px;
+    text-align: left;
+    display: none;
+  }
+  .reading-box.show { display: block; animation: fadeUp 0.6s ease forwards; }
+  @keyframes fadeUp { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform: translateY(0); } }
+
+  .reading-q-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .reading-question {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+  .reading-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin-bottom: 20px;
+  }
+  .reading-text {
+    font-size: 15px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.8);
+  }
+  .reading-text .highlight {
+    color: var(--gold-light);
+    font-weight: 600;
+  }
+
+  .reading-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+    max-width: 480px;
+    width: 100%;
+  }
+  .btn-another {
+    flex: 1;
+    padding: 14px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: rgba(255,255,255,0.8);
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-another:hover { border-color: var(--gold); color: var(--gold-light); }
+  .btn-premium-reading {
+    flex: 1;
+    padding: 14px;
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+    border: none;
+    border-radius: 12px;
+    color: #0A0612;
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  /* ========== NAV BAR ========== */
+  .nav-bar {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    display: flex;
+    background: rgba(10,6,18,0.95);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid var(--border);
+    padding: 10px 0 20px;
+    z-index: 100;
+  }
+  .nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    padding: 4px 0;
+    transition: all 0.2s;
+  }
+  .nav-icon { font-size: 22px; }
+  .nav-label {
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.5px;
+  }
+  .nav-item.active .nav-label { color: var(--gold); }
+  .nav-item.active .nav-icon { filter: drop-shadow(0 0 6px var(--gold)); }
+
+  /* ========== TOAST ========== */
+  .toast {
+    position: fixed;
+    bottom: 100px; left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: rgba(212,175,55,0.15);
+    border: 1px solid var(--gold);
+    border-radius: 12px;
+    padding: 12px 20px;
+    font-size: 14px;
+    color: var(--gold-light);
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    z-index: 200;
+    white-space: nowrap;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* ========== COSMIC GLOW BG ========== */
+  .glow-orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .glow-1 {
+    width: 400px; height: 400px;
+    top: -100px; right: -100px;
+    background: radial-gradient(circle, rgba(100,40,180,0.3), transparent 70%);
+  }
+  .glow-2 {
+    width: 300px; height: 300px;
+    bottom: 100px; left: -80px;
+    background: radial-gradient(circle, rgba(212,175,55,0.12), transparent 70%);
+  }
+
+  /* ========== SCROLLBAR ========== */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 2px; }
+
+  /* paddings for nav */
+  .has-nav { padding-bottom: 80px; }
+
+  /* Install btn */
+  .install-bar {
+    display: flex;
+    justify-content: center;
+    padding: 12px 20px 0;
+  }
+  .install-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 999px;
+    padding: 8px 18px;
+    color: rgba(255,255,255,0.7);
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .install-btn:hover { border-color: var(--gold); color: var(--gold-light); }
+
+</style>
+</head>
+<body>
+
+<!-- Background effects -->
+<canvas id="stars-canvas"></canvas>
+<div class="glow-orb glow-1"></div>
+<div class="glow-orb glow-2"></div>
+
+<!-- PAYMENT MODAL -->
+<div id="payment-modal" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,0.85);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:24px;">
+  <div style="background:linear-gradient(145deg,#130D24,#1a0f35);border:1px solid rgba(212,175,55,0.5);border-radius:24px;padding:32px 24px;max-width:360px;width:100%;text-align:center;position:relative;box-shadow:0 0 80px rgba(212,175,55,0.2);">
+    <button onclick="closePayment()" style="position:absolute;top:14px;right:16px;background:none;border:none;color:rgba(255,255,255,0.4);font-size:22px;cursor:pointer;">&#10005;</button>
+    <div style="font-size:56px;margin-bottom:12px;">&#128302;</div>
+    <div style="font-family:Cinzel Decorative,serif;font-size:20px;color:#F5D96B;margin-bottom:6px;">Cosmic Answer</div>
+    <div style="font-style:italic;color:rgba(255,255,255,0.5);font-size:14px;margin-bottom:12px;">Aapke saare free readings khatam ho gaye!</div>
+    <div id="modal-question" style="background:rgba(212,175,55,0.08);border:1px solid rgba(212,175,55,0.2);border-radius:12px;padding:12px 16px;font-size:14px;color:rgba(255,255,255,0.8);margin-bottom:20px;"></div>
+    <div style="margin-bottom:4px;"><span id="modal-price" style="font-size:40px;color:#F5D96B;font-weight:900;">&#8377;1</span></div>
+    <div id="modal-price-sub" style="font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:18px;">Unlimited readings · Sabhi topics unlock</div>
+    <div style="text-align:left;margin-bottom:18px;">
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);margin-bottom:8px;">&#10022; Unlimited AI-powered readings</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);margin-bottom:8px;">&#10022; All 10 premium topics unlocked</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);">&#10022; Personalized Nakshatra analysis</div>
+    </div>
+    <!-- Country Selector -->
+    <div style="margin-bottom:14px;">
+      <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:8px;letter-spacing:1px;">SELECT YOUR COUNTRY</div>
+      <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
+        <button onclick="selectCountry('IN')" id="btn-country-IN" style="padding:8px 16px;border-radius:999px;border:2px solid rgba(212,175,55,0.6);background:rgba(212,175,55,0.15);color:#F5D96B;font-size:13px;cursor:pointer;font-weight:600;transition:all 0.2s;">
+          &#127470;&#127475; India — &#8377;1
+        </button>
+        <button onclick="selectCountry('OTHER')" id="btn-country-OTHER" style="padding:8px 16px;border-radius:999px;border:2px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.6);font-size:13px;cursor:pointer;font-weight:600;transition:all 0.2s;">
+          &#127758; Other — $2
+        </button>
+      </div>
+    </div>
+    <div id="modal-country-flag" style="font-size:12px;color:rgba(255,150,50,0.8);margin-bottom:10px;">&#127470;&#127475; India Special Price — &#8377;1 only!</div>
+    <button id="modal-pay-btn" onclick="processPay()" style="width:100%;padding:18px;background:linear-gradient(135deg,#9A7B1A,#D4AF37,#F5D96B);border:none;border-radius:16px;font-size:17px;font-weight:900;color:#0A0612;cursor:pointer;box-shadow:0 0 40px rgba(212,175,55,0.4);margin-bottom:12px;letter-spacing:1px;">
+      &#128081; SIRF &#8377;1 MEIN PAIYE
+    </button>
+    <div style="font-size:11px;color:rgba(255,255,255,0.3);">UPI &nbsp;|&nbsp; Card &nbsp;|&nbsp; Net Banking &nbsp;|&nbsp; PayPal</div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- ========== SCREEN 1: WELCOME ========== -->
+<div id="screen-welcome" class="screen active">
+  <div class="mandala-ring">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="100" cy="100" r="95" fill="none" stroke="rgba(212,175,55,0.15)" stroke-width="1"/>
+      <circle cx="100" cy="100" r="75" fill="none" stroke="rgba(212,175,55,0.25)" stroke-width="1"/>
+      <circle cx="100" cy="100" r="55" fill="none" stroke="rgba(212,175,55,0.35)" stroke-width="1"/>
+      <circle cx="100" cy="100" r="12" fill="rgba(212,175,55,0.8)"/>
+      <!-- Star lines -->
+      <g stroke="rgba(212,175,55,0.6)" stroke-width="1">
+        <line x1="100" y1="5" x2="100" y2="195"/>
+        <line x1="5" y1="100" x2="195" y2="100"/>
+        <line x1="29" y1="29" x2="171" y2="171"/>
+        <line x1="171" y1="29" x2="29" y2="171"/>
+        <line x1="100" y1="5" x2="171" y2="171"/>
+        <line x1="100" y1="5" x2="29" y2="171"/>
+        <line x1="5" y1="100" x2="171" y2="29"/>
+        <line x1="195" y1="100" x2="29" y2="29"/>
+      </g>
+      <!-- Outer dots -->
+      <g fill="rgba(212,175,55,0.7)">
+        <circle cx="100" cy="5" r="3"/>
+        <circle cx="100" cy="195" r="3"/>
+        <circle cx="5" cy="100" r="3"/>
+        <circle cx="195" cy="100" r="3"/>
+        <circle cx="29" cy="29" r="2.5"/>
+        <circle cx="171" cy="29" r="2.5"/>
+        <circle cx="29" cy="171" r="2.5"/>
+        <circle cx="171" cy="171" r="2.5"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="welcome-badge">✦ Vedic Jyotish ✦</div>
+  <h1 class="welcome-title">Divine<br>Nakshatra</h1>
+  <p class="welcome-sub">Ancient wisdom, celestial guidance</p>
+  <div class="india-no1">🇮🇳 India's No.1 Jyotish App</div>
+
+  <p class="question-label">✨ Kya Jaanna Chahte Ho?</p>
+  <div id="free-counter" style="font-size:12px;color:rgba(100,220,100,0.8);margin-bottom:14px;letter-spacing:0.5px;">&#10022; 3 free readings baaki hain</div>
+
+  <button class="question-btn" onclick="goToReading('Kya meri ex wapas aayegi?', '💔')">
+    <span class="q-icon">💔</span>
+    <span>Kya meri ex wapas aayegi?</span>
+  </button>
+  <button class="question-btn" onclick="goToReading('Mujhe sachha pyaar kab milega?', '👫')">
+    <span class="q-icon">👫</span>
+    <span>Mujhe sachha pyaar kab milega?</span>
+  </button>
+  <button class="question-btn" onclick="goToReading('Meri job kab lagegi?', '💼')">
+    <span class="q-icon">💼</span>
+    <span>Meri job kab lagegi?</span>
+  </button>
+  <button class="question-btn" onclick="goToReading('Mera future kaisa hoga?', '⭐')">
+    <span class="q-icon">⭐</span>
+    <span>Mera future kaisa hoga?</span>
+  </button>
+  <button class="question-btn" onclick="goToReading('Meri shaadi kab hogi?', '💍')">
+    <span class="q-icon">💍</span>
+    <span>Meri shaadi kab hogi?</span>
+  </button>
+
+  <!-- Inline profile form on home -->
+  <div class="home-form-section">
+    <p class="home-form-title">🌙 APNA COSMIC PROFILE</p>
+    <div class="home-form-grid">
+      <div class="full">
+        <label class="hf-label">Full Name / नाम</label>
+        <input class="hf-input" type="text" placeholder="Priya Sharma..." id="inp-name"/>
+      </div>
+      <div>
+        <label class="hf-label">Date of Birth</label>
+        <input class="hf-input" type="date" id="inp-dob" value="2000-01-01"/>
+      </div>
+      <div>
+        <label class="hf-label">Time of Birth</label>
+        <input class="hf-input" type="time" id="inp-time"/>
+      </div>
+      <div>
+        <label class="hf-label">Birth City / जन्म स्थान</label>
+        <input class="hf-input" type="text" placeholder="Mumbai, Delhi..." id="inp-city"/>
+      </div>
+      <div>
+        <label class="hf-label">Gender / लिंग</label>
+        <div class="hf-select-wrap">
+          <select class="hf-select" id="inp-gender">
+            <option value="">Select...</option>
+            <option value="male">Male / पुरुष</option>
+            <option value="female">Female / महिला</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <label class="hf-label">Zodiac / राशि</label>
+        <div class="hf-select-wrap">
+          <select class="hf-select" id="inp-zodiac">
+            <option value="">Auto detect...</option>
+            <option>♈ Mesh/Aries</option>
+            <option>♉ Vrishabh/Taurus</option>
+            <option>♊ Mithun/Gemini</option>
+            <option>♋ Kark/Cancer</option>
+            <option>♌ Singh/Leo</option>
+            <option>♍ Kanya/Virgo</option>
+            <option>♎ Tula/Libra</option>
+            <option>♏ Vrishchik/Scorpio</option>
+            <option>♐ Dhanu/Sagittarius</option>
+            <option>♑ Makar/Capricorn</option>
+            <option>♒ Kumbh/Aquarius</option>
+            <option>♓ Meen/Pisces</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="start-btn" onclick="saveProfile()">
+    ✨ Reading Shuru Karo
+  </button>
+</div>
+
+<!-- ========== SCREEN 2: PROFILE ========== -->
+<div id="screen-profile" class="screen has-nav">
+  <div class="profile-header">
+    <div class="section-icon">🌙</div>
+    <h2 class="section-title">Topics & Premium</h2>
+    <p class="section-sub">Apna topic chuniye aur unlock karein</p>
+  </div>
+
+  <div class="install-bar">
+    <button class="install-btn">📱 Install App</button>
+  </div>
+
+  <!-- TOPICS -->
+  <div class="topics-section">
+    <p class="topics-title">✦ Topic Chuniye ✦</p>
+    <div class="topics-grid">
+      <!-- FREE TOPICS -->
+      <div class="topic-card active" onclick="selectTopicFree(this,'Dainik Jeevan','Aaj aapka din kaisa rahega?','🌅')">
+        <span class="topic-icon">🌅</span>
+        <div class="topic-text">
+          <div class="hi">दैनिक जीवन</div>
+          <div class="en">Daily Life ✓ Free</div>
+        </div>
+      </div>
+      <div class="topic-card" onclick="selectTopicFree(this,'Lucky Today','Aaj aapka lucky number aur rang kya hai?','🍀')">
+        <span class="topic-icon">🍀</span>
+        <div class="topic-text">
+          <div class="hi">आज का भाग्य</div>
+          <div class="en">Lucky Today ✓ Free</div>
+        </div>
+      </div>
+      <div class="topic-card" onclick="selectTopicFree(this,'Prem & Dil','Aapke prem jeevan mein kya hone wala hai?','💝')">
+        <span class="topic-icon">💝</span>
+        <div class="topic-text">
+          <div class="hi">प्रेम & दिल</div>
+          <div class="en">Love & Heart ✓ Free</div>
+        </div>
+      </div>
+
+      <!-- PREMIUM TOPICS -->
+      <div class="topic-card premium" onclick="showPremiumMsg()">
+        <span class="topic-icon">🌿</span>
+        <div class="topic-text">
+          <div class="hi">स्वास्थ्य</div>
+          <div class="en">Health & Body</div>
+        </div>
+        <span class="topic-crown">👑</span>
+      </div>
+      <div class="topic-card premium" onclick="showPremiumMsg()">
+        <span class="topic-icon">💼</span>
+        <div class="topic-text">
+          <div class="hi">करियर & धन</div>
+          <div class="en">Career & Money</div>
+        </div>
+        <span class="topic-crown">👑</span>
+      </div>
+      <div class="topic-card premium" onclick="showPremiumMsg()">
+        <span class="topic-icon">🔥</span>
+        <div class="topic-text">
+          <div class="hi">जुनून & आत्मा</div>
+          <div class="en">Passion & Soul</div>
+        </div>
+        <span class="topic-crown">👑</span>
+      </div>
+      <div class="topic-card premium" onclick="showPremiumMsg()">
+        <span class="topic-icon">🏠</span>
+        <div class="topic-text">
+          <div class="hi">परिवार & घर</div>
+          <div class="en">Family & Home</div>
+        </div>
+        <span class="topic-crown">👑</span>
+      </div>
+      <div class="topic-card premium" onclick="showPremiumMsg()">
+        <span class="topic-icon">✈️</span>
+        <div class="topic-text">
+          <div class="hi">यात्रा</div>
+          <div class="en">Travel & Journey</div>
+        </div>
+        <span class="topic-crown">👑</span>
+      </div>
+      <div class="topic-card premium" onclick="showPremiumMsg()">
+        <span class="topic-icon">📖</span>
+        <div class="topic-text">
+          <div class="hi">जीवन चरित्र</div>
+          <div class="en">Life Bio & Traits</div>
+        </div>
+        <span class="topic-crown">👑</span>
+      </div>
+      <div class="topic-card premium" onclick="showPremiumMsg()">
+        <span class="topic-icon">🕉️</span>
+        <div class="topic-text">
+          <div class="hi">आध्यात्मिक</div>
+          <div class="en">Spiritual Path</div>
+        </div>
+        <span class="topic-crown">👑</span>
+      </div>
+    </div>
+    <p style="text-align:center;font-size:11px;color:var(--text-dim);margin-top:14px">✓ = Free topics &nbsp;·&nbsp; 👑 = Premium · Join <span class="price-tag">₹1</span> to unlock all</p>
+  </div>
+
+  <!-- PREMIUM CARD -->
+  <div class="premium-banner">
+    <div class="premium-card">
+      <div class="premium-top">
+        <div class="premium-crown">👑</div>
+        <div>
+          <div class="premium-title">PREMIUM — <span class="price-tag">₹1</span> ONLY</div>
+          <div class="premium-desc">Free: 0 readings bachi hain aaj · Premium mein unlimited!</div>
+        </div>
+      </div>
+      <div class="premium-actions">
+        <button class="btn-join" onclick="showToast('Payment gateway opening...')"><span class="join-btn-text">👑 JOIN ₹1</span></button>
+        <div class="free-badge">
+          <span class="free-dot"></span>
+          0 free readings left
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== SCREEN 3: READING ========== -->
+<div id="screen-reading" class="screen has-nav">
+  <div class="reading-orb" id="reading-orb">🔮</div>
+  <p class="reading-loading" id="reading-loading">Nakshatra dekh rahe hain...</p>
+  <div class="reading-dots" id="reading-dots">
+    <span></span><span></span><span></span>
+  </div>
+
+  <div class="reading-box" id="reading-box">
+    <p class="reading-q-label">✦ Aapka Sawaal</p>
+    <p class="reading-question" id="reading-q-display"></p>
+    <div class="reading-divider"></div>
+    <p class="reading-text" id="reading-answer-text"></p>
+  </div>
+
+  <div class="reading-actions" id="reading-actions" style="display:none;">
+    <button class="btn-another" onclick="showScreen('welcome')">← Naya Sawaal</button>
+    <button class="btn-premium-reading" onclick="showToast('Unlimited readings — ' + userPrice.label + ' mein join karo!')">👑 ₹1 Mein Unlimited</button>
+  </div>
+</div>
+
+<!-- NAV BAR (shown on profile/reading screens) -->
+<div class="nav-bar" id="nav-bar" style="display:none;">
+  <div class="nav-item" id="nav-home" onclick="showScreen('welcome')">
+    <div class="nav-icon">🏠</div>
+    <div class="nav-label">Home</div>
+  </div>
+  <div class="nav-item active" id="nav-profile" onclick="showScreen('profile')">
+    <div class="nav-icon">🌙</div>
+    <div class="nav-label">Profile</div>
+  </div>
+  <div class="nav-item" id="nav-reading" onclick="showScreen('reading')">
+    <div class="nav-icon">🔮</div>
+    <div class="nav-label">Reading</div>
+  </div>
+  <div class="nav-item" id="nav-premium" onclick="showToast(userPrice.label + ' mein join karein! ' + (userCountry==='IN'?'🇮🇳':'🌍'))">
+    <div class="nav-icon">👑</div>
+    <div class="nav-label">Premium</div>
+  </div>
+</div>
+
+<script>
+
+// ========== PAYMENT MODAL ==========
+function showPaymentModal(question, icon) {
+  document.getElementById('modal-question').innerHTML = icon + ' ' + question;
+  const modal = document.getElementById('payment-modal');
+  modal.style.display = 'flex';
+}
+
+function closePayment() {
+  document.getElementById('payment-modal').style.display = 'none';
+}
+
+// ========== GEO PRICING ==========
+let userCountry = 'OTHER';
+let userPrice = { symbol: '$', amount: '2', label: '2 USD', currency: 'USD' };
+let freeReadingsLeft = 3;
+let totalFreeReadings = 3;
+
+async function detectCountry() {
+  try {
+    const res = await fetch('https://ipapi.co/json/');
+    const data = await res.json();
+    if (data.country_code && data.country_code !== 'IN') {
+      selectCountry('OTHER');
+    } else {
+      selectCountry('IN');
+    }
+  } catch(e) {
+    // keep India as default on error
+    selectCountry('IN');
+  }
+}
+
+function selectCountry(code) {
+  userCountry = code;
+  if (code === 'IN') {
+    userPrice = { symbol: '₹', amount: '1', label: '₹1', currency: 'INR' };
+  } else {
+    userPrice = { symbol: '$', amount: '2', label: '$2', currency: 'USD' };
+  }
+  // Update button styles
+  const btnIN = document.getElementById('btn-country-IN');
+  const btnOther = document.getElementById('btn-country-OTHER');
+  if (btnIN && btnOther) {
+    if (code === 'IN') {
+      btnIN.style.border = '2px solid #D4AF37';
+      btnIN.style.background = 'rgba(212,175,55,0.25)';
+      btnIN.style.color = '#F5D96B';
+      btnOther.style.border = '2px solid rgba(255,255,255,0.15)';
+      btnOther.style.background = 'rgba(255,255,255,0.05)';
+      btnOther.style.color = 'rgba(255,255,255,0.5)';
+    } else {
+      btnOther.style.border = '2px solid #D4AF37';
+      btnOther.style.background = 'rgba(212,175,55,0.25)';
+      btnOther.style.color = '#F5D96B';
+      btnIN.style.border = '2px solid rgba(255,255,255,0.15)';
+      btnIN.style.background = 'rgba(255,255,255,0.05)';
+      btnIN.style.color = 'rgba(255,255,255,0.5)';
+    }
+  }
+  updatePriceUI();
+}
+
+function updatePriceUI() {
+  const p = userPrice;
+  // Update modal price
+  const priceEl = document.getElementById('modal-price');
+  if (priceEl) priceEl.textContent = p.label;
+  // Update modal button
+  const btnEl = document.getElementById('modal-pay-btn');
+  if (btnEl) btnEl.textContent = (userCountry === 'IN' ? '👑 SIRF ' : '👑 ONLY ') + p.label + ' MEIN PAIYE';
+  // Update modal subtitle
+  const subEl = document.getElementById('modal-price-sub');
+  if (subEl) subEl.textContent = userCountry === 'IN' 
+    ? 'Unlimited readings · Sabhi topics unlock' 
+    : 'Unlimited readings · All topics unlocked';
+  // Update all ₹1 / $2 references in banners
+  document.querySelectorAll('.price-tag').forEach(el => el.textContent = p.label);
+  document.querySelectorAll('.join-btn-text').forEach(el => el.textContent = (userCountry === 'IN' ? '👑 JOIN ' : '👑 JOIN ') + p.label);
+  // Update flag indicator
+  const flagEl = document.getElementById('modal-country-flag');
+  if (flagEl) {
+    if (userCountry === 'IN') {
+      flagEl.innerHTML = '🇮🇳 India Special Price — ₹1 only!';
+      flagEl.style.color = 'rgba(255,150,50,0.8)';
+    } else {
+      flagEl.innerHTML = '🌍 International Price — $2 USD';
+      flagEl.style.color = 'rgba(180,180,255,0.6)';
+    }
+  }
+}
+
+function showPaymentModal(question, icon) {
+  if (freeReadingsLeft > 0) {
+    // Give free reading
+    freeReadingsLeft--;
+    updateFreeCounter();
+    // Temporarily allow free reading
+    const origPremium = isPremium;
+    isPremium = true;
+    window.goToReadingWithAI(question, icon);
+    isPremium = origPremium;
+    return;
+  }
+  // No free readings left - show payment
+  document.getElementById('modal-question').innerHTML = icon + ' ' + question;
+  updatePriceUI();
+  const modal = document.getElementById('payment-modal');
+  modal.style.display = 'flex';
+}
+
+function updateFreeCounter() {
+  const el = document.getElementById('free-counter');
+  if (el) {
+    if (freeReadingsLeft > 0) {
+      el.innerHTML = '&#10022; ' + freeReadingsLeft + ' free reading' + (freeReadingsLeft > 1 ? 's' : '') + ' baaki hai';
+      el.style.color = 'rgba(100,220,100,0.8)';
+    } else {
+      el.innerHTML = '&#10022; Free readings khatam — Premium lo!';
+      el.style.color = 'rgba(255,100,100,0.8)';
+    }
+  }
+}
+
+function closePayment() {
+  document.getElementById('payment-modal').style.display = 'none';
+}
+
+function loadRazorpayAndPay() {
+  return new Promise((resolve) => {
+    if (window.Razorpay) { resolve(); return; }
+    const script = document.createElement('script');
+    script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+    script.onload = () => resolve();
+    script.onerror = () => resolve();
+    document.head.appendChild(script);
+  });
+}
+
+async function processPay() {
+  const btn = document.getElementById('modal-pay-btn');
+  const modal = document.getElementById('payment-modal');
+  
+  btn.textContent = 'Loading...';
+  btn.style.opacity = '0.7';
+  await loadRazorpayAndPay();
+  btn.textContent = userCountry === 'IN' ? '👑 SIRF ₹1 MEIN PAIYE' : '👑 ONLY $2 MEIN PAIYE';
+  btn.style.opacity = '1';
+
+  if (userCountry === 'IN') {
+    // Razorpay for India
+    const options = {
+      key: "rzp_live_Suix7AZsWVTOpd",
+      amount: 100, // 100 paise = Rs.1
+      currency: "INR",
+      name: "Divine Nakshatra",
+      description: "Premium Unlimited Readings",
+      image: "https://i.imgur.com/n5tjHFD.png",
+      handler: function(response) {
+        // Payment successful
+        isPremium = true;
+        modal.style.display = 'none';
+        showToast('Premium activated! Unlimited readings enjoy karo 🌟');
+        setTimeout(() => {
+          window.goToReadingWithAI(currentQuestion, currentIcon);
+        }, 800);
+      },
+      prefill: {
+        name: document.getElementById('inp-name').value || "",
+      },
+      theme: {
+        color: "#D4AF37"
+      },
+      modal: {
+        ondismiss: function() {
+          showToast('Payment cancelled');
+        }
+      }
+    };
+    const rzp = new Razorpay(options);
+    rzp.open();
+  } else {
+    // International - redirect to Razorpay.me page
+    window.open('https://razorpay.me/@riponbasumatary', '_blank');
+    // After opening, assume paid (or you can verify manually)
+    setTimeout(() => {
+      isPremium = true;
+      modal.style.display = 'none';
+      showToast('Premium activated! Enjoy unlimited readings 🌟');
+      setTimeout(() => {
+        window.goToReadingWithAI(currentQuestion, currentIcon);
+      }, 800);
+    }, 3000);
+  }
+}
+
+// ========== STARS ==========
+const canvas = document.getElementById('stars-canvas');
+const ctx = canvas.getContext('2d');
+let stars = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+
+function initStars() {
+  stars = [];
+  for (let i = 0; i < 200; i++) {
+    stars.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 1.5 + 0.2,
+      alpha: Math.random(),
+      speed: Math.random() * 0.005 + 0.002,
+      phase: Math.random() * Math.PI * 2
+    });
+  }
+}
+
+function animateStars(t) {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  stars.forEach(s => {
+    s.alpha = 0.3 + 0.7 * Math.abs(Math.sin(s.phase + t * s.speed));
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(255,255,220,${s.alpha})`;
+    ctx.fill();
+  });
+  requestAnimationFrame(animateStars);
+}
+
+window.addEventListener('resize', () => { resizeCanvas(); initStars(); });
+resizeCanvas();
+initStars();
+requestAnimationFrame(animateStars);
+
+// ========== NAVIGATION ==========
+let currentScreen = 'welcome';
+
+function showScreen(name) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(`screen-${name}`).classList.add('active');
+  currentScreen = name;
+  const navBar = document.getElementById('nav-bar');
+  navBar.style.display = (name === 'welcome') ? 'none' : 'flex';
+  // update nav active
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  const navMap = { profile: 'nav-profile', reading: 'nav-reading' };
+  if (navMap[name]) document.getElementById(navMap[name]).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+// ========== PROFILE ==========
+function setLang(btn, lang) {
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function saveProfile() {
+  const name = document.getElementById('inp-name').value.trim();
+  if (!name) {
+    showToast('Pehle apna naam daalo ✨');
+    return;
+  }
+  showToast(`Swagat hai, ${name}! 🌟`);
+  setTimeout(() => {
+    goToReading('Mera aaj ka din kaisa rahega?', '⭐');
+  }, 1200);
+}
+
+function selectTopic(el, topic) {
+  document.querySelectorAll('.topic-card:not(.premium)').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  showToast(`${topic} selected ✨`);
+}
+
+function selectTopicFree(el, topic, question, icon) {
+  document.querySelectorAll('.topic-card:not(.premium)').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  showToast(`${topic} selected ✨`);
+  // Start reading directly - free topic
+  setTimeout(() => {
+    const origPremium = isPremium;
+    isPremium = true;
+    window.goToReadingWithAI(question, icon);
+    isPremium = origPremium;
+  }, 400);
+}
+
+function showPremiumMsg() {
+  showToast('👑 Yeh premium topic hai — ' + userPrice.label + ' mein unlock karein!');
+}
+
+// ========== READING ==========
+const readings = {
+  default: [
+    "Aapke graho ki sthiti is samay bahut shubh hai. {name}Venus aur Jupiter ki yuti aapke jeevan mein nayi ummeed lekar aayi hai. {break}Agle 30 dino mein aapko ek aisa mauka milega jo aapki zindagi badal sakta hai. Taiyaar rahein aur apne dil ki suno.",
+    "{name}Shani Dev ki kripa aap par hai. Mehnat kabhi vyarth nahi jaati — jo beej aapne bahut pehle boye the, unke phal ab pakne wale hain. {break}Sabr rakho, safalta kareeb hai.",
+    "Mangal graha aapko shakti de raha hai. {name}Aapki kismat is mahine ek naya mod lene wali hai. {break}Jo log aapke saath hain, unpar bharosa karo. Ek naya rishta ya dost aapke jeevan mein bahut important role nibhayega.",
+  ],
+  love: [
+    "{name}Shukra graha aapke prem jeevan mein madhurta la raha hai. Kisi khas insaan ke saath aapka rishta agar toota hai, toh stars keh rahe hain — rasta khul sakta hai, agar dono taraf se sacchi chahat ho. {break}Apna dil saaf rakhein aur vishwas rakho.",
+    "{name}Aapka pyaar ka rishta jald hi ek naye mod par aayega. Chandrama aapke prem jeevan ko roshni de raha hai. {break}Agle kuch hafte mein ek khaas mulaqaat ho sakti hai jo aapka dil jeet le.",
+  ],
+  career: [
+    "{name}Brihaspati aapke career ko support kar raha hai. Aapki mehnat ka phal milne wala hai — ek naukri ya promotion ki sambhavana hai agle 45 dino mein. {break}Interviews mein confident rahein, success sunishchit hai.",
+  ]
+};
+
+let currentQuestion = '';
+let currentIcon = '';
+let isPremium = false;
+
+function goToReading(question, icon) {
+  currentQuestion = question;
+  currentIcon = icon;
+
+  if (!isPremium) {
+    // Show payment modal directly - no free readings for home questions
+    document.getElementById('modal-question').innerHTML = icon + ' ' + question;
+    updatePriceUI();
+    document.getElementById('payment-modal').style.display = 'flex';
+    return;
+  }
+
+  showScreen('reading');
+  document.getElementById('reading-box').classList.remove('show');
+  document.getElementById('reading-actions').style.display = 'none';
+  document.getElementById('reading-loading').style.display = 'block';
+  document.getElementById('reading-dots').style.display = 'flex';
+  document.getElementById('reading-orb').style.display = 'flex';
+
+  const userName = document.getElementById('inp-name').value.trim();
+
+  setTimeout(() => {
+    // pick reading
+    let pool = readings.default;
+    const q = question.toLowerCase();
+    if (q.includes('pyaar') || q.includes('ex') || q.includes('shaadi') || q.includes('prem')) pool = readings.love;
+    if (q.includes('job') || q.includes('career') || q.includes('naukri')) pool = readings.career;
+
+    const raw = pool[Math.floor(Math.random() * pool.length)];
+    let text = raw
+      .replace(/{name}/g, userName ? `<span class="highlight">${userName} ji</span>, ` : '')
+      .replace(/{break}/g, '<br><br>');
+
+    document.getElementById('reading-q-display').innerHTML = icon + ' ' + question;
+    document.getElementById('reading-answer-text').innerHTML = text;
+
+    document.getElementById('reading-loading').style.display = 'none';
+    document.getElementById('reading-dots').style.display = 'none';
+    document.getElementById('reading-orb').style.display = 'none';
+    document.getElementById('reading-box').classList.add('show');
+    document.getElementById('reading-actions').style.display = 'flex';
+  }, 2200);
+}
+
+// ========== TOAST ==========
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// ========== AI READING via Claude API ==========
+async function fetchAIReading(question) {
+  try {
+    const response = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model: "claude-sonnet-4-20250514",
+        max_tokens: 1000,
+        messages: [{
+          role: "user",
+          content: `Tu ek expert Vedic Jyotishi hai jo Hindi mein baat karta hai. 
+          User ka sawaal: "${question}"
+          Ek warm, mystical aur encouraging 3-4 line ka Jyotish-based jawab do. 
+          Nakshatra, graha, aur cosmic energy ka mention karo.
+          Sirf jawab do, koi preamble mat likho.`
+        }]
+      })
+    });
+    const data = await response.json();
+    return data.content?.[0]?.text || null;
+  } catch(e) {
+    return null;
+  }
+}
+
+// Override goToReading to use AI when possible
+const origGoToReading = goToReading;
+window.goToReadingWithAI = async function(question, icon) {
+  currentQuestion = question;
+  currentIcon = icon;
+
+  if (!isPremium) {
+    document.getElementById('modal-question').innerHTML = icon + ' ' + question;
+    updatePriceUI();
+    document.getElementById('payment-modal').style.display = 'flex';
+    return;
+  }
+
+  showScreen('reading');
+  document.getElementById('reading-box').classList.remove('show');
+  document.getElementById('reading-actions').style.display = 'none';
+  document.getElementById('reading-loading').style.display = 'block';
+  document.getElementById('reading-dots').style.display = 'flex';
+  document.getElementById('reading-orb').style.display = 'flex';
+
+  const userName = document.getElementById('inp-name').value.trim();
+  const aiText = await fetchAIReading(question);
+
+  const displayText = aiText 
+    ? (userName ? `<span class="highlight">${userName} ji</span>, ` : '') + aiText.replace(/\n\n/g, '<br><br>').replace(/\n/g, '<br>')
+    : (() => {
+        let pool = readings.default;
+        const q = question.toLowerCase();
+        if (q.includes('pyaar')||q.includes('ex')||q.includes('shaadi')) pool = readings.love;
+        if (q.includes('job')||q.includes('career')) pool = readings.career;
+        const raw = pool[Math.floor(Math.random()*pool.length)];
+        return raw.replace(/{name}/g, userName ? `<span class="highlight">${userName} ji</span>, ` : '').replace(/{break}/g, '<br><br>');
+      })();
+
+  document.getElementById('reading-q-display').innerHTML = icon + ' ' + question;
+  document.getElementById('reading-answer-text').innerHTML = displayText;
+  document.getElementById('reading-loading').style.display = 'none';
+  document.getElementById('reading-dots').style.display = 'none';
+  document.getElementById('reading-orb').style.display = 'none';
+  document.getElementById('reading-box').classList.add('show');
+  document.getElementById('reading-actions').style.display = 'flex';
+};
+
+// Patch question buttons to use AI
+document.querySelectorAll('.question-btn').forEach(btn => {
+  const orig = btn.getAttribute('onclick');
+  btn.removeAttribute('onclick');
+  btn.addEventListener('click', () => {
+    const match = orig.match(/goToReading\('([^']+)',\s*'([^']+)'\)/);
+    if (match) window.goToReadingWithAI(match[1], match[2]);
+  });
+});
+document.querySelector('.start-btn') && (document.querySelector('#screen-welcome .start-btn').onclick = () => showScreen('profile'));
+
+// Set India as default, then try to detect
+selectCountry('IN');
+detectCountry();
+</script>
+</body>
+</html>
