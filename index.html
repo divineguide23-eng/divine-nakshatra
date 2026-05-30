@@ -1001,6 +1001,82 @@
   </div>
 </div>
 
+<!-- ========== SCREEN 4: KUNDALI ========== -->
+<div id="screen-kundali" class="screen has-nav">
+  <div class="profile-header">
+    <div class="section-icon">🔯</div>
+    <h2 class="section-title">Janam Kundali</h2>
+    <p class="section-sub">Apni janm patrika dekhein</p>
+  </div>
+  <div style="max-width:480px;margin:0 auto;padding:20px;">
+    <!-- Kundali Chakra SVG -->
+    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.3);border-radius:20px;padding:20px;margin-bottom:20px;text-align:center;">
+      <p style="font-family:'Cinzel Decorative',serif;font-size:13px;color:var(--gold);letter-spacing:2px;margin-bottom:16px;">✦ KUNDALI CHAKRA ✦</p>
+      <svg viewBox="0 0 300 300" width="100%" style="max-width:300px;">
+        <rect x="10" y="10" width="280" height="280" fill="none" stroke="rgba(212,175,55,0.6)" stroke-width="1.5"/>
+        <rect x="75" y="75" width="150" height="150" fill="none" stroke="rgba(212,175,55,0.4)" stroke-width="1"/>
+        <line x1="10" y1="10" x2="75" y2="75" stroke="rgba(212,175,55,0.4)" stroke-width="1"/>
+        <line x1="290" y1="10" x2="225" y2="75" stroke="rgba(212,175,55,0.4)" stroke-width="1"/>
+        <line x1="10" y1="290" x2="75" y2="225" stroke="rgba(212,175,55,0.4)" stroke-width="1"/>
+        <line x1="290" y1="290" x2="225" y2="225" stroke="rgba(212,175,55,0.4)" stroke-width="1"/>
+        <line x1="150" y1="10" x2="150" y2="75" stroke="rgba(212,175,55,0.4)" stroke-width="1"/>
+        <line x1="150" y1="225" x2="150" y2="290" stroke="rgba(212,175,55,0.4)" stroke-width="1"/>
+        <line x1="10" y1="150" x2="75" y2="150" stroke="rgba(212,175,55,0.4)" stroke-width="1"/>
+        <line x1="225" y1="150" x2="290" y2="150" stroke="rgba(212,175,55,0.4)" stroke-width="1"/>
+        <text x="150" y="52" text-anchor="middle" fill="rgba(212,175,55,0.9)" font-size="13" font-family="serif">1</text>
+        <text x="248" y="52" text-anchor="middle" fill="rgba(212,175,55,0.7)" font-size="11" font-family="serif">12</text>
+        <text x="52" y="52" text-anchor="middle" fill="rgba(212,175,55,0.7)" font-size="11" font-family="serif">2</text>
+        <text x="268" y="155" text-anchor="middle" fill="rgba(212,175,55,0.7)" font-size="11" font-family="serif">11</text>
+        <text x="32" y="155" text-anchor="middle" fill="rgba(212,175,55,0.7)" font-size="11" font-family="serif">3</text>
+        <text x="248" y="265" text-anchor="middle" fill="rgba(212,175,55,0.7)" font-size="11" font-family="serif">10</text>
+        <text x="52" y="265" text-anchor="middle" fill="rgba(212,175,55,0.7)" font-size="11" font-family="serif">4</text>
+        <text x="150" y="265" text-anchor="middle" fill="rgba(212,175,55,0.7)" font-size="11" font-family="serif">7</text>
+        <text x="150" y="140" text-anchor="middle" fill="rgba(212,175,55,0.5)" font-size="10" font-family="serif">Lagna</text>
+        <text id="k-sun" x="150" y="38" text-anchor="middle" fill="#F5D96B" font-size="11">☉ Sun</text>
+        <text id="k-moon" x="255" y="130" text-anchor="middle" fill="#F5D96B" font-size="11">☽ Moon</text>
+        <text id="k-mars" x="45" y="200" text-anchor="middle" fill="#FF6B6B" font-size="11">♂ Mars</text>
+        <text id="k-jup" x="150" y="250" text-anchor="middle" fill="#90EE90" font-size="11">♃ Jup</text>
+      </svg>
+    </div>
+    <!-- Nakshatra & Rashi -->
+    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.3);border-radius:20px;padding:20px;margin-bottom:20px;">
+      <p style="font-family:'Cinzel Decorative',serif;font-size:13px;color:var(--gold);letter-spacing:2px;margin-bottom:16px;text-align:center;">✦ NAKSHATRA & RASHI ✦</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div style="background:rgba(212,175,55,0.07);border:1px solid rgba(212,175,55,0.2);border-radius:12px;padding:14px;text-align:center;">
+          <div style="font-size:22px;margin-bottom:6px;">⭐</div>
+          <div style="font-size:11px;color:var(--text-dim);margin-bottom:4px;">Janm Nakshatra</div>
+          <div id="k-nakshatra" style="font-size:13px;color:var(--gold-light);font-weight:600;">—</div>
+        </div>
+        <div style="background:rgba(212,175,55,0.07);border:1px solid rgba(212,175,55,0.2);border-radius:12px;padding:14px;text-align:center;">
+          <div style="font-size:22px;margin-bottom:6px;">♈</div>
+          <div style="font-size:11px;color:var(--text-dim);margin-bottom:4px;">Janm Rashi</div>
+          <div id="k-rashi" style="font-size:13px;color:var(--gold-light);font-weight:600;">—</div>
+        </div>
+        <div style="background:rgba(212,175,55,0.07);border:1px solid rgba(212,175,55,0.2);border-radius:12px;padding:14px;text-align:center;">
+          <div style="font-size:22px;margin-bottom:6px;">🪐</div>
+          <div style="font-size:11px;color:var(--text-dim);margin-bottom:4px;">Lagna</div>
+          <div id="k-lagna" style="font-size:13px;color:var(--gold-light);font-weight:600;">—</div>
+        </div>
+        <div style="background:rgba(212,175,55,0.07);border:1px solid rgba(212,175,55,0.2);border-radius:12px;padding:14px;text-align:center;">
+          <div style="font-size:22px;margin-bottom:6px;">👑</div>
+          <div style="font-size:11px;color:var(--text-dim);margin-bottom:4px;">Vartaman Dasha</div>
+          <div id="k-dasha" style="font-size:13px;color:var(--gold-light);font-weight:600;">—</div>
+        </div>
+      </div>
+    </div>
+    <!-- Graha Sthiti -->
+    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.3);border-radius:20px;padding:20px;margin-bottom:20px;">
+      <p style="font-family:'Cinzel Decorative',serif;font-size:13px;color:var(--gold);letter-spacing:2px;margin-bottom:16px;text-align:center;">✦ GRAHA STHITI ✦</p>
+      <div id="graha-list" style="display:flex;flex-direction:column;gap:10px;"></div>
+    </div>
+    <!-- Button -->
+    <button onclick="calculateKundali()" style="width:100%;padding:18px;background:linear-gradient(135deg,#9A7B1A,#D4AF37,#F5D96B);border:none;border-radius:16px;font-family:'Cinzel Decorative',serif;font-size:15px;font-weight:700;color:#0A0612;cursor:pointer;box-shadow:0 0 40px rgba(212,175,55,0.3);letter-spacing:1px;">
+      🔯 Kundali Calculate Karo
+    </button>
+    <p style="text-align:center;font-size:11px;color:var(--text-dim);margin-top:12px;">Profile mein Date of Birth fill karo accurate reading ke liye</p>
+  </div>
+</div>
+
 <!-- NAV BAR (shown on profile/reading screens) -->
 <div class="nav-bar" id="nav-bar" style="display:none;">
   <div class="nav-item" id="nav-home" onclick="showScreen('welcome')">
@@ -1015,9 +1091,9 @@
     <div class="nav-icon">🔮</div>
     <div class="nav-label">Reading</div>
   </div>
-  <div class="nav-item" id="nav-premium" onclick="showToast(userPrice.label + ' mein join karein! ' + (userCountry==='IN'?'🇮🇳':'🌍'))">
-    <div class="nav-icon">👑</div>
-    <div class="nav-label">Premium</div>
+  <div class="nav-item" id="nav-kundali" onclick="showScreen('kundali')">
+    <div class="nav-icon">🔯</div>
+    <div class="nav-label">Kundali</div>
   </div>
 </div>
 
@@ -1256,7 +1332,7 @@ function showScreen(name) {
   navBar.style.display = (name === 'welcome') ? 'none' : 'flex';
   // update nav active
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  const navMap = { profile: 'nav-profile', reading: 'nav-reading' };
+  const navMap = { profile: 'nav-profile', reading: 'nav-reading', kundali: 'nav-kundali' };
   if (navMap[name]) document.getElementById(navMap[name]).classList.add('active');
   window.scrollTo(0, 0);
 }
@@ -1385,6 +1461,68 @@ function showToast(msg) {
   t.textContent = msg;
   t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// ========== KUNDALI CALCULATOR ==========
+const nakshatras = ['Ashwini','Bharani','Krittika','Rohini','Mrigashira','Ardra','Punarvasu','Pushya','Ashlesha','Magha','Purva Phalguni','Uttara Phalguni','Hasta','Chitra','Swati','Vishakha','Anuradha','Jyeshtha','Mula','Purva Ashadha','Uttara Ashadha','Shravana','Dhanishtha','Shatabhisha','Purva Bhadrapada','Uttara Bhadrapada','Revati'];
+const rashis = ['Mesh (Aries)','Vrishabh (Taurus)','Mithun (Gemini)','Kark (Cancer)','Singh (Leo)','Kanya (Virgo)','Tula (Libra)','Vrishchik (Scorpio)','Dhanu (Sagittarius)','Makar (Capricorn)','Kumbh (Aquarius)','Meen (Pisces)'];
+const dashas = ['Surya (Sun)','Chandra (Moon)','Mangal (Mars)','Rahu','Brihaspati (Jupiter)','Shani (Saturn)','Budh (Mercury)','Ketu','Shukra (Venus)'];
+const grahas = [
+  { name: 'Surya ☉', color: '#FFD700' },
+  { name: 'Chandra ☽', color: '#C0C0C0' },
+  { name: 'Mangal ♂', color: '#FF4444' },
+  { name: 'Budh ☿', color: '#90EE90' },
+  { name: 'Brihaspati ♃', color: '#FFA500' },
+  { name: 'Shukra ♀', color: '#FFB6C1' },
+  { name: 'Shani ♄', color: '#808080' },
+];
+
+function calculateKundali() {
+  const dob = document.getElementById('inp-dob').value;
+  const name = document.getElementById('inp-name').value.trim();
+
+  if (!name) {
+    showToast('Pehle apna Naam bharo! ✨');
+    showScreen('welcome');
+    setTimeout(() => document.getElementById('inp-name').focus(), 400);
+    return;
+  }
+  if (!dob) {
+    showToast('Pehle Date of Birth bharo! 📅');
+    showScreen('welcome');
+    setTimeout(() => document.getElementById('inp-dob').focus(), 400);
+    return;
+  }
+
+  const date = new Date(dob);
+  const day = date.getDate();
+  const month = date.getMonth();
+  const year = date.getFullYear();
+
+  // Simple calculation based on DOB
+  const nakshatraIndex = (day + month * 3 + year) % 27;
+  const rashiIndex = month % 12;
+  const lagnaIndex = (day + month) % 12;
+  const dashaIndex = (day * month) % 9 || 0;
+
+  document.getElementById('k-nakshatra').textContent = nakshatras[nakshatraIndex];
+  document.getElementById('k-rashi').textContent = rashis[rashiIndex];
+  document.getElementById('k-lagna').textContent = rashis[lagnaIndex];
+  document.getElementById('k-dasha').textContent = dashas[dashaIndex];
+
+  // Graha list
+  const grahaList = document.getElementById('graha-list');
+  grahaList.innerHTML = '';
+  grahas.forEach((g, i) => {
+    const rashiPos = (rashiIndex + i * 2) % 12;
+    grahaList.innerHTML += `
+      <div style="display:flex;align-items:center;justify-content:space-between;background:rgba(212,175,55,0.05);border:1px solid rgba(212,175,55,0.15);border-radius:10px;padding:12px 14px;">
+        <span style="color:${g.color};font-size:14px;font-weight:600;">${g.name}</span>
+        <span style="color:rgba(255,255,255,0.7);font-size:12px;">${rashis[rashiPos]}</span>
+      </div>`;
+  });
+
+  showToast(name ? `${name} ji ki Kundali ready hai! 🔯` : 'Kundali ready hai! 🔯');
 }
 
 // ========== AI READING via Claude API ==========
