@@ -1172,37 +1172,17 @@ async function processPay() {
   btn.style.opacity = '1';
 
   if (userCountry === 'IN') {
-    // Razorpay for India
-    const options = {
-      key: "rzp_live_Suix7AZsWVTOpd",
-      amount: 100, // 100 paise = Rs.1
-      currency: "INR",
-      name: "Divine Nakshatra",
-      description: "Premium Unlimited Readings",
-      image: "https://i.imgur.com/n5tjHFD.png",
-      handler: function(response) {
-        // Payment successful
-        isPremium = true;
-        modal.style.display = 'none';
-        showToast('Premium activated! Unlimited readings enjoy karo 🌟');
-        setTimeout(() => {
-          window.goToReadingWithAI(currentQuestion, currentIcon);
-        }, 800);
-      },
-      prefill: {
-        name: document.getElementById('inp-name').value || "",
-      },
-      theme: {
-        color: "#D4AF37"
-      },
-      modal: {
-        ondismiss: function() {
-          showToast('Payment cancelled');
-        }
-      }
-    };
-    const rzp = new Razorpay(options);
-    rzp.open();
+    // Razorpay Payment Link for India
+    window.open('https://rzp.io/rzp/kHZHMkm', '_blank');
+    showToast('Payment page khul rahi hai... ✨');
+    setTimeout(() => {
+      isPremium = true;
+      modal.style.display = 'none';
+      showToast('Premium activated! Unlimited readings enjoy karo 🌟');
+      setTimeout(() => {
+        window.goToReadingWithAI(currentQuestion, currentIcon);
+      }, 800);
+    }, 4000);
   } else {
     // International - redirect to Razorpay.me page
     window.open('https://razorpay.me/@riponbasumatary', '_blank');
