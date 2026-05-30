@@ -1299,7 +1299,20 @@ function selectTopicFree(el, topic, question, icon) {
 }
 
 function showPremiumMsg() {
-  showToast('👑 Yeh premium topic hai — ' + userPrice.label + ' mein unlock karein!');
+  if (localStorage.getItem('dn_premium') === 'true') {
+    isPremium = true;
+    showToast('👑 Premium active! Topic select karo ✨');
+    // Unlock all premium topic cards
+    document.querySelectorAll('.topic-card.premium').forEach(card => {
+      card.classList.remove('premium');
+      card.querySelector('.topic-crown') && card.querySelector('.topic-crown').remove();
+      card.style.opacity = '1';
+    });
+    return;
+  }
+  updatePriceUI();
+  document.getElementById('modal-question').innerHTML = '👑 Premium Topics Unlock Karein';
+  document.getElementById('payment-modal').style.display = 'flex';
 }
 
 // ========== READING ==========
@@ -1464,6 +1477,19 @@ if (localStorage.getItem('dn_premium') === 'true') {
   freeReadingsLeft = 999;
   updateFreeCounter();
   showToast('Welcome back! Premium active hai 👑');
+  // Unlock all premium topic cards
+  setTimeout(() => {
+    document.querySelectorAll('.topic-card.premium').forEach(card => {
+      card.classList.remove('premium');
+      const crown = card.querySelector('.topic-crown');
+      if (crown) crown.remove();
+      card.style.opacity = '1';
+      // Replace onclick to use AI reading
+      const icon = card.querySelector('.topic-icon').textContent;
+      const topic = card.querySelector('.hi').textContent;
+      card.setAttribute('onclick', `selectTopicFree(this,'${topic}','${topic} ke baare mein mujhe batao','${icon}')`);
+    });
+  }, 500);
 }
 </script>
 </body>
