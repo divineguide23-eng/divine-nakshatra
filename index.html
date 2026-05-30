@@ -1177,6 +1177,9 @@ async function processPay() {
     showToast('Payment page khul rahi hai... ✨');
     setTimeout(() => {
       isPremium = true;
+      localStorage.setItem('dn_premium', 'true');
+      freeReadingsLeft = 999;
+      updateFreeCounter();
       modal.style.display = 'none';
       showToast('Premium activated! Unlimited readings enjoy karo 🌟');
       setTimeout(() => {
@@ -1189,6 +1192,9 @@ async function processPay() {
     // After opening, assume paid (or you can verify manually)
     setTimeout(() => {
       isPremium = true;
+      localStorage.setItem('dn_premium', 'true');
+      freeReadingsLeft = 999;
+      updateFreeCounter();
       modal.style.display = 'none';
       showToast('Premium activated! Enjoy unlimited readings 🌟');
       setTimeout(() => {
@@ -1451,6 +1457,14 @@ document.querySelector('.start-btn') && (document.querySelector('#screen-welcome
 // Set India as default, then try to detect
 selectCountry('IN');
 detectCountry();
+
+// Check if already premium (persistent)
+if (localStorage.getItem('dn_premium') === 'true') {
+  isPremium = true;
+  freeReadingsLeft = 999;
+  updateFreeCounter();
+  showToast('Welcome back! Premium active hai 👑');
+}
 </script>
 </body>
 </html>
