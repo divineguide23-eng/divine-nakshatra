@@ -700,6 +700,28 @@
 <div class="glow-orb glow-1"></div>
 <div class="glow-orb glow-2"></div>
 
+<!-- KUNDALI PAYMENT MODAL -->
+<div id="kundali-modal" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,0.85);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:24px;">
+  <div style="background:linear-gradient(145deg,#130D24,#1a0f35);border:1px solid rgba(212,175,55,0.5);border-radius:24px;padding:32px 24px;max-width:360px;width:100%;text-align:center;position:relative;box-shadow:0 0 80px rgba(212,175,55,0.2);">
+    <button onclick="document.getElementById('kundali-modal').style.display='none'" style="position:absolute;top:14px;right:16px;background:none;border:none;color:rgba(255,255,255,0.4);font-size:22px;cursor:pointer;">✕</button>
+    <div style="font-size:56px;margin-bottom:12px;">🔯</div>
+    <div style="font-family:'Cinzel Decorative',serif;font-size:20px;color:#F5D96B;margin-bottom:8px;">Janam Kundali</div>
+    <div style="font-style:italic;color:rgba(255,255,255,0.5);font-size:14px;margin-bottom:20px;">Apni poori janm patrika dekhein</div>
+    <div style="margin-bottom:18px;text-align:left;">
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);margin-bottom:10px;">✦ Kundali Chakra (12 Ghar)</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);margin-bottom:10px;">✦ Janm Nakshatra & Rashi</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);margin-bottom:10px;">✦ Lagna & Vartaman Dasha</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);">✦ 7 Graha ki Sthiti</div>
+    </div>
+    <div style="margin-bottom:6px;"><span style="font-size:40px;color:#F5D96B;font-weight:900;">₹99</span></div>
+    <div style="font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:20px;">Ek baar pay karo — hamesha ke liye unlock</div>
+    <button id="kundali-pay-btn" onclick="processKundaliPay()" style="width:100%;padding:18px;background:linear-gradient(135deg,#9A7B1A,#D4AF37,#F5D96B);border:none;border-radius:16px;font-size:17px;font-weight:900;color:#0A0612;cursor:pointer;box-shadow:0 0 40px rgba(212,175,55,0.4);margin-bottom:12px;letter-spacing:1px;font-family:'Cinzel Decorative',serif;">
+      🔯 SIRF ₹99 MEIN PAIYE
+    </button>
+    <div style="font-size:11px;color:rgba(255,255,255,0.3);">UPI &nbsp;|&nbsp; Card &nbsp;|&nbsp; Net Banking</div>
+  </div>
+</div>
+
 <!-- PAYMENT MODAL -->
 <div id="payment-modal" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,0.85);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:24px;">
   <div style="background:linear-gradient(145deg,#130D24,#1a0f35);border:1px solid rgba(212,175,55,0.5);border-radius:24px;padding:32px 24px;max-width:360px;width:100%;text-align:center;position:relative;box-shadow:0 0 80px rgba(212,175,55,0.2);">
@@ -1494,6 +1516,16 @@ function calculateKundali() {
     return;
   }
 
+  // Check Kundali premium
+  if (localStorage.getItem('dn_kundali') !== 'true') {
+    document.getElementById('kundali-modal').style.display = 'flex';
+    return;
+  }
+
+  showKundaliResult(name, dob);
+}
+
+function showKundaliResult(name, dob) {
   const date = new Date(dob);
   const day = date.getDate();
   const month = date.getMonth();
@@ -1523,6 +1555,24 @@ function calculateKundali() {
   });
 
   showToast(name ? `${name} ji ki Kundali ready hai! 🔯` : 'Kundali ready hai! 🔯');
+}
+
+function processKundaliPay() {
+  const btn = document.getElementById('kundali-pay-btn');
+  btn.textContent = 'Opening...';
+  btn.style.opacity = '0.7';
+  // Open ₹99 payment link — REPLACE with your actual ₹99 Razorpay link
+  window.open('https://rzp.io/rzp/bBw8wqgO', '_blank');
+  setTimeout(() => {
+    localStorage.setItem('dn_kundali', 'true');
+    document.getElementById('kundali-modal').style.display = 'none';
+    showToast('Kundali Premium activated! 🔯');
+    const dob = document.getElementById('inp-dob').value;
+    const name = document.getElementById('inp-name').value.trim();
+    showKundaliResult(name, dob);
+    btn.textContent = '🔯 SIRF ₹99 MEIN PAIYE';
+    btn.style.opacity = '1';
+  }, 4000);
 }
 
 // ========== AI READING via Claude API ==========
