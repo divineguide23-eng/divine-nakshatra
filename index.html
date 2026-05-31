@@ -700,28 +700,6 @@
 <div class="glow-orb glow-1"></div>
 <div class="glow-orb glow-2"></div>
 
-<!-- KUNDALI PAYMENT MODAL -->
-<div id="kundali-modal" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,0.85);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:24px;">
-  <div style="background:linear-gradient(145deg,#130D24,#1a0f35);border:1px solid rgba(212,175,55,0.5);border-radius:24px;padding:32px 24px;max-width:360px;width:100%;text-align:center;position:relative;box-shadow:0 0 80px rgba(212,175,55,0.2);">
-    <button onclick="document.getElementById('kundali-modal').style.display='none'" style="position:absolute;top:14px;right:16px;background:none;border:none;color:rgba(255,255,255,0.4);font-size:22px;cursor:pointer;">✕</button>
-    <div style="font-size:56px;margin-bottom:12px;">🔯</div>
-    <div style="font-family:'Cinzel Decorative',serif;font-size:20px;color:#F5D96B;margin-bottom:8px;">Janam Kundali</div>
-    <div style="font-style:italic;color:rgba(255,255,255,0.5);font-size:14px;margin-bottom:20px;">Apni poori janm patrika dekhein</div>
-    <div style="margin-bottom:18px;text-align:left;">
-      <div style="font-size:13px;color:rgba(255,255,255,0.75);margin-bottom:10px;">✦ Kundali Chakra (12 Ghar)</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.75);margin-bottom:10px;">✦ Janm Nakshatra & Rashi</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.75);margin-bottom:10px;">✦ Lagna & Vartaman Dasha</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.75);">✦ 7 Graha ki Sthiti</div>
-    </div>
-    <div style="margin-bottom:6px;"><span style="font-size:40px;color:#F5D96B;font-weight:900;">₹99</span></div>
-    <div style="font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:20px;">Ek baar pay karo — hamesha ke liye unlock</div>
-    <button id="kundali-pay-btn" onclick="processKundaliPay()" style="width:100%;padding:18px;background:linear-gradient(135deg,#9A7B1A,#D4AF37,#F5D96B);border:none;border-radius:16px;font-size:17px;font-weight:900;color:#0A0612;cursor:pointer;box-shadow:0 0 40px rgba(212,175,55,0.4);margin-bottom:12px;letter-spacing:1px;font-family:'Cinzel Decorative',serif;">
-      🔯 SIRF ₹99 MEIN PAIYE
-    </button>
-    <div style="font-size:11px;color:rgba(255,255,255,0.3);">UPI &nbsp;|&nbsp; Card &nbsp;|&nbsp; Net Banking</div>
-  </div>
-</div>
-
 <!-- PAYMENT MODAL -->
 <div id="payment-modal" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,0.85);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:24px;">
   <div style="background:linear-gradient(145deg,#130D24,#1a0f35);border:1px solid rgba(212,175,55,0.5);border-radius:24px;padding:32px 24px;max-width:360px;width:100%;text-align:center;position:relative;box-shadow:0 0 80px rgba(212,175,55,0.2);">
@@ -1023,7 +1001,31 @@
   </div>
 </div>
 
-<!-- ========== SCREEN 4: KUNDALI ========== -->
+<!-- NAV BAR (shown on profile/reading screens) -->
+<div class="nav-bar" id="nav-bar" style="display:none;">
+  <div class="nav-item" id="nav-home" onclick="showScreen('welcome')">
+    <div class="nav-icon">🏠</div>
+    <div class="nav-label">Home</div>
+  </div>
+  <div class="nav-item active" id="nav-profile" onclick="showScreen('profile')">
+    <div class="nav-icon">🌙</div>
+    <div class="nav-label">Profile</div>
+  </div>
+  <div class="nav-item" id="nav-reading" onclick="showScreen('reading')">
+    <div class="nav-icon">🔮</div>
+    <div class="nav-label">Reading</div>
+  </div>
+  <div class="nav-item" id="nav-kundali" onclick="showScreen('kundali')">
+    <div class="nav-icon">🔯</div>
+    <div class="nav-label">Kundali</div>
+  </div>
+  <div class="nav-item" id="nav-settings" onclick="showScreen('settings')">
+    <div class="nav-icon">⚙️</div>
+    <div class="nav-label">Settings</div>
+  </div>
+</div>
+
+<!-- ========== SCREEN: KUNDALI ========== -->
 <div id="screen-kundali" class="screen has-nav">
   <div class="profile-header">
     <div class="section-icon">🔯</div>
@@ -1031,7 +1033,6 @@
     <p class="section-sub">Apni janm patrika dekhein</p>
   </div>
   <div style="max-width:480px;margin:0 auto;padding:20px;">
-    <!-- Kundali Chakra SVG -->
     <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.3);border-radius:20px;padding:20px;margin-bottom:20px;text-align:center;">
       <p style="font-family:'Cinzel Decorative',serif;font-size:13px;color:var(--gold);letter-spacing:2px;margin-bottom:16px;">✦ KUNDALI CHAKRA ✦</p>
       <svg viewBox="0 0 300 300" width="100%" style="max-width:300px;">
@@ -1054,13 +1055,12 @@
         <text x="52" y="265" text-anchor="middle" fill="rgba(212,175,55,0.7)" font-size="11" font-family="serif">4</text>
         <text x="150" y="265" text-anchor="middle" fill="rgba(212,175,55,0.7)" font-size="11" font-family="serif">7</text>
         <text x="150" y="140" text-anchor="middle" fill="rgba(212,175,55,0.5)" font-size="10" font-family="serif">Lagna</text>
-        <text id="k-sun" x="150" y="38" text-anchor="middle" fill="#F5D96B" font-size="11">☉ Sun</text>
-        <text id="k-moon" x="255" y="130" text-anchor="middle" fill="#F5D96B" font-size="11">☽ Moon</text>
-        <text id="k-mars" x="45" y="200" text-anchor="middle" fill="#FF6B6B" font-size="11">♂ Mars</text>
-        <text id="k-jup" x="150" y="250" text-anchor="middle" fill="#90EE90" font-size="11">♃ Jup</text>
+        <text x="150" y="38" text-anchor="middle" fill="#F5D96B" font-size="11">☉ Sun</text>
+        <text x="255" y="130" text-anchor="middle" fill="#F5D96B" font-size="11">☽ Moon</text>
+        <text x="45" y="200" text-anchor="middle" fill="#FF6B6B" font-size="11">♂ Mars</text>
+        <text x="150" y="250" text-anchor="middle" fill="#90EE90" font-size="11">♃ Jup</text>
       </svg>
     </div>
-    <!-- Nakshatra & Rashi -->
     <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.3);border-radius:20px;padding:20px;margin-bottom:20px;">
       <p style="font-family:'Cinzel Decorative',serif;font-size:13px;color:var(--gold);letter-spacing:2px;margin-bottom:16px;text-align:center;">✦ NAKSHATRA & RASHI ✦</p>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
@@ -1086,36 +1086,143 @@
         </div>
       </div>
     </div>
-    <!-- Graha Sthiti -->
     <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.3);border-radius:20px;padding:20px;margin-bottom:20px;">
       <p style="font-family:'Cinzel Decorative',serif;font-size:13px;color:var(--gold);letter-spacing:2px;margin-bottom:16px;text-align:center;">✦ GRAHA STHITI ✦</p>
       <div id="graha-list" style="display:flex;flex-direction:column;gap:10px;"></div>
     </div>
-    <!-- Button -->
-    <button onclick="calculateKundali()" style="width:100%;padding:18px;background:linear-gradient(135deg,#9A7B1A,#D4AF37,#F5D96B);border:none;border-radius:16px;font-family:'Cinzel Decorative',serif;font-size:15px;font-weight:700;color:#0A0612;cursor:pointer;box-shadow:0 0 40px rgba(212,175,55,0.3);letter-spacing:1px;">
-      🔯 Kundali Calculate Karo
-    </button>
+    <button onclick="calculateKundali()" style="width:100%;padding:18px;background:linear-gradient(135deg,#9A7B1A,#D4AF37,#F5D96B);border:none;border-radius:16px;font-family:'Cinzel Decorative',serif;font-size:15px;font-weight:700;color:#0A0612;cursor:pointer;box-shadow:0 0 40px rgba(212,175,55,0.3);letter-spacing:1px;">🔯 Kundali Calculate Karo</button>
     <p style="text-align:center;font-size:11px;color:var(--text-dim);margin-top:12px;">Profile mein Date of Birth fill karo accurate reading ke liye</p>
   </div>
 </div>
 
-<!-- NAV BAR (shown on profile/reading screens) -->
-<div class="nav-bar" id="nav-bar" style="display:none;">
-  <div class="nav-item" id="nav-home" onclick="showScreen('welcome')">
-    <div class="nav-icon">🏠</div>
-    <div class="nav-label">Home</div>
+<!-- KUNDALI PAYMENT MODAL -->
+<div id="kundali-modal" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,0.85);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:24px;">
+  <div style="background:linear-gradient(145deg,#130D24,#1a0f35);border:1px solid rgba(212,175,55,0.5);border-radius:24px;padding:32px 24px;max-width:360px;width:100%;text-align:center;position:relative;">
+    <button onclick="document.getElementById('kundali-modal').style.display='none'" style="position:absolute;top:14px;right:16px;background:none;border:none;color:rgba(255,255,255,0.4);font-size:22px;cursor:pointer;">✕</button>
+    <div style="font-size:56px;margin-bottom:12px;">🔯</div>
+    <div style="font-family:'Cinzel Decorative',serif;font-size:20px;color:#F5D96B;margin-bottom:8px;">Janam Kundali</div>
+    <div style="font-style:italic;color:rgba(255,255,255,0.5);font-size:14px;margin-bottom:20px;">Apni poori janm patrika dekhein</div>
+    <div style="margin-bottom:18px;text-align:left;">
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);margin-bottom:10px;">✦ Kundali Chakra (12 Ghar)</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);margin-bottom:10px;">✦ Janm Nakshatra & Rashi</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);margin-bottom:10px;">✦ Lagna & Vartaman Dasha</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);">✦ 7 Graha ki Sthiti</div>
+    </div>
+    <div style="margin-bottom:6px;"><span style="font-size:40px;color:#F5D96B;font-weight:900;">₹99</span></div>
+    <div style="font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:20px;">Ek baar pay karo — hamesha ke liye unlock</div>
+    <button id="kundali-pay-btn" onclick="processKundaliPay()" style="width:100%;padding:18px;background:linear-gradient(135deg,#9A7B1A,#D4AF37,#F5D96B);border:none;border-radius:16px;font-size:17px;font-weight:900;color:#0A0612;cursor:pointer;margin-bottom:12px;letter-spacing:1px;font-family:'Cinzel Decorative',serif;">🔯 SIRF ₹99 MEIN PAIYE</button>
+    <div style="font-size:11px;color:rgba(255,255,255,0.3);">UPI &nbsp;|&nbsp; Card &nbsp;|&nbsp; Net Banking</div>
   </div>
-  <div class="nav-item active" id="nav-profile" onclick="showScreen('profile')">
-    <div class="nav-icon">🌙</div>
-    <div class="nav-label">Profile</div>
+</div>
+
+<!-- ========== SCREEN: SETTINGS ========== -->
+<div id="screen-settings" class="screen has-nav">
+  <div class="profile-header">
+    <div class="section-icon">⚙️</div>
+    <h2 class="section-title">Settings</h2>
+    <p class="section-sub">App settings aur jankari</p>
   </div>
-  <div class="nav-item" id="nav-reading" onclick="showScreen('reading')">
-    <div class="nav-icon">🔮</div>
-    <div class="nav-label">Reading</div>
+  <div style="max-width:480px;margin:0 auto;padding:20px;display:flex;flex-direction:column;gap:12px;">
+
+    <!-- App Info -->
+    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.2);border-radius:16px;padding:20px;">
+      <p style="font-size:11px;color:var(--gold);letter-spacing:2px;margin-bottom:14px;">APP INFO</p>
+      <div style="display:flex;justify-content:space-between;margin-bottom:10px;">
+        <span style="color:rgba(255,255,255,0.6);font-size:13px;">App Name</span>
+        <span style="color:#F5D96B;font-size:13px;">Divine Nakshatra</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-bottom:10px;">
+        <span style="color:rgba(255,255,255,0.6);font-size:13px;">Version</span>
+        <span style="color:#F5D96B;font-size:13px;">1.0.0</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;">
+        <span style="color:rgba(255,255,255,0.6);font-size:13px;">Premium Status</span>
+        <span id="settings-premium-status" style="color:#4CAF50;font-size:13px;">Checking...</span>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;margin-top:10px;">
+      <span style="color:rgba(255,255,255,0.6);font-size:13px;">Kundali Status</span>
+      <span id="settings-kundali-status" style="color:#4CAF50;font-size:13px;">Checking...</span>
+    </div>
+
+    <!-- Links -->
+    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.2);border-radius:16px;overflow:hidden;">
+      <div onclick="showScreen('privacy')" style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px;cursor:pointer;border-bottom:1px solid rgba(255,255,255,0.05);">
+        <span style="color:rgba(255,255,255,0.8);font-size:14px;">🔒 Privacy Policy</span>
+        <span style="color:var(--text-dim);">›</span>
+      </div>
+      <div onclick="showScreen('terms')" style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px;cursor:pointer;">
+        <span style="color:rgba(255,255,255,0.8);font-size:14px;">📜 Terms & Conditions</span>
+        <span style="color:var(--text-dim);">›</span>
+      </div>
+    </div>
+
+    <!-- Contact -->
+    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.2);border-radius:16px;padding:20px;">
+      <p style="font-size:11px;color:var(--gold);letter-spacing:2px;margin-bottom:14px;">CONTACT</p>
+      <p style="color:rgba(255,255,255,0.6);font-size:13px;">Support: <span style="color:#F5D96B;">support@divinenakshatra.com</span></p>
+    </div>
+
+    <!-- Clear Data -->
+    <button onclick="clearAllData()" style="width:100%;padding:14px;background:rgba(255,80,80,0.08);border:1px solid rgba(255,80,80,0.25);border-radius:12px;color:rgba(255,100,100,0.8);font-size:13px;cursor:pointer;">🗑️ Sab Data Clear Karo</button>
   </div>
-  <div class="nav-item" id="nav-kundali" onclick="showScreen('kundali')">
-    <div class="nav-icon">🔯</div>
-    <div class="nav-label">Kundali</div>
+</div>
+
+<!-- ========== SCREEN: PRIVACY POLICY ========== -->
+<div id="screen-privacy" class="screen has-nav">
+  <div class="profile-header">
+    <div class="section-icon">🔒</div>
+    <h2 class="section-title">Privacy Policy</h2>
+    <p class="section-sub">Aapka data safe hai</p>
+  </div>
+  <div style="max-width:480px;margin:0 auto;padding:20px;color:rgba(255,255,255,0.8);font-size:13px;line-height:1.8;display:flex;flex-direction:column;gap:14px;">
+    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.2);border-radius:16px;padding:20px;">
+      <h3 style="color:var(--gold);margin-bottom:10px;">📋 Hum kya collect karte hain?</h3>
+      <p>Aapka naam, janm tithi, aur janam samay sirf aapki Jyotish reading ke liye use hota hai. Hum koi bhi personal data third party ke saath share nahi karte.</p>
+    </div>
+    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.2);border-radius:16px;padding:20px;">
+      <h3 style="color:var(--gold);margin-bottom:10px;">💳 Payment Security</h3>
+      <p>Sab payments Razorpay ke through hote hain jo 100% secure hai. Hum aapki card ya bank details kabhi store nahi karte.</p>
+    </div>
+    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.2);border-radius:16px;padding:20px;">
+      <h3 style="color:var(--gold);margin-bottom:10px;">🍪 Local Storage</h3>
+      <p>Hum sirf aapki premium status ko aapke device mein store karte hain. Ye data kabhi server pe nahi jaata.</p>
+    </div>
+    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.2);border-radius:16px;padding:20px;">
+      <h3 style="color:var(--gold);margin-bottom:10px;">📧 Contact</h3>
+      <p>Koi bhi sawal ke liye: <span style="color:#F5D96B;">support@divinenakshatra.com</span></p>
+    </div>
+    <p style="font-size:11px;color:var(--text-dim);text-align:center;">Last updated: May 2026</p>
+    <button onclick="showScreen('settings')" style="padding:12px;background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.3);border-radius:12px;color:#F5D96B;font-size:13px;cursor:pointer;">← Wapas Settings</button>
+  </div>
+</div>
+
+<!-- ========== SCREEN: TERMS & CONDITIONS ========== -->
+<div id="screen-terms" class="screen has-nav">
+  <div class="profile-header">
+    <div class="section-icon">📜</div>
+    <h2 class="section-title">Terms & Conditions</h2>
+    <p class="section-sub">Niyam aur shartein</p>
+  </div>
+  <div style="max-width:480px;margin:0 auto;padding:20px;color:rgba(255,255,255,0.8);font-size:13px;line-height:1.8;display:flex;flex-direction:column;gap:14px;">
+    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.2);border-radius:16px;padding:20px;">
+      <h3 style="color:var(--gold);margin-bottom:10px;">⚠️ Disclaimer</h3>
+      <p>Divine Nakshatra ek entertainment aur spiritual guidance app hai. Yahan di gayi readings AI aur Vedic Jyotish par based hain. Inhe professional medical, legal, ya financial advice ka substitute mat samjhein.</p>
+    </div>
+    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.2);border-radius:16px;padding:20px;">
+      <h3 style="color:var(--gold);margin-bottom:10px;">💰 Refund Policy</h3>
+      <p>₹1 aur ₹99 ke payments non-refundable hain kyunki ye digital service hai. Payment hone ke baad premium features turant unlock ho jaate hain.</p>
+    </div>
+    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.2);border-radius:16px;padding:20px;">
+      <h3 style="color:var(--gold);margin-bottom:10px;">✅ User Agreement</h3>
+      <p>Is app ka use karke aap agree karte ho ki aap 18 saal ya usse zyada ke hain. App ka use sirf personal purpose ke liye kiya ja sakta hai.</p>
+    </div>
+    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.2);border-radius:16px;padding:20px;">
+      <h3 style="color:var(--gold);margin-bottom:10px;">📧 Contact</h3>
+      <p>Complaints ya queries: <span style="color:#F5D96B;">support@divinenakshatra.com</span></p>
+    </div>
+    <p style="font-size:11px;color:var(--text-dim);text-align:center;">Last updated: May 2026</p>
+    <button onclick="showScreen('settings')" style="padding:12px;background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.3);border-radius:12px;color:#F5D96B;font-size:13px;cursor:pointer;">← Wapas Settings</button>
   </div>
 </div>
 
@@ -1354,7 +1461,13 @@ function showScreen(name) {
   navBar.style.display = (name === 'welcome') ? 'none' : 'flex';
   // update nav active
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  const navMap = { profile: 'nav-profile', reading: 'nav-reading', kundali: 'nav-kundali' };
+  const navMap = { profile: 'nav-profile', reading: 'nav-reading', kundali: 'nav-kundali', settings: 'nav-settings' };
+  if (name === 'settings') {
+    const s = document.getElementById('settings-premium-status');
+    if (s) s.textContent = localStorage.getItem('dn_premium') === 'true' ? '👑 Active' : '❌ Not Active';
+    const k = document.getElementById('settings-kundali-status');
+    if (k) k.textContent = localStorage.getItem('dn_kundali') === 'true' ? '🔯 Active' : '❌ Not Active';
+  }
   if (navMap[name]) document.getElementById(navMap[name]).classList.add('active');
   window.scrollTo(0, 0);
 }
@@ -1397,20 +1510,7 @@ function selectTopicFree(el, topic, question, icon) {
 }
 
 function showPremiumMsg() {
-  if (localStorage.getItem('dn_premium') === 'true') {
-    isPremium = true;
-    showToast('👑 Premium active! Topic select karo ✨');
-    // Unlock all premium topic cards
-    document.querySelectorAll('.topic-card.premium').forEach(card => {
-      card.classList.remove('premium');
-      card.querySelector('.topic-crown') && card.querySelector('.topic-crown').remove();
-      card.style.opacity = '1';
-    });
-    return;
-  }
-  updatePriceUI();
-  document.getElementById('modal-question').innerHTML = '👑 Premium Topics Unlock Karein';
-  document.getElementById('payment-modal').style.display = 'flex';
+  showToast('👑 Yeh premium topic hai — ' + userPrice.label + ' mein unlock karein!');
 }
 
 // ========== READING ==========
@@ -1478,17 +1578,10 @@ function goToReading(question, icon) {
 }
 
 // ========== TOAST ==========
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2800);
-}
-
-// ========== KUNDALI CALCULATOR ==========
+// ========== KUNDALI ==========
 const nakshatras = ['Ashwini','Bharani','Krittika','Rohini','Mrigashira','Ardra','Punarvasu','Pushya','Ashlesha','Magha','Purva Phalguni','Uttara Phalguni','Hasta','Chitra','Swati','Vishakha','Anuradha','Jyeshtha','Mula','Purva Ashadha','Uttara Ashadha','Shravana','Dhanishtha','Shatabhisha','Purva Bhadrapada','Uttara Bhadrapada','Revati'];
 const rashis = ['Mesh (Aries)','Vrishabh (Taurus)','Mithun (Gemini)','Kark (Cancer)','Singh (Leo)','Kanya (Virgo)','Tula (Libra)','Vrishchik (Scorpio)','Dhanu (Sagittarius)','Makar (Capricorn)','Kumbh (Aquarius)','Meen (Pisces)'];
-const dashas = ['Surya (Sun)','Chandra (Moon)','Mangal (Mars)','Rahu','Brihaspati (Jupiter)','Shani (Saturn)','Budh (Mercury)','Ketu','Shukra (Venus)'];
+const dashas = ['Surya','Chandra','Mangal','Rahu','Brihaspati','Shani','Budh','Ketu','Shukra'];
 const grahas = [
   { name: 'Surya ☉', color: '#FFD700' },
   { name: 'Chandra ☽', color: '#C0C0C0' },
@@ -1502,7 +1595,6 @@ const grahas = [
 function calculateKundali() {
   const dob = document.getElementById('inp-dob').value;
   const name = document.getElementById('inp-name').value.trim();
-
   if (!name) {
     showToast('Pehle apna Naam bharo! ✨');
     showScreen('welcome');
@@ -1515,13 +1607,10 @@ function calculateKundali() {
     setTimeout(() => document.getElementById('inp-dob').focus(), 400);
     return;
   }
-
-  // Check Kundali premium
   if (localStorage.getItem('dn_kundali') !== 'true') {
     document.getElementById('kundali-modal').style.display = 'flex';
     return;
   }
-
   showKundaliResult(name, dob);
 }
 
@@ -1530,49 +1619,55 @@ function showKundaliResult(name, dob) {
   const day = date.getDate();
   const month = date.getMonth();
   const year = date.getFullYear();
-
-  // Simple calculation based on DOB
   const nakshatraIndex = (day + month * 3 + year) % 27;
   const rashiIndex = month % 12;
   const lagnaIndex = (day + month) % 12;
   const dashaIndex = (day * month) % 9 || 0;
-
   document.getElementById('k-nakshatra').textContent = nakshatras[nakshatraIndex];
   document.getElementById('k-rashi').textContent = rashis[rashiIndex];
   document.getElementById('k-lagna').textContent = rashis[lagnaIndex];
   document.getElementById('k-dasha').textContent = dashas[dashaIndex];
-
-  // Graha list
   const grahaList = document.getElementById('graha-list');
   grahaList.innerHTML = '';
   grahas.forEach((g, i) => {
     const rashiPos = (rashiIndex + i * 2) % 12;
-    grahaList.innerHTML += `
-      <div style="display:flex;align-items:center;justify-content:space-between;background:rgba(212,175,55,0.05);border:1px solid rgba(212,175,55,0.15);border-radius:10px;padding:12px 14px;">
-        <span style="color:${g.color};font-size:14px;font-weight:600;">${g.name}</span>
-        <span style="color:rgba(255,255,255,0.7);font-size:12px;">${rashis[rashiPos]}</span>
-      </div>`;
+    grahaList.innerHTML += `<div style="display:flex;align-items:center;justify-content:space-between;background:rgba(212,175,55,0.05);border:1px solid rgba(212,175,55,0.15);border-radius:10px;padding:12px 14px;">
+      <span style="color:${g.color};font-size:14px;font-weight:600;">${g.name}</span>
+      <span style="color:rgba(255,255,255,0.7);font-size:12px;">${rashis[rashiPos]}</span>
+    </div>`;
   });
-
-  showToast(name ? `${name} ji ki Kundali ready hai! 🔯` : 'Kundali ready hai! 🔯');
+  showToast(`${name} ji ki Kundali ready hai! 🔯`);
 }
 
 function processKundaliPay() {
   const btn = document.getElementById('kundali-pay-btn');
   btn.textContent = 'Opening...';
   btn.style.opacity = '0.7';
-  // Open ₹99 payment link — REPLACE with your actual ₹99 Razorpay link
   window.open('https://rzp.io/rzp/bBw8wqgO', '_blank');
   setTimeout(() => {
     localStorage.setItem('dn_kundali', 'true');
     document.getElementById('kundali-modal').style.display = 'none';
-    showToast('Kundali Premium activated! 🔯');
     const dob = document.getElementById('inp-dob').value;
     const name = document.getElementById('inp-name').value.trim();
     showKundaliResult(name, dob);
     btn.textContent = '🔯 SIRF ₹99 MEIN PAIYE';
     btn.style.opacity = '1';
   }, 4000);
+}
+
+function clearAllData() {
+  if (confirm('Sab data clear ho jayega — premium bhi! Sure ho?')) {
+    localStorage.clear();
+    showToast('Sab data clear ho gaya!');
+    location.reload();
+  }
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
 }
 
 // ========== AI READING via Claude API ==========
@@ -1659,22 +1754,20 @@ document.querySelector('.start-btn') && (document.querySelector('#screen-welcome
 selectCountry('IN');
 detectCountry();
 
-// Check if already premium (persistent)
+// Persistent premium check
 if (localStorage.getItem('dn_premium') === 'true') {
   isPremium = true;
   freeReadingsLeft = 999;
   updateFreeCounter();
   showToast('Welcome back! Premium active hai 👑');
-  // Unlock all premium topic cards
   setTimeout(() => {
     document.querySelectorAll('.topic-card.premium').forEach(card => {
       card.classList.remove('premium');
       const crown = card.querySelector('.topic-crown');
       if (crown) crown.remove();
       card.style.opacity = '1';
-      // Replace onclick to use AI reading
-      const icon = card.querySelector('.topic-icon').textContent;
-      const topic = card.querySelector('.hi').textContent;
+      const icon = card.querySelector('.topic-icon') ? card.querySelector('.topic-icon').textContent : '🔮';
+      const topic = card.querySelector('.hi') ? card.querySelector('.hi').textContent : '';
       card.setAttribute('onclick', `selectTopicFree(this,'${topic}','${topic} ke baare mein mujhe batao','${icon}')`);
     });
   }, 500);
