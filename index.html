@@ -1532,11 +1532,20 @@ function goToReading(question, icon) {
   currentQuestion = question;
   currentIcon = icon;
 
-  if (!isPremium) {
-    // Show payment modal directly - no free readings for home questions
-    document.getElementById('modal-question').innerHTML = icon + ' ' + question;
-    updatePriceUI();
-    document.getElementById('payment-modal').style.display = 'flex';
+  // Form validation — naam aur DOB required
+  const name = document.getElementById('inp-name').value.trim();
+  const dob = document.getElementById('inp-dob').value;
+
+  if (!name) {
+    showToast('Pehle apna Naam bharo! ✨');
+    showScreen('welcome');
+    setTimeout(() => document.getElementById('inp-name').focus(), 400);
+    return;
+  }
+  if (!dob) {
+    showToast('Pehle Date of Birth bharo! 📅');
+    showScreen('welcome');
+    setTimeout(() => document.getElementById('inp-dob').focus(), 400);
     return;
   }
 
@@ -1736,10 +1745,19 @@ window.goToReadingWithAI = async function(question, icon) {
   currentQuestion = question;
   currentIcon = icon;
 
-  if (!isPremium) {
-    document.getElementById('modal-question').innerHTML = icon + ' ' + question;
-    updatePriceUI();
-    document.getElementById('payment-modal').style.display = 'flex';
+  // Form validation
+  const name = document.getElementById('inp-name').value.trim();
+  const dob = document.getElementById('inp-dob').value;
+  if (!name) {
+    showToast('Pehle apna Naam bharo! ✨');
+    showScreen('welcome');
+    setTimeout(() => document.getElementById('inp-name').focus(), 400);
+    return;
+  }
+  if (!dob) {
+    showToast('Pehle Date of Birth bharo! 📅');
+    showScreen('welcome');
+    setTimeout(() => document.getElementById('inp-dob').focus(), 400);
     return;
   }
 
