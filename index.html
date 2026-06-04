@@ -828,7 +828,14 @@
     <span class="q-icon">⚔️</span>
     <span>महाभारत — पांडवों की विजय</span>
   </button>
-  <button class="question-btn" onclick="showGarudaChapters()">
+  <button class="question-btn" onclick="
+    document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+    document.getElementById('screen-garuda').classList.add('active');
+    document.getElementById('nav-bar').style.display='flex';
+    var purva=document.getElementById('garuda-purva');
+    if(purva && purva.innerHTML===''){showGarudaChapters();}
+    window.scrollTo(0,0);
+  ">
     <span class="q-icon">🦅</span>
     <span>गरुड़ पुराण — सम्पूर्ण अध्याय</span>
   </button>
@@ -1887,8 +1894,6 @@ function showGarudaChapters() {
     });
     uttara.appendChild(btn);
   });
-
-  showScreen('garuda');
 }
 
 // ========== LANGUAGE SYSTEM ==========
