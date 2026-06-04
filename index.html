@@ -785,6 +785,14 @@
   </div>
 
   <div class="welcome-badge">✦ Vedic Jyotish ✦</div>
+
+  <!-- Language Toggle -->
+  <div style="display:flex;justify-content:center;margin-bottom:8px;">
+    <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(212,175,55,0.3);border-radius:999px;padding:4px;display:flex;gap:4px;">
+      <button id="lang-hi" onclick="setLanguage('hi')" style="padding:6px 20px;border-radius:999px;border:none;background:linear-gradient(135deg,#D4AF37,#F5D96B);color:#0A0612;font-size:12px;font-weight:700;cursor:pointer;">🇮🇳 हिंदी</button>
+      <button id="lang-en" onclick="setLanguage('en')" style="padding:6px 20px;border-radius:999px;border:none;background:transparent;color:rgba(255,255,255,0.5);font-size:12px;font-weight:600;cursor:pointer;">🌍 English</button>
+    </div>
+  </div>
   <h1 class="welcome-title">Divine<br>Nakshatra</h1>
   <p class="welcome-sub">Ancient wisdom, celestial guidance</p>
   <div class="india-no1">🇮🇳 India's No.1 Jyotish App</div>
@@ -1761,6 +1769,62 @@ function rotateAds() {
 rotateAds();
 setInterval(rotateAds, 5000); // Change every 5 seconds
 
+// ========== LANGUAGE SYSTEM ==========
+let currentLang = 'hi'; // default Hindi
+
+function setLanguage(lang) {
+  currentLang = lang;
+
+  const hiBtn = document.getElementById('lang-hi');
+  const enBtn = document.getElementById('lang-en');
+
+  if (lang === 'hi') {
+    hiBtn.style.background = 'linear-gradient(135deg,#D4AF37,#F5D96B)';
+    hiBtn.style.color = '#0A0612';
+    enBtn.style.background = 'transparent';
+    enBtn.style.color = 'rgba(255,255,255,0.5)';
+    showToast('हिंदी भाषा चुनी गई! 🇮🇳');
+    // Update questions to Hindi
+    updateQuestions('hi');
+  } else {
+    enBtn.style.background = 'linear-gradient(135deg,#D4AF37,#F5D96B)';
+    enBtn.style.color = '#0A0612';
+    hiBtn.style.background = 'transparent';
+    hiBtn.style.color = 'rgba(255,255,255,0.5)';
+    showToast('English language selected! 🌍');
+    // Update questions to English
+    updateQuestions('en');
+  }
+}
+
+const questionsHi = [
+  { text: 'भगवद्गीता — कृष्ण जी का संदेश', q: 'श्रीमद्भगवद्गीता का सार क्या है? कृष्ण जी का संदेश बताइए।', icon: '🪷' },
+  { text: 'रामायण — श्री राम जी का धर्म', q: 'रामायण में श्री राम जी ने जीवन में धर्म का पालन कैसे किया?', icon: '🏹' },
+  { text: 'महाभारत — पांडवों की विजय', q: 'महाभारत का मुख्य संदेश क्या है? पांडवों की विजय का रहस्य बताइए।', icon: '⚔️' },
+  { text: 'गरुड़ पुराण — आत्मा का रहस्य', q: 'गरुड़ पुराण के अनुसार मृत्यु के बाद आत्मा का क्या होता है?', icon: '🦅' },
+  { text: 'हनुमान चालीसा — कृपा और लाभ', q: 'हनुमान चालीसा का पाठ करने से क्या लाभ होता है?', icon: '🙏' },
+];
+
+const questionsEn = [
+  { text: 'Bhagavad Gita — Krishna\'s Message', q: 'What is the essence of Bhagavad Gita? Tell me Lord Krishna\'s divine message.', icon: '🪷' },
+  { text: 'Ramayana — Lord Ram\'s Dharma', q: 'How did Lord Ram follow dharma in the Ramayana? What lessons can we learn?', icon: '🏹' },
+  { text: 'Mahabharata — Pandavas Victory', q: 'What is the main message of Mahabharata? What was the secret of Pandavas victory?', icon: '⚔️' },
+  { text: 'Garuda Purana — Soul\'s Mystery', q: 'According to Garuda Purana, what happens to the soul after death?', icon: '🦅' },
+  { text: 'Hanuman Chalisa — Blessings & Benefits', q: 'What are the benefits of reciting Hanuman Chalisa? How to get Lord Hanuman\'s blessings?', icon: '🙏' },
+];
+
+function updateQuestions(lang) {
+  const questions = lang === 'hi' ? questionsHi : questionsEn;
+  const btns = document.querySelectorAll('.question-btn');
+  btns.forEach((btn, i) => {
+    if (questions[i]) {
+      btn.setAttribute('onclick', `goToReading('${questions[i].q}', '${questions[i].icon}')`);
+      btn.querySelector('span:last-child').textContent = questions[i].text;
+      btn.querySelector('.q-icon').textContent = questions[i].icon;
+    }
+  });
+}
+
 // ========== VOICE READING ==========
 let voiceSpeaking = false;
 let voiceUtterance = null;
@@ -1787,15 +1851,16 @@ function toggleVoiceReading() {
   if (!text) { showToast('Pehle reading lo!'); return; }
 
   voiceUtterance = new SpeechSynthesisUtterance(text);
-  voiceUtterance.lang = 'hi-IN';
+  voiceUtterance.lang = currentLang === 'hi' ? 'hi-IN' : 'en-US';
   voiceUtterance.rate = voiceSpeeds[voiceSpeedIndex];
   voiceUtterance.pitch = 1;
   voiceUtterance.volume = 1;
 
-  // Try Hindi voice
+  // Try matching voice
   const voices = window.speechSynthesis.getVoices();
-  const hindiVoice = voices.find(v => v.lang === 'hi-IN') || voices.find(v => v.lang.startsWith('hi'));
-  if (hindiVoice) voiceUtterance.voice = hindiVoice;
+  const targetLang = currentLang === 'hi' ? 'hi-IN' : 'en-US';
+  const selectedVoice = voices.find(v => v.lang === targetLang) || voices.find(v => v.lang.startsWith(currentLang));
+  if (selectedVoice) voiceUtterance.voice = selectedVoice;
 
   voiceUtterance.onstart = () => {
     voiceSpeaking = true;
@@ -1885,17 +1950,29 @@ async function fetchAIReading(question) {
         max_tokens: 1000,
         messages: [{
           role: "user",
-          content: `आप एक विद्वान पंडित और वैदिक ज्योतिषी हैं जो शुद्ध हिंदी में उत्तर देते हैं।
+          content: currentLang === 'hi' ?
+            `आप एक विद्वान पंडित और वैदिक ज्योतिषी हैं जो शुद्ध हिंदी में उत्तर देते हैं।
           
 उपयोगकर्ता का प्रश्न: "${question}"
 
 नियम:
 - केवल शुद्ध हिंदी में उत्तर दें, कोई अंग्रेजी शब्द नहीं
-- यदि प्रश्न धार्मिक ग्रंथों (रामायण, महाभारत, गीता, गरुड़ पुराण, हनुमान चालीसा) से संबंधित है तो उसका सटीक और शास्त्रसम्मत उत्तर दें
+- यदि प्रश्न धार्मिक ग्रंथों से संबंधित है तो शास्त्रसम्मत उत्तर दें
 - 4-5 पंक्तियों में उत्तर दें
 - नक्षत्र, ग्रह और ब्रह्मांडीय ऊर्जा का उल्लेख करें
 - उत्तर प्रेरणादायक और आशावादी हो
-- केवल उत्तर लिखें, कोई भूमिका नहीं`
+- केवल उत्तर लिखें` :
+            `You are a learned Vedic astrologer and spiritual guide. Answer in pure English.
+
+User's question: "${question}"
+
+Rules:
+- Answer only in English
+- If question is about scriptures (Gita, Ramayana, Mahabharata etc), give accurate scriptural answers
+- Answer in 4-5 lines
+- Mention nakshatra, planets and cosmic energy
+- Be inspiring and positive
+- Only write the answer, no preamble`
         }]
       })
     });
