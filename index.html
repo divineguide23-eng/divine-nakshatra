@@ -828,9 +828,9 @@
     <span class="q-icon">⚔️</span>
     <span>महाभारत — पांडवों की विजय</span>
   </button>
-  <button class="question-btn" onclick="goToReading('गरुड़ पुराण के अनुसार मृत्यु के बाद आत्मा का क्या होता है?', '🦅')">
+  <button class="question-btn" onclick="showGarudaChapters()">
     <span class="q-icon">🦅</span>
-    <span>गरुड़ पुराण — आत्मा का रहस्य</span>
+    <span>गरुड़ पुराण — सम्पूर्ण अध्याय</span>
   </button>
   <button class="question-btn" onclick="goToReading('हनुमान चालीसा का पाठ करने से क्या लाभ होता है? हनुमान जी की कृपा कैसे मिलती है?', '🙏')">
     <span class="q-icon">🙏</span>
@@ -1057,6 +1057,30 @@
         <span id="voice-lang-btn" onclick="toggleVoiceLang()" style="font-size:10px;color:#E0B0FF;cursor:pointer;">🇮🇳 Hindi</span>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- ========== SCREEN: GARUDA PURAN CHAPTERS ========== -->
+<div id="screen-garuda" class="screen has-nav">
+  <div class="profile-header">
+    <div class="section-icon">🦅</div>
+    <h2 class="section-title">गरुड़ पुराण</h2>
+    <p class="section-sub">सम्पूर्ण अध्याय — Garuda Purana</p>
+  </div>
+  <div style="max-width:480px;margin:0 auto;padding:16px 20px 100px;">
+
+    <!-- Purva Khanda -->
+    <div style="background:rgba(212,175,55,0.08);border:1px solid rgba(212,175,55,0.3);border-radius:16px;padding:16px;margin-bottom:16px;">
+      <p style="font-family:'Cinzel Decorative',serif;font-size:12px;color:var(--gold);letter-spacing:2px;margin-bottom:12px;">📖 पूर्व खण्ड (PURVA KHANDA)</p>
+      <div style="display:flex;flex-direction:column;gap:8px;" id="garuda-purva"></div>
+    </div>
+
+    <!-- Uttara Khanda -->
+    <div style="background:rgba(212,175,55,0.08);border:1px solid rgba(212,175,55,0.3);border-radius:16px;padding:16px;">
+      <p style="font-family:'Cinzel Decorative',serif;font-size:12px;color:var(--gold);letter-spacing:2px;margin-bottom:12px;">📖 उत्तर खण्ड (UTTARA KHANDA)</p>
+      <div style="display:flex;flex-direction:column;gap:8px;" id="garuda-uttara"></div>
+    </div>
+
   </div>
 </div>
 
@@ -1525,7 +1549,7 @@ function showScreen(name) {
   navBar.style.display = (name === 'welcome') ? 'none' : 'flex';
   // update nav active
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  const navMap = { profile: 'nav-profile', reading: 'nav-reading', kundali: 'nav-kundali', settings: 'nav-settings' };
+  const navMap = { profile: 'nav-profile', reading: 'nav-reading', kundali: 'nav-kundali', settings: 'nav-settings', garuda: 'nav-reading' };
   if (name === 'settings') {
     const s = document.getElementById('settings-premium-status');
     if (s) s.textContent = localStorage.getItem('dn_premium') === 'true' ? '👑 Active' : '❌ Not Active';
@@ -1769,6 +1793,93 @@ function rotateAds() {
 rotateAds();
 setInterval(rotateAds, 5000); // Change every 5 seconds
 
+// ========== GARUDA PURAN CHAPTERS ==========
+const garudaPurvaChapters = [
+  { ch: 1, title: 'सृष्टि का वर्णन', en: 'Description of Creation' },
+  { ch: 2, title: 'विष्णु भक्ति का महत्व', en: 'Importance of Vishnu Bhakti' },
+  { ch: 3, title: 'गरुड़ की उत्पत्ति', en: 'Origin of Garuda' },
+  { ch: 4, title: 'आत्मा और परमात्मा', en: 'Soul and Supreme Soul' },
+  { ch: 5, title: 'पाप और पुण्य का विवरण', en: 'Description of Sin and Virtue' },
+  { ch: 6, title: 'नरक लोक का वर्णन', en: 'Description of Hell' },
+  { ch: 7, title: 'स्वर्ग लोक का वर्णन', en: 'Description of Heaven' },
+  { ch: 8, title: 'यमराज और यमदूत', en: 'Yamraj and his Messengers' },
+  { ch: 9, title: 'मृत्यु के बाद की यात्रा', en: 'Journey after Death' },
+  { ch: 10, title: 'श्राद्ध और पितृ तर्पण', en: 'Shraddha and Ancestor Rites' },
+  { ch: 11, title: 'दान का महत्व', en: 'Importance of Charity' },
+  { ch: 12, title: 'तीर्थ यात्रा का फल', en: 'Benefits of Pilgrimage' },
+  { ch: 13, title: 'व्रत और उपवास', en: 'Fasting and Vows' },
+  { ch: 14, title: 'मंत्र और स्तोत्र', en: 'Mantras and Hymns' },
+  { ch: 15, title: 'भगवान विष्णु के अवतार', en: 'Avatars of Lord Vishnu' },
+  { ch: 16, title: 'सूर्य की उपासना', en: 'Worship of Sun God' },
+  { ch: 17, title: 'रुद्र की महिमा', en: 'Glory of Rudra (Shiva)' },
+  { ch: 18, title: 'देवी की आराधना', en: 'Worship of Goddess' },
+  { ch: 19, title: 'ग्रह और नक्षत्र', en: 'Planets and Nakshatras' },
+  { ch: 20, title: 'आयुर्वेद और चिकित्सा', en: 'Ayurveda and Medicine' },
+  { ch: 21, title: 'योग और ध्यान', en: 'Yoga and Meditation' },
+  { ch: 22, title: 'मोक्ष का मार्ग', en: 'Path to Liberation' },
+  { ch: 23, title: 'भक्ति योग', en: 'Bhakti Yoga' },
+  { ch: 24, title: 'ज्ञान योग', en: 'Gyana Yoga' },
+  { ch: 25, title: 'कर्म योग', en: 'Karma Yoga' },
+  { ch: 26, title: 'वर्ण और आश्रम', en: 'Varna and Ashrama System' },
+  { ch: 27, title: 'राजधर्म', en: 'Duties of a King' },
+  { ch: 28, title: 'गृहस्थ धर्म', en: 'Duties of Householder' },
+  { ch: 29, title: 'स्त्री धर्म', en: 'Duties of Women' },
+  { ch: 30, title: 'संस्कार विधि', en: 'Sacred Rituals' },
+];
+
+const garudaUttaraChapters = [
+  { ch: 1, title: 'प्रेत कल्प — मृत्यु का रहस्य', en: 'Preta Kalpa — Mystery of Death' },
+  { ch: 2, title: 'मृत्यु के समय के संकेत', en: 'Signs at the Time of Death' },
+  { ch: 3, title: 'प्रेत योनि का वर्णन', en: 'Description of Ghost State' },
+  { ch: 4, title: 'दशगात्र विधि', en: 'Ten Day Funeral Rites' },
+  { ch: 5, title: 'सपिण्डीकरण', en: 'Sapindikaran Ceremony' },
+  { ch: 6, title: 'वैतरणी नदी', en: 'The River Vaitarani' },
+  { ch: 7, title: 'यम मार्ग का वर्णन', en: 'Description of Yama\'s Path' },
+  { ch: 8, title: 'पाप कर्मों का फल', en: 'Results of Sinful Actions' },
+  { ch: 9, title: 'विभिन्न नरकों का वर्णन', en: 'Description of Various Hells' },
+  { ch: 10, title: 'पुण्य कर्मों का फल', en: 'Results of Virtuous Actions' },
+  { ch: 11, title: 'पुनर्जन्म का सिद्धांत', en: 'Theory of Rebirth' },
+  { ch: 12, title: 'मोक्ष और मुक्ति', en: 'Liberation and Freedom' },
+  { ch: 13, title: 'गरुड़ गीता', en: 'Garuda Gita' },
+  { ch: 14, title: 'ब्रह्म ज्ञान', en: 'Knowledge of Brahman' },
+  { ch: 15, title: 'अंतिम उपदेश', en: 'Final Teachings' },
+  { ch: 16, title: 'विष्णु सहस्रनाम', en: 'Vishnu Sahasranama' },
+];
+
+function showGarudaChapters() {
+  // Build Purva Khanda
+  const purva = document.getElementById('garuda-purva');
+  purva.innerHTML = '';
+  garudaPurvaChapters.forEach(c => {
+    purva.innerHTML += `
+      <button onclick="goToReading('गरुड़ पुराण पूर्व खण्ड अध्याय ${c.ch}: ${c.title} के बारे में विस्तार से बताइए।', '🦅')"
+        style="background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.2);border-radius:12px;padding:12px 16px;text-align:left;cursor:pointer;display:flex;align-items:center;gap:12px;width:100%;">
+        <span style="background:rgba(212,175,55,0.2);border-radius:8px;padding:4px 10px;font-size:11px;color:var(--gold);font-weight:700;min-width:36px;text-align:center;">${c.ch}</span>
+        <div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.9);font-weight:600;">${c.title}</div>
+          <div style="font-size:11px;color:var(--text-dim);margin-top:2px;">${c.en}</div>
+        </div>
+      </button>`;
+  });
+
+  // Build Uttara Khanda
+  const uttara = document.getElementById('garuda-uttara');
+  uttara.innerHTML = '';
+  garudaUttaraChapters.forEach(c => {
+    uttara.innerHTML += `
+      <button onclick="goToReading('गरुड़ पुराण उत्तर खण्ड अध्याय ${c.ch}: ${c.title} के बारे में विस्तार से बताइए।', '🦅')"
+        style="background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.2);border-radius:12px;padding:12px 16px;text-align:left;cursor:pointer;display:flex;align-items:center;gap:12px;width:100%;">
+        <span style="background:rgba(138,43,226,0.2);border-radius:8px;padding:4px 10px;font-size:11px;color:#E0B0FF;font-weight:700;min-width:36px;text-align:center;">${c.ch}</span>
+        <div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.9);font-weight:600;">${c.title}</div>
+          <div style="font-size:11px;color:var(--text-dim);margin-top:2px;">${c.en}</div>
+        </div>
+      </button>`;
+  });
+
+  showScreen('garuda');
+}
+
 // ========== LANGUAGE SYSTEM ==========
 let currentLang = 'hi'; // default Hindi
 
@@ -1952,9 +2063,7 @@ async function fetchAIReading(question) {
           role: "user",
           content: currentLang === 'hi' ?
             `आप एक विद्वान पंडित और वैदिक ज्योतिषी हैं जो शुद्ध हिंदी में उत्तर देते हैं।
-          
 उपयोगकर्ता का प्रश्न: "${question}"
-
 नियम:
 - केवल शुद्ध हिंदी में उत्तर दें, कोई अंग्रेजी शब्द नहीं
 - यदि प्रश्न धार्मिक ग्रंथों से संबंधित है तो शास्त्रसम्मत उत्तर दें
@@ -1962,17 +2071,17 @@ async function fetchAIReading(question) {
 - नक्षत्र, ग्रह और ब्रह्मांडीय ऊर्जा का उल्लेख करें
 - उत्तर प्रेरणादायक और आशावादी हो
 - केवल उत्तर लिखें` :
-            `You are a learned Vedic astrologer and spiritual guide. Answer in pure English.
+            `You are a learned Vedic astrologer and spiritual guide. You MUST answer in ENGLISH ONLY. No Hindi words, no Devanagari script, no transliteration. Pure English only.
 
-User's question: "${question}"
+User question: "${question}"
 
 Rules:
-- Answer only in English
-- If question is about scriptures (Gita, Ramayana, Mahabharata etc), give accurate scriptural answers
+- ENGLISH ONLY — absolutely no Hindi or Sanskrit words
+- If about scriptures (Gita, Ramayana, Mahabharata), give accurate answers in English
 - Answer in 4-5 lines
-- Mention nakshatra, planets and cosmic energy
+- Mention nakshatra, planets and cosmic energy in English
 - Be inspiring and positive
-- Only write the answer, no preamble`
+- Write only the answer, no preamble`
         }]
       })
     });
