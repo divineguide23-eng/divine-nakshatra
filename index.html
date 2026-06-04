@@ -1028,6 +1028,27 @@
   <div class="reading-actions" id="reading-actions" style="display:none;">
     <button class="btn-another" onclick="showScreen('welcome')">← Naya Sawaal</button>
     <button class="btn-premium-reading" onclick="showToast('Unlimited readings — ' + userPrice.label + ' mein join karo!')">👑 ₹1 Mein Unlimited</button>
+
+    <!-- Voice Controls -->
+    <div style="width:100%;display:flex;gap:10px;margin-top:4px;">
+      <button id="voice-btn" onclick="toggleVoiceReading()" style="flex:1;padding:14px;background:linear-gradient(135deg,rgba(138,43,226,0.3),rgba(75,0,130,0.3));border:1px solid rgba(180,100,255,0.5);border-radius:14px;color:#E0B0FF;font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;">
+        🔊 <span id="voice-btn-text">Sunao Reading</span>
+      </button>
+      <button id="voice-speed-btn" onclick="changeVoiceSpeed()" style="padding:14px 16px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);border-radius:14px;color:rgba(255,255,255,0.7);font-size:12px;cursor:pointer;">
+        <span id="speed-text">1x</span>
+      </button>
+    </div>
+
+    <!-- Voice Progress -->
+    <div id="voice-progress-bar" style="display:none;width:100%;margin-top:8px;">
+      <div style="background:rgba(255,255,255,0.1);border-radius:999px;height:4px;overflow:hidden;">
+        <div id="voice-progress" style="background:linear-gradient(90deg,#9B59B6,#E0B0FF);height:100%;width:0%;transition:width 0.3s;border-radius:999px;"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-top:4px;">
+        <span id="voice-time" style="font-size:10px;color:rgba(255,255,255,0.4);">0:00</span>
+        <span id="voice-lang-btn" onclick="toggleVoiceLang()" style="font-size:10px;color:#E0B0FF;cursor:pointer;">🇮🇳 Hindi</span>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -1484,6 +1505,11 @@ requestAnimationFrame(animateStars);
 let currentScreen = 'welcome';
 
 function showScreen(name) {
+  // Stop voice if playing
+  if (typeof voiceSpeaking !== 'undefined' && voiceSpeaking) {
+    window.speechSynthesis.cancel();
+    voiceSpeaking = false;
+  }
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(`screen-${name}`).classList.add('active');
   currentScreen = name;
@@ -1734,6 +1760,83 @@ function rotateAds() {
 }
 rotateAds();
 setInterval(rotateAds, 5000); // Change every 5 seconds
+
+// ========== VOICE READING ==========
+let voiceSpeaking = false;
+let voiceUtterance = null;
+let voiceSpeed = 1;
+const voiceSpeeds = [1, 1.5, 2, 0.75];
+let voiceSpeedIndex = 0;
+
+function toggleVoiceReading() {
+  if (!('speechSynthesis' in window)) {
+    showToast('Aapka browser voice support nahi karta! 😔');
+    return;
+  }
+
+  if (voiceSpeaking) {
+    window.speechSynthesis.cancel();
+    voiceSpeaking = false;
+    document.getElementById('voice-btn-text').textContent = 'Sunao Reading';
+    document.getElementById('voice-btn').style.background = 'linear-gradient(135deg,rgba(138,43,226,0.3),rgba(75,0,130,0.3))';
+    document.getElementById('voice-progress-bar').style.display = 'none';
+    return;
+  }
+
+  const text = document.getElementById('reading-answer-text').innerText;
+  if (!text) { showToast('Pehle reading lo!'); return; }
+
+  voiceUtterance = new SpeechSynthesisUtterance(text);
+  voiceUtterance.lang = 'hi-IN';
+  voiceUtterance.rate = voiceSpeeds[voiceSpeedIndex];
+  voiceUtterance.pitch = 1;
+  voiceUtterance.volume = 1;
+
+  // Try Hindi voice
+  const voices = window.speechSynthesis.getVoices();
+  const hindiVoice = voices.find(v => v.lang === 'hi-IN') || voices.find(v => v.lang.startsWith('hi'));
+  if (hindiVoice) voiceUtterance.voice = hindiVoice;
+
+  voiceUtterance.onstart = () => {
+    voiceSpeaking = true;
+    document.getElementById('voice-btn-text').textContent = '⏹ Band Karo';
+    document.getElementById('voice-btn').style.background = 'linear-gradient(135deg,rgba(226,43,43,0.3),rgba(130,0,0,0.3))';
+    document.getElementById('voice-progress-bar').style.display = 'block';
+  };
+
+  voiceUtterance.onend = () => {
+    voiceSpeaking = false;
+    document.getElementById('voice-btn-text').textContent = '🔊 Sunao Reading';
+    document.getElementById('voice-btn').style.background = 'linear-gradient(135deg,rgba(138,43,226,0.3),rgba(75,0,130,0.3))';
+    document.getElementById('voice-progress').style.width = '100%';
+    setTimeout(() => {
+      document.getElementById('voice-progress-bar').style.display = 'none';
+      document.getElementById('voice-progress').style.width = '0%';
+    }, 1000);
+  };
+
+  voiceUtterance.onboundary = (e) => {
+    if (e.name === 'word') {
+      const pct = Math.min((e.charIndex / text.length) * 100, 100);
+      document.getElementById('voice-progress').style.width = pct + '%';
+    }
+  };
+
+  window.speechSynthesis.speak(voiceUtterance);
+}
+
+function changeVoiceSpeed() {
+  voiceSpeedIndex = (voiceSpeedIndex + 1) % voiceSpeeds.length;
+  voiceSpeed = voiceSpeeds[voiceSpeedIndex];
+  document.getElementById('speed-text').textContent = voiceSpeed + 'x';
+  if (voiceSpeaking) {
+    window.speechSynthesis.cancel();
+    voiceSpeaking = false;
+    document.getElementById('voice-btn-text').textContent = '🔊 Sunao Reading';
+    setTimeout(() => toggleVoiceReading(), 300);
+  }
+  showToast('Speed: ' + voiceSpeed + 'x');
+}
 
 // ========== PWA INSTALL ==========
 let deferredPrompt;
