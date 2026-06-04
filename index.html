@@ -1855,31 +1855,37 @@ function showGarudaChapters() {
   // Build Purva Khanda
   const purva = document.getElementById('garuda-purva');
   purva.innerHTML = '';
-  garudaPurvaChapters.forEach(c => {
-    purva.innerHTML += `
-      <button onclick="goToReading('गरुड़ पुराण पूर्व खण्ड अध्याय ${c.ch}: ${c.title} के बारे में विस्तार से बताइए।', '🦅')"
-        style="background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.2);border-radius:12px;padding:12px 16px;text-align:left;cursor:pointer;display:flex;align-items:center;gap:12px;width:100%;">
-        <span style="background:rgba(212,175,55,0.2);border-radius:8px;padding:4px 10px;font-size:11px;color:var(--gold);font-weight:700;min-width:36px;text-align:center;">${c.ch}</span>
-        <div>
-          <div style="font-size:13px;color:rgba(255,255,255,0.9);font-weight:600;">${c.title}</div>
-          <div style="font-size:11px;color:var(--text-dim);margin-top:2px;">${c.en}</div>
-        </div>
-      </button>`;
+  garudaPurvaChapters.forEach((c, i) => {
+    const btn = document.createElement('button');
+    btn.style.cssText = 'background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.2);border-radius:12px;padding:12px 16px;text-align:left;cursor:pointer;display:flex;align-items:center;gap:12px;width:100%;';
+    btn.innerHTML = `
+      <span style="background:rgba(212,175,55,0.2);border-radius:8px;padding:4px 10px;font-size:11px;color:var(--gold);font-weight:700;min-width:36px;text-align:center;">${c.ch}</span>
+      <div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.9);font-weight:600;">${c.title}</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:2px;">${c.en}</div>
+      </div>`;
+    btn.addEventListener('click', () => {
+      goToReading(`गरुड़ पुराण पूर्व खण्ड अध्याय ${c.ch}: ${c.title} के बारे में विस्तार से बताइए।`, '🦅');
+    });
+    purva.appendChild(btn);
   });
 
   // Build Uttara Khanda
   const uttara = document.getElementById('garuda-uttara');
   uttara.innerHTML = '';
-  garudaUttaraChapters.forEach(c => {
-    uttara.innerHTML += `
-      <button onclick="goToReading('गरुड़ पुराण उत्तर खण्ड अध्याय ${c.ch}: ${c.title} के बारे में विस्तार से बताइए।', '🦅')"
-        style="background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.2);border-radius:12px;padding:12px 16px;text-align:left;cursor:pointer;display:flex;align-items:center;gap:12px;width:100%;">
-        <span style="background:rgba(138,43,226,0.2);border-radius:8px;padding:4px 10px;font-size:11px;color:#E0B0FF;font-weight:700;min-width:36px;text-align:center;">${c.ch}</span>
-        <div>
-          <div style="font-size:13px;color:rgba(255,255,255,0.9);font-weight:600;">${c.title}</div>
-          <div style="font-size:11px;color:var(--text-dim);margin-top:2px;">${c.en}</div>
-        </div>
-      </button>`;
+  garudaUttaraChapters.forEach((c, i) => {
+    const btn = document.createElement('button');
+    btn.style.cssText = 'background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.2);border-radius:12px;padding:12px 16px;text-align:left;cursor:pointer;display:flex;align-items:center;gap:12px;width:100%;';
+    btn.innerHTML = `
+      <span style="background:rgba(138,43,226,0.2);border-radius:8px;padding:4px 10px;font-size:11px;color:#E0B0FF;font-weight:700;min-width:36px;text-align:center;">${c.ch}</span>
+      <div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.9);font-weight:600;">${c.title}</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:2px;">${c.en}</div>
+      </div>`;
+    btn.addEventListener('click', () => {
+      goToReading(`गरुड़ पुराण उत्तर खण्ड अध्याय ${c.ch}: ${c.title} के बारे में विस्तार से बताइए।`, '🦅');
+    });
+    uttara.appendChild(btn);
   });
 
   showScreen('garuda');
