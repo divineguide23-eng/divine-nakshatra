@@ -1063,6 +1063,7 @@
 <!-- ========== SCREEN: GARUDA PURAN CHAPTERS ========== -->
 <div id="screen-garuda" class="screen has-nav">
   <div class="profile-header">
+    <button onclick="showScreen('welcome')" style="background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.3);border-radius:999px;padding:6px 16px;color:#F5D96B;font-size:12px;cursor:pointer;margin-bottom:10px;">← Wapas</button>
     <div class="section-icon">🦅</div>
     <h2 class="section-title">गरुड़ पुराण</h2>
     <p class="section-sub">सम्पूर्ण अध्याय — Garuda Purana</p>
@@ -1543,20 +1544,24 @@ function showScreen(name) {
     voiceSpeaking = false;
   }
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.getElementById(`screen-${name}`).classList.add('active');
+  const target = document.getElementById(`screen-${name}`);
+  if (!target) { console.error('Screen not found: screen-' + name); return; }
+  target.classList.add('active');
   currentScreen = name;
   const navBar = document.getElementById('nav-bar');
   navBar.style.display = (name === 'welcome') ? 'none' : 'flex';
   // update nav active
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  const navMap = { profile: 'nav-profile', reading: 'nav-reading', kundali: 'nav-kundali', settings: 'nav-settings', garuda: 'nav-reading' };
+  const navMap = { profile: 'nav-profile', reading: 'nav-reading', kundali: 'nav-kundali', settings: 'nav-settings', garuda: 'nav-home', privacy: 'nav-settings', terms: 'nav-settings', saved: 'nav-home' };
   if (name === 'settings') {
     const s = document.getElementById('settings-premium-status');
     if (s) s.textContent = localStorage.getItem('dn_premium') === 'true' ? '👑 Active' : '❌ Not Active';
     const k = document.getElementById('settings-kundali-status');
     if (k) k.textContent = localStorage.getItem('dn_kundali') === 'true' ? '🔯 Active' : '❌ Not Active';
   }
-  if (navMap[name]) document.getElementById(navMap[name]).classList.add('active');
+  if (navMap[name] && document.getElementById(navMap[name])) {
+    document.getElementById(navMap[name]).classList.add('active');
+  }
   window.scrollTo(0, 0);
 }
 
