@@ -2010,16 +2010,18 @@ function showGarudaChapters() {
 }
 
 function showGarudaReading(title, content) {
+  // Switch to reading screen
   document.querySelectorAll('.screen').forEach(function(s) { s.classList.remove('active'); });
   document.getElementById('screen-reading').classList.add('active');
   document.getElementById('nav-bar').style.display = 'flex';
-  var orb = document.getElementById('reading-orb');
-  var loading = document.getElementById('reading-loading');
-  var qDisplay = document.getElementById('reading-q-display');
-  if (orb) orb.style.display = 'none';
-  if (loading) loading.style.display = 'none';
-  if (qDisplay) qDisplay.textContent = '🦅 ' + title;
-  document.getElementById('reading-answer-text').innerHTML = content.replace(/\n/g, '<br>');
+  // Hide loading elements
+  document.getElementById('reading-orb').style.display = 'none';
+  document.getElementById('reading-loading').style.display = 'none';
+  document.getElementById('reading-dots').style.display = 'none';
+  // Show content
+  document.getElementById('reading-box').style.display = 'block';
+  document.getElementById('reading-q-display').textContent = '🦅 ' + title;
+  document.getElementById('reading-answer-text').innerHTML = content.split('\n').join('<br>');
   document.getElementById('reading-actions').style.display = 'flex';
   window.scrollTo(0, 0);
 }
