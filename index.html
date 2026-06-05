@@ -2080,25 +2080,27 @@ async function fetchAIReading(question) {
         messages: [{
           role: "user",
           content: currentLang === 'hi' ?
-            `आप एक विद्वान पंडित और वैदिक ज्योतिषी हैं जो शुद्ध हिंदी में उत्तर देते हैं।
+            `आप एक विद्वान पंडित और वैदिक ज्योतिषी हैं।
+
 उपयोगकर्ता का प्रश्न: "${question}"
+
 नियम:
-- केवल शुद्ध हिंदी में उत्तर दें, कोई अंग्रेजी शब्द नहीं
-- यदि प्रश्न धार्मिक ग्रंथों से संबंधित है तो शास्त्रसम्मत उत्तर दें
-- 4-5 पंक्तियों में उत्तर दें
-- नक्षत्र, ग्रह और ब्रह्मांडीय ऊर्जा का उल्लेख करें
-- उत्तर प्रेरणादायक और आशावादी हो
-- केवल उत्तर लिखें` :
-            `You are a learned Vedic astrologer and spiritual guide. You MUST answer in ENGLISH ONLY. No Hindi words, no Devanagari script, no transliteration. Pure English only.
+- यदि प्रश्न गरुड़ पुराण के किसी अध्याय के बारे में है, तो उस अध्याय का वास्तविक शास्त्रसम्मत सारांश और मुख्य श्लोक/संदेश बताइए
+- कोई ज्योतिष या ग्रह की बात मत करो जब प्रश्न धार्मिक ग्रंथ के बारे में हो
+- केवल शुद्ध हिंदी में उत्तर दें
+- 5-6 पंक्तियों में विस्तृत उत्तर दें
+- उत्तर शास्त्र आधारित और प्रामाणिक हो
+- केवल उत्तर लिखें, कोई भूमिका नहीं` :
+            `You are a learned Vedic scholar. Answer in ENGLISH ONLY. No Hindi words at all.
 
 User question: "${question}"
 
 Rules:
-- ENGLISH ONLY — absolutely no Hindi or Sanskrit words
-- If about scriptures (Gita, Ramayana, Mahabharata), give accurate answers in English
-- Answer in 4-5 lines
-- Mention nakshatra, planets and cosmic energy in English
-- Be inspiring and positive
+- If question is about a chapter of Garuda Purana, give the actual scriptural summary and key teachings of that chapter
+- Do NOT give astrology or planetary guidance when question is about religious scripture
+- Answer in pure English only
+- Give detailed answer in 5-6 lines
+- Answer must be scripture-based and authentic
 - Write only the answer, no preamble`
         }]
       })
