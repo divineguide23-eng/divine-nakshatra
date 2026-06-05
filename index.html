@@ -828,14 +828,7 @@
     <span class="q-icon">⚔️</span>
     <span>महाभारत — पांडवों की विजय</span>
   </button>
-  <button class="question-btn" onclick="
-    document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-    document.getElementById('screen-garuda').classList.add('active');
-    document.getElementById('nav-bar').style.display='flex';
-    var purva=document.getElementById('garuda-purva');
-    if(purva && purva.innerHTML===''){showGarudaChapters();}
-    window.scrollTo(0,0);
-  ">
+  <button class="question-btn" id="garuda-btn">
     <span class="q-icon">🦅</span>
     <span>गरुड़ पुराण — सम्पूर्ण अध्याय</span>
   </button>
@@ -1541,6 +1534,15 @@ resizeCanvas();
 initStars();
 requestAnimationFrame(animateStars);
 
+// Garuda Puran button
+document.getElementById('garuda-btn').addEventListener('click', function() {
+  showGarudaChapters();
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-garuda').classList.add('active');
+  document.getElementById('nav-bar').style.display = 'flex';
+  window.scrollTo(0, 0);
+});
+
 // ========== NAVIGATION ==========
 let currentScreen = 'welcome';
 
@@ -2165,6 +2167,7 @@ document.querySelectorAll('.question-btn').forEach(btn => {
   const orig = btn.getAttribute('onclick');
   btn.removeAttribute('onclick');
   btn.addEventListener('click', () => {
+    if (!orig) return; // garuda-btn has no onclick — handled separately
     const match = orig.match(/goToReading\('([^']+)',\s*'([^']+)'\)/);
     if (match) window.goToReadingWithAI(match[1], match[2]);
   });
