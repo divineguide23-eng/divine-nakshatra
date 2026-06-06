@@ -2257,23 +2257,14 @@ function toggleVoiceReading() {
     return;
   }
 
-  if (!window.speechSynthesis) {
-    showToast('Voice ke liye Chrome browser use karo! 🌐');
-    return;
-  }
-
-  voiceUtterance = new SpeechSynthesisUtterance(text);
-  voiceUtterance.lang = currentLang === 'hi' ? 'hi-IN' : 'en-US';
-  voiceUtterance.rate = voiceSpeeds[voiceSpeedIndex];
-  voiceUtterance.pitch = 1;
-  voiceUtterance.volume = 1;
-
-  // Load voices
-  const setVoiceAndSpeak = () => {
-    const voices = window.speechSynthesis.getVoices();
-    const targetLang = currentLang === 'hi' ? 'hi-IN' : 'en-US';
-    const selectedVoice = voices.find(v => v.lang === targetLang) || voices.find(v => v.lang.startsWith(currentLang));
-    if (selectedVoice) voiceUtterance.voice = selectedVoice;
+  // Try speechSynthesis
+  if (window.speechSynthesis) {
+    window.speechSynthesis.cancel();
+    voiceUtterance = new SpeechSynthesisUtterance(text);
+    voiceUtterance.lang = currentLang === 'hi' ? 'hi-IN' : 'en-US';
+    voiceUtterance.rate = voiceSpeeds[voiceSpeedIndex];
+    voiceUtterance.pitch = 1;
+    voiceUtterance.volume = 1;
 
     voiceUtterance.onstart = () => {
       voiceSpeaking = true;
@@ -2293,10 +2284,11 @@ function toggleVoiceReading() {
       }, 1000);
     };
 
-    voiceUtterance.onerror = () => {
+    voiceUtterance.onerror = (e) => {
       voiceSpeaking = false;
       document.getElementById('voice-btn-text').textContent = '🔊 Sunao Reading';
-      showToast('Voice error — Chrome mein try karo!');
+      document.getElementById('voice-progress-bar').style.display = 'none';
+      showToast('Is browser mein voice nahi chala — dusra browser try karo!');
     };
 
     voiceUtterance.onboundary = (e) => {
@@ -2306,16 +2298,25 @@ function toggleVoiceReading() {
       }
     };
 
-    window.speechSynthesis.speak(voiceUtterance);
-  };
+    // Try speaking with voice loading fallback
+    const trySpeak = () => {
+      const voices = window.speechSynthesis.getVoices();
+      if (voices.length > 0) {
+        const targetLang = currentLang === 'hi' ? 'hi-IN' : 'en-US';
+        const v = voices.find(v => v.lang === targetLang) || voices.find(v => v.lang.startsWith(currentLang));
+        if (v) voiceUtterance.voice = v;
+      }
+      window.speechSynthesis.speak(voiceUtterance);
+    };
 
-  // Voices may not be loaded yet
-  if (window.speechSynthesis.getVoices().length > 0) {
-    setVoiceAndSpeak();
+    if (window.speechSynthesis.getVoices().length > 0) {
+      trySpeak();
+    } else {
+      window.speechSynthesis.onvoiceschanged = trySpeak;
+      setTimeout(trySpeak, 300);
+    }
   } else {
-    window.speechSynthesis.onvoiceschanged = setVoiceAndSpeak;
-    // Fallback if onvoiceschanged never fires
-    setTimeout(setVoiceAndSpeak, 500);
+    showToast('Aapke browser mein voice support nahi hai 😔');
   }
 }
 
