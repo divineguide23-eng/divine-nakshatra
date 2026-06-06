@@ -836,7 +836,7 @@
     <span class="q-icon">🙏</span>
     <span>हनुमान चालीसा — सम्पूर्ण पाठ</span>
   </button>
-  <button class="question-btn" id="hanuman-benefits-btn" onclick="goToReading('हनुमान चालीसा का पाठ करने से क्या लाभ होता है? हनुमान जी की कृपा कैसे मिलती है? विस्तार से बताइए।', '🙏')">
+  <button class="question-btn" onclick="showHanumanBenefits()">
     <span class="q-icon">✨</span>
     <span>हनुमान चालीसा — पाठ से क्या मिलता है?</span>
   </button>
@@ -1958,6 +1958,59 @@ function showHanumanChalisa() {
   document.getElementById('reading-box').style.display = 'block';
   document.getElementById('reading-q-display').textContent = '🙏 श्री हनुमान चालीसा — सम्पूर्ण पाठ';
   document.getElementById('reading-answer-text').innerHTML = chalisa.split('\n').join('<br>');
+  document.getElementById('reading-actions').style.display = 'flex';
+  window.scrollTo(0, 0);
+}
+
+function showHanumanBenefits() {
+  const benefits = `✨ हनुमान चालीसा पाठ के लाभ ✨
+
+📿 हनुमान चालीसा क्या है?
+गोस्वामी तुलसीदास जी द्वारा रचित हनुमान चालीसा में 40 चौपाइयाँ हैं। इसका नियमित पाठ करने से अनेक लाभ प्राप्त होते हैं।
+
+🔱 आध्यात्मिक लाभ:
+• मन में शांति और स्थिरता आती है
+• भगवान राम और हनुमान जी की कृपा प्राप्त होती है
+• पाप कर्मों से मुक्ति मिलती है
+• मोक्ष का मार्ग प्रशस्त होता है
+
+💪 शारीरिक और मानसिक लाभ:
+• "नासै रोग हरै सब पीरा" — रोग और पीड़ा नष्ट होती है
+• भय और चिंता दूर होती है
+• आत्मविश्वास और साहस बढ़ता है
+• नकारात्मक विचार दूर होते हैं
+
+🛡️ सुरक्षा और भूत-बाधा से मुक्ति:
+• "भूत पिसाच निकट नहिं आवै" — बुरी आत्माएँ पास नहीं आतीं
+• नकारात्मक शक्तियों से रक्षा होती है
+• घर में सुख-शांति आती है
+
+🌟 सांसारिक लाभ:
+• "सब सुख लहै तुम्हारी सरना" — सभी सुख प्राप्त होते हैं
+• "अष्ट सिद्धि नव निधि के दाता" — आठ सिद्धियाँ और नौ निधियाँ
+• कार्यों में सफलता मिलती है
+• शत्रुओं का नाश होता है
+
+📖 पाठ विधि:
+• मंगलवार और शनिवार को विशेष फल मिलता है
+• सुबह स्नान के बाद पाठ करें
+• 40 दिन तक नियमित पाठ करने से मनोकामना पूर्ण होती है
+• "जो सत बार पाठ कर कोई, छूटहि बंदि महा सुख होई" — 100 बार पाठ से बंधनों से मुक्ति
+
+🙏 हनुमान जी की कृपा पाने का मार्ग:
+भगवान हनुमान जी राम भक्तों पर विशेष कृपा करते हैं। सच्चे मन से पाठ करें, राम नाम जपें और सेवा भाव रखें — हनुमान जी की कृपा अवश्य मिलेगी।
+
+जय हनुमान! 🙏`;
+
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-reading').classList.add('active');
+  document.getElementById('nav-bar').style.display = 'flex';
+  document.getElementById('reading-orb').style.display = 'none';
+  document.getElementById('reading-loading').style.display = 'none';
+  document.getElementById('reading-dots').style.display = 'none';
+  document.getElementById('reading-box').style.display = 'block';
+  document.getElementById('reading-q-display').textContent = '✨ हनुमान चालीसा — पाठ के लाभ';
+  document.getElementById('reading-answer-text').innerHTML = benefits.split('\n').join('<br>');
   document.getElementById('reading-actions').style.display = 'flex';
   window.scrollTo(0, 0);
 }
