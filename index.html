@@ -816,9 +816,9 @@
   <p class="question-label">✨ Kya Jaanna Chahte Ho?</p>
   <div id="free-counter" style="font-size:12px;color:rgba(100,220,100,0.8);margin-bottom:14px;letter-spacing:0.5px;">&#10022; Unlimited free readings</div>
 
-  <button class="question-btn" onclick="goToReading('श्रीमद्भगवद्गीता का सार क्या है? कृष्ण जी का संदेश बताइए।', '🪷')">
+  <button class="question-btn" onclick="showBhagavadGita()">
     <span class="q-icon">🪷</span>
-    <span>भगवद्गीता — कृष्ण जी का संदेश</span>
+    <span>भगवद्गीता — सम्पूर्ण १८ अध्याय</span>
   </button>
   <button class="question-btn" onclick="showRamayana()">
     <span class="q-icon">🏹</span>
@@ -1065,6 +1065,19 @@
         <span id="voice-lang-btn" onclick="toggleVoiceLang()" style="font-size:10px;color:#E0B0FF;cursor:pointer;">🇮🇳 Hindi</span>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- ========== SCREEN: BHAGAVAD GITA ========== -->
+<div id="screen-gita" class="screen has-nav">
+  <div class="profile-header">
+    <button onclick="showScreen('welcome')" style="background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.3);border-radius:999px;padding:6px 16px;color:#F5D96B;font-size:12px;cursor:pointer;margin-bottom:10px;">← Wapas</button>
+    <div class="section-icon">🪷</div>
+    <h2 class="section-title">श्रीमद्भगवद्गीता</h2>
+    <p class="section-sub">सम्पूर्ण १८ अध्याय — All 18 Chapters</p>
+  </div>
+  <div style="max-width:480px;margin:0 auto;padding:16px 20px 100px;">
+    <div id="gita-chapters-list" style="display:flex;flex-direction:column;gap:8px;"></div>
   </div>
 </div>
 
@@ -1893,6 +1906,117 @@ function rotateAds() {
 rotateAds();
 setInterval(rotateAds, 5000); // Change every 5 seconds
 
+// ========== BHAGAVAD GITA ==========
+const gitaChapters = [
+  {
+    ch: 1, title: 'अर्जुन विषाद योग', shlokas: 47, en: 'Arjuna Vishada Yoga',
+    content: `🪷 अध्याय १ — अर्जुन विषाद योग\n(४७ श्लोक)\n\n📖 विषय:\nकुरुक्षेत्र के मैदान में दोनों सेनाएँ खड़ी हैं। अर्जुन अपने रथ को दोनों सेनाओं के बीच में ले जाने को कहते हैं।\n\nअर्जुन ने देखा — गुरु द्रोण, पितामह भीष्म, चाचा, भाई, मित्र सब विपक्ष में खड़े हैं।\n\nअर्जुन का मन डगमगाया। उनके हाथ काँपे, धनुष गिरा, वे रथ में बैठ गए।\n\n🔑 मुख्य श्लोक:\n"दृष्ट्वेमं स्वजनं कृष्ण युयुत्सुं समुपस्थितम्।\nसीदन्ति मम गात्राणि मुखं च परिशुष्यति॥"\n\n(अपने स्वजनों को युद्ध के लिए तैयार देखकर हे कृष्ण! मेरे अंग शिथिल हो रहे हैं और मुँह सूख रहा है।)\n\n📿 सार: जब मनुष्य मोह में फँसता है तो कर्तव्य भूल जाता है। यही अर्जुन की स्थिति थी।`
+  },
+  {
+    ch: 2, title: 'सांख्य योग', shlokas: 72, en: 'Sankhya Yoga',
+    content: `🪷 अध्याय २ — सांख्य योग\n(७२ श्लोक)\n\n📖 विषय:\nगीता का सबसे महत्वपूर्ण अध्याय। श्रीकृष्ण ने आत्मा का ज्ञान दिया।\n\n🔑 मुख्य उपदेश:\n\n"न जायते म्रियते वा कदाचिन्\nनायं भूत्वा भविता वा न भूयः।\nअजो नित्यः शाश्वतोऽयं पुराणो\nन हन्यते हन्यमाने शरीरे॥" (२.२०)\n\n(आत्मा न जन्म लेती है न मरती है। यह अजन्मी, नित्य, शाश्वत और पुरातन है। शरीर के मारे जाने पर भी यह नहीं मारी जाती।)\n\n"वासांसि जीर्णानि यथा विहाय\nनवानि गृह्णाति नरोऽपराणि।\nतथा शरीराणि विहाय जीर्णा-\nन्यन्यानि संयाति नवानि देही॥" (२.२२)\n\n(जैसे मनुष्य पुराने वस्त्र उतारकर नए वस्त्र पहनता है, वैसे ही आत्मा पुराने शरीर छोड़कर नए शरीर धारण करती है।)\n\n"कर्मण्येवाधिकारस्ते मा फलेषु कदाचन।\nमा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥" (२.४७)\n\n(कर्म करने में ही तेरा अधिकार है, फल में कभी नहीं। कर्मफल की इच्छा मत कर और अकर्म में भी आसक्त मत हो।)\n\n📿 सार: आत्मा अमर है। कर्म करो, फल की चिंता मत करो।`
+  },
+  {
+    ch: 3, title: 'कर्म योग', shlokas: 43, en: 'Karma Yoga',
+    content: `🪷 अध्याय ३ — कर्म योग\n(४३ श्लोक)\n\n📖 विषय:\nकर्म के बिना कोई नहीं रह सकता। निष्काम कर्म ही मोक्ष का मार्ग है।\n\n🔑 मुख्य उपदेश:\n\n"नियतं कुरु कर्म त्वं कर्म ज्यायो ह्यकर्मणः।\nशरीरयात्रापि च ते न प्रसिद्ध्येदकर्मणः॥" (३.८)\n\n(नियत कर्म कर — कर्म अकर्म से श्रेष्ठ है। कर्म न करने से तेरा शरीर निर्वाह भी नहीं हो सकता।)\n\n"यज्ञार्थात्कर्मणोऽन्यत्र लोकोऽयं कर्मबन्धनः।\nतदर्थं कर्म कौन्तेय मुक्तसङ्गः समाचर॥" (३.९)\n\n(यज्ञ के लिए किए कर्म के अतिरिक्त इस संसार में कर्म से बंधन होता है।)\n\n"श्रेयान्स्वधर्मो विगुणः परधर्मात्स्वनुष्ठितात्।\nस्वधर्मे निधनं श्रेयः परधर्मो भयावहः॥" (३.३५)\n\n(दूसरे के धर्म का अच्छी तरह पालन करने से अपना धर्म गुणहीन होने पर भी श्रेष्ठ है। अपने धर्म में मरना भी कल्याणकारी है।)\n\n📿 सार: अपना कर्तव्य करते रहो — यही जीवन का सत्य है।`
+  },
+  {
+    ch: 4, title: 'ज्ञान कर्म संन्यास योग', shlokas: 42, en: 'Jnana Karma Sanyasa Yoga',
+    content: `🪷 अध्याय ४ — ज्ञान कर्म संन्यास योग\n(४२ श्लोक)\n\n📖 विषय:\nईश्वर का अवतार सिद्धांत और ज्ञान की महिमा।\n\n🔑 मुख्य उपदेश:\n\n"यदा यदा हि धर्मस्य ग्लानिर्भवति भारत।\nअभ्युत्थानमधर्मस्य तदात्मानं सृजाम्यहम्॥" (४.७)\n\n(हे भारत! जब-जब धर्म की हानि और अधर्म की वृद्धि होती है, तब-तब मैं स्वयं को प्रकट करता हूँ।)\n\n"परित्राणाय साधूनां विनाशाय च दुष्कृताम्।\nधर्मसंस्थापनार्थाय सम्भवामि युगे युगे॥" (४.८)\n\n(साधुओं की रक्षा के लिए, दुष्टों के नाश के लिए और धर्म की स्थापना के लिए मैं युग-युग में जन्म लेता हूँ।)\n\n"श्रद्धावान्लभते ज्ञानं तत्परः संयतेन्द्रियः।\nज्ञानं लब्ध्वा परां शान्तिमचिरेणाधिगच्छति॥" (४.३९)\n\n(श्रद्धावान, तत्पर और इंद्रियों को वश में रखने वाला ज्ञान पाता है और ज्ञान पाकर शीघ्र परम शांति को प्राप्त होता है।)\n\n📿 सार: ईश्वर हर युग में धर्म की रक्षा के लिए आते हैं।`
+  },
+  {
+    ch: 5, title: 'कर्म संन्यास योग', shlokas: 29, en: 'Karma Sanyasa Yoga',
+    content: `🪷 अध्याय ५ — कर्म संन्यास योग\n(२९ श्लोक)\n\n📖 विषय:\nकर्म संन्यास और कर्म योग में श्रेष्ठता का प्रश्न।\n\n🔑 मुख्य उपदेश:\n\n"सन्न्यासः कर्मयोगश्च निःश्रेयसकरावुभौ।\nतयोस्तु कर्मसन्न्यासात्कर्मयोगो विशिष्यते॥" (५.२)\n\n(कर्म संन्यास और कर्म योग दोनों परम कल्याण करने वाले हैं। परंतु दोनों में कर्म संन्यास की अपेक्षा कर्म योग श्रेष्ठ है।)\n\n"ब्रह्मण्याधाय कर्माणि सङ्गं त्यक्त्वा करोति यः।\nलिप्यते न स पापेन पद्मपत्रमिवाम्भसा॥" (५.१०)\n\n(जो व्यक्ति सब कर्म ब्रह्म को अर्पण करके आसक्ति छोड़कर करता है, वह पाप से ऐसे नहीं लिपता जैसे कमल पत्र जल से नहीं।)\n\n📿 सार: संसार में रहकर भी निर्लिप्त रहना — यही सच्चा संन्यास है।`
+  },
+  {
+    ch: 6, title: 'आत्मसंयम योग', shlokas: 47, en: 'Atma Sanyama Yoga',
+    content: `🪷 अध्याय ६ — आत्मसंयम योग\n(४७ श्लोक)\n\n📖 विषय:\nध्यान योग और मन को वश में करने का मार्ग।\n\n🔑 मुख्य उपदेश:\n\n"उद्धरेदात्मनात्मानं नात्मानमवसादयेत्।\nआत्मैव ह्यात्मनो बन्धुरात्मैव रिपुरात्मनः॥" (६.५)\n\n(अपने द्वारा अपना उद्धार करो, अपना पतन मत करो। मन ही मनुष्य का मित्र है और मन ही शत्रु है।)\n\n"शनैः शनैरुपरमेद्बुद्ध्या धृतिगृहीतया।\nआत्मसंस्थं मनः कृत्वा न किञ्चिदपि चिन्तयेत्॥" (६.२५)\n\n(धैर्यशाली बुद्धि से धीरे-धीरे मन को शांत करे और मन को आत्मा में स्थित करके कुछ भी न सोचे।)\n\n"योगी युञ्जीत सततमात्मानं रहसि स्थितः।\nएकाकी यतचित्तात्मा निराशीरपरिग्रहः॥" (६.१०)\n\n(योगी एकांत में स्थित होकर, मन और इंद्रियों को वश में करके, आशारहित और परिग्रहरहित होकर सदा आत्मा को ध्यान में लगाए।)\n\n📿 सार: मन को जीतना ही सबसे बड़ी विजय है।`
+  },
+  {
+    ch: 7, title: 'ज्ञान विज्ञान योग', shlokas: 30, en: 'Jnana Vijnana Yoga',
+    content: `🪷 अध्याय ७ — ज्ञान विज्ञान योग\n(३० श्लोक)\n\n📖 विषय:\nईश्वर के दो रूप — परा और अपरा प्रकृति का ज्ञान।\n\n🔑 मुख्य उपदेश:\n\n"मनुष्याणां सहस्रेषु कश्चिद्यतति सिद्धये।\nयततामपि सिद्धानां कश्चिन्मां वेत्ति तत्त्वतः॥" (७.३)\n\n(हजारों मनुष्यों में कोई एक मुझे पाने का प्रयत्न करता है और उन प्रयत्न करने वालों में भी कोई एक मुझे तत्त्व से जानता है।)\n\n"चतुर्विधा भजन्ते मां जनाः सुकृतिनोऽर्जुन।\nआर्तो जिज्ञासुरर्थार्थी ज्ञानी च भरतर्षभ॥" (७.१६)\n\n(हे अर्जुन! चार प्रकार के पुण्यात्मा मेरी भक्ति करते हैं — आर्त, जिज्ञासु, अर्थार्थी और ज्ञानी।)\n\n📿 सार: ईश्वर को जानना — यही जीवन का परम उद्देश्य है।`
+  },
+  {
+    ch: 8, title: 'अक्षरब्रह्म योग', shlokas: 28, en: 'Aksara Brahma Yoga',
+    content: `🪷 अध्याय ८ — अक्षरब्रह्म योग\n(२८ श्लोक)\n\n📖 विषय:\nमृत्यु के समय ईश्वर का स्मरण और परलोक।\n\n🔑 मुख्य उपदेश:\n\n"अन्तकाले च मामेव स्मरन्मुक्त्वा कलेवरम्।\nयः प्रयाति स मद्भावं याति नास्त्यत्र संशयः॥" (८.५)\n\n(जो अंत समय में मुझे ही स्मरण करते हुए शरीर छोड़ता है, वह मेरे भाव को प्राप्त होता है — इसमें कोई संशय नहीं।)\n\n"यं यं वापि स्मरन्भावं त्यजत्यन्ते कलेवरम्।\nतं तमेवैति कौन्तेय सदा तद्भावभावितः॥" (८.६)\n\n(हे कुंतीपुत्र! मनुष्य अंत में जिस-जिस भाव को स्मरण करता हुआ शरीर छोड़ता है, वह उसी-उसी भाव को प्राप्त होता है।)\n\n📿 सार: मृत्यु के समय का स्मरण जीवनभर का संचय है।`
+  },
+  {
+    ch: 9, title: 'राजविद्या राजगुह्य योग', shlokas: 34, en: 'Raja Vidya Raja Guhya Yoga',
+    content: `🪷 अध्याय ९ — राजविद्या राजगुह्य योग\n(३४ श्लोक)\n\n📖 विषय:\nसबसे गोपनीय ज्ञान — भक्ति का मार्ग।\n\n🔑 मुख्य उपदेश:\n\n"अनन्याश्चिन्तयन्तो मां ये जनाः पर्युपासते।\nतेषां नित्याभियुक्तानां योगक्षेमं वहाम्यहम्॥" (९.२२)\n\n(जो मनुष्य अनन्य भाव से मेरा चिंतन करते हुए मेरी उपासना करते हैं, उन नित्य मुझमें लगे हुए का योगक्षेम मैं वहन करता हूँ।)\n\n"पत्रं पुष्पं फलं तोयं यो मे भक्त्या प्रयच्छति।\nतदहं भक्त्युपहृतमश्नामि प्रयतात्मनः॥" (९.२६)\n\n(जो भक्त मुझे पत्र, पुष्प, फल या जल प्रेम से अर्पण करता है, उस शुद्ध चित्त वाले का वह प्रेमपूर्वक अर्पित उपहार मैं स्वीकार करता हूँ।)\n\n📿 सार: भक्ति सबसे सरल और सबसे श्रेष्ठ मार्ग है।`
+  },
+  {
+    ch: 10, title: 'विभूति योग', shlokas: 42, en: 'Vibhuti Yoga',
+    content: `🪷 अध्याय १० — विभूति योग\n(४२ श्लोक)\n\n📖 विषय:\nईश्वर की विभूतियाँ — संसार में ईश्वर की अभिव्यक्तियाँ।\n\n🔑 मुख्य उपदेश:\n\n"अहमात्मा गुडाकेश सर्वभूताशयस्थितः।\nअहमादिश्च मध्यं च भूतानामन्त एव च॥" (१०.२०)\n\n(हे गुडाकेश! मैं सब भूतों के हृदय में स्थित आत्मा हूँ। सब भूतों का आदि, मध्य और अंत भी मैं हूँ।)\n\nईश्वर की विभूतियाँ:\n• वृक्षों में मैं पीपल हूँ\n• नदियों में मैं गंगा हूँ\n• पक्षियों में मैं गरुड़ हूँ\n• पशुओं में मैं सिंह हूँ\n• अक्षरों में मैं 'अ' हूँ\n• समास में मैं द्वंद्व हूँ\n\n📿 सार: जो भी श्रेष्ठ, सुंदर और शक्तिशाली है — वह सब ईश्वर का अंश है।`
+  },
+  {
+    ch: 11, title: 'विश्वरूप दर्शन योग', shlokas: 55, en: 'Vishvarupa Darshana Yoga',
+    content: `🪷 अध्याय ११ — विश्वरूप दर्शन योग\n(५५ श्लोक)\n\n📖 विषय:\nकृष्ण का विश्वरूप — ब्रह्मांड का दर्शन।\n\n🔑 मुख्य घटना:\nअर्जुन ने विश्वरूप देखने की प्रार्थना की। कृष्ण ने दिव्य दृष्टि दी।\n\nअर्जुन ने देखा — असंख्य मुख, असंख्य नेत्र, सूर्य जैसा तेज, सब देवता, सब ब्रह्मांड एक साथ।\n\n"दिवि सूर्यसहस्रस्य भवेद्युगपदुत्थिता।\nयदि भाः सदृशी सा स्याद्भासस्तस्य महात्मनः॥" (११.१२)\n\n(आकाश में एक साथ हजार सूर्य उदय हों तो जो प्रकाश होगा, वह उस महात्मा के प्रकाश के समान हो सकता है।)\n\nअर्जुन ने माँगा — अपना सौम्य चतुर्भुज रूप दिखाओ। कृष्ण ने वापस साधारण रूप लिया।\n\n📿 सार: ईश्वर का विश्वरूप अकल्पनीय है — केवल भक्ति से दर्शन होते हैं।`
+  },
+  {
+    ch: 12, title: 'भक्ति योग', shlokas: 20, en: 'Bhakti Yoga',
+    content: `🪷 अध्याय १२ — भक्ति योग\n(२० श्लोक)\n\n📖 विषय:\nभक्त के लक्षण और भक्ति मार्ग की श्रेष्ठता।\n\n🔑 मुख्य उपदेश:\n\n"मय्यावेश्य मनो ये मां नित्ययुक्ता उपासते।\nश्रद्धया परयोपेतास्ते मे युक्ततमा मताः॥" (१२.२)\n\n(जो मुझमें मन लगाकर, नित्य मुझसे युक्त होकर, श्रद्धापूर्वक उपासना करते हैं — वे सबसे श्रेष्ठ योगी हैं।)\n\nभक्त के लक्षण:\n• किसी से द्वेष नहीं\n• सबका मित्र\n• सुख-दुख में समभाव\n• क्षमाशील\n• संतुष्ट\n• दृढ़ निश्चयी\n\n📿 सार: भक्ति सबसे सरल — मन से ईश्वर को याद करो, वे सदा साथ हैं।`
+  },
+  {
+    ch: 13, title: 'क्षेत्र क्षेत्रज्ञ विभाग योग', shlokas: 35, en: 'Kshetra Kshetrajna Vibhaga Yoga',
+    content: `🪷 अध्याय १३ — क्षेत्र क्षेत्रज्ञ विभाग योग\n(३५ श्लोक)\n\n📖 विषय:\nशरीर (क्षेत्र) और आत्मा (क्षेत्रज्ञ) का विवेचन।\n\n🔑 मुख्य उपदेश:\n\n"इदं शरीरं कौन्तेय क्षेत्रमित्यभिधीयते।\nएतद्यो वेत्ति तं प्राहुः क्षेत्रज्ञ इति तद्विदः॥" (१३.२)\n\n(हे कुंतीपुत्र! यह शरीर क्षेत्र कहलाता है और जो इसे जानता है, उसे क्षेत्रज्ञ कहते हैं।)\n\nज्ञान के लक्षण:\n• अमानित्व (अभिमान न करना)\n• दम्भहीनता\n• अहिंसा\n• क्षमा\n• सरलता\n• गुरु सेवा\n\n📿 सार: शरीर नश्वर है, आत्मा अमर। इस भेद को जानना ही ज्ञान है।`
+  },
+  {
+    ch: 14, title: 'गुणत्रय विभाग योग', shlokas: 27, en: 'Gunatraya Vibhaga Yoga',
+    content: `🪷 अध्याय १४ — गुणत्रय विभाग योग\n(२७ श्लोक)\n\n📖 विषय:\nतीन गुण — सत्व, रज और तम का विवेचन।\n\n🔑 मुख्य उपदेश:\n\nतीन गुण:\n• सत्व गुण — ज्ञान, प्रकाश, शांति, सुख\n• रज गुण — क्रिया, इच्छा, लोभ, दुख\n• तम गुण — अज्ञान, आलस्य, निद्रा, प्रमाद\n\n"सत्त्वं सुखे संजयति रजः कर्मणि भारत।\nज्ञानमावृत्य तु तमः प्रमादे संजयत्युत॥" (१४.९)\n\n(सत्व गुण सुख में बाँधता है, रज गुण कर्म में और तम गुण ज्ञान को ढककर प्रमाद में बाँधता है।)\n\n📿 सार: सत्व गुण को बढ़ाओ — यही मुक्ति का मार्ग है।`
+  },
+  {
+    ch: 15, title: 'पुरुषोत्तम योग', shlokas: 20, en: 'Purushottama Yoga',
+    content: `🪷 अध्याय १५ — पुरुषोत्तम योग\n(२० श्लोक)\n\n📖 विषय:\nअश्वत्थ वृक्ष का रूपक और पुरुषोत्तम परमेश्वर।\n\n🔑 मुख्य उपदेश:\n\n"ऊर्ध्वमूलमधःशाखमश्वत्थं प्राहुरव्ययम्।\nछन्दांसि यस्य पर्णानि यस्तं वेद स वेदवित्॥" (१५.१)\n\n(ऊपर जड़ और नीचे शाखाओं वाले इस संसाररूपी अश्वत्थ वृक्ष को अविनाशी कहते हैं।)\n\n"सर्वस्य चाहं हृदि सन्निविष्टो\nमत्तः स्मृतिर्ज्ञानमपोहनं च।\nवेदैश्च सर्वैरहमेव वेद्यो\nवेदान्तकृद्वेदविदेव चाहम्॥" (१५.१५)\n\n(मैं सब के हृदय में स्थित हूँ। मुझसे ही स्मृति, ज्ञान और अपोहन होता है। सब वेदों से मैं ही जानने योग्य हूँ।)\n\n📿 सार: ईश्वर ही सबका आधार हैं — क्षर, अक्षर और पुरुषोत्तम।`
+  },
+  {
+    ch: 16, title: 'दैवासुर सम्पद् विभाग योग', shlokas: 24, en: 'Daivasura Sampad Vibhaga Yoga',
+    content: `🪷 अध्याय १६ — दैवासुर सम्पद् विभाग योग\n(२४ श्लोक)\n\n📖 विषय:\nदैवी और आसुरी प्रवृत्तियों का भेद।\n\n🔑 मुख्य उपदेश:\n\nदैवी संपद (दिव्य गुण):\n• अभय, शुद्धि, ज्ञान, दान\n• अहिंसा, सत्य, अक्रोध\n• त्याग, शांति, अपैशुनता\n• दया, मृदुता, लज्जा, तेज\n\nआसुरी संपद:\n• दम्भ, दर्प, अभिमान\n• क्रोध, कठोरता, अज्ञान\n\n"त्रिविधं नरकस्येदं द्वारं नाशनमात्मनः।\nकामः क्रोधस्तथा लोभस्तस्मादेतत्त्रयं त्यजेत्॥" (१६.२१)\n\n(काम, क्रोध और लोभ — ये तीन नरक के द्वार हैं। इनका त्याग करना चाहिए।)\n\n📿 सार: दैवी गुण अपनाओ — आसुरी गुण त्यागो।`
+  },
+  {
+    ch: 17, title: 'श्रद्धात्रय विभाग योग', shlokas: 28, en: 'Shraddhatraya Vibhaga Yoga',
+    content: `🪷 अध्याय १७ — श्रद्धात्रय विभाग योग\n(२८ श्लोक)\n\n📖 विषय:\nतीन प्रकार की श्रद्धा, आहार, यज्ञ और तप।\n\n🔑 मुख्य उपदेश:\n\nतीन प्रकार की श्रद्धा:\n• सात्विक — देवताओं की पूजा\n• राजसिक — यक्ष-राक्षसों की पूजा\n• तामसिक — प्रेत-भूतों की पूजा\n\nतीन प्रकार का आहार:\n• सात्विक — आयु, बल, स्वास्थ्य बढ़ाने वाला\n• राजसिक — कटु, खट्टा, नमकीन, बहुत गरम\n• तामसिक — बासी, सड़ा, अपवित्र\n\n"ओम् तत् सत् — इति निर्देशो ब्रह्मणस्त्रिविधः स्मृतः।"\n\n📿 सार: श्रद्धा से किया हर कार्य फलदायी होता है।`
+  },
+  {
+    ch: 18, title: 'मोक्ष संन्यास योग', shlokas: 78, en: 'Moksha Sanyasa Yoga',
+    content: `🪷 अध्याय १८ — मोक्ष संन्यास योग\n(७८ श्लोक — अंतिम और सबसे बड़ा अध्याय)\n\n📖 विषय:\nगीता का सार — भक्ति, ज्ञान और कर्म का समन्वय।\n\n🔑 मुख्य उपदेश:\n\n"सर्वधर्मान्परित्यज्य मामेकं शरणं व्रज।\nअहं त्वां सर्वपापेभ्यो मोक्षयिष्यामि मा शुचः॥" (१८.६६)\n\n(सब धर्मों को छोड़कर केवल मेरी शरण में आ जा। मैं तुझे सब पापों से मुक्त कर दूँगा, चिंता मत कर।)\n\nयह गीता का सबसे महत्वपूर्ण श्लोक है — "चरमश्लोक" (अंतिम उपदेश)।\n\n"यत्र योगेश्वरः कृष्णो यत्र पार्थो धनुर्धरः।\nतत्र श्रीर्विजयो भूतिर्ध्रुवा नीतिर्मतिर्मम॥" (१८.७८)\n\n(जहाँ योगेश्वर कृष्ण हैं और जहाँ धनुर्धर अर्जुन हैं — वहाँ श्री, विजय, विभूति और नीति निश्चित रूप से है।)\n\n📿 गीता का सार:\n• कर्म करो, फल की चिंता मत करो\n• आत्मा अमर है\n• भक्ति सर्वश्रेष्ठ मार्ग है\n• ईश्वर की शरण में जाओ\n\n🙏 इति श्रीमद्भगवद्गीता सम्पूर्ण 🙏\nओम् तत् सत्`
+  },
+];
+
+function showBhagavadGita() {
+  const list = document.getElementById('gita-chapters-list');
+  list.innerHTML = '';
+  gitaChapters.forEach((ch) => {
+    const btn = document.createElement('button');
+    btn.style.cssText = 'background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.2);border-radius:12px;padding:14px 16px;text-align:left;cursor:pointer;display:flex;align-items:center;gap:12px;width:100%;';
+    btn.innerHTML = `
+      <span style="background:rgba(212,175,55,0.2);border-radius:8px;padding:4px 10px;font-size:11px;color:var(--gold);font-weight:700;min-width:36px;text-align:center;">${ch.ch}</span>
+      <div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.9);font-weight:600;">${ch.title}</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:2px;">${ch.en} • ${ch.shlokas} श्लोक</div>
+      </div>`;
+    btn.addEventListener('click', () => showGitaChapter(ch.title, ch.content));
+    list.appendChild(btn);
+  });
+
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-gita').classList.add('active');
+  document.getElementById('nav-bar').style.display = 'flex';
+  window.scrollTo(0, 0);
+}
+
+function showGitaChapter(title, content) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-reading').classList.add('active');
+  document.getElementById('reading-orb').style.display = 'none';
+  document.getElementById('reading-loading').style.display = 'none';
+  document.getElementById('reading-dots').style.display = 'none';
+  document.getElementById('reading-box').style.display = 'block';
+  document.getElementById('reading-q-display').textContent = '🪷 ' + title;
+  document.getElementById('reading-answer-text').innerHTML = content.split('\n').join('<br>');
+  document.getElementById('reading-actions').style.display = 'flex';
+  window.scrollTo(0, 0);
+}
+
 // ========== RAMAYANA ==========
 const ramayanaData = [
   {
@@ -2388,7 +2512,134 @@ function showMbChapter(title, content) {
 
 // ========== HANUMAN CHALISA ==========
 function showHanumanChalisa() {
-  const chalisa = `🙏 श्री हनुमान चालीसा 🙏
+  const isEn = currentLang === 'en';
+  const title = isEn ? '🙏 Hanuman Chalisa — Complete Recitation' : '🙏 श्री हनुमान चालीसा — सम्पूर्ण पाठ';
+  const chalisa = isEn ?
+`🙏 Shri Hanuman Chalisa 🙏
+
+॥ Doha ॥
+Shri Guru Charan Saroj Raj, Nij Man Mukur Sudhaari.
+Baranau Raghubar Bimal Jas, Jo Daayaku Phal Chaari.
+
+Buddhiheen Tanu Jaanike, Sumirau Pavan Kumar.
+Bal Buddhi Vidya Dehu Mohe, Harahu Kalesh Vikaar.
+
+॥ Chaupai ॥
+Jai Hanuman Gyan Gun Sagar. Jai Kapis Tihu Lok Ujaagar. 1
+Ram Doot Atulit Bal Dhaama. Anjani Putra Pavan Sut Naama. 2
+Mahaveer Bikram Bajrangi. Kumati Nivaar Sumati Ke Sangi. 3
+Kanchan Baran Biraaj Subesa. Kanan Kundal Kunchit Kesa. 4
+Haath Bajra Au Dhvaja Birajai. Kaandhe Moonj Janeu Saajai. 5
+Sankar Suvan Kesarinandan. Tej Pratap Maha Jag Bandan. 6
+Vidyavaan Guni Ati Chaatur. Ram Kaaj Karibe Ko Aatur. 7
+Prabhu Charitra Sunibe Ko Rasiya. Ram Lakhan Sita Man Basiya. 8
+Sukshma Roop Dhari Siyahi Dikhaava. Bikat Roop Dhari Lank Jaraava. 9
+Bhim Roop Dhari Asur Sanhaare. Ramchandra Ke Kaaj Savaare. 10
+Laay Sajeevan Lakhan Jiyaaye. Shri Raghubir Harashi Ur Laaye. 11
+Raghupati Kinhi Bahut Badaai. Tum Mam Priya Bharatahi Sam Bhai. 12
+Sahas Badan Tumharo Jas Gaavain. As Kahi Shripati Kanth Lagaavain. 13
+Sankaadik Brahmadi Muneesa. Naarad Saarad Sahit Aheesa. 14
+Jam Kuber Digpaal Jahan Te. Kabi Kobid Kahi Sake Kahan Te. 15
+Tum Upkaar Sugreevahi Keenha. Ram Milaay Raaj Pad Deenha. 16
+Tumharo Mantra Vibheeshan Maana. Lankeshvar Bhaye Sab Jag Jaana. 17
+Jug Sahastra Jojan Par Bhanu. Leelyo Taahi Madhur Phal Janu. 18
+Prabhu Mudrika Meli Mukh Maahin. Jaladhi Laangh Gaye Acharaj Naahin. 19
+Durgam Kaaj Jagat Ke Jete. Sugam Anugraah Tumhre Tete. 20
+Ram Duaare Tum Rakhvaare. Hot Na Aagya Binu Paisaare. 21
+Sab Sukh Lahai Tumhaari Sarna. Tum Rakchhak Kaahu Ko Darna. 22
+Aapan Tej Samharo Aapai. Teenon Lok Haank Te Kaampai. 23
+Bhoot Pisaach Nikat Nahi Aavai. Mahaveer Jab Naam Sunaavai. 24
+Naasai Rog Harai Sab Peera. Japat Nirantar Hanumat Beera. 25
+Sankat Se Hanuman Chhudaavai. Man Kram Bachan Dhyaan Jo Laavai. 26
+Sab Par Ram Tapasvi Raja. Tin Ke Kaaj Sakal Tum Saaja. 27
+Aur Manorath Jo Koi Laavai. Soi Amit Jeevan Phal Paavai. 28
+Chaaron Jug Partaap Tumhaara. Hai Parsiddh Jagat Ujiyaara. 29
+Saadhu Sant Ke Tum Rakhvaare. Asur Nikandan Ram Dulaare. 30
+Asht Siddhi Nav Nidhi Ke Daata. As Bar Deen Jaanaki Mata. 31
+Ram Rasayan Tumhare Paasa. Sada Raho Raghupati Ke Daasa. 32
+Tumhre Bhajan Ram Ko Paavai. Janam Janam Ke Dukh Bisraavai. 33
+Antkaal Raghubar Pur Jaayi. Jahan Janam Hari Bhakt Kahaayi. 34
+Aur Devta Chit Na Dharayi. Hanumat Sei Sarb Sukh Karayi. 35
+Sankat Katai Mitai Sab Peera. Jo Sumirai Hanumat Balbeera. 36
+Jai Jai Jai Hanuman Gossain. Kripa Karahu Gurudev Ki Naayin. 37
+Jo Sat Baar Paath Kar Koi. Chhootihi Bandi Maha Sukh Hoi. 38
+Jo Yeh Padhai Hanuman Chalisa. Hoy Siddhi Saakhi Gauresa. 39
+Tulsidas Sada Hari Chera. Keejai Naath Hriday Mah Dera. 40
+
+॥ Doha ॥
+Pavan Tanay Sankat Haran, Mangal Murti Roop.
+Ram Lakhan Sita Sahit, Hriday Basu Sur Bhoop.
+
+॥ Jai Shri Ram ॥` :
+`🙏 श्री हनुमान चालीसा 🙏
+
+॥ दोहा ॥
+श्रीगुरु चरन सरोज रज, निज मनु मुकुरु सुधारि।
+बरनउँ रघुबर बिमल जसु, जो दायकु फल चारि॥
+
+बुद्धिहीन तनु जानिके, सुमिरौं पवन-कुमार।
+बल बुधि बिद्या देहु मोहिं, हरहु कलेस बिकार॥
+
+॥ चौपाई ॥
+जय हनुमान ज्ञान गुन सागर। जय कपीस तिहुँ लोक उजागर॥ 1॥
+रामदूत अतुलित बल धामा। अंजनि-पुत्र पवनसुत नामा॥ 2॥
+महाबीर बिक्रम बजरंगी। कुमति निवार सुमति के संगी॥ 3॥
+कंचन बरन बिराज सुबेसा। कानन कुण्डल कुंचित केसा॥ 4॥
+हाथ बज्र औ ध्वजा बिराजै। काँधे मूँज जनेऊ साजै॥ 5॥
+संकर सुवन केसरीनंदन। तेज प्रताप महा जग बंदन॥ 6॥
+विद्यावान गुनी अति चातुर। राम काज करिबे को आतुर॥ 7॥
+प्रभु चरित्र सुनिबे को रसिया। राम लखन सीता मन बसिया॥ 8॥
+सूक्ष्म रूप धरि सियहिं दिखावा। बिकट रूप धरि लंक जरावा॥ 9॥
+भीम रूप धरि असुर संहारे। रामचंद्र के काज सँवारे॥ 10॥
+लाय सजीवन लखन जियाये। श्रीरघुबीर हरषि उर लाये॥ 11॥
+रघुपति कीन्ही बहुत बड़ाई। तुम मम प्रिय भरतहि सम भाई॥ 12॥
+सहस बदन तुम्हरो जस गावैं। अस कहि श्रीपति कण्ठ लगावैं॥ 13॥
+सनकादिक ब्रह्मादि मुनीसा। नारद सारद सहित अहीसा॥ 14॥
+जम कुबेर दिगपाल जहाँ ते। कबि कोबिद कहि सके कहाँ ते॥ 15॥
+तुम उपकार सुग्रीवहिं कीन्हा। राम मिलाय राज पद दीन्हा॥ 16॥
+तुम्हरो मंत्र बिभीषन माना। लंकेस्वर भए सब जग जाना॥ 17॥
+जुग सहस्त्र जोजन पर भानू। लील्यो ताहि मधुर फल जानू॥ 18॥
+प्रभु मुद्रिका मेलि मुख माहीं। जलधि लाँघि गये अचरज नाहीं॥ 19॥
+दुर्गम काज जगत के जेते। सुगम अनुग्रह तुम्हरे तेते॥ 20॥
+राम दुआरे तुम रखवारे। होत न आज्ञा बिनु पैसारे॥ 21॥
+सब सुख लहै तुम्हारी सरना। तुम रच्छक काहू को डरना॥ 22॥
+आपन तेज सम्हारो आपै। तीनों लोक हाँक तें काँपै॥ 23॥
+भूत पिसाच निकट नहिं आवै। महाबीर जब नाम सुनावै॥ 24॥
+नासै रोग हरै सब पीरा। जपत निरंतर हनुमत बीरा॥ 25॥
+संकट तें हनुमान छुड़ावै। मन क्रम बचन ध्यान जो लावै॥ 26॥
+सब पर राम तपस्वी राजा। तिन के काज सकल तुम साजा॥ 27॥
+और मनोरथ जो कोई लावै। सोइ अमित जीवन फल पावै॥ 28॥
+चारों जुग परताप तुम्हारा। है परसिद्ध जगत उजियारा॥ 29॥
+साधु-संत के तुम रखवारे। असुर निकंदन राम दुलारे॥ 30॥
+अष्ट सिद्धि नव निधि के दाता। अस बर दीन जानकी माता॥ 31॥
+राम रसायन तुम्हरे पासा। सदा रहो रघुपति के दासा॥ 32॥
+तुम्हरे भजन राम को पावै। जनम-जनम के दुख बिसरावै॥ 33॥
+अन्तकाल रघुबर पुर जाई। जहाँ जन्म हरि-भक्त कहाई॥ 34॥
+और देवता चित्त न धरई। हनुमत सेइ सर्ब सुख करई॥ 35॥
+संकट कटै मिटै सब पीरा। जो सुमिरै हनुमत बलबीरा॥ 36॥
+जय जय जय हनुमान गोसाईं। कृपा करहु गुरुदेव की नाईं॥ 37॥
+जो सत बार पाठ कर कोई। छूटहि बंदि महा सुख होई॥ 38॥
+जो यह पढ़ै हनुमान चालीसा। होय सिद्धि साखी गौरीसा॥ 39॥
+तुलसीदास सदा हरि चेरा। कीजै नाथ हृदय मँह डेरा॥ 40॥
+
+॥ दोहा ॥
+पवनतनय संकट हरन, मंगल मूरति रूप।
+राम लखन सीता सहित, हृदय बसहु सुर भूप॥
+
+॥ इति श्री हनुमान चालीसा सम्पूर्ण ॥`;
+
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-reading').classList.add('active');
+  document.getElementById('nav-bar').style.display = 'flex';
+  document.getElementById('reading-orb').style.display = 'none';
+  document.getElementById('reading-loading').style.display = 'none';
+  document.getElementById('reading-dots').style.display = 'none';
+  document.getElementById('reading-box').style.display = 'block';
+  document.getElementById('reading-q-display').textContent = title;
+  document.getElementById('reading-answer-text').innerHTML = chalisa.split('\n').join('<br>');
+  document.getElementById('reading-actions').style.display = 'flex';
+  window.scrollTo(0, 0);
+}
 
 ॥ दोहा ॥
 श्रीगुरु चरन सरोज रज, निज मनु मुकुरु सुधारि।
@@ -2522,20 +2773,7 @@ function showHanumanChalisa() {
 पवनतनय संकट हरन, मंगल मूरति रूप।
 राम लखन सीता सहित, हृदय बसहु सुर भूप॥
 
-॥ इति श्री हनुमान चालीसा सम्पूर्ण ॥`;
 
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.getElementById('screen-reading').classList.add('active');
-  document.getElementById('nav-bar').style.display = 'flex';
-  document.getElementById('reading-orb').style.display = 'none';
-  document.getElementById('reading-loading').style.display = 'none';
-  document.getElementById('reading-dots').style.display = 'none';
-  document.getElementById('reading-box').style.display = 'block';
-  document.getElementById('reading-q-display').textContent = '🙏 श्री हनुमान चालीसा — सम्पूर्ण पाठ';
-  document.getElementById('reading-answer-text').innerHTML = chalisa.split('\n').join('<br>');
-  document.getElementById('reading-actions').style.display = 'flex';
-  window.scrollTo(0, 0);
-}
 
 function showHanumanBenefits() {
   const benefits = `✨ हनुमान चालीसा पाठ के लाभ ✨
@@ -2838,19 +3076,23 @@ function setLanguage(lang) {
 }
 
 const questionsHi = [
-  { text: 'भगवद्गीता — कृष्ण जी का संदेश', q: 'श्रीमद्भगवद्गीता का सार क्या है? कृष्ण जी का संदेश बताइए।', icon: '🪷' },
-  { text: 'रामायण — श्री राम जी का धर्म', q: 'रामायण में श्री राम जी ने जीवन में धर्म का पालन कैसे किया?', icon: '🏹' },
-  { text: 'महाभारत — पांडवों की विजय', q: 'महाभारत का मुख्य संदेश क्या है? पांडवों की विजय का रहस्य बताइए।', icon: '⚔️' },
-  { text: 'गरुड़ पुराण — आत्मा का रहस्य', q: 'गरुड़ पुराण के अनुसार मृत्यु के बाद आत्मा का क्या होता है?', icon: '🦅' },
-  { text: 'हनुमान चालीसा — कृपा और लाभ', q: 'हनुमान चालीसा का पाठ करने से क्या लाभ होता है?', icon: '🙏' },
+  { text: 'भगवद्गीता — सम्पूर्ण १८ अध्याय', icon: '🪷', fn: 'showBhagavadGita()' },
+  { text: 'रामायण — सम्पूर्ण ७ काण्ड', icon: '🏹', fn: 'showRamayana()' },
+  { text: 'महाभारत — सम्पूर्ण १८ पर्व', icon: '⚔️', fn: 'showMahabharata()' },
+  { text: 'गरुड़ पुराण — सम्पूर्ण अध्याय', icon: '🦅', fn: 'showGarudaChapters()' },
+  { text: 'हनुमान चालीसा — सम्पूर्ण पाठ', icon: '🙏', fn: 'showHanumanChalisa()' },
+  { text: 'हनुमान चालीसा — पाठ से क्या मिलता है?', icon: '✨', fn: 'showHanumanBenefits()' },
+  { text: 'शिव पुराण — सम्पूर्ण ७ संहिता', icon: '🔱', fn: 'showShivPuran()' },
 ];
 
 const questionsEn = [
-  { text: 'Bhagavad Gita — Krishna\'s Message', q: 'What is the essence of Bhagavad Gita? Tell me Lord Krishna\'s divine message.', icon: '🪷' },
-  { text: 'Ramayana — Lord Ram\'s Dharma', q: 'How did Lord Ram follow dharma in the Ramayana? What lessons can we learn?', icon: '🏹' },
-  { text: 'Mahabharata — Pandavas Victory', q: 'What is the main message of Mahabharata? What was the secret of Pandavas victory?', icon: '⚔️' },
-  { text: 'Garuda Purana — Soul\'s Mystery', q: 'According to Garuda Purana, what happens to the soul after death?', icon: '🦅' },
-  { text: 'Hanuman Chalisa — Blessings & Benefits', q: 'What are the benefits of reciting Hanuman Chalisa? How to get Lord Hanuman\'s blessings?', icon: '🙏' },
+  { text: 'Bhagavad Gita — All 18 Chapters', icon: '🪷', fn: 'showBhagavadGita()' },
+  { text: 'Ramayana — Complete 7 Kandas', icon: '🏹', fn: 'showRamayana()' },
+  { text: 'Mahabharata — Complete 18 Parvas', icon: '⚔️', fn: 'showMahabharata()' },
+  { text: 'Garuda Purana — Complete Chapters', icon: '🦅', fn: 'showGarudaChapters()' },
+  { text: 'Hanuman Chalisa — Complete Recitation', icon: '🙏', fn: 'showHanumanChalisa()' },
+  { text: 'Hanuman Chalisa — Benefits of Recitation', icon: '✨', fn: 'showHanumanBenefits()' },
+  { text: 'Shiv Purana — Complete 7 Samhitas', icon: '🔱', fn: 'showShivPuran()' },
 ];
 
 function updateQuestions(lang) {
@@ -2858,7 +3100,8 @@ function updateQuestions(lang) {
   const btns = document.querySelectorAll('.question-btn');
   btns.forEach((btn, i) => {
     if (questions[i]) {
-      btn.setAttribute('onclick', `goToReading('${questions[i].q}', '${questions[i].icon}')`);
+      btn.removeAttribute('onclick');
+      btn.onclick = new Function(questions[i].fn);
       btn.querySelector('span:last-child').textContent = questions[i].text;
       btn.querySelector('.q-icon').textContent = questions[i].icon;
     }
