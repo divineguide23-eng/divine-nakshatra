@@ -1746,8 +1746,7 @@ let currentScreen = 'welcome';
 function showScreen(name) {
   // Stop voice if playing
   if (typeof voiceSpeaking !== 'undefined' && voiceSpeaking) {
-    window.speechSynthesis.cancel();
-    voiceSpeaking = false;
+    stopVoiceReading();
   }
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   const target = document.getElementById(`screen-${name}`);
@@ -2804,80 +2803,151 @@ let voiceUtterance = null;
 let voiceSpeed = 1;
 const voiceSpeeds = [1, 1.5, 2, 0.75];
 let voiceSpeedIndex = 0;
+let voiceLang = 'hi'; // independent of app display language
+let voiceResumeInterval = null;
 
-function toggleVoiceReading() {
+// Known male voice name patterns across browsers/OS (Hindi + English)
+const MALE_VOICE_HINTS = [
+  'male', 'hemant', 'ravi', 'prabhat', 'madhur', 'david', 'mark', 'daniel',
+  'rishi', 'ajit', 'hindi male', 'hi-in-x-hia', 'hi-in-x-hic', 'en-in-x-ene'
+];
+const FEMALE_VOICE_HINTS = ['female', 'heera', 'lekha', 'swara', 'samantha', 'zira', 'priya'];
+
+function pickBestVoice(voices, targetLang) {
+  if (!voices || voices.length === 0) return null;
+  const langMatches = voices.filter(v => v.lang && v.lang.toLowerCase() === targetLang.toLowerCase());
+  const baseLangMatches = langMatches.length ? langMatches : voices.filter(v => v.lang && v.lang.toLowerCase().startsWith(targetLang.split('-')[0].toLowerCase()));
+  const pool = baseLangMatches.length ? baseLangMatches : voices;
+
+  // 1. Prefer explicit male voice
+  let pick = pool.find(v => MALE_VOICE_HINTS.some(h => v.name.toLowerCase().includes(h)));
+  if (pick) return pick;
+
+  // 2. Avoid known female voices, pick anything else in pool
+  pick = pool.find(v => !FEMALE_VOICE_HINTS.some(h => v.name.toLowerCase().includes(h)));
+  if (pick) return pick;
+
+  // 3. Fallback - first available in pool
+  return pool[0];
+}
+
+function getVoicesAsync() {
+  return new Promise((resolve) => {
+    let voices = window.speechSynthesis.getVoices();
+    if (voices.length > 0) { resolve(voices); return; }
+    let attempts = 0;
+    const timer = setInterval(() => {
+      voices = window.speechSynthesis.getVoices();
+      attempts++;
+      if (voices.length > 0 || attempts > 20) {
+        clearInterval(timer);
+        resolve(voices);
+      }
+    }, 150);
+    window.speechSynthesis.onvoiceschanged = () => {
+      voices = window.speechSynthesis.getVoices();
+      if (voices.length > 0) {
+        clearInterval(timer);
+        resolve(voices);
+      }
+    };
+  });
+}
+
+function stopVoiceReading() {
+  window.speechSynthesis.cancel();
+  voiceSpeaking = false;
+  if (voiceResumeInterval) { clearInterval(voiceResumeInterval); voiceResumeInterval = null; }
+  const btnText = document.getElementById('voice-btn-text');
+  const btn = document.getElementById('voice-btn');
+  if (btnText) btnText.textContent = 'Sunao Reading';
+  if (btn) btn.style.background = 'linear-gradient(135deg,rgba(138,43,226,0.3),rgba(75,0,130,0.3))';
+  const bar = document.getElementById('voice-progress-bar');
+  if (bar) bar.style.display = 'none';
+}
+
+async function toggleVoiceReading() {
   const text = document.getElementById('reading-answer-text').innerText;
   if (!text || text.trim() === '') { showToast('Pehle reading lo!'); return; }
 
   if (voiceSpeaking) {
-    window.speechSynthesis.cancel();
-    voiceSpeaking = false;
-    document.getElementById('voice-btn-text').textContent = '🔊 Sunao Reading';
-    document.getElementById('voice-btn').style.background = 'linear-gradient(135deg,rgba(138,43,226,0.3),rgba(75,0,130,0.3))';
-    document.getElementById('voice-progress-bar').style.display = 'none';
+    stopVoiceReading();
     return;
   }
 
-  // Try speechSynthesis
-  if (window.speechSynthesis) {
-    window.speechSynthesis.cancel();
-    voiceUtterance = new SpeechSynthesisUtterance(text);
-    voiceUtterance.lang = currentLang === 'hi' ? 'hi-IN' : 'en-US';
-    voiceUtterance.rate = voiceSpeeds[voiceSpeedIndex];
-    voiceUtterance.pitch = 1;
-    voiceUtterance.volume = 1;
-
-    voiceUtterance.onstart = () => {
-      voiceSpeaking = true;
-      document.getElementById('voice-btn-text').textContent = '⏹ Band Karo';
-      document.getElementById('voice-btn').style.background = 'linear-gradient(135deg,rgba(226,43,43,0.4),rgba(130,0,0,0.4))';
-      document.getElementById('voice-progress-bar').style.display = 'block';
-    };
-
-    voiceUtterance.onend = () => {
-      voiceSpeaking = false;
-      document.getElementById('voice-btn-text').textContent = '🔊 Sunao Reading';
-      document.getElementById('voice-btn').style.background = 'linear-gradient(135deg,rgba(138,43,226,0.3),rgba(75,0,130,0.3))';
-      document.getElementById('voice-progress').style.width = '100%';
-      setTimeout(() => {
-        document.getElementById('voice-progress-bar').style.display = 'none';
-        document.getElementById('voice-progress').style.width = '0%';
-      }, 1000);
-    };
-
-    voiceUtterance.onerror = (e) => {
-      voiceSpeaking = false;
-      document.getElementById('voice-btn-text').textContent = '🔊 Sunao Reading';
-      document.getElementById('voice-progress-bar').style.display = 'none';
-      showToast('Is browser mein voice nahi chala — dusra browser try karo!');
-    };
-
-    voiceUtterance.onboundary = (e) => {
-      if (e.name === 'word' && text.length > 0) {
-        const pct = Math.min((e.charIndex / text.length) * 100, 100);
-        document.getElementById('voice-progress').style.width = pct + '%';
-      }
-    };
-
-    // Try speaking with voice loading fallback
-    const trySpeak = () => {
-      const voices = window.speechSynthesis.getVoices();
-      if (voices.length > 0) {
-        const targetLang = currentLang === 'hi' ? 'hi-IN' : 'en-US';
-        const v = voices.find(v => v.lang === targetLang) || voices.find(v => v.lang.startsWith(currentLang));
-        if (v) voiceUtterance.voice = v;
-      }
-      window.speechSynthesis.speak(voiceUtterance);
-    };
-
-    if (window.speechSynthesis.getVoices().length > 0) {
-      trySpeak();
-    } else {
-      window.speechSynthesis.onvoiceschanged = trySpeak;
-      setTimeout(trySpeak, 300);
-    }
-  } else {
+  if (!window.speechSynthesis) {
     showToast('Aapke browser mein voice support nahi hai 😔');
+    return;
+  }
+
+  window.speechSynthesis.cancel();
+
+  const targetLang = voiceLang === 'hi' ? 'hi-IN' : 'en-US';
+  const voices = await getVoicesAsync();
+  const chosenVoice = pickBestVoice(voices, targetLang);
+
+  voiceUtterance = new SpeechSynthesisUtterance(text);
+  voiceUtterance.lang = chosenVoice ? chosenVoice.lang : targetLang;
+  if (chosenVoice) voiceUtterance.voice = chosenVoice;
+  voiceUtterance.rate = voiceSpeeds[voiceSpeedIndex];
+  // Slightly lower pitch for a deeper, more natural male tone
+  voiceUtterance.pitch = 0.9;
+  voiceUtterance.volume = 1;
+
+  voiceUtterance.onstart = () => {
+    voiceSpeaking = true;
+    document.getElementById('voice-btn-text').textContent = '⏹ Band Karo';
+    document.getElementById('voice-btn').style.background = 'linear-gradient(135deg,rgba(226,43,43,0.4),rgba(130,0,0,0.4))';
+    document.getElementById('voice-progress-bar').style.display = 'block';
+
+    // Chrome bug workaround: long utterances auto-pause after ~15s
+    if (voiceResumeInterval) clearInterval(voiceResumeInterval);
+    voiceResumeInterval = setInterval(() => {
+      if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
+        window.speechSynthesis.pause();
+        window.speechSynthesis.resume();
+      }
+    }, 10000);
+  };
+
+  voiceUtterance.onend = () => {
+    document.getElementById('voice-progress').style.width = '100%';
+    setTimeout(() => {
+      document.getElementById('voice-progress-bar').style.display = 'none';
+      document.getElementById('voice-progress').style.width = '0%';
+    }, 1000);
+    stopVoiceReading();
+  };
+
+  voiceUtterance.onerror = () => {
+    stopVoiceReading();
+    showToast('Voice play nahi ho saka — phir try karein ya browser update karein!');
+  };
+
+  voiceUtterance.onboundary = (e) => {
+    if (e.name === 'word' && text.length > 0) {
+      const pct = Math.min((e.charIndex / text.length) * 100, 100);
+      document.getElementById('voice-progress').style.width = pct + '%';
+    }
+  };
+
+  window.speechSynthesis.speak(voiceUtterance);
+
+  // Some mobile webviews need a kick to actually start
+  setTimeout(() => {
+    if (!window.speechSynthesis.speaking && !voiceSpeaking) {
+      window.speechSynthesis.speak(voiceUtterance);
+    }
+  }, 300);
+}
+
+function toggleVoiceLang() {
+  voiceLang = voiceLang === 'hi' ? 'en' : 'hi';
+  const btn = document.getElementById('voice-lang-btn');
+  if (btn) btn.textContent = voiceLang === 'hi' ? '🇮🇳 Hindi' : '🇬🇧 English';
+  if (voiceSpeaking) {
+    stopVoiceReading();
+    setTimeout(() => toggleVoiceReading(), 300);
   }
 }
 
