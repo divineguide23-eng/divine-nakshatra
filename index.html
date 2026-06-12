@@ -733,20 +733,54 @@
       <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:8px;letter-spacing:1px;">SELECT YOUR COUNTRY</div>
       <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
         <button onclick="selectCountry('IN')" id="btn-country-IN" style="padding:8px 16px;border-radius:999px;border:2px solid rgba(212,175,55,0.6);background:rgba(212,175,55,0.15);color:#F5D96B;font-size:13px;cursor:pointer;font-weight:600;transition:all 0.2s;">
-          &#127470;&#127475; India — &#8377;1
+          &#127470;&#127475; India
         </button>
         <button onclick="selectCountry('OTHER')" id="btn-country-OTHER" style="padding:8px 16px;border-radius:999px;border:2px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.6);font-size:13px;cursor:pointer;font-weight:600;transition:all 0.2s;">
-          &#127758; Other — $2
+          &#127758; International
         </button>
       </div>
     </div>
+    <!-- Plan Selector -->
+    <div style="margin-bottom:14px;">
+      <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:8px;letter-spacing:1px;">CHOOSE YOUR PLAN</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+        <div id="plan-card-week" onclick="selectPlan('week')" style="cursor:pointer;border:2px solid #D4AF37;background:rgba(212,175,55,0.18);border-radius:12px;padding:10px 6px;">
+          <div style="font-size:12px;color:rgba(255,255,255,0.6);">Weekly</div>
+          <div id="plan-price-week" style="font-size:18px;color:#F5D96B;font-weight:800;">&#8377;1</div>
+        </div>
+        <div id="plan-card-month" onclick="selectPlan('month')" style="cursor:pointer;border:2px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.04);border-radius:12px;padding:10px 6px;">
+          <div style="font-size:12px;color:rgba(255,255,255,0.6);">Monthly</div>
+          <div id="plan-price-month" style="font-size:18px;color:#F5D96B;font-weight:800;">&#8377;49</div>
+        </div>
+        <div id="plan-card-half" onclick="selectPlan('half')" style="cursor:pointer;border:2px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.04);border-radius:12px;padding:10px 6px;">
+          <div style="font-size:12px;color:rgba(255,255,255,0.6);">6 Months</div>
+          <div id="plan-price-half" style="font-size:18px;color:#F5D96B;font-weight:800;">&#8377;99</div>
+        </div>
+        <div id="plan-card-year" onclick="selectPlan('year')" style="cursor:pointer;border:2px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.04);border-radius:12px;padding:10px 6px;">
+          <div style="font-size:12px;color:rgba(255,255,255,0.6);">Yearly</div>
+          <div id="plan-price-year" style="font-size:18px;color:#F5D96B;font-weight:800;">&#8377;149</div>
+        </div>
+      </div>
+    </div>
     <div id="modal-country-flag" style="font-size:12px;color:rgba(255,150,50,0.8);margin-bottom:10px;">&#127470;&#127475; India Special Price — &#8377;1 only!</div>
-    <button id="modal-pay-btn" onclick="processPay()" style="width:100%;padding:18px;background:linear-gradient(135deg,#9A7B1A,#D4AF37,#F5D96B);border:none;border-radius:16px;font-size:17px;font-weight:900;color:#0A0612;cursor:pointer;box-shadow:0 0 40px rgba(212,175,55,0.4);margin-bottom:12px;letter-spacing:1px;">
-      &#128081; SIRF &#8377;1 MEIN PAIYE
+    <button id="modal-pay-btn" onclick="processPay()" style="width:100%;padding:18px;background:linear-gradient(135deg,#9A7B1A,#D4AF37,#F5D96B);border:none;border-radius:16px;font-size:17px;font-weight:900;color:#0A0612;cursor:pointer;box-shadow:0 0 40px rgba(212,175,55,0.4);margin-bottom:10px;letter-spacing:1px;">
+      &#128081; SIRF &#8377;1 MEIN WEEKLY PAIYE
+    </button>
+    <button onclick="watchRewardAd()" style="width:100%;padding:14px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:16px;font-size:14px;font-weight:700;color:rgba(255,255,255,0.8);cursor:pointer;margin-bottom:12px;">
+      &#127909; Ad Dekho — +1 Free Reading
     </button>
     <div style="font-size:11px;color:rgba(255,255,255,0.3);">UPI &nbsp;|&nbsp; Card &nbsp;|&nbsp; Net Banking &nbsp;|&nbsp; PayPal</div>
   </div>
 </div>
+
+<!-- REWARD AD OVERLAY (placeholder) -->
+<div id="reward-ad-modal" style="display:none;position:fixed;inset:0;z-index:1000;background:#000;align-items:center;justify-content:center;flex-direction:column;color:#fff;text-align:center;padding:24px;">
+  <div style="font-size:48px;margin-bottom:16px;">&#127909;</div>
+  <div style="font-size:18px;font-weight:700;margin-bottom:8px;">Ad chal raha hai...</div>
+  <div style="font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:24px;">Thoda intezaar karein, free reading milne wali hai</div>
+  <div id="reward-ad-count" style="font-size:40px;font-weight:900;color:#F5D96B;">15</div>
+</div>
+
 
 <!-- TOAST -->
 <div class="toast" id="toast"></div>
@@ -814,23 +848,26 @@
   </div>
 
   <p class="question-label">✨ Kya Jaanna Chahte Ho?</p>
-  <div id="free-counter" style="font-size:12px;color:rgba(100,220,100,0.8);margin-bottom:14px;letter-spacing:0.5px;">&#10022; Unlimited free readings</div>
+  <div id="free-counter" style="font-size:12px;color:rgba(100,220,100,0.8);margin-bottom:14px;letter-spacing:0.5px;">&#10022; 3 free readings baaki hai</div>
 
-  <button class="question-btn" onclick="showBhagavadGita()">
+  <button class="question-btn" onclick="openLockedScripture(showBhagavadGita,'भगवद्गीता — सम्पूर्ण १८ अध्याय','🪷')" style="position:relative;">
     <span class="q-icon">🪷</span>
     <span>भगवद्गीता — सम्पूर्ण १८ अध्याय</span>
+    <span style="position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:18px;">👑</span>
   </button>
   <button class="question-btn" onclick="showRamayana()">
     <span class="q-icon">🏹</span>
     <span>रामायण — सम्पूर्ण ७ काण्ड</span>
   </button>
-  <button class="question-btn" onclick="showMahabharata()">
+  <button class="question-btn" onclick="openLockedScripture(showMahabharata,'महाभारत — सम्पूर्ण १८ पर्व','⚔️')" style="position:relative;">
     <span class="q-icon">⚔️</span>
     <span>महाभारत — सम्पूर्ण १८ पर्व</span>
+    <span style="position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:18px;">👑</span>
   </button>
-  <button class="question-btn" id="garuda-btn">
+  <button class="question-btn" id="garuda-btn" style="position:relative;">
     <span class="q-icon">🦅</span>
     <span>गरुड़ पुराण — सम्पूर्ण अध्याय</span>
+    <span style="position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:18px;">👑</span>
   </button>
   <button class="question-btn" onclick="showHanumanChalisa()">
     <span class="q-icon">🙏</span>
@@ -840,9 +877,10 @@
     <span class="q-icon">✨</span>
     <span>हनुमान चालीसा — पाठ से क्या मिलता है?</span>
   </button>
-  <button class="question-btn" onclick="showShivPuran()">
+  <button class="question-btn" onclick="openLockedScripture(showShivPuran,'शिव पुराण — सम्पूर्ण ७ संहिता','🔱')" style="position:relative;">
     <span class="q-icon">🔱</span>
     <span>शिव पुराण — सम्पूर्ण ७ संहिता</span>
+    <span style="position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:18px;">👑</span>
   </button>
 
   <!-- Inline profile form on home -->
@@ -950,7 +988,7 @@
       </div>
 
       <!-- PREMIUM TOPICS -->
-      <div class="topic-card premium" onclick="showPremiumMsg()">
+      <div class="topic-card premium" onclick="selectTopicPremium(this,'Swasthya','Mera health aur sharir ke baare mein bataye','🌿')">
         <span class="topic-icon">🌿</span>
         <div class="topic-text">
           <div class="hi">स्वास्थ्य</div>
@@ -958,7 +996,7 @@
         </div>
         <span class="topic-crown">👑</span>
       </div>
-      <div class="topic-card premium" onclick="showPremiumMsg()">
+      <div class="topic-card premium" onclick="selectTopicPremium(this,'Career & Dhan','Mera career aur paise ka future kaisa hai','💼')">
         <span class="topic-icon">💼</span>
         <div class="topic-text">
           <div class="hi">करियर & धन</div>
@@ -966,7 +1004,7 @@
         </div>
         <span class="topic-crown">👑</span>
       </div>
-      <div class="topic-card premium" onclick="showPremiumMsg()">
+      <div class="topic-card premium" onclick="selectTopicPremium(this,'Junoon & Aatma','Meri passion aur jeevan ka uddeshya kya hai','🔥')">
         <span class="topic-icon">🔥</span>
         <div class="topic-text">
           <div class="hi">जुनून & आत्मा</div>
@@ -974,7 +1012,7 @@
         </div>
         <span class="topic-crown">👑</span>
       </div>
-      <div class="topic-card premium" onclick="showPremiumMsg()">
+      <div class="topic-card premium" onclick="selectTopicPremium(this,'Parivar & Ghar','Mere parivar aur ghar ka future kaisa hai','🏠')">
         <span class="topic-icon">🏠</span>
         <div class="topic-text">
           <div class="hi">परिवार & घर</div>
@@ -982,7 +1020,7 @@
         </div>
         <span class="topic-crown">👑</span>
       </div>
-      <div class="topic-card premium" onclick="showPremiumMsg()">
+      <div class="topic-card premium" onclick="selectTopicPremium(this,'Yatra','Meri yatra aur travel plans kaise rahenge','✈️')">
         <span class="topic-icon">✈️</span>
         <div class="topic-text">
           <div class="hi">यात्रा</div>
@@ -990,7 +1028,7 @@
         </div>
         <span class="topic-crown">👑</span>
       </div>
-      <div class="topic-card premium" onclick="showPremiumMsg()">
+      <div class="topic-card premium" onclick="selectTopicPremium(this,'Jeevan Charitra','Meri personality aur jeevan ke traits batao','📖')">
         <span class="topic-icon">📖</span>
         <div class="topic-text">
           <div class="hi">जीवन चरित्र</div>
@@ -998,7 +1036,7 @@
         </div>
         <span class="topic-crown">👑</span>
       </div>
-      <div class="topic-card premium" onclick="showPremiumMsg()">
+      <div class="topic-card premium" onclick="selectTopicPremium(this,'Aadhyatmik','Mera aadhyatmik margdarshan kya hai','🕉️')">
         <span class="topic-icon">🕉️</span>
         <div class="topic-text">
           <div class="hi">आध्यात्मिक</div>
@@ -1007,7 +1045,7 @@
         <span class="topic-crown">👑</span>
       </div>
     </div>
-    <p style="text-align:center;font-size:11px;color:rgba(100,220,100,0.8);margin-top:14px">🎉 Sab topics bilkul free hain — enjoy karo!</p>
+    <p style="text-align:center;font-size:11px;color:rgba(255,200,80,0.8);margin-top:14px">👑 Premium topics unlock karein — sirf ₹1 se shuru!</p>
   </div>
 
   <!-- PREMIUM CARD -->
@@ -1412,21 +1450,85 @@
 <script>
 
 // ========== PAYMENT MODAL ==========
-function showPaymentModal(question, icon) {
-  document.getElementById('modal-question').innerHTML = icon + ' ' + question;
-  const modal = document.getElementById('payment-modal');
-  modal.style.display = 'flex';
-}
-
-function closePayment() {
-  document.getElementById('payment-modal').style.display = 'none';
-}
-
 // ========== GEO PRICING ==========
 let userCountry = 'OTHER';
 let userPrice = { symbol: '$', amount: '2', label: '2 USD', currency: 'USD' };
-let freeReadingsLeft = 999;
+let freeReadingsLeft = 3;
 let totalFreeReadings = 3;
+
+// ========== PREMIUM PLANS ==========
+const premiumPlans = {
+  week:   { id: 'week',   label: 'Weekly',    days: 7,   inr: '₹1',   usd: '$1',  link: 'https://rzp.io/rzp/kHZHMkm' },
+  month:  { id: 'month',  label: 'Monthly',   days: 30,  inr: '₹49',  usd: '$2',  link: 'https://rzp.io/rzp/kHZHMkm' },
+  half:   { id: 'half',   label: '6 Months',  days: 180, inr: '₹99',  usd: '$4',  link: 'https://rzp.io/rzp/kHZHMkm' },
+  year:   { id: 'year',   label: 'Yearly',    days: 365, inr: '₹149', usd: '$6',  link: 'https://rzp.io/rzp/kHZHMkm' }
+};
+let selectedPlanId = 'week';
+
+function checkPremiumExpiry() {
+  const expiry = localStorage.getItem('dn_premium_expiry');
+  if (expiry && Date.now() < parseInt(expiry, 10)) {
+    isPremium = true;
+  } else {
+    if (expiry) {
+      // expired - clean up
+      localStorage.removeItem('dn_premium_expiry');
+      localStorage.removeItem('dn_premium');
+    }
+    isPremium = false;
+  }
+}
+
+function activatePremium(planId) {
+  const plan = premiumPlans[planId] || premiumPlans.week;
+  const expiry = Date.now() + plan.days * 24 * 60 * 60 * 1000;
+  localStorage.setItem('dn_premium', 'true');
+  localStorage.setItem('dn_premium_expiry', String(expiry));
+  localStorage.setItem('dn_premium_plan', plan.id);
+  isPremium = true;
+  freeReadingsLeft = 999;
+  updateFreeCounter();
+}
+
+function selectPlan(planId) {
+  selectedPlanId = planId;
+  Object.keys(premiumPlans).forEach(id => {
+    const card = document.getElementById('plan-card-' + id);
+    if (!card) return;
+    if (id === planId) {
+      card.style.border = '2px solid #D4AF37';
+      card.style.background = 'rgba(212,175,55,0.18)';
+    } else {
+      card.style.border = '2px solid rgba(255,255,255,0.1)';
+      card.style.background = 'rgba(255,255,255,0.04)';
+    }
+  });
+  updatePriceUI();
+}
+
+// ========== REWARD AD (placeholder) ==========
+function watchRewardAd() {
+  const overlay = document.getElementById('reward-ad-modal');
+  const countEl = document.getElementById('reward-ad-count');
+  overlay.style.display = 'flex';
+  let secs = 15;
+  countEl.textContent = secs;
+  const interval = setInterval(() => {
+    secs--;
+    countEl.textContent = secs;
+    if (secs <= 0) {
+      clearInterval(interval);
+      overlay.style.display = 'none';
+      freeReadingsLeft++;
+      updateFreeCounter();
+      closePayment();
+      showToast('🎉 +1 free reading mil gayi!');
+      setTimeout(() => {
+        window.goToReadingWithAI(currentQuestion, currentIcon);
+      }, 500);
+    }
+  }, 1000);
+}
 
 async function detectCountry() {
   try {
@@ -1445,11 +1547,6 @@ async function detectCountry() {
 
 function selectCountry(code) {
   userCountry = code;
-  if (code === 'IN') {
-    userPrice = { symbol: '₹', amount: '1', label: '₹1', currency: 'INR' };
-  } else {
-    userPrice = { symbol: '$', amount: '2', label: '$2', currency: 'USD' };
-  }
   // Update button styles
   const btnIN = document.getElementById('btn-country-IN');
   const btnOther = document.getElementById('btn-country-OTHER');
@@ -1474,18 +1571,26 @@ function selectCountry(code) {
 }
 
 function updatePriceUI() {
+  const plan = premiumPlans[selectedPlanId] || premiumPlans.week;
+  const priceLabel = userCountry === 'IN' ? plan.inr : plan.usd;
+  userPrice = { symbol: priceLabel[0], amount: priceLabel.slice(1), label: priceLabel, currency: userCountry === 'IN' ? 'INR' : 'USD' };
   const p = userPrice;
+  // Update plan card price labels
+  Object.keys(premiumPlans).forEach(id => {
+    const el = document.getElementById('plan-price-' + id);
+    if (el) el.textContent = userCountry === 'IN' ? premiumPlans[id].inr : premiumPlans[id].usd;
+  });
   // Update modal price
   const priceEl = document.getElementById('modal-price');
   if (priceEl) priceEl.textContent = p.label;
   // Update modal button
   const btnEl = document.getElementById('modal-pay-btn');
-  if (btnEl) btnEl.textContent = (userCountry === 'IN' ? '👑 SIRF ' : '👑 ONLY ') + p.label + ' MEIN PAIYE';
+  if (btnEl) btnEl.textContent = (userCountry === 'IN' ? '👑 SIRF ' : '👑 ONLY ') + p.label + ' MEIN ' + plan.label.toUpperCase() + ' PAIYE';
   // Update modal subtitle
   const subEl = document.getElementById('modal-price-sub');
-  if (subEl) subEl.textContent = userCountry === 'IN' 
-    ? 'Unlimited readings · Sabhi topics unlock' 
-    : 'Unlimited readings · All topics unlocked';
+  if (subEl) subEl.textContent = (userCountry === 'IN' 
+    ? 'Unlimited readings · Sabhi topics unlock — ' 
+    : 'Unlimited readings · All topics unlocked — ') + plan.label;
   // Update all ₹1 / $2 references in banners
   document.querySelectorAll('.price-tag').forEach(el => el.textContent = p.label);
   document.querySelectorAll('.join-btn-text').forEach(el => el.textContent = (userCountry === 'IN' ? '👑 JOIN ' : '👑 JOIN ') + p.label);
@@ -1493,10 +1598,10 @@ function updatePriceUI() {
   const flagEl = document.getElementById('modal-country-flag');
   if (flagEl) {
     if (userCountry === 'IN') {
-      flagEl.innerHTML = '🇮🇳 India Special Price — ₹1 only!';
+      flagEl.innerHTML = '🇮🇳 India Special Price — ' + p.label + ' / ' + plan.label;
       flagEl.style.color = 'rgba(255,150,50,0.8)';
     } else {
-      flagEl.innerHTML = '🌍 International Price — $2 USD';
+      flagEl.innerHTML = '🌍 International Price — ' + p.label + ' / ' + plan.label;
       flagEl.style.color = 'rgba(180,180,255,0.6)';
     }
   }
@@ -1552,44 +1657,32 @@ function loadRazorpayAndPay() {
 async function processPay() {
   const btn = document.getElementById('modal-pay-btn');
   const modal = document.getElementById('payment-modal');
-  
+  const plan = premiumPlans[selectedPlanId] || premiumPlans.week;
+  const priceLabel = userCountry === 'IN' ? plan.inr : plan.usd;
+
   btn.textContent = 'Loading...';
   btn.style.opacity = '0.7';
   await loadRazorpayAndPay();
-  btn.textContent = userCountry === 'IN' ? '👑 SIRF ₹1 MEIN PAIYE' : '👑 ONLY $2 MEIN PAIYE';
+  btn.textContent = (userCountry === 'IN' ? '👑 SIRF ' : '👑 ONLY ') + priceLabel + ' MEIN ' + plan.label.toUpperCase() + ' PAIYE';
   btn.style.opacity = '1';
 
-  if (userCountry === 'IN') {
-    // Razorpay Payment Link for India
-    window.open('https://rzp.io/rzp/kHZHMkm', '_blank');
-    showToast('Payment page khul rahi hai... ✨');
+  // Open Razorpay payment link for the selected plan
+  window.open(plan.link, '_blank');
+  showToast('Payment page khul rahi hai... ✨');
+  setTimeout(() => {
+    activatePremium(plan.id);
+    modal.style.display = 'none';
+    showToast(plan.label + ' Premium activated! Unlimited readings enjoy karo 🌟');
     setTimeout(() => {
-      isPremium = true;
-      localStorage.setItem('dn_premium', 'true');
-      freeReadingsLeft = 999;
-      updateFreeCounter();
-      modal.style.display = 'none';
-      showToast('Premium activated! Unlimited readings enjoy karo 🌟');
-      setTimeout(() => {
+      if (pendingScriptureFn) {
+        const fn = pendingScriptureFn;
+        pendingScriptureFn = null;
+        fn();
+      } else {
         window.goToReadingWithAI(currentQuestion, currentIcon);
-      }, 800);
-    }, 4000);
-  } else {
-    // International - redirect to Razorpay.me page
-    window.open('https://razorpay.me/@riponbasumatary', '_blank');
-    // After opening, assume paid (or you can verify manually)
-    setTimeout(() => {
-      isPremium = true;
-      localStorage.setItem('dn_premium', 'true');
-      freeReadingsLeft = 999;
-      updateFreeCounter();
-      modal.style.display = 'none';
-      showToast('Premium activated! Enjoy unlimited readings 🌟');
-      setTimeout(() => {
-        window.goToReadingWithAI(currentQuestion, currentIcon);
-      }, 800);
-    }, 3000);
-  }
+      }
+    }, 800);
+  }, 4000);
 }
 
 // ========== STARS ==========
@@ -1635,13 +1728,16 @@ requestAnimationFrame(animateStars);
 
 // Garuda Puran button
 document.getElementById('garuda-btn').addEventListener('click', function() {
-  showGarudaChapters();
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.getElementById('screen-garuda').querySelector('.section-title').textContent = currentLang === 'en' ? 'Garuda Purana' : 'गरुड़ पुराण';
-  document.getElementById('screen-garuda').querySelector('.section-sub').textContent = currentLang === 'en' ? 'Complete Chapters' : 'सम्पूर्ण अध्याय — Garuda Purana';
-  document.getElementById('screen-garuda').classList.add('active');
-  document.getElementById('nav-bar').style.display = 'flex';
-  window.scrollTo(0, 0);
+  const openGaruda = () => {
+    showGarudaChapters();
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById('screen-garuda').querySelector('.section-title').textContent = currentLang === 'en' ? 'Garuda Purana' : 'गरुड़ पुराण';
+    document.getElementById('screen-garuda').querySelector('.section-sub').textContent = currentLang === 'en' ? 'Complete Chapters' : 'सम्पूर्ण अध्याय — Garuda Purana';
+    document.getElementById('screen-garuda').classList.add('active');
+    document.getElementById('nav-bar').style.display = 'flex';
+    window.scrollTo(0, 0);
+  };
+  openLockedScripture(openGaruda, 'गरुड़ पुराण — सम्पूर्ण अध्याय', '🦅');
 });
 
 // ========== NAVIGATION ==========
@@ -1712,8 +1808,27 @@ function selectTopicFree(el, topic, question, icon) {
   }, 400);
 }
 
-function showPremiumMsg() {
-  showToast('👑 Yeh premium topic hai — ' + userPrice.label + ' mein unlock karein!');
+function openLockedScripture(fn, label, icon) {
+  if (isPremium) { fn(); return; }
+  currentQuestion = label;
+  currentIcon = icon;
+  document.getElementById('modal-question').innerHTML = icon + ' ' + label;
+  updatePriceUI();
+  document.getElementById('payment-modal').style.display = 'flex';
+  // Resume scripture after payment instead of AI reading
+  pendingScriptureFn = fn;
+}
+
+function selectTopicPremium(el, topic, question, icon) {
+  if (isPremium) {
+    selectTopicFree(el, topic, question, icon);
+    return;
+  }
+  currentQuestion = question;
+  currentIcon = icon;
+  document.getElementById('modal-question').innerHTML = icon + ' ' + question;
+  updatePriceUI();
+  document.getElementById('payment-modal').style.display = 'flex';
 }
 
 // ========== READING ==========
@@ -1734,7 +1849,8 @@ const readings = {
 
 let currentQuestion = '';
 let currentIcon = '';
-let isPremium = true;
+let pendingScriptureFn = null;
+let isPremium = false;
 
 function goToReading(question, icon) {
   currentQuestion = question;
@@ -2916,28 +3032,15 @@ document.querySelector('.start-btn') && (document.querySelector('#screen-welcome
 selectCountry('IN');
 detectCountry();
 
-// Persistent premium check
-if (localStorage.getItem('dn_premium') === 'true') {
-  isPremium = true;
+// Persistent premium check (with expiry)
+checkPremiumExpiry();
+if (isPremium) {
   freeReadingsLeft = 999;
-  updateFreeCounter();
   showToast('Welcome back! Premium active hai 👑');
 }
+updateFreeCounter();
 
-// Auto unlock ALL topics and kundali for free
-setTimeout(() => {
-  document.querySelectorAll('.topic-card.premium').forEach(card => {
-    card.classList.remove('premium');
-    const crown = card.querySelector('.topic-crown');
-    if (crown) crown.remove();
-    card.style.opacity = '1';
-    const icon = card.querySelector('.topic-icon') ? card.querySelector('.topic-icon').textContent : '🔮';
-    const topic = card.querySelector('.hi') ? card.querySelector('.hi').textContent : '';
-    card.setAttribute('onclick', `selectTopicFree(this,'${topic}','${topic} ke baare mein mujhe batao','${icon}')`);
-  });
-  // Kundali also free
-  localStorage.setItem('dn_kundali', 'true');
-}, 300);
+// (Premium topics & Kundali now properly locked for non-premium users)
 </script>
 </body>
 </html>
