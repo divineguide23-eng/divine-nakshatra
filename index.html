@@ -2016,7 +2016,20 @@ function showChapterContent(icon, title, content) {
     document.getElementById('reading-dots').style.display = 'flex';
     document.getElementById('reading-box').classList.remove('show');
     document.getElementById('reading-actions').style.display = 'none';
-    window.goToReadingWithAI('Explain in English only (no Hindi): ' + title + '. Key teachings: ' + content.substring(0, 300), icon);
+    // Send clean prompt to AI — don't show prompt in question box
+    var aiPrompt = 'Explain in English only (no Hindi words at all): ' + title + '. Key teachings summary: ' + content.substring(0, 300);
+    fetchAIReading(aiPrompt).then(function(text) {
+      if (text) {
+        var userName = document.getElementById('inp-name') ? document.getElementById('inp-name').value.trim() : '';
+        var displayText = userName ? '<span class="highlight">' + userName + ' ji</span>, ' + text : text;
+        document.getElementById('reading-box').classList.add('show');
+        document.getElementById('reading-answer-text').innerHTML = displayText.replace(/\n\n/g, '<br><br>').replace(/\n/g, '<br>');
+        document.getElementById('reading-actions').style.display = 'flex';
+        document.getElementById('reading-loading').style.display = 'none';
+        document.getElementById('reading-dots').style.display = 'none';
+        document.getElementById('reading-orb').style.display = 'none';
+      }
+    });
   } else {
     document.getElementById('reading-orb').style.display = 'none';
     document.getElementById('reading-loading').style.display = 'none';
