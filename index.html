@@ -847,39 +847,40 @@
     </div>
   </div>
 
-  <p class="question-label">✨ Kya Jaanna Chahte Ho?</p>
+  <p class="question-label" id="sanatan-title" style="font-size:16px;letter-spacing:2px;margin-bottom:6px;">✨ Sanatan Hi Satya Hai</p>
+  <p id="sanatan-subtitle" style="text-align:center;font-style:italic;color:rgba(100,220,100,0.85);font-size:16px;font-weight:600;margin-bottom:14px;">Janiye Apne Sanatan Dharm Ko</p>
   <div id="free-counter" style="font-size:12px;color:rgba(100,220,100,0.8);margin-bottom:14px;letter-spacing:0.5px;">&#10022; 3 free readings baaki hai</div>
 
   <button class="question-btn" onclick="openLockedScripture(showBhagavadGita,'भगवद्गीता — सम्पूर्ण १८ अध्याय','🪷')" style="position:relative;">
     <span class="q-icon">🪷</span>
-    <span>भगवद्गीता — सम्पूर्ण १८ अध्याय</span>
+    <span class="q-text">भगवद्गीता — सम्पूर्ण १८ अध्याय</span>
     <span style="position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:18px;">👑</span>
   </button>
   <button class="question-btn" onclick="showRamayana()">
     <span class="q-icon">🏹</span>
-    <span>रामायण — सम्पूर्ण ७ काण्ड</span>
+    <span class="q-text">रामायण — सम्पूर्ण ७ काण्ड</span>
   </button>
   <button class="question-btn" onclick="openLockedScripture(showMahabharata,'महाभारत — सम्पूर्ण १८ पर्व','⚔️')" style="position:relative;">
     <span class="q-icon">⚔️</span>
-    <span>महाभारत — सम्पूर्ण १८ पर्व</span>
+    <span class="q-text">महाभारत — सम्पूर्ण १८ पर्व</span>
     <span style="position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:18px;">👑</span>
   </button>
   <button class="question-btn" id="garuda-btn" style="position:relative;">
     <span class="q-icon">🦅</span>
-    <span>गरुड़ पुराण — सम्पूर्ण अध्याय</span>
+    <span class="q-text">गरुड़ पुराण — सम्पूर्ण अध्याय</span>
     <span style="position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:18px;">👑</span>
   </button>
   <button class="question-btn" onclick="showHanumanChalisa()">
     <span class="q-icon">🙏</span>
-    <span>हनुमान चालीसा — सम्पूर्ण पाठ</span>
+    <span class="q-text">हनुमान चालीसा — सम्पूर्ण पाठ</span>
   </button>
   <button class="question-btn" onclick="showHanumanBenefits()">
     <span class="q-icon">✨</span>
-    <span>हनुमान चालीसा — पाठ से क्या मिलता है?</span>
+    <span class="q-text">हनुमान चालीसा — पाठ से क्या मिलता है?</span>
   </button>
   <button class="question-btn" onclick="openLockedScripture(showShivPuran,'शिव पुराण — सम्पूर्ण ७ संहिता','🔱')" style="position:relative;">
     <span class="q-icon">🔱</span>
-    <span>शिव पुराण — सम्पूर्ण ७ संहिता</span>
+    <span class="q-text">शिव पुराण — सम्पूर्ण ७ संहिता</span>
     <span style="position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:18px;">👑</span>
   </button>
 
@@ -1846,6 +1847,27 @@ const readings = {
   ]
 };
 
+const readingsEn = {
+  default: [
+    "The position of your planets is very auspicious right now. {name}The conjunction of Venus and Jupiter is bringing fresh hope into your life. {break}In the next 30 days, you will get an opportunity that can change your life. Stay ready and listen to your heart.",
+    "{name}Lord Shani's grace is with you. Hard work never goes to waste — the seeds you sowed long ago are now ready to bear fruit. {break}Be patient, success is near.",
+    "Mars is giving you strength. {name}Your fortune is about to take a new turn this month. {break}Trust the people who stand by you. A new relationship or friend will play a very important role in your life.",
+  ],
+  love: [
+    "{name}Venus is bringing sweetness into your love life. If your relationship with someone special has broken, the stars say — a path can open up if there is true affection on both sides. {break}Keep your heart pure and have faith.",
+    "{name}Your romantic relationship will soon take a new turn. The Moon is bringing light into your love life. {break}In the coming weeks, a special meeting could win your heart.",
+  ],
+  career: [
+    "{name}Jupiter is supporting your career. The fruits of your hard work are on their way — there is a possibility of a new job or promotion in the next 45 days. {break}Stay confident in interviews, success is assured.",
+  ]
+};
+
+function getReadingsPool() {
+  return currentLang === 'en' ? readingsEn : readings;
+}
+
+
+
 let currentQuestion = '';
 let currentIcon = '';
 let pendingScriptureFn = null;
@@ -1883,10 +1905,11 @@ function goToReading(question, icon) {
 
   setTimeout(() => {
     // pick reading
-    let pool = readings.default;
+    const langPool = getReadingsPool();
+    let pool = langPool.default;
     const q = question.toLowerCase();
-    if (q.includes('pyaar') || q.includes('ex') || q.includes('shaadi') || q.includes('prem')) pool = readings.love;
-    if (q.includes('job') || q.includes('career') || q.includes('naukri')) pool = readings.career;
+    if (q.includes('pyaar') || q.includes('ex') || q.includes('shaadi') || q.includes('prem') || q.includes('love')) pool = langPool.love;
+    if (q.includes('job') || q.includes('career') || q.includes('naukri')) pool = langPool.career;
 
     const raw = pool[Math.floor(Math.random() * pool.length)];
     let text = raw
@@ -2747,12 +2770,17 @@ function setLanguage(lang) {
   const hiBtn = document.getElementById('lang-hi');
   const enBtn = document.getElementById('lang-en');
 
+  const sanatanTitle = document.getElementById('sanatan-title');
+  const sanatanSub = document.getElementById('sanatan-subtitle');
+
   if (lang === 'hi') {
     hiBtn.style.background = 'linear-gradient(135deg,#D4AF37,#F5D96B)';
     hiBtn.style.color = '#0A0612';
     enBtn.style.background = 'transparent';
     enBtn.style.color = 'rgba(255,255,255,0.5)';
     showToast('हिंदी भाषा चुनी गई! 🇮🇳');
+    if (sanatanTitle) sanatanTitle.textContent = '✨ सनातन ही सत्य है';
+    if (sanatanSub) sanatanSub.textContent = 'जानिए अपने सनातन धर्म को';
     // Update questions to Hindi
     updateQuestions('hi');
   } else {
@@ -2761,6 +2789,8 @@ function setLanguage(lang) {
     hiBtn.style.background = 'transparent';
     hiBtn.style.color = 'rgba(255,255,255,0.5)';
     showToast('English language selected! 🌍');
+    if (sanatanTitle) sanatanTitle.textContent = '✨ Sanatan Is The Truth';
+    if (sanatanSub) sanatanSub.textContent = 'Know Your Sanatan Dharma';
     // Update questions to English
     updateQuestions('en');
   }
@@ -2791,7 +2821,8 @@ function updateQuestions(lang) {
   const btns = document.querySelectorAll('.question-btn');
   btns.forEach((btn, i) => {
     if (questions[i]) {
-      btn.querySelector('span:last-child').textContent = questions[i].text;
+      const textSpan = btn.querySelector('.q-text');
+      if (textSpan) textSpan.textContent = questions[i].text;
       btn.querySelector('.q-icon').textContent = questions[i].icon;
     }
   });
@@ -3067,10 +3098,11 @@ window.goToReadingWithAI = async function(question, icon) {
   const displayText = aiText 
     ? (userName ? `<span class="highlight">${userName} ji</span>, ` : '') + aiText.replace(/\n\n/g, '<br><br>').replace(/\n/g, '<br>')
     : (() => {
-        let pool = readings.default;
+        const langPool = getReadingsPool();
+        let pool = langPool.default;
         const q = question.toLowerCase();
-        if (q.includes('pyaar')||q.includes('ex')||q.includes('shaadi')) pool = readings.love;
-        if (q.includes('job')||q.includes('career')) pool = readings.career;
+        if (q.includes('pyaar')||q.includes('ex')||q.includes('shaadi')||q.includes('love')) pool = langPool.love;
+        if (q.includes('job')||q.includes('career')) pool = langPool.career;
         const raw = pool[Math.floor(Math.random()*pool.length)];
         return raw.replace(/{name}/g, userName ? `<span class="highlight">${userName} ji</span>, ` : '').replace(/{break}/g, '<br><br>');
       })();
