@@ -2054,77 +2054,407 @@ setInterval(rotateAds, 5000); // Change every 5 seconds
 // ========== BHAGAVAD GITA ==========
 const gitaChapters = [
   {
-    ch: 1, title: 'अर्जुन विषाद योग', shlokas: 47, en: 'Arjuna Vishada Yoga',
-    content: `🪷 अध्याय १ — अर्जुन विषाद योग\n(४७ श्लोक)\n\n📖 विषय:\nकुरुक्षेत्र के मैदान में दोनों सेनाएँ खड़ी हैं। अर्जुन अपने रथ को दोनों सेनाओं के बीच में ले जाने को कहते हैं।\n\nअर्जुन ने देखा — गुरु द्रोण, पितामह भीष्म, चाचा, भाई, मित्र सब विपक्ष में खड़े हैं।\n\nअर्जुन का मन डगमगाया। उनके हाथ काँपे, धनुष गिरा, वे रथ में बैठ गए।\n\n🔑 मुख्य श्लोक:\n"दृष्ट्वेमं स्वजनं कृष्ण युयुत्सुं समुपस्थितम्।\nसीदन्ति मम गात्राणि मुखं च परिशुष्यति॥"\n\n(अपने स्वजनों को युद्ध के लिए तैयार देखकर हे कृष्ण! मेरे अंग शिथिल हो रहे हैं और मुँह सूख रहा है।)\n\n📿 सार: जब मनुष्य मोह में फँसता है तो कर्तव्य भूल जाता है। यही अर्जुन की स्थिति थी।`
+    ch: 1,
+    title: 'अर्जुन विषाद योग',
+    en: 'Arjuna Vishada Yoga',
+    shlokas: 47,
+    content: `🪷 अध्याय १ — अर्जुन विषाद योग\n(४७ श्लोक)\n\n📖 विषय:\nकुरुक्षेत्र के मैदान में दोनों सेनाएँ खड़ी हैं। अर्जुन अपने रथ को दोनों सेनाओं के बीच में ले जाने को कहते हैं।\n\nअर्जुन ने देखा — गुरु द्रोण, पितामह भीष्म, चाचा, भाई, मित्र सब विपक्ष में खड़े हैं।\n\nअर्जुन का मन डगमगाया। उनके हाथ काँपे, धनुष गिरा, वे रथ में बैठ गए।\n\n🔑 मुख्य श्लोक:\n"दृष्ट्वेमं स्वजनं कृष्ण युयुत्सुं समुपस्थितम्।\nसीदन्ति मम गात्राणि मुखं च परिशुष्यति॥"\n\n(अपने स्वजनों को युद्ध के लिए तैयार देखकर हे कृष्ण! मेरे अंग शिथिल हो रहे हैं और मुँह सूख रहा है।)\n\n📿 सार: जब मनुष्य मोह में फँसता है तो कर्तव्य भूल जाता है। यही अर्जुन की स्थिति थी।`,
+    contentEn: `🪷 Chapter 1 — Arjuna Vishada Yoga (The Yoga of Arjuna's Grief)
+(47 Shlokas)
+
+📖 Theme:
+Both armies stand ready on the battlefield of Kurukshetra. Arjuna asks Krishna to drive his chariot between the two armies so he can see who he must fight.
+
+Arjuna sees his teacher Drona, grandfather Bhishma, uncles, brothers and friends on the opposing side. His mind wavers, his limbs tremble, his bow slips from his hand.
+
+🔑 Key Verse (1.28):
+"Drishtvemam svajanam krishna yuyutsum samupasthitam,
+sidanti mama gatrani mukham cha parishushyati."
+(Seeing my own kinsmen arrayed for battle, O Krishna, my limbs give way and my mouth goes dry.)
+
+📿 Summary: When attachment and illusion overcome a person, they forget their duty. This was Arjuna's crisis.`
   },
   {
-    ch: 2, title: 'सांख्य योग', shlokas: 72, en: 'Sankhya Yoga',
-    content: `🪷 अध्याय २ — सांख्य योग\n(७२ श्लोक)\n\n📖 विषय:\nगीता का सबसे महत्वपूर्ण अध्याय। श्रीकृष्ण ने आत्मा का ज्ञान दिया।\n\n🔑 मुख्य उपदेश:\n\n"न जायते म्रियते वा कदाचिन्\nनायं भूत्वा भविता वा न भूयः।\nअजो नित्यः शाश्वतोऽयं पुराणो\nन हन्यते हन्यमाने शरीरे॥" (२.२०)\n\n(आत्मा न जन्म लेती है न मरती है। यह अजन्मी, नित्य, शाश्वत और पुरातन है। शरीर के मारे जाने पर भी यह नहीं मारी जाती।)\n\n"वासांसि जीर्णानि यथा विहाय\nनवानि गृह्णाति नरोऽपराणि।\nतथा शरीराणि विहाय जीर्णा-\nन्यन्यानि संयाति नवानि देही॥" (२.२२)\n\n(जैसे मनुष्य पुराने वस्त्र उतारकर नए वस्त्र पहनता है, वैसे ही आत्मा पुराने शरीर छोड़कर नए शरीर धारण करती है।)\n\n"कर्मण्येवाधिकारस्ते मा फलेषु कदाचन।\nमा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥" (२.४७)\n\n(कर्म करने में ही तेरा अधिकार है, फल में कभी नहीं। कर्मफल की इच्छा मत कर और अकर्म में भी आसक्त मत हो।)\n\n📿 सार: आत्मा अमर है। कर्म करो, फल की चिंता मत करो।`
+    ch: 2,
+    title: 'सांख्य योग',
+    en: 'Sankhya Yoga',
+    shlokas: 72,
+    content: `🪷 अध्याय २ — सांख्य योग\n(७२ श्लोक)\n\n📖 विषय:\nगीता का सबसे महत्वपूर्ण अध्याय। श्रीकृष्ण ने आत्मा का ज्ञान दिया।\n\n🔑 मुख्य उपदेश:\n\n"न जायते म्रियते वा कदाचिन्\nनायं भूत्वा भविता वा न भूयः।\nअजो नित्यः शाश्वतोऽयं पुराणो\nन हन्यते हन्यमाने शरीरे॥" (२.२०)\n\n(आत्मा न जन्म लेती है न मरती है। यह अजन्मी, नित्य, शाश्वत और पुरातन है। शरीर के मारे जाने पर भी यह नहीं मारी जाती।)\n\n"वासांसि जीर्णानि यथा विहाय\nनवानि गृह्णाति नरोऽपराणि।\nतथा शरीराणि विहाय जीर्णा-\nन्यन्यानि संयाति नवानि देही॥" (२.२२)\n\n(जैसे मनुष्य पुराने वस्त्र उतारकर नए वस्त्र पहनता है, वैसे ही आत्मा पुराने शरीर छोड़कर नए शरीर धारण करती है।)\n\n"कर्मण्येवाधिकारस्ते मा फलेषु कदाचन।\nमा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥" (२.४७)\n\n(कर्म करने में ही तेरा अधिकार है, फल में कभी नहीं। कर्मफल की इच्छा मत कर और अकर्म में भी आसक्त मत हो।)\n\n📿 सार: आत्मा अमर है। कर्म करो, फल की चिंता मत करो।`,
+    contentEn: `🪷 Chapter 2 — Sankhya Yoga (The Yoga of Knowledge)
+(72 Shlokas)
+
+📖 Theme:
+The most important chapter of the Gita. Krishna gives Arjuna knowledge of the eternal soul (Atma).
+
+🔑 Key Verses:
+(2.20) "Na jayate mriyate va kadachin..." — The soul is never born and never dies. It is unborn, eternal, ever-existing. It is not slain when the body is slain.
+
+(2.22) "Vasamsi jirnani yatha vihaya..." — Just as a person discards worn-out clothes and puts on new ones, the soul casts off worn-out bodies and enters new ones.
+
+(2.47) "Karmanyevadhikaraste ma phaleshu kadachana..." — You have a right to perform your duty, but never to the fruits of action. Never let the result be your motive, nor be attached to inaction.
+
+📿 Summary: The soul is immortal. Perform your duty without worrying about the result.`
   },
   {
-    ch: 3, title: 'कर्म योग', shlokas: 43, en: 'Karma Yoga',
-    content: `🪷 अध्याय ३ — कर्म योग\n(४३ श्लोक)\n\n📖 विषय:\nकर्म के बिना कोई नहीं रह सकता। निष्काम कर्म ही मोक्ष का मार्ग है।\n\n🔑 मुख्य उपदेश:\n\n"नियतं कुरु कर्म त्वं कर्म ज्यायो ह्यकर्मणः।\nशरीरयात्रापि च ते न प्रसिद्ध्येदकर्मणः॥" (३.८)\n\n(नियत कर्म कर — कर्म अकर्म से श्रेष्ठ है। कर्म न करने से तेरा शरीर निर्वाह भी नहीं हो सकता।)\n\n"यज्ञार्थात्कर्मणोऽन्यत्र लोकोऽयं कर्मबन्धनः।\nतदर्थं कर्म कौन्तेय मुक्तसङ्गः समाचर॥" (३.९)\n\n(यज्ञ के लिए किए कर्म के अतिरिक्त इस संसार में कर्म से बंधन होता है।)\n\n"श्रेयान्स्वधर्मो विगुणः परधर्मात्स्वनुष्ठितात्।\nस्वधर्मे निधनं श्रेयः परधर्मो भयावहः॥" (३.३५)\n\n(दूसरे के धर्म का अच्छी तरह पालन करने से अपना धर्म गुणहीन होने पर भी श्रेष्ठ है। अपने धर्म में मरना भी कल्याणकारी है।)\n\n📿 सार: अपना कर्तव्य करते रहो — यही जीवन का सत्य है।`
+    ch: 3,
+    title: 'कर्म योग',
+    en: 'Karma Yoga',
+    shlokas: 43,
+    content: `🪷 अध्याय ३ — कर्म योग\n(४३ श्लोक)\n\n📖 विषय:\nकर्म के बिना कोई नहीं रह सकता। निष्काम कर्म ही मोक्ष का मार्ग है।\n\n🔑 मुख्य उपदेश:\n\n"नियतं कुरु कर्म त्वं कर्म ज्यायो ह्यकर्मणः।\nशरीरयात्रापि च ते न प्रसिद्ध्येदकर्मणः॥" (३.८)\n\n(नियत कर्म कर — कर्म अकर्म से श्रेष्ठ है। कर्म न करने से तेरा शरीर निर्वाह भी नहीं हो सकता।)\n\n"यज्ञार्थात्कर्मणोऽन्यत्र लोकोऽयं कर्मबन्धनः।\nतदर्थं कर्म कौन्तेय मुक्तसङ्गः समाचर॥" (३.९)\n\n(यज्ञ के लिए किए कर्म के अतिरिक्त इस संसार में कर्म से बंधन होता है।)\n\n"श्रेयान्स्वधर्मो विगुणः परधर्मात्स्वनुष्ठितात्।\nस्वधर्मे निधनं श्रेयः परधर्मो भयावहः॥" (३.३५)\n\n(दूसरे के धर्म का अच्छी तरह पालन करने से अपना धर्म गुणहीन होने पर भी श्रेष्ठ है। अपने धर्म में मरना भी कल्याणकारी है।)\n\n📿 सार: अपना कर्तव्य करते रहो — यही जीवन का सत्य है।`,
+    contentEn: `🪷 Chapter 3 — Karma Yoga (The Yoga of Action)
+(43 Shlokas)
+
+📖 Theme:
+No one can live without action. Selfless action (Nishkama Karma) is the path to liberation.
+
+🔑 Key Verses:
+(3.8) Perform your prescribed duty — action is better than inaction. Even maintaining your body is impossible without action.
+
+(3.35) "Shreyan svadharmo vigunah paradharmat svanushthitat..." — It is far better to perform one's own duty imperfectly than to do another's duty perfectly. It is better to die in one's own duty.
+
+📿 Summary: Keep performing your duty — this is the truth of life.`
   },
   {
-    ch: 4, title: 'ज्ञान कर्म संन्यास योग', shlokas: 42, en: 'Jnana Karma Sanyasa Yoga',
-    content: `🪷 अध्याय ४ — ज्ञान कर्म संन्यास योग\n(४२ श्लोक)\n\n📖 विषय:\nईश्वर का अवतार सिद्धांत और ज्ञान की महिमा।\n\n🔑 मुख्य उपदेश:\n\n"यदा यदा हि धर्मस्य ग्लानिर्भवति भारत।\nअभ्युत्थानमधर्मस्य तदात्मानं सृजाम्यहम्॥" (४.७)\n\n(हे भारत! जब-जब धर्म की हानि और अधर्म की वृद्धि होती है, तब-तब मैं स्वयं को प्रकट करता हूँ।)\n\n"परित्राणाय साधूनां विनाशाय च दुष्कृताम्।\nधर्मसंस्थापनार्थाय सम्भवामि युगे युगे॥" (४.८)\n\n(साधुओं की रक्षा के लिए, दुष्टों के नाश के लिए और धर्म की स्थापना के लिए मैं युग-युग में जन्म लेता हूँ।)\n\n"श्रद्धावान्लभते ज्ञानं तत्परः संयतेन्द्रियः।\nज्ञानं लब्ध्वा परां शान्तिमचिरेणाधिगच्छति॥" (४.३९)\n\n(श्रद्धावान, तत्पर और इंद्रियों को वश में रखने वाला ज्ञान पाता है और ज्ञान पाकर शीघ्र परम शांति को प्राप्त होता है।)\n\n📿 सार: ईश्वर हर युग में धर्म की रक्षा के लिए आते हैं।`
+    ch: 4,
+    title: 'ज्ञान कर्म संन्यास योग',
+    en: 'Jnana Karma Sanyasa Yoga',
+    shlokas: 42,
+    content: `🪷 अध्याय ४ — ज्ञान कर्म संन्यास योग\n(४२ श्लोक)\n\n📖 विषय:\nईश्वर का अवतार सिद्धांत और ज्ञान की महिमा।\n\n🔑 मुख्य उपदेश:\n\n"यदा यदा हि धर्मस्य ग्लानिर्भवति भारत।\nअभ्युत्थानमधर्मस्य तदात्मानं सृजाम्यहम्॥" (४.७)\n\n(हे भारत! जब-जब धर्म की हानि और अधर्म की वृद्धि होती है, तब-तब मैं स्वयं को प्रकट करता हूँ।)\n\n"परित्राणाय साधूनां विनाशाय च दुष्कृताम्।\nधर्मसंस्थापनार्थाय सम्भवामि युगे युगे॥" (४.८)\n\n(साधुओं की रक्षा के लिए, दुष्टों के नाश के लिए और धर्म की स्थापना के लिए मैं युग-युग में जन्म लेता हूँ।)\n\n"श्रद्धावान्लभते ज्ञानं तत्परः संयतेन्द्रियः।\nज्ञानं लब्ध्वा परां शान्तिमचिरेणाधिगच्छति॥" (४.३९)\n\n(श्रद्धावान, तत्पर और इंद्रियों को वश में रखने वाला ज्ञान पाता है और ज्ञान पाकर शीघ्र परम शांति को प्राप्त होता है।)\n\n📿 सार: ईश्वर हर युग में धर्म की रक्षा के लिए आते हैं।`,
+    contentEn: `🪷 Chapter 4 — Jnana Karma Sanyasa Yoga (Knowledge, Action and Renunciation)
+(42 Shlokas)
+
+📖 Theme:
+The principle of divine incarnation and the glory of true knowledge.
+
+🔑 Key Verses:
+(4.7) "Yada yada hi dharmasya glanir bhavati bharata..." — Whenever righteousness declines and unrighteousness rises, I manifest Myself.
+
+(4.8) "Paritranaya sadhunam vinashaya cha dushkritam..." — To protect the righteous, destroy the wicked, and re-establish righteousness, I appear age after age.
+
+(4.39) One who has faith and has mastered their senses attains knowledge, and having attained it, quickly reaches supreme peace.
+
+📿 Summary: God incarnates in every age to protect dharma.`
   },
   {
-    ch: 5, title: 'कर्म संन्यास योग', shlokas: 29, en: 'Karma Sanyasa Yoga',
-    content: `🪷 अध्याय ५ — कर्म संन्यास योग\n(२९ श्लोक)\n\n📖 विषय:\nकर्म संन्यास और कर्म योग में श्रेष्ठता का प्रश्न।\n\n🔑 मुख्य उपदेश:\n\n"सन्न्यासः कर्मयोगश्च निःश्रेयसकरावुभौ।\nतयोस्तु कर्मसन्न्यासात्कर्मयोगो विशिष्यते॥" (५.२)\n\n(कर्म संन्यास और कर्म योग दोनों परम कल्याण करने वाले हैं। परंतु दोनों में कर्म संन्यास की अपेक्षा कर्म योग श्रेष्ठ है।)\n\n"ब्रह्मण्याधाय कर्माणि सङ्गं त्यक्त्वा करोति यः।\nलिप्यते न स पापेन पद्मपत्रमिवाम्भसा॥" (५.१०)\n\n(जो व्यक्ति सब कर्म ब्रह्म को अर्पण करके आसक्ति छोड़कर करता है, वह पाप से ऐसे नहीं लिपता जैसे कमल पत्र जल से नहीं।)\n\n📿 सार: संसार में रहकर भी निर्लिप्त रहना — यही सच्चा संन्यास है।`
+    ch: 5,
+    title: 'कर्म संन्यास योग',
+    en: 'Karma Sanyasa Yoga',
+    shlokas: 29,
+    content: `🪷 अध्याय ५ — कर्म संन्यास योग\n(२९ श्लोक)\n\n📖 विषय:\nकर्म संन्यास और कर्म योग में श्रेष्ठता का प्रश्न।\n\n🔑 मुख्य उपदेश:\n\n"सन्न्यासः कर्मयोगश्च निःश्रेयसकरावुभौ।\nतयोस्तु कर्मसन्न्यासात्कर्मयोगो विशिष्यते॥" (५.२)\n\n(कर्म संन्यास और कर्म योग दोनों परम कल्याण करने वाले हैं। परंतु दोनों में कर्म संन्यास की अपेक्षा कर्म योग श्रेष्ठ है।)\n\n"ब्रह्मण्याधाय कर्माणि सङ्गं त्यक्त्वा करोति यः।\nलिप्यते न स पापेन पद्मपत्रमिवाम्भसा॥" (५.१०)\n\n(जो व्यक्ति सब कर्म ब्रह्म को अर्पण करके आसक्ति छोड़कर करता है, वह पाप से ऐसे नहीं लिपता जैसे कमल पत्र जल से नहीं।)\n\n📿 सार: संसार में रहकर भी निर्लिप्त रहना — यही सच्चा संन्यास है।`,
+    contentEn: `🪷 Chapter 5 — Karma Sanyasa Yoga (Renunciation of Action)
+(29 Shlokas)
+
+📖 Theme:
+Which is superior — renunciation of action, or selfless action?
+
+🔑 Key Verses:
+(5.2) Both renunciation and selfless action lead to liberation. But of the two, selfless action is superior to mere renunciation.
+
+(5.10) "Brahmanyadhaya karmani sangam tyaktva karoti yah..." — One who performs all actions offering them to the Divine, abandoning attachment, remains untouched by sin — just as a lotus leaf is untouched by water.
+
+📿 Summary: Living in the world yet remaining unattached — this is true renunciation.`
   },
   {
-    ch: 6, title: 'आत्मसंयम योग', shlokas: 47, en: 'Atma Sanyama Yoga',
-    content: `🪷 अध्याय ६ — आत्मसंयम योग\n(४७ श्लोक)\n\n📖 विषय:\nध्यान योग और मन को वश में करने का मार्ग।\n\n🔑 मुख्य उपदेश:\n\n"उद्धरेदात्मनात्मानं नात्मानमवसादयेत्।\nआत्मैव ह्यात्मनो बन्धुरात्मैव रिपुरात्मनः॥" (६.५)\n\n(अपने द्वारा अपना उद्धार करो, अपना पतन मत करो। मन ही मनुष्य का मित्र है और मन ही शत्रु है।)\n\n"शनैः शनैरुपरमेद्बुद्ध्या धृतिगृहीतया।\nआत्मसंस्थं मनः कृत्वा न किञ्चिदपि चिन्तयेत्॥" (६.२५)\n\n(धैर्यशाली बुद्धि से धीरे-धीरे मन को शांत करे और मन को आत्मा में स्थित करके कुछ भी न सोचे।)\n\n"योगी युञ्जीत सततमात्मानं रहसि स्थितः।\nएकाकी यतचित्तात्मा निराशीरपरिग्रहः॥" (६.१०)\n\n(योगी एकांत में स्थित होकर, मन और इंद्रियों को वश में करके, आशारहित और परिग्रहरहित होकर सदा आत्मा को ध्यान में लगाए।)\n\n📿 सार: मन को जीतना ही सबसे बड़ी विजय है।`
+    ch: 6,
+    title: 'आत्मसंयम योग',
+    en: 'Atma Sanyama Yoga',
+    shlokas: 47,
+    content: `🪷 अध्याय ६ — आत्मसंयम योग\n(४७ श्लोक)\n\n📖 विषय:\nध्यान योग और मन को वश में करने का मार्ग।\n\n🔑 मुख्य उपदेश:\n\n"उद्धरेदात्मनात्मानं नात्मानमवसादयेत्।\nआत्मैव ह्यात्मनो बन्धुरात्मैव रिपुरात्मनः॥" (६.५)\n\n(अपने द्वारा अपना उद्धार करो, अपना पतन मत करो। मन ही मनुष्य का मित्र है और मन ही शत्रु है।)\n\n"शनैः शनैरुपरमेद्बुद्ध्या धृतिगृहीतया।\nआत्मसंस्थं मनः कृत्वा न किञ्चिदपि चिन्तयेत्॥" (६.२५)\n\n(धैर्यशाली बुद्धि से धीरे-धीरे मन को शांत करे और मन को आत्मा में स्थित करके कुछ भी न सोचे।)\n\n"योगी युञ्जीत सततमात्मानं रहसि स्थितः।\nएकाकी यतचित्तात्मा निराशीरपरिग्रहः॥" (६.१०)\n\n(योगी एकांत में स्थित होकर, मन और इंद्रियों को वश में करके, आशारहित और परिग्रहरहित होकर सदा आत्मा को ध्यान में लगाए।)\n\n📿 सार: मन को जीतना ही सबसे बड़ी विजय है।`,
+    contentEn: `🪷 Chapter 6 — Atma Sanyama Yoga (The Yoga of Meditation)
+(47 Shlokas)
+
+📖 Theme:
+The path of meditation (Dhyana Yoga) and the mastery of the mind.
+
+🔑 Key Verses:
+(6.5) "Uddhared atmanatmanam natmanam avasadayet..." — One must elevate oneself by one's own efforts, and not degrade oneself. The mind is the friend of the self — and also its enemy.
+
+(6.25) With patient and steady intellect, gradually withdraw the mind and fix it on the soul. Think of nothing else.
+
+(6.10) A yogi should constantly meditate, remaining solitary, with mind and self controlled, free from desire.
+
+📿 Summary: Conquering the mind is the greatest victory of all.`
   },
   {
-    ch: 7, title: 'ज्ञान विज्ञान योग', shlokas: 30, en: 'Jnana Vijnana Yoga',
-    content: `🪷 अध्याय ७ — ज्ञान विज्ञान योग\n(३० श्लोक)\n\n📖 विषय:\nईश्वर के दो रूप — परा और अपरा प्रकृति का ज्ञान।\n\n🔑 मुख्य उपदेश:\n\n"मनुष्याणां सहस्रेषु कश्चिद्यतति सिद्धये।\nयततामपि सिद्धानां कश्चिन्मां वेत्ति तत्त्वतः॥" (७.३)\n\n(हजारों मनुष्यों में कोई एक मुझे पाने का प्रयत्न करता है और उन प्रयत्न करने वालों में भी कोई एक मुझे तत्त्व से जानता है।)\n\n"चतुर्विधा भजन्ते मां जनाः सुकृतिनोऽर्जुन।\nआर्तो जिज्ञासुरर्थार्थी ज्ञानी च भरतर्षभ॥" (७.१६)\n\n(हे अर्जुन! चार प्रकार के पुण्यात्मा मेरी भक्ति करते हैं — आर्त, जिज्ञासु, अर्थार्थी और ज्ञानी।)\n\n📿 सार: ईश्वर को जानना — यही जीवन का परम उद्देश्य है।`
+    ch: 7,
+    title: 'ज्ञान विज्ञान योग',
+    en: 'Jnana Vijnana Yoga',
+    shlokas: 30,
+    content: `🪷 अध्याय ७ — ज्ञान विज्ञान योग\n(३० श्लोक)\n\n📖 विषय:\nईश्वर के दो रूप — परा और अपरा प्रकृति का ज्ञान।\n\n🔑 मुख्य उपदेश:\n\n"मनुष्याणां सहस्रेषु कश्चिद्यतति सिद्धये।\nयततामपि सिद्धानां कश्चिन्मां वेत्ति तत्त्वतः॥" (७.३)\n\n(हजारों मनुष्यों में कोई एक मुझे पाने का प्रयत्न करता है और उन प्रयत्न करने वालों में भी कोई एक मुझे तत्त्व से जानता है।)\n\n"चतुर्विधा भजन्ते मां जनाः सुकृतिनोऽर्जुन।\nआर्तो जिज्ञासुरर्थार्थी ज्ञानी च भरतर्षभ॥" (७.१६)\n\n(हे अर्जुन! चार प्रकार के पुण्यात्मा मेरी भक्ति करते हैं — आर्त, जिज्ञासु, अर्थार्थी और ज्ञानी।)\n\n📿 सार: ईश्वर को जानना — यही जीवन का परम उद्देश्य है।`,
+    contentEn: `🪷 Chapter 7 — Jnana Vijnana Yoga (Knowledge and Wisdom)
+(30 Shlokas)
+
+📖 Theme:
+The two aspects of God — His higher (Para) and lower (Apara) nature.
+
+🔑 Key Verses:
+(7.3) Among thousands of people, scarcely one strives for perfection; and among those who strive, scarcely one knows Me in truth.
+
+(7.16) Four kinds of virtuous people worship Me — the distressed, the seeker of knowledge, the seeker of wealth, and the wise.
+
+📿 Summary: Knowing God in truth is the supreme purpose of life.`
   },
   {
-    ch: 8, title: 'अक्षरब्रह्म योग', shlokas: 28, en: 'Aksara Brahma Yoga',
-    content: `🪷 अध्याय ८ — अक्षरब्रह्म योग\n(२८ श्लोक)\n\n📖 विषय:\nमृत्यु के समय ईश्वर का स्मरण और परलोक।\n\n🔑 मुख्य उपदेश:\n\n"अन्तकाले च मामेव स्मरन्मुक्त्वा कलेवरम्।\nयः प्रयाति स मद्भावं याति नास्त्यत्र संशयः॥" (८.५)\n\n(जो अंत समय में मुझे ही स्मरण करते हुए शरीर छोड़ता है, वह मेरे भाव को प्राप्त होता है — इसमें कोई संशय नहीं।)\n\n"यं यं वापि स्मरन्भावं त्यजत्यन्ते कलेवरम्।\nतं तमेवैति कौन्तेय सदा तद्भावभावितः॥" (८.६)\n\n(हे कुंतीपुत्र! मनुष्य अंत में जिस-जिस भाव को स्मरण करता हुआ शरीर छोड़ता है, वह उसी-उसी भाव को प्राप्त होता है।)\n\n📿 सार: मृत्यु के समय का स्मरण जीवनभर का संचय है।`
+    ch: 8,
+    title: 'अक्षरब्रह्म योग',
+    en: 'Aksara Brahma Yoga',
+    shlokas: 28,
+    content: `🪷 अध्याय ८ — अक्षरब्रह्म योग\n(२८ श्लोक)\n\n📖 विषय:\nमृत्यु के समय ईश्वर का स्मरण और परलोक।\n\n🔑 मुख्य उपदेश:\n\n"अन्तकाले च मामेव स्मरन्मुक्त्वा कलेवरम्।\nयः प्रयाति स मद्भावं याति नास्त्यत्र संशयः॥" (८.५)\n\n(जो अंत समय में मुझे ही स्मरण करते हुए शरीर छोड़ता है, वह मेरे भाव को प्राप्त होता है — इसमें कोई संशय नहीं।)\n\n"यं यं वापि स्मरन्भावं त्यजत्यन्ते कलेवरम्।\nतं तमेवैति कौन्तेय सदा तद्भावभावितः॥" (८.६)\n\n(हे कुंतीपुत्र! मनुष्य अंत में जिस-जिस भाव को स्मरण करता हुआ शरीर छोड़ता है, वह उसी-उसी भाव को प्राप्त होता है।)\n\n📿 सार: मृत्यु के समय का स्मरण जीवनभर का संचय है।`,
+    contentEn: `🪷 Chapter 8 — Aksara Brahma Yoga (The Imperishable Brahman)
+(28 Shlokas)
+
+📖 Theme:
+Remembering God at the time of death, and the soul's journey after leaving the body.
+
+🔑 Key Verses:
+(8.5) Whoever, at the time of death, gives up the body while remembering Me alone — attains My nature. Of this there is no doubt.
+
+(8.6) "Yam yam vapi smaran bhavam tyajatyante kalevaram..." — Whatever state of being one remembers at the time of death, that state one attains — being always absorbed in that thought.
+
+📿 Summary: What we remember at death is the sum of our entire life's practice and devotion.`
   },
   {
-    ch: 9, title: 'राजविद्या राजगुह्य योग', shlokas: 34, en: 'Raja Vidya Raja Guhya Yoga',
-    content: `🪷 अध्याय ९ — राजविद्या राजगुह्य योग\n(३४ श्लोक)\n\n📖 विषय:\nसबसे गोपनीय ज्ञान — भक्ति का मार्ग।\n\n🔑 मुख्य उपदेश:\n\n"अनन्याश्चिन्तयन्तो मां ये जनाः पर्युपासते।\nतेषां नित्याभियुक्तानां योगक्षेमं वहाम्यहम्॥" (९.२२)\n\n(जो मनुष्य अनन्य भाव से मेरा चिंतन करते हुए मेरी उपासना करते हैं, उन नित्य मुझमें लगे हुए का योगक्षेम मैं वहन करता हूँ।)\n\n"पत्रं पुष्पं फलं तोयं यो मे भक्त्या प्रयच्छति।\nतदहं भक्त्युपहृतमश्नामि प्रयतात्मनः॥" (९.२६)\n\n(जो भक्त मुझे पत्र, पुष्प, फल या जल प्रेम से अर्पण करता है, उस शुद्ध चित्त वाले का वह प्रेमपूर्वक अर्पित उपहार मैं स्वीकार करता हूँ।)\n\n📿 सार: भक्ति सबसे सरल और सबसे श्रेष्ठ मार्ग है।`
+    ch: 9,
+    title: 'राजविद्या राजगुह्य योग',
+    en: 'Raja Vidya Raja Guhya Yoga',
+    shlokas: 34,
+    content: `🪷 अध्याय ९ — राजविद्या राजगुह्य योग\n(३४ श्लोक)\n\n📖 विषय:\nसबसे गोपनीय ज्ञान — भक्ति का मार्ग।\n\n🔑 मुख्य उपदेश:\n\n"अनन्याश्चिन्तयन्तो मां ये जनाः पर्युपासते।\nतेषां नित्याभियुक्तानां योगक्षेमं वहाम्यहम्॥" (९.२२)\n\n(जो मनुष्य अनन्य भाव से मेरा चिंतन करते हुए मेरी उपासना करते हैं, उन नित्य मुझमें लगे हुए का योगक्षेम मैं वहन करता हूँ।)\n\n"पत्रं पुष्पं फलं तोयं यो मे भक्त्या प्रयच्छति।\nतदहं भक्त्युपहृतमश्नामि प्रयतात्मनः॥" (९.२६)\n\n(जो भक्त मुझे पत्र, पुष्प, फल या जल प्रेम से अर्पण करता है, उस शुद्ध चित्त वाले का वह प्रेमपूर्वक अर्पित उपहार मैं स्वीकार करता हूँ।)\n\n📿 सार: भक्ति सबसे सरल और सबसे श्रेष्ठ मार्ग है।`,
+    contentEn: `🪷 Chapter 9 — Raja Vidya Raja Guhya Yoga (The Royal Secret)
+(34 Shlokas)
+
+📖 Theme:
+The most secret of all knowledge — the supreme path of devotion (Bhakti).
+
+🔑 Key Verses:
+(9.22) "Ananyash chintayanto mam ye janah paryupasate..." — For those who worship Me with single-minded devotion, always united with Me — I personally carry what they lack and preserve what they have.
+
+(9.26) "Patram pushpam phalam toyam yo me bhaktya prayachchhati..." — Whoever offers Me with devotion a leaf, a flower, a fruit or water — I accept that loving offering from the pure-hearted devotee.
+
+📿 Summary: Devotion is the simplest and greatest of all paths to God.`
   },
   {
-    ch: 10, title: 'विभूति योग', shlokas: 42, en: 'Vibhuti Yoga',
-    content: `🪷 अध्याय १० — विभूति योग\n(४२ श्लोक)\n\n📖 विषय:\nईश्वर की विभूतियाँ — संसार में ईश्वर की अभिव्यक्तियाँ।\n\n🔑 मुख्य उपदेश:\n\n"अहमात्मा गुडाकेश सर्वभूताशयस्थितः।\nअहमादिश्च मध्यं च भूतानामन्त एव च॥" (१०.२०)\n\n(हे गुडाकेश! मैं सब भूतों के हृदय में स्थित आत्मा हूँ। सब भूतों का आदि, मध्य और अंत भी मैं हूँ।)\n\nईश्वर की विभूतियाँ:\n• वृक्षों में मैं पीपल हूँ\n• नदियों में मैं गंगा हूँ\n• पक्षियों में मैं गरुड़ हूँ\n• पशुओं में मैं सिंह हूँ\n• अक्षरों में मैं 'अ' हूँ\n• समास में मैं द्वंद्व हूँ\n\n📿 सार: जो भी श्रेष्ठ, सुंदर और शक्तिशाली है — वह सब ईश्वर का अंश है।`
+    ch: 10,
+    title: 'विभूति योग',
+    en: 'Vibhuti Yoga',
+    shlokas: 42,
+    content: `🪷 अध्याय १० — विभूति योग\n(४२ श्लोक)\n\n📖 विषय:\nईश्वर की विभूतियाँ — संसार में ईश्वर की अभिव्यक्तियाँ।\n\n🔑 मुख्य उपदेश:\n\n"अहमात्मा गुडाकेश सर्वभूताशयस्थितः।\nअहमादिश्च मध्यं च भूतानामन्त एव च॥" (१०.२०)\n\n(हे गुडाकेश! मैं सब भूतों के हृदय में स्थित आत्मा हूँ। सब भूतों का आदि, मध्य और अंत भी मैं हूँ।)\n\nईश्वर की विभूतियाँ:\n• वृक्षों में मैं पीपल हूँ\n• नदियों में मैं गंगा हूँ\n• पक्षियों में मैं गरुड़ हूँ\n• पशुओं में मैं सिंह हूँ\n• अक्षरों में मैं 'अ' हूँ\n• समास में मैं द्वंद्व हूँ\n\n📿 सार: जो भी श्रेष्ठ, सुंदर और शक्तिशाली है — वह सब ईश्वर का अंश है।`,
+    contentEn: `🪷 Chapter 10 — Vibhuti Yoga (Divine Glories)
+(42 Shlokas)
+
+📖 Theme:
+The divine manifestations (Vibhutis) of God — His glory present in all of creation.
+
+🔑 Key Teachings:
+(10.20) "Ahamatma gudakesha sarvabhutashayasthitah..." — I am the Self residing in the heart of all beings. I am the beginning, the middle, and the end of all creatures.
+
+Divine Glories of God:
+• Among trees — the Peepal (sacred fig)
+• Among rivers — the Ganga
+• Among birds — Garuda
+• Among animals — the lion
+• Among letters — the letter A
+• Among senses — the mind
+
+📿 Summary: Whatever is most excellent, beautiful or powerful in this world — all of it is but a spark of God's infinite glory.`
   },
   {
-    ch: 11, title: 'विश्वरूप दर्शन योग', shlokas: 55, en: 'Vishvarupa Darshana Yoga',
-    content: `🪷 अध्याय ११ — विश्वरूप दर्शन योग\n(५५ श्लोक)\n\n📖 विषय:\nकृष्ण का विश्वरूप — ब्रह्मांड का दर्शन।\n\n🔑 मुख्य घटना:\nअर्जुन ने विश्वरूप देखने की प्रार्थना की। कृष्ण ने दिव्य दृष्टि दी।\n\nअर्जुन ने देखा — असंख्य मुख, असंख्य नेत्र, सूर्य जैसा तेज, सब देवता, सब ब्रह्मांड एक साथ।\n\n"दिवि सूर्यसहस्रस्य भवेद्युगपदुत्थिता।\nयदि भाः सदृशी सा स्याद्भासस्तस्य महात्मनः॥" (११.१२)\n\n(आकाश में एक साथ हजार सूर्य उदय हों तो जो प्रकाश होगा, वह उस महात्मा के प्रकाश के समान हो सकता है।)\n\nअर्जुन ने माँगा — अपना सौम्य चतुर्भुज रूप दिखाओ। कृष्ण ने वापस साधारण रूप लिया।\n\n📿 सार: ईश्वर का विश्वरूप अकल्पनीय है — केवल भक्ति से दर्शन होते हैं।`
+    ch: 11,
+    title: 'विश्वरूप दर्शन योग',
+    en: 'Vishvarupa Darshana Yoga',
+    shlokas: 55,
+    content: `🪷 अध्याय ११ — विश्वरूप दर्शन योग\n(५५ श्लोक)\n\n📖 विषय:\nकृष्ण का विश्वरूप — ब्रह्मांड का दर्शन।\n\n🔑 मुख्य घटना:\nअर्जुन ने विश्वरूप देखने की प्रार्थना की। कृष्ण ने दिव्य दृष्टि दी।\n\nअर्जुन ने देखा — असंख्य मुख, असंख्य नेत्र, सूर्य जैसा तेज, सब देवता, सब ब्रह्मांड एक साथ।\n\n"दिवि सूर्यसहस्रस्य भवेद्युगपदुत्थिता।\nयदि भाः सदृशी सा स्याद्भासस्तस्य महात्मनः॥" (११.१२)\n\n(आकाश में एक साथ हजार सूर्य उदय हों तो जो प्रकाश होगा, वह उस महात्मा के प्रकाश के समान हो सकता है।)\n\nअर्जुन ने माँगा — अपना सौम्य चतुर्भुज रूप दिखाओ। कृष्ण ने वापस साधारण रूप लिया।\n\n📿 सार: ईश्वर का विश्वरूप अकल्पनीय है — केवल भक्ति से दर्शन होते हैं।`,
+    contentEn: `🪷 Chapter 11 — Vishvarupa Darshana Yoga (The Universal Form)
+(55 Shlokas)
+
+📖 Theme:
+Krishna reveals His Universal Form — a simultaneous vision of the entire cosmos.
+
+🔑 Key Event:
+Arjuna prays to see Krishna's Universal Form. Krishna grants him divine sight (Divya Drishti).
+
+Arjuna sees countless faces, countless eyes, radiance brighter than a thousand suns, all gods and the entire universe existing simultaneously in one form.
+
+(11.12) "Divi suryasahasrasya bhaved yugapad utthita..." — If a thousand suns were to rise together in the sky, their combined splendour might resemble the radiance of that Supreme Being.
+
+Overwhelmed, Arjuna begs Krishna to return to His gentle familiar form. Krishna does so with compassion.
+
+📿 Summary: God's Universal Form is beyond imagination — revealed only through pure and selfless devotion.`
   },
   {
-    ch: 12, title: 'भक्ति योग', shlokas: 20, en: 'Bhakti Yoga',
-    content: `🪷 अध्याय १२ — भक्ति योग\n(२० श्लोक)\n\n📖 विषय:\nभक्त के लक्षण और भक्ति मार्ग की श्रेष्ठता।\n\n🔑 मुख्य उपदेश:\n\n"मय्यावेश्य मनो ये मां नित्ययुक्ता उपासते।\nश्रद्धया परयोपेतास्ते मे युक्ततमा मताः॥" (१२.२)\n\n(जो मुझमें मन लगाकर, नित्य मुझसे युक्त होकर, श्रद्धापूर्वक उपासना करते हैं — वे सबसे श्रेष्ठ योगी हैं।)\n\nभक्त के लक्षण:\n• किसी से द्वेष नहीं\n• सबका मित्र\n• सुख-दुख में समभाव\n• क्षमाशील\n• संतुष्ट\n• दृढ़ निश्चयी\n\n📿 सार: भक्ति सबसे सरल — मन से ईश्वर को याद करो, वे सदा साथ हैं।`
+    ch: 12,
+    title: 'भक्ति योग',
+    en: 'Bhakti Yoga',
+    shlokas: 20,
+    content: `🪷 अध्याय १२ — भक्ति योग\n(२० श्लोक)\n\n📖 विषय:\nभक्त के लक्षण और भक्ति मार्ग की श्रेष्ठता।\n\n🔑 मुख्य उपदेश:\n\n"मय्यावेश्य मनो ये मां नित्ययुक्ता उपासते।\nश्रद्धया परयोपेतास्ते मे युक्ततमा मताः॥" (१२.२)\n\n(जो मुझमें मन लगाकर, नित्य मुझसे युक्त होकर, श्रद्धापूर्वक उपासना करते हैं — वे सबसे श्रेष्ठ योगी हैं।)\n\nभक्त के लक्षण:\n• किसी से द्वेष नहीं\n• सबका मित्र\n• सुख-दुख में समभाव\n• क्षमाशील\n• संतुष्ट\n• दृढ़ निश्चयी\n\n📿 सार: भक्ति सबसे सरल — मन से ईश्वर को याद करो, वे सदा साथ हैं।`,
+    contentEn: `🪷 Chapter 12 — Bhakti Yoga (The Yoga of Devotion)
+(20 Shlokas)
+
+📖 Theme:
+The qualities of a true devotee and the supremacy of the path of pure devotion.
+
+🔑 Key Teachings:
+(12.2) Those who fix their minds on Me, constantly devoted, worshipping with supreme faith — I consider them to be the most perfect of all yogis.
+
+Qualities of a true devotee:
+• Free from malice toward all living beings
+• A compassionate friend to all
+• Equanimous in joy and sorrow, success and failure
+• Forgiving, content and self-controlled
+• Firm in resolve and dedicated to God
+
+📿 Summary: Devotion is the simplest path — remember God sincerely, and He is always with you.`
   },
   {
-    ch: 13, title: 'क्षेत्र क्षेत्रज्ञ विभाग योग', shlokas: 35, en: 'Kshetra Kshetrajna Vibhaga Yoga',
-    content: `🪷 अध्याय १३ — क्षेत्र क्षेत्रज्ञ विभाग योग\n(३५ श्लोक)\n\n📖 विषय:\nशरीर (क्षेत्र) और आत्मा (क्षेत्रज्ञ) का विवेचन।\n\n🔑 मुख्य उपदेश:\n\n"इदं शरीरं कौन्तेय क्षेत्रमित्यभिधीयते।\nएतद्यो वेत्ति तं प्राहुः क्षेत्रज्ञ इति तद्विदः॥" (१३.२)\n\n(हे कुंतीपुत्र! यह शरीर क्षेत्र कहलाता है और जो इसे जानता है, उसे क्षेत्रज्ञ कहते हैं।)\n\nज्ञान के लक्षण:\n• अमानित्व (अभिमान न करना)\n• दम्भहीनता\n• अहिंसा\n• क्षमा\n• सरलता\n• गुरु सेवा\n\n📿 सार: शरीर नश्वर है, आत्मा अमर। इस भेद को जानना ही ज्ञान है।`
+    ch: 13,
+    title: 'क्षेत्र क्षेत्रज्ञ विभाग योग',
+    en: 'Kshetra Kshetrajna Vibhaga Yoga',
+    shlokas: 35,
+    content: `🪷 अध्याय १३ — क्षेत्र क्षेत्रज्ञ विभाग योग\n(३५ श्लोक)\n\n📖 विषय:\nशरीर (क्षेत्र) और आत्मा (क्षेत्रज्ञ) का विवेचन।\n\n🔑 मुख्य उपदेश:\n\n"इदं शरीरं कौन्तेय क्षेत्रमित्यभिधीयते।\nएतद्यो वेत्ति तं प्राहुः क्षेत्रज्ञ इति तद्विदः॥" (१३.२)\n\n(हे कुंतीपुत्र! यह शरीर क्षेत्र कहलाता है और जो इसे जानता है, उसे क्षेत्रज्ञ कहते हैं।)\n\nज्ञान के लक्षण:\n• अमानित्व (अभिमान न करना)\n• दम्भहीनता\n• अहिंसा\n• क्षमा\n• सरलता\n• गुरु सेवा\n\n📿 सार: शरीर नश्वर है, आत्मा अमर। इस भेद को जानना ही ज्ञान है।`,
+    contentEn: `🪷 Chapter 13 — Kshetra Kshetrajna Vibhaga Yoga (The Field and the Knower)
+(35 Shlokas)
+
+📖 Theme:
+The fundamental distinction between the body (the field) and the soul (the knower of the field).
+
+🔑 Key Teachings:
+(13.2) "Idam shariram kaunteya kshetram ityabhidhiyate..." — O Arjuna, this body is called the field. One who knows this field is called the knower of the field.
+
+Marks of true knowledge:
+• Absence of pride and pretension
+• Non-violence, patience and forgiveness
+• Simplicity and service to the Guru
+• Purity of heart and steadiness of mind
+
+📿 Summary: The body is perishable — the soul is immortal. Knowing this difference is the beginning of true wisdom.`
   },
   {
-    ch: 14, title: 'गुणत्रय विभाग योग', shlokas: 27, en: 'Gunatraya Vibhaga Yoga',
-    content: `🪷 अध्याय १४ — गुणत्रय विभाग योग\n(२७ श्लोक)\n\n📖 विषय:\nतीन गुण — सत्व, रज और तम का विवेचन।\n\n🔑 मुख्य उपदेश:\n\nतीन गुण:\n• सत्व गुण — ज्ञान, प्रकाश, शांति, सुख\n• रज गुण — क्रिया, इच्छा, लोभ, दुख\n• तम गुण — अज्ञान, आलस्य, निद्रा, प्रमाद\n\n"सत्त्वं सुखे संजयति रजः कर्मणि भारत।\nज्ञानमावृत्य तु तमः प्रमादे संजयत्युत॥" (१४.९)\n\n(सत्व गुण सुख में बाँधता है, रज गुण कर्म में और तम गुण ज्ञान को ढककर प्रमाद में बाँधता है।)\n\n📿 सार: सत्व गुण को बढ़ाओ — यही मुक्ति का मार्ग है।`
+    ch: 14,
+    title: 'गुणत्रय विभाग योग',
+    en: 'Gunatraya Vibhaga Yoga',
+    shlokas: 27,
+    content: `🪷 अध्याय १४ — गुणत्रय विभाग योग\n(२७ श्लोक)\n\n📖 विषय:\nतीन गुण — सत्व, रज और तम का विवेचन।\n\n🔑 मुख्य उपदेश:\n\nतीन गुण:\n• सत्व गुण — ज्ञान, प्रकाश, शांति, सुख\n• रज गुण — क्रिया, इच्छा, लोभ, दुख\n• तम गुण — अज्ञान, आलस्य, निद्रा, प्रमाद\n\n"सत्त्वं सुखे संजयति रजः कर्मणि भारत।\nज्ञानमावृत्य तु तमः प्रमादे संजयत्युत॥" (१४.९)\n\n(सत्व गुण सुख में बाँधता है, रज गुण कर्म में और तम गुण ज्ञान को ढककर प्रमाद में बाँधता है।)\n\n📿 सार: सत्व गुण को बढ़ाओ — यही मुक्ति का मार्ग है।`,
+    contentEn: `🪷 Chapter 14 — Gunatraya Vibhaga Yoga (The Three Gunas)
+(27 Shlokas)
+
+📖 Theme:
+A detailed description of the three qualities (Gunas) of material nature.
+
+🔑 Key Teachings:
+The Three Gunas:
+• Sattva — knowledge, light, peace, clarity and happiness
+• Rajas — activity, passion, ambition, desire and restlessness
+• Tamas — ignorance, laziness, sleep, delusion and negligence
+
+(14.9) Sattva binds one to happiness, Rajas to action, and Tamas — covering knowledge — binds one to negligence and sleep.
+
+The goal is to transcend all three Gunas and attain liberation (Moksha).
+
+📿 Summary: Increase Sattva, reduce Rajas and Tamas — this is the gradual path to freedom.`
   },
   {
-    ch: 15, title: 'पुरुषोत्तम योग', shlokas: 20, en: 'Purushottama Yoga',
-    content: `🪷 अध्याय १५ — पुरुषोत्तम योग\n(२० श्लोक)\n\n📖 विषय:\nअश्वत्थ वृक्ष का रूपक और पुरुषोत्तम परमेश्वर।\n\n🔑 मुख्य उपदेश:\n\n"ऊर्ध्वमूलमधःशाखमश्वत्थं प्राहुरव्ययम्।\nछन्दांसि यस्य पर्णानि यस्तं वेद स वेदवित्॥" (१५.१)\n\n(ऊपर जड़ और नीचे शाखाओं वाले इस संसाररूपी अश्वत्थ वृक्ष को अविनाशी कहते हैं।)\n\n"सर्वस्य चाहं हृदि सन्निविष्टो\nमत्तः स्मृतिर्ज्ञानमपोहनं च।\nवेदैश्च सर्वैरहमेव वेद्यो\nवेदान्तकृद्वेदविदेव चाहम्॥" (१५.१५)\n\n(मैं सब के हृदय में स्थित हूँ। मुझसे ही स्मृति, ज्ञान और अपोहन होता है। सब वेदों से मैं ही जानने योग्य हूँ।)\n\n📿 सार: ईश्वर ही सबका आधार हैं — क्षर, अक्षर और पुरुषोत्तम।`
+    ch: 15,
+    title: 'पुरुषोत्तम योग',
+    en: 'Purushottama Yoga',
+    shlokas: 20,
+    content: `🪷 अध्याय १५ — पुरुषोत्तम योग\n(२० श्लोक)\n\n📖 विषय:\nअश्वत्थ वृक्ष का रूपक और पुरुषोत्तम परमेश्वर।\n\n🔑 मुख्य उपदेश:\n\n"ऊर्ध्वमूलमधःशाखमश्वत्थं प्राहुरव्ययम्।\nछन्दांसि यस्य पर्णानि यस्तं वेद स वेदवित्॥" (१५.१)\n\n(ऊपर जड़ और नीचे शाखाओं वाले इस संसाररूपी अश्वत्थ वृक्ष को अविनाशी कहते हैं।)\n\n"सर्वस्य चाहं हृदि सन्निविष्टो\nमत्तः स्मृतिर्ज्ञानमपोहनं च।\nवेदैश्च सर्वैरहमेव वेद्यो\nवेदान्तकृद्वेदविदेव चाहम्॥" (१५.१५)\n\n(मैं सब के हृदय में स्थित हूँ। मुझसे ही स्मृति, ज्ञान और अपोहन होता है। सब वेदों से मैं ही जानने योग्य हूँ।)\n\n📿 सार: ईश्वर ही सबका आधार हैं — क्षर, अक्षर और पुरुषोत्तम।`,
+    contentEn: `🪷 Chapter 15 — Purushottama Yoga (The Supreme Person)
+(20 Shlokas)
+
+📖 Theme:
+The metaphor of the eternal Ashvattha (banyan) tree, and God as the Supreme Person (Purushottama) who transcends all creation.
+
+🔑 Key Teachings:
+(15.1) There is an imperishable Ashvattha tree with roots above and branches below. Its leaves are the Vedic hymns. One who knows this tree truly knows the Vedas.
+
+(15.15) "Sarvasya chaham hridi sannivishto, mattah smritir jnanam apohanam cha..." — I dwell in the hearts of all beings. From Me come memory, knowledge and their loss. I alone am to be known through all the Vedas.
+
+📿 Summary: God is the eternal root and foundation of all existence — the perishable, the imperishable, and the Supreme beyond both.`
   },
   {
-    ch: 16, title: 'दैवासुर सम्पद् विभाग योग', shlokas: 24, en: 'Daivasura Sampad Vibhaga Yoga',
-    content: `🪷 अध्याय १६ — दैवासुर सम्पद् विभाग योग\n(२४ श्लोक)\n\n📖 विषय:\nदैवी और आसुरी प्रवृत्तियों का भेद।\n\n🔑 मुख्य उपदेश:\n\nदैवी संपद (दिव्य गुण):\n• अभय, शुद्धि, ज्ञान, दान\n• अहिंसा, सत्य, अक्रोध\n• त्याग, शांति, अपैशुनता\n• दया, मृदुता, लज्जा, तेज\n\nआसुरी संपद:\n• दम्भ, दर्प, अभिमान\n• क्रोध, कठोरता, अज्ञान\n\n"त्रिविधं नरकस्येदं द्वारं नाशनमात्मनः।\nकामः क्रोधस्तथा लोभस्तस्मादेतत्त्रयं त्यजेत्॥" (१६.२१)\n\n(काम, क्रोध और लोभ — ये तीन नरक के द्वार हैं। इनका त्याग करना चाहिए।)\n\n📿 सार: दैवी गुण अपनाओ — आसुरी गुण त्यागो।`
+    ch: 16,
+    title: 'दैवासुर सम्पद् विभाग योग',
+    en: 'Daivasura Sampad Vibhaga Yoga',
+    shlokas: 24,
+    content: `🪷 अध्याय १६ — दैवासुर सम्पद् विभाग योग\n(२४ श्लोक)\n\n📖 विषय:\nदैवी और आसुरी प्रवृत्तियों का भेद।\n\n🔑 मुख्य उपदेश:\n\nदैवी संपद (दिव्य गुण):\n• अभय, शुद्धि, ज्ञान, दान\n• अहिंसा, सत्य, अक्रोध\n• त्याग, शांति, अपैशुनता\n• दया, मृदुता, लज्जा, तेज\n\nआसुरी संपद:\n• दम्भ, दर्प, अभिमान\n• क्रोध, कठोरता, अज्ञान\n\n"त्रिविधं नरकस्येदं द्वारं नाशनमात्मनः।\nकामः क्रोधस्तथा लोभस्तस्मादेतत्त्रयं त्यजेत्॥" (१६.२१)\n\n(काम, क्रोध और लोभ — ये तीन नरक के द्वार हैं। इनका त्याग करना चाहिए।)\n\n📿 सार: दैवी गुण अपनाओ — आसुरी गुण त्यागो।`,
+    contentEn: `🪷 Chapter 16 — Daivasura Sampad Vibhaga Yoga (Divine and Demonic Natures)
+(24 Shlokas)
+
+📖 Theme:
+A clear distinction between the divine and demonic qualities that exist in human beings.
+
+🔑 Key Teachings:
+Divine Qualities (lead to liberation):
+• Fearlessness, purity of heart, generosity
+• Non-violence, truthfulness, freedom from anger and greed
+• Compassion, gentleness, modesty and vigour
+
+Demonic Qualities (lead to bondage):
+• Hypocrisy, arrogance, excessive pride
+• Anger, harshness, ignorance of right and wrong
+
+(16.21) Lust, anger and greed — these three are the gateways to hell, destroying the soul. One must abandon all three.
+
+📿 Summary: Cultivate divine qualities — recognise and abandon the demonic ones within yourself.`
   },
   {
-    ch: 17, title: 'श्रद्धात्रय विभाग योग', shlokas: 28, en: 'Shraddhatraya Vibhaga Yoga',
-    content: `🪷 अध्याय १७ — श्रद्धात्रय विभाग योग\n(२८ श्लोक)\n\n📖 विषय:\nतीन प्रकार की श्रद्धा, आहार, यज्ञ और तप।\n\n🔑 मुख्य उपदेश:\n\nतीन प्रकार की श्रद्धा:\n• सात्विक — देवताओं की पूजा\n• राजसिक — यक्ष-राक्षसों की पूजा\n• तामसिक — प्रेत-भूतों की पूजा\n\nतीन प्रकार का आहार:\n• सात्विक — आयु, बल, स्वास्थ्य बढ़ाने वाला\n• राजसिक — कटु, खट्टा, नमकीन, बहुत गरम\n• तामसिक — बासी, सड़ा, अपवित्र\n\n"ओम् तत् सत् — इति निर्देशो ब्रह्मणस्त्रिविधः स्मृतः।"\n\n📿 सार: श्रद्धा से किया हर कार्य फलदायी होता है।`
+    ch: 17,
+    title: 'श्रद्धात्रय विभाग योग',
+    en: 'Shraddhatraya Vibhaga Yoga',
+    shlokas: 28,
+    content: `🪷 अध्याय १७ — श्रद्धात्रय विभाग योग\n(२८ श्लोक)\n\n📖 विषय:\nतीन प्रकार की श्रद्धा, आहार, यज्ञ और तप।\n\n🔑 मुख्य उपदेश:\n\nतीन प्रकार की श्रद्धा:\n• सात्विक — देवताओं की पूजा\n• राजसिक — यक्ष-राक्षसों की पूजा\n• तामसिक — प्रेत-भूतों की पूजा\n\nतीन प्रकार का आहार:\n• सात्विक — आयु, बल, स्वास्थ्य बढ़ाने वाला\n• राजसिक — कटु, खट्टा, नमकीन, बहुत गरम\n• तामसिक — बासी, सड़ा, अपवित्र\n\n"ओम् तत् सत् — इति निर्देशो ब्रह्मणस्त्रिविधः स्मृतः।"\n\n📿 सार: श्रद्धा से किया हर कार्य फलदायी होता है।`,
+    contentEn: `🪷 Chapter 17 — Shraddhatraya Vibhaga Yoga (Three Kinds of Faith)
+(28 Shlokas)
+
+📖 Theme:
+The three kinds of faith, food, sacrifice and austerity — corresponding to the three Gunas.
+
+🔑 Key Teachings:
+Three Kinds of Faith:
+• Sattvic — worship of the gods with a pure, selfless heart
+• Rajasic — worship driven by ego, pride and desire for recognition
+• Tamasic — worship of spirits and ghosts out of fear or superstition
+
+Three Kinds of Food:
+• Sattvic — wholesome, nourishing, increases vitality, health and clarity
+• Rajasic — bitter, sour, very salty or spicy — causes restlessness
+• Tamasic — stale, putrid, leftover or impure — causes dullness
+
+"Om Tat Sat" — this threefold eternal expression denotes the Supreme Brahman.
+
+📿 Summary: Every sincere action performed with pure faith bears fruit.`
   },
   {
-    ch: 18, title: 'मोक्ष संन्यास योग', shlokas: 78, en: 'Moksha Sanyasa Yoga',
-    content: `🪷 अध्याय १८ — मोक्ष संन्यास योग\n(७८ श्लोक — अंतिम और सबसे बड़ा अध्याय)\n\n📖 विषय:\nगीता का सार — भक्ति, ज्ञान और कर्म का समन्वय।\n\n🔑 मुख्य उपदेश:\n\n"सर्वधर्मान्परित्यज्य मामेकं शरणं व्रज।\nअहं त्वां सर्वपापेभ्यो मोक्षयिष्यामि मा शुचः॥" (१८.६६)\n\n(सब धर्मों को छोड़कर केवल मेरी शरण में आ जा। मैं तुझे सब पापों से मुक्त कर दूँगा, चिंता मत कर।)\n\nयह गीता का सबसे महत्वपूर्ण श्लोक है — "चरमश्लोक" (अंतिम उपदेश)।\n\n"यत्र योगेश्वरः कृष्णो यत्र पार्थो धनुर्धरः।\nतत्र श्रीर्विजयो भूतिर्ध्रुवा नीतिर्मतिर्मम॥" (१८.७८)\n\n(जहाँ योगेश्वर कृष्ण हैं और जहाँ धनुर्धर अर्जुन हैं — वहाँ श्री, विजय, विभूति और नीति निश्चित रूप से है।)\n\n📿 गीता का सार:\n• कर्म करो, फल की चिंता मत करो\n• आत्मा अमर है\n• भक्ति सर्वश्रेष्ठ मार्ग है\n• ईश्वर की शरण में जाओ\n\n🙏 इति श्रीमद्भगवद्गीता सम्पूर्ण 🙏\nओम् तत् सत्`
-  },
+    ch: 18,
+    title: 'मोक्ष संन्यास योग',
+    en: 'Moksha Sanyasa Yoga',
+    shlokas: 78,
+    content: `🪷 अध्याय १८ — मोक्ष संन्यास योग\n(७८ श्लोक — अंतिम और सबसे बड़ा अध्याय)\n\n📖 विषय:\nगीता का सार — भक्ति, ज्ञान और कर्म का समन्वय।\n\n🔑 मुख्य उपदेश:\n\n"सर्वधर्मान्परित्यज्य मामेकं शरणं व्रज।\nअहं त्वां सर्वपापेभ्यो मोक्षयिष्यामि मा शुचः॥" (१८.६६)\n\n(सब धर्मों को छोड़कर केवल मेरी शरण में आ जा। मैं तुझे सब पापों से मुक्त कर दूँगा, चिंता मत कर।)\n\nयह गीता का सबसे महत्वपूर्ण श्लोक है — "चरमश्लोक" (अंतिम उपदेश)।\n\n"यत्र योगेश्वरः कृष्णो यत्र पार्थो धनुर्धरः।\nतत्र श्रीर्विजयो भूतिर्ध्रुवा नीतिर्मतिर्मम॥" (१८.७८)\n\n(जहाँ योगेश्वर कृष्ण हैं और जहाँ धनुर्धर अर्जुन हैं — वहाँ श्री, विजय, विभूति और नीति निश्चित रूप से है।)\n\n📿 गीता का सार:\n• कर्म करो, फल की चिंता मत करो\n• आत्मा अमर है\n• भक्ति सर्वश्रेष्ठ मार्ग है\n• ईश्वर की शरण में जाओ\n\n🙏 इति श्रीमद्भगवद्गीता सम्पूर्ण 🙏\nओम् तत् सत्`,
+    contentEn: `🪷 Chapter 18 — Moksha Sanyasa Yoga (Liberation through Renunciation)
+(78 Shlokas — the final and longest chapter)
+
+📖 Theme:
+The complete essence of the Bhagavad Gita — the union of devotion, knowledge, duty and total surrender to God.
+
+🔑 Key Teachings:
+(18.66) "Sarvadharman parityajya mamekam sharanam vraja,
+aham tvam sarvapapebhyo mokshayishyami ma shuchah."
+(Abandon all varieties of duty and simply surrender unto Me alone. I shall liberate you from all sins — do not grieve.)
+
+This is the Charama Shloka — the final supreme teaching of the entire Gita.
+
+(18.78) "Yatra yogeshvarah krishno yatra partho dhanurdharah,
+tatra shrir vijayo bhutirdhruva nitirmatirmama."
+(Wherever Krishna is, and wherever Arjuna stands — there will always be prosperity, victory, glory and righteousness.)
+
+📿 The Complete Essence of the Gita:
+• Perform your duty without craving the result
+• The soul is immortal — never fear death
+• Devotion is the greatest of all paths
+• Surrender completely to God
+
+🙏 Thus ends the Shrimad Bhagavad Gita 🙏
+Om Tat Sat`
+  }
 ];
 
 function showBhagavadGita() {
@@ -2137,7 +2467,10 @@ function showBhagavadGita() {
     const titleShow = isEn ? ch.en : ch.title;
     const slokaLabel = isEn ? ch.en + ' • ' + ch.shlokas + ' Shlokas' : ch.en + ' • ' + ch.shlokas + ' श्लोक';
     btn.innerHTML = '<span style="background:rgba(212,175,55,0.2);border-radius:8px;padding:4px 10px;font-size:11px;color:var(--gold);font-weight:700;min-width:36px;text-align:center;">' + ch.ch + '</span><div><div style="font-size:13px;color:rgba(255,255,255,0.9);font-weight:600;">' + titleShow + '</div><div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:2px;">' + slokaLabel + '</div></div>';
-    btn.addEventListener('click', () => showGitaChapter(ch.title, ch.content));
+    btn.addEventListener('click', () => {
+      const displayContent = (currentLang === 'en' && ch.contentEn) ? ch.contentEn : ch.content;
+      showGitaChapter(isEn ? ch.en : ch.title, displayContent);
+    });
     list.appendChild(btn);
   });
   // Update screen title
@@ -2156,34 +2489,12 @@ function showChapterContent(icon, title, content) {
   document.getElementById('reading-q-display').textContent = icon + ' ' + title;
   window.scrollTo(0, 0);
 
-  if (currentLang === 'en') {
-    document.getElementById('reading-orb').style.display = 'flex';
-    document.getElementById('reading-loading').style.display = 'block';
-    document.getElementById('reading-dots').style.display = 'flex';
-    document.getElementById('reading-box').classList.remove('show');
-    document.getElementById('reading-actions').style.display = 'none';
-    // Send clean prompt to AI — don't show prompt in question box
-    var aiPrompt = 'Explain in English only (no Hindi words at all): ' + title + '. Key teachings summary: ' + content.substring(0, 300);
-    fetchAIReading(aiPrompt).then(function(text) {
-      if (text) {
-        var userName = document.getElementById('inp-name') ? document.getElementById('inp-name').value.trim() : '';
-        var displayText = userName ? '<span class="highlight">' + userName + ' ji</span>, ' + text : text;
-        document.getElementById('reading-box').classList.add('show');
-        document.getElementById('reading-answer-text').innerHTML = displayText.replace(/\n\n/g, '<br><br>').replace(/\n/g, '<br>');
-        document.getElementById('reading-actions').style.display = 'flex';
-        document.getElementById('reading-loading').style.display = 'none';
-        document.getElementById('reading-dots').style.display = 'none';
-        document.getElementById('reading-orb').style.display = 'none';
-      }
-    });
-  } else {
-    document.getElementById('reading-orb').style.display = 'none';
-    document.getElementById('reading-loading').style.display = 'none';
-    document.getElementById('reading-dots').style.display = 'none';
-    document.getElementById('reading-box').classList.add('show');
-    document.getElementById('reading-answer-text').innerHTML = content.split('\n').join('<br>');
-    document.getElementById('reading-actions').style.display = 'flex';
-  }
+  document.getElementById('reading-orb').style.display = 'none';
+  document.getElementById('reading-loading').style.display = 'none';
+  document.getElementById('reading-dots').style.display = 'none';
+  document.getElementById('reading-box').classList.add('show');
+  document.getElementById('reading-answer-text').innerHTML = content.split('\n').join('<br>');
+  document.getElementById('reading-actions').style.display = 'flex';
 }
 
 function showGitaChapter(title, content) { showChapterContent('🪷', title, content); }
@@ -2194,72 +2505,374 @@ const ramayanaData = [
     num: 1, icon: '👶', name: 'बाल काण्ड', en: 'Bala Kanda', sargas: 77,
     desc: 'श्री राम का जन्म, विश्वामित्र के साथ वन गमन, सीता स्वयंवर',
     chapters: [
-      { ch: 1, title: 'रामायण की उत्पत्ति — वाल्मीकि रचना', content: `👶 बाल काण्ड — वाल्मीकि रचना\n\nनारद मुनि ने वाल्मीकि को राम की कथा सुनाई। एक बार वाल्मीकि ने एक क्रौंच पक्षी को निषाद (शिकारी) द्वारा मारा देखा। दूसरा पक्षी विलाप कर रहा था।\n\nवाल्मीकि के मुख से स्वतः श्लोक निकला:\n"मा निषाद प्रतिष्ठां त्वमगमः शाश्वतीः समाः।\nयत् क्रौंचमिथुनादेकमवधीः काममोहितम्॥"\n\nयही रामायण का पहला श्लोक था। ब्रह्मा ने आशीर्वाद दिया और रामायण की रचना हुई।\n\n🏹 मुख्य संदेश: करुणा ही कविता की जननी है।` },
-      { ch: 2, title: 'राजा दशरथ और पुत्र कामना', content: `👶 बाल काण्ड — दशरथ और पुत्रेष्टि यज्ञ\n\nअयोध्या के राजा दशरथ की तीन रानियाँ थीं — कौसल्या, कैकेयी और सुमित्रा। कोई पुत्र नहीं था।\n\nमहर्षि ऋष्यश्रृंग ने पुत्रकामेष्टि यज्ञ कराया। यज्ञ से दिव्य खीर प्राप्त हुई।\n\nकौसल्या को राम, कैकेयी को भरत और सुमित्रा को लक्ष्मण और शत्रुघ्न का जन्म हुआ।\n\n🏹 मुख्य संदेश: ईश्वर भक्ति और यज्ञ से सभी मनोकामनाएँ पूर्ण होती हैं।` },
-      { ch: 3, title: 'राम का बचपन और गुरुकुल', content: `👶 बाल काण्ड — राम का बचपन\n\nचारों राजकुमारों ने गुरु वशिष्ठ के आश्रम में शिक्षा ग्रहण की। राम सबसे होनहार थे।\n\nराम के गुण:\n• सत्यवादी और धर्मनिष्ठ\n• सभी से विनम्र\n• युद्ध कला में निपुण\n• वेद और शास्त्रों के ज्ञाता\n\n🏹 मुख्य संदेश: शिक्षा और संस्कार ही मनुष्य को महान बनाते हैं।` },
-      { ch: 4, title: 'विश्वामित्र का आगमन', content: `👶 बाल काण्ड — विश्वामित्र\n\nमहर्षि विश्वामित्र राजा दशरथ के पास आए और राम को माँगा — यज्ञ की रक्षा के लिए।\n\nदशरथ ने पहले मना किया। विश्वामित्र ने कहा — राम आपसे अधिक मेरे हैं। दशरथ मान गए।\n\nराम और लक्ष्मण वन में गए। राम ने ताड़का राक्षसी का वध किया। विश्वामित्र ने दिव्यास्त्र दिए।\n\n🏹 मुख्य संदेश: गुरु आज्ञा का पालन सर्वोच्च धर्म है।` },
-      { ch: 5, title: 'सीता स्वयंवर — शिव धनुष भंग', content: `👶 बाल काण्ड — सीता स्वयंवर\n\nजनकपुरी के राजा जनक की पुत्री सीता के स्वयंवर में शर्त थी — शिव का धनुष उठाना होगा।\n\nसभी राजा असफल रहे। विश्वामित्र ने राम को आगे किया। राम ने शिव धनुष को उठाया और प्रत्यंचा चढ़ाते ही धनुष टूट गया।\n\nसीता ने राम के गले में वरमाला डाली। राम-सीता का विवाह संपन्न हुआ। चारों भाइयों का विवाह हुआ।\n\n🏹 मुख्य संदेश: राम-सीता का मिलन — आदर्श दांपत्य का प्रतीक है।` },
+      { ch: 1, title: 'रामायण की उत्पत्ति — वाल्मीकि रचना', content: `👶 बाल काण्ड — वाल्मीकि रचना\n\nनारद मुनि ने वाल्मीकि को राम की कथा सुनाई। एक बार वाल्मीकि ने एक क्रौंच पक्षी को निषाद (शिकारी) द्वारा मारा देखा। दूसरा पक्षी विलाप कर रहा था।\n\nवाल्मीकि के मुख से स्वतः श्लोक निकला:\n"मा निषाद प्रतिष्ठां त्वमगमः शाश्वतीः समाः।\nयत् क्रौंचमिथुनादेकमवधीः काममोहितम्॥"\n\nयही रामायण का पहला श्लोक था। ब्रह्मा ने आशीर्वाद दिया और रामायण की रचना हुई।\n\n🏹 मुख्य संदेश: करुणा ही कविता की जननी है।` ,
+      contentEn: `🪷 Bala Kanda — The Origin of Ramayana
+
+Sage Narada narrated the story of Rama to Valmiki. One day Valmiki saw a Krauncha bird shot dead by a hunter, while its mate wept nearby.
+
+A verse arose spontaneously from Valmiki's lips:
+"Ma nishada pratistham tvam agamah shashvatih samah..."
+(O hunter, you shall never attain peace — for you have killed the Krauncha in the midst of love.)
+
+This was the first shloka of the Ramayana. Brahma blessed Valmiki and the great epic was composed.
+
+🏹 Key Message: Compassion is the mother of all poetry.`
+    },
+      { ch: 2, title: 'राजा दशरथ और पुत्र कामना', content: `👶 बाल काण्ड — दशरथ और पुत्रेष्टि यज्ञ\n\nअयोध्या के राजा दशरथ की तीन रानियाँ थीं — कौसल्या, कैकेयी और सुमित्रा। कोई पुत्र नहीं था।\n\nमहर्षि ऋष्यश्रृंग ने पुत्रकामेष्टि यज्ञ कराया। यज्ञ से दिव्य खीर प्राप्त हुई।\n\nकौसल्या को राम, कैकेयी को भरत और सुमित्रा को लक्ष्मण और शत्रुघ्न का जन्म हुआ।\n\n🏹 मुख्य संदेश: ईश्वर भक्ति और यज्ञ से सभी मनोकामनाएँ पूर्ण होती हैं।` ,
+      contentEn: `🪷 Bala Kanda — King Dasharatha and His Longing for a Son
+
+King Dasharatha of Ayodhya had three queens — Kaushalya, Kaikeyi and Sumitra — but no children.
+
+Sage Rishyashringa performed the Putrakameshti Yagna (a sacred fire ritual for sons). Divine kheer (sweet rice pudding) emerged from the fire.
+
+From Kaushalya was born Rama; from Kaikeyi, Bharata; and from Sumitra, Lakshmana and Shatrughna.
+
+🏹 Key Message: Sincere devotion and sacred practice fulfil all righteous desires.`
+    },
+      { ch: 3, title: 'राम का बचपन और गुरुकुल', content: `👶 बाल काण्ड — राम का बचपन\n\nचारों राजकुमारों ने गुरु वशिष्ठ के आश्रम में शिक्षा ग्रहण की। राम सबसे होनहार थे।\n\nराम के गुण:\n• सत्यवादी और धर्मनिष्ठ\n• सभी से विनम्र\n• युद्ध कला में निपुण\n• वेद और शास्त्रों के ज्ञाता\n\n🏹 मुख्य संदेश: शिक्षा और संस्कार ही मनुष्य को महान बनाते हैं।` ,
+      contentEn: `🪷 Bala Kanda — Rama's Childhood and Education
+
+All four princes received their education at the hermitage of Guru Vashishtha. Rama was the most gifted of all.
+
+Rama's qualities:
+• Truthful and devoted to righteousness
+• Humble and respectful to all
+• Skilled in the arts of war
+• A master of the Vedas and sacred scriptures
+
+🏹 Key Message: Education and good values are what make a person truly great.`
+    },
+      { ch: 4, title: 'विश्वामित्र का आगमन', content: `👶 बाल काण्ड — विश्वामित्र\n\nमहर्षि विश्वामित्र राजा दशरथ के पास आए और राम को माँगा — यज्ञ की रक्षा के लिए।\n\nदशरथ ने पहले मना किया। विश्वामित्र ने कहा — राम आपसे अधिक मेरे हैं। दशरथ मान गए।\n\nराम और लक्ष्मण वन में गए। राम ने ताड़का राक्षसी का वध किया। विश्वामित्र ने दिव्यास्त्र दिए।\n\n🏹 मुख्य संदेश: गुरु आज्ञा का पालन सर्वोच्च धर्म है।` ,
+      contentEn: `🪷 Bala Kanda — The Arrival of Vishwamitra
+
+Sage Vishwamitra came to King Dasharatha and asked for Rama to protect his yagna from demons.
+
+Dasharatha refused at first. Vishwamitra said — Rama belongs to the world more than to you. Dasharatha relented.
+
+Rama and Lakshmana went to the forest. Rama slew the demoness Tadaka. Vishwamitra bestowed upon him divine celestial weapons.
+
+🏹 Key Message: Obedience to the Guru is the highest duty.`
+    },
+      { ch: 5, title: 'सीता स्वयंवर — शिव धनुष भंग', content: `👶 बाल काण्ड — सीता स्वयंवर\n\nजनकपुरी के राजा जनक की पुत्री सीता के स्वयंवर में शर्त थी — शिव का धनुष उठाना होगा।\n\nसभी राजा असफल रहे। विश्वामित्र ने राम को आगे किया। राम ने शिव धनुष को उठाया और प्रत्यंचा चढ़ाते ही धनुष टूट गया।\n\nसीता ने राम के गले में वरमाला डाली। राम-सीता का विवाह संपन्न हुआ। चारों भाइयों का विवाह हुआ।\n\n🏹 मुख्य संदेश: राम-सीता का मिलन — आदर्श दांपत्य का प्रतीक है।` ,
+      contentEn: `🪷 Bala Kanda — Sita's Swayamvara — The Breaking of Shiva's Bow
+
+At the court of King Janaka of Janakpur, a great contest was held for the hand of Sita — whoever could lift and string the great bow of Lord Shiva would win her.
+
+All the assembled kings failed. Vishwamitra presented Rama. Rama lifted the bow, drew the string — and the bow snapped in two.
+
+Sita placed the wedding garland around Rama's neck. The marriage of Rama and Sita was celebrated, and all four brothers were wed.
+
+🏹 Key Message: The union of Rama and Sita is the eternal symbol of ideal marriage.`
+    },
     ]
   },
   {
     num: 2, icon: '🌿', name: 'अयोध्या काण्ड', en: 'Ayodhya Kanda', sargas: 119,
     desc: 'राम का राज्याभिषेक, कैकेयी का वर, राम का वनवास',
     chapters: [
-      { ch: 1, title: 'राम राज्याभिषेक की तैयारी', content: `🌿 अयोध्या काण्ड — राज्याभिषेक\n\nदशरथ वृद्ध हो गए। उन्होंने राम को युवराज बनाने का निश्चय किया। पूरी अयोध्या प्रसन्न हुई।\n\nराम का राज्याभिषेक अगले दिन होना था। रात को कैकेयी की दासी मंथरा ने कैकेयी के मन में जहर भरा।\n\n🏹 मुख्य संदेश: बुरी संगति मन को दूषित करती है।` },
-      { ch: 2, title: 'कैकेयी के दो वर', content: `🌿 अयोध्या काण्ड — कैकेयी के वर\n\nकैकेयी ने कोपभवन में बैठकर दशरथ से दो पुराने वर माँगे:\n• वर १: भरत को राजा बनाओ\n• वर २: राम को १४ वर्ष का वनवास दो\n\nदशरथ टूट गए। राम को बुलाया। राम ने सहर्ष स्वीकार किया।\n\n🏹 मुख्य संदेश: राम ने पिता की आज्ञा को सर्वोच्च माना — यही पुत्र धर्म है।` },
-      { ch: 3, title: 'राम का वन गमन', content: `🌿 अयोध्या काण्ड — वन गमन\n\nराम वल्कल वस्त्र पहनकर वन जाने लगे। सीता ने कहा — मैं भी साथ चलूँगी। लक्ष्मण भी साथ गए।\n\nपूरी अयोध्या रोई। दशरथ ने कहा — मुझे छोड़ मत जाओ। राम ने धीरे से समझाया और चल दिए।\n\nगंगा पार की — केवट ने नाव चलाई और राम के चरण धोए। राम ने अँगूठी दी।\n\n🏹 मुख्य संदेश: सच्चा पुत्र वह है जो माता-पिता की बात माने।` },
-      { ch: 4, title: 'दशरथ का प्राण त्याग', content: `🌿 अयोध्या काण्ड — दशरथ निधन\n\nराम के जाने के बाद दशरथ ने अपने पुराने पाप का स्मरण किया — उन्होंने शब्दभेदी बाण से श्रवण कुमार को मारा था।\n\nश्रवण के अंधे माता-पिता ने श्राप दिया था — तुम भी पुत्र वियोग में मरोगे।\n\nदशरथ ने कौसल्या को यह बात बताई और "हा राम, हा राम" कहते हुए प्राण त्यागे।\n\n🏹 मुख्य संदेश: कर्म का फल अवश्य मिलता है।` },
-      { ch: 5, title: 'भरत की वापसी और चित्रकूट', content: `🌿 अयोध्या काण्ड — भरत मिलाप\n\nभरत ननिहाल से लौटे। पिता के निधन और राम के वनवास की बात सुनी। माता कैकेयी को फटकारा।\n\nभरत राम को वापस लाने चित्रकूट गए। राम ने मना किया — पिता की आज्ञा पूरी होनी चाहिए।\n\nभरत ने राम की पादुकाएँ (खड़ाऊँ) लीं और राज्य उनके नाम से चलाया।\n\n🏹 मुख्य संदेश: भरत का त्याग और राम की आज्ञा पालन — दोनों भाईचारे का आदर्श हैं।` },
+      { ch: 1, title: 'राम राज्याभिषेक की तैयारी', content: `🌿 अयोध्या काण्ड — राज्याभिषेक\n\nदशरथ वृद्ध हो गए। उन्होंने राम को युवराज बनाने का निश्चय किया। पूरी अयोध्या प्रसन्न हुई।\n\nराम का राज्याभिषेक अगले दिन होना था। रात को कैकेयी की दासी मंथरा ने कैकेयी के मन में जहर भरा।\n\n🏹 मुख्य संदेश: बुरी संगति मन को दूषित करती है।` ,
+      contentEn: `🌿 Ayodhya Kanda — Preparations for Rama's Coronation
+
+Dasharatha had grown old. He decided to crown Rama as the Crown Prince. The entire city of Ayodhya rejoiced.
+
+Rama's coronation was to take place the very next morning. But that night, Manthara — Kaikeyi's maid — poisoned Kaikeyi's mind with jealousy and suspicion.
+
+🏹 Key Message: Evil company corrupts even the purest of minds.`
+    },
+      { ch: 2, title: 'कैकेयी के दो वर', content: `🌿 अयोध्या काण्ड — कैकेयी के वर\n\nकैकेयी ने कोपभवन में बैठकर दशरथ से दो पुराने वर माँगे:\n• वर १: भरत को राजा बनाओ\n• वर २: राम को १४ वर्ष का वनवास दो\n\nदशरथ टूट गए। राम को बुलाया। राम ने सहर्ष स्वीकार किया।\n\n🏹 मुख्य संदेश: राम ने पिता की आज्ञा को सर्वोच्च माना — यही पुत्र धर्म है।` ,
+      contentEn: `🌿 Ayodhya Kanda — Kaikeyi's Two Boons
+
+Kaikeyi entered the chamber of sorrow and demanded two old boons from Dasharatha:
+• Boon 1: Crown Bharata king of Ayodhya
+• Boon 2: Exile Rama to the forest for fourteen years
+
+Dasharatha was shattered. Rama was summoned. Without hesitation, Rama accepted cheerfully.
+
+🏹 Key Message: Rama placed his father's word above all else — this is the highest duty of a son.`
+    },
+      { ch: 3, title: 'राम का वन गमन', content: `🌿 अयोध्या काण्ड — वन गमन\n\nराम वल्कल वस्त्र पहनकर वन जाने लगे। सीता ने कहा — मैं भी साथ चलूँगी। लक्ष्मण भी साथ गए।\n\nपूरी अयोध्या रोई। दशरथ ने कहा — मुझे छोड़ मत जाओ। राम ने धीरे से समझाया और चल दिए।\n\nगंगा पार की — केवट ने नाव चलाई और राम के चरण धोए। राम ने अँगूठी दी।\n\n🏹 मुख्य संदेश: सच्चा पुत्र वह है जो माता-पिता की बात माने।` ,
+      contentEn: `🌿 Ayodhya Kanda — Rama's Departure for the Forest
+
+Rama dressed in the bark-cloth of a hermit and prepared to leave. Sita said — I will come with you. Lakshmana too refused to stay behind.
+
+All of Ayodhya wept. Dasharatha cried — do not leave me. Rama gently comforted him and departed.
+
+At the Ganga, a boatman (Kevat) washed Rama's feet and ferried them across. Rama gave him his ring as a gift.
+
+🏹 Key Message: A true son honours his parents' words above his own comfort.`
+    },
+      { ch: 4, title: 'दशरथ का प्राण त्याग', content: `🌿 अयोध्या काण्ड — दशरथ निधन\n\nराम के जाने के बाद दशरथ ने अपने पुराने पाप का स्मरण किया — उन्होंने शब्दभेदी बाण से श्रवण कुमार को मारा था।\n\nश्रवण के अंधे माता-पिता ने श्राप दिया था — तुम भी पुत्र वियोग में मरोगे।\n\nदशरथ ने कौसल्या को यह बात बताई और "हा राम, हा राम" कहते हुए प्राण त्यागे।\n\n🏹 मुख्य संदेश: कर्म का फल अवश्य मिलता है।` ,
+      contentEn: `🌿 Ayodhya Kanda — The Death of King Dasharatha
+
+After Rama left, Dasharatha recalled a sin from his past. He had once shot an arrow by sound alone (shabdabhedi baan) and accidentally killed the young Shravana Kumar.
+
+Shravana's blind parents had cursed him: You too shall die grieving for your son.
+
+Dasharatha told Kaushalya the story, and crying 'Ha Rama! Ha Rama!', he passed away.
+
+🏹 Key Message: The fruit of one's karma must always come — this is the immutable law.`
+    },
+      { ch: 5, title: 'भरत की वापसी और चित्रकूट', content: `🌿 अयोध्या काण्ड — भरत मिलाप\n\nभरत ननिहाल से लौटे। पिता के निधन और राम के वनवास की बात सुनी। माता कैकेयी को फटकारा।\n\nभरत राम को वापस लाने चित्रकूट गए। राम ने मना किया — पिता की आज्ञा पूरी होनी चाहिए।\n\nभरत ने राम की पादुकाएँ (खड़ाऊँ) लीं और राज्य उनके नाम से चलाया।\n\n🏹 मुख्य संदेश: भरत का त्याग और राम की आज्ञा पालन — दोनों भाईचारे का आदर्श हैं।` ,
+      contentEn: `🌿 Ayodhya Kanda — Bharata's Return and the Meeting at Chitrakoot
+
+Bharata returned from his maternal uncle's home. He learned of his father's death and Rama's exile. He rebuked Kaikeyi in fury.
+
+Bharata marched to Chitrakoot to bring Rama back. Rama refused — our father's word must be honoured.
+
+Bharata took Rama's sandals (padukas) and placed them on the throne, ruling the kingdom in Rama's name.
+
+🏹 Key Message: Bharata's renunciation and Rama's obedience together form the ideal of brotherhood.`
+    },
     ]
   },
   {
     num: 3, icon: '🦌', name: 'अरण्य काण्ड', en: 'Aranya Kanda', sargas: 75,
     desc: 'वन में वास, शूर्पणखा, सीता हरण, जटायु का बलिदान',
     chapters: [
-      { ch: 1, title: 'दंडकारण्य में वास', content: `🦌 अरण्य काण्ड — वन में राम\n\nराम, सीता और लक्ष्मण दंडकारण्य वन में रहे। अनेक ऋषि-मुनियों से मिले।\n\nविराध, शरभंग, सुतीक्ष्ण — अनेक ऋषियों के आश्रम में गए। राक्षसों का नाश किया।\n\nअगस्त्य मुनि ने राम को इंद्र का धनुष और अक्षय तूणीर (कभी न खाली होने वाला तरकश) दिया।\n\n🏹 मुख्य संदेश: संतों की सेवा और राक्षसों का नाश — यही क्षत्रिय धर्म है।` },
-      { ch: 2, title: 'शूर्पणखा प्रसंग', content: `🦌 अरण्य काण्ड — शूर्पणखा\n\nरावण की बहन शूर्पणखा राम पर मोहित हो गई। उसने राम के सामने विवाह का प्रस्ताव रखा।\n\nराम ने मना किया। लक्ष्मण ने उसकी नाक और कान काट दिए। शूर्पणखा रावण के पास गई और सीता की सुंदरता का वर्णन किया।\n\nरावण सीता को पाने के लिए लालायित हो उठा।\n\n🏹 मुख्य संदेश: दुराचार का परिणाम सदा बुरा होता है।` },
-      { ch: 3, title: 'मारीच का स्वर्ण मृग', content: `🦌 अरण्य काण्ड — स्वर्ण मृग\n\nरावण ने मारीच को सोने का हिरण बनाकर भेजा। सीता ने उस हिरण को देखा और राम से माँगा।\n\nराम हिरण के पीछे गए। मारीच ने मरते हुए राम की आवाज में चिल्लाया — "हा सीते! हा लक्ष्मण!"\n\nसीता ने लक्ष्मण को भेजा। लक्ष्मण रेखा खींचकर गए। रावण साधु वेश में आया।\n\n🏹 मुख्य संदेश: माया के जाल में न फँसें।` },
-      { ch: 4, title: 'सीता हरण और जटायु', content: `🦌 अरण्य काण्ड — सीता हरण\n\nरावण साधु वेश में आया और सीता को भिक्षा माँगने के लिए लक्ष्मण रेखा से बाहर बुलाया।\n\nरावण ने सीता को अपहरण कर लिया। गिद्धराज जटायु ने रावण को रोका और वीरता से लड़ा।\n\nरावण ने जटायु के पंख काट दिए। जटायु घायल होकर गिरे। राम को आने पर जटायु ने रावण की दिशा बताई और प्राण त्यागे।\n\n🏹 मुख्य संदेश: जटायु का बलिदान — धर्म के लिए प्राण देना महान है।` },
+      { ch: 1, title: 'दंडकारण्य में वास', content: `🦌 अरण्य काण्ड — वन में राम\n\nराम, सीता और लक्ष्मण दंडकारण्य वन में रहे। अनेक ऋषि-मुनियों से मिले।\n\nविराध, शरभंग, सुतीक्ष्ण — अनेक ऋषियों के आश्रम में गए। राक्षसों का नाश किया।\n\nअगस्त्य मुनि ने राम को इंद्र का धनुष और अक्षय तूणीर (कभी न खाली होने वाला तरकश) दिया।\n\n🏹 मुख्य संदेश: संतों की सेवा और राक्षसों का नाश — यही क्षत्रिय धर्म है।` ,
+      contentEn: `🦌 Aranya Kanda — Life in the Dandaka Forest
+
+Rama, Sita and Lakshmana dwelt in the Dandaka forest. They visited many sages and saints.
+
+They visited the hermitages of Viradha, Sharabhanga, Sutikshna and others. Rama slew many demons who troubled the sages.
+
+Sage Agastya gave Rama the bow of Indra and an inexhaustible quiver.
+
+🏹 Key Message: Serving saints and destroying evil — this is the duty of a righteous warrior.`
+    },
+      { ch: 2, title: 'शूर्पणखा प्रसंग', content: `🦌 अरण्य काण्ड — शूर्पणखा\n\nरावण की बहन शूर्पणखा राम पर मोहित हो गई। उसने राम के सामने विवाह का प्रस्ताव रखा।\n\nराम ने मना किया। लक्ष्मण ने उसकी नाक और कान काट दिए। शूर्पणखा रावण के पास गई और सीता की सुंदरता का वर्णन किया।\n\nरावण सीता को पाने के लिए लालायित हो उठा।\n\n🏹 मुख्य संदेश: दुराचार का परिणाम सदा बुरा होता है।` ,
+      contentEn: `🦌 Aranya Kanda — Surpanakha
+
+Ravana's sister Surpanakha became infatuated with Rama and proposed marriage. Rama politely declined.
+
+Lakshmana cut off her nose and ears as punishment for her aggression. Surpanakha went to Ravana and described Sita's incomparable beauty.
+
+Ravana became consumed with desire to possess Sita.
+
+🏹 Key Message: The consequence of unrighteous conduct is always sorrow.`
+    },
+      { ch: 3, title: 'मारीच का स्वर्ण मृग', content: `🦌 अरण्य काण्ड — स्वर्ण मृग\n\nरावण ने मारीच को सोने का हिरण बनाकर भेजा। सीता ने उस हिरण को देखा और राम से माँगा।\n\nराम हिरण के पीछे गए। मारीच ने मरते हुए राम की आवाज में चिल्लाया — "हा सीते! हा लक्ष्मण!"\n\nसीता ने लक्ष्मण को भेजा। लक्ष्मण रेखा खींचकर गए। रावण साधु वेश में आया।\n\n🏹 मुख्य संदेश: माया के जाल में न फँसें।` ,
+      contentEn: `🦌 Aranya Kanda — The Golden Deer
+
+Ravana sent the demon Maricha disguised as a golden deer. Sita saw it and begged Rama to catch it.
+
+Rama pursued the deer. Maricha, dying, imitated Rama's voice and cried — 'Help, Sita! Help, Lakshmana!' Sita sent Lakshmana away. Lakshmana drew the Lakshmana Rekha (protective line) before leaving. Ravana came disguised as a holy man.
+
+🏹 Key Message: Do not fall into the trap of illusion and false desire.`
+    },
+      { ch: 4, title: 'सीता हरण और जटायु', content: `🦌 अरण्य काण्ड — सीता हरण\n\nरावण साधु वेश में आया और सीता को भिक्षा माँगने के लिए लक्ष्मण रेखा से बाहर बुलाया।\n\nरावण ने सीता को अपहरण कर लिया। गिद्धराज जटायु ने रावण को रोका और वीरता से लड़ा।\n\nरावण ने जटायु के पंख काट दिए। जटायु घायल होकर गिरे। राम को आने पर जटायु ने रावण की दिशा बताई और प्राण त्यागे।\n\n🏹 मुख्य संदेश: जटायु का बलिदान — धर्म के लिए प्राण देना महान है।` ,
+      contentEn: `🦌 Aranya Kanda — Sita's Abduction and Jatayu's Sacrifice
+
+Ravana in the disguise of a sage lured Sita across the Lakshmana Rekha. He then abducted her and flew away.
+
+The great vulture Jatayu tried heroically to stop Ravana. A fierce battle followed. Ravana cut off Jatayu's wings.
+
+Jatayu fell, mortally wounded. When Rama arrived, the dying Jatayu told him Ravana had taken Sita south, then breathed his last.
+
+🏹 Key Message: Jatayu's sacrifice — giving one's life for dharma is the greatest act of nobility.`
+    },
     ]
   },
   {
     num: 4, icon: '🐒', name: 'किष्किंधा काण्ड', en: 'Kishkindha Kanda', sargas: 67,
     desc: 'हनुमान से मिलाप, सुग्रीव मैत्री, बाली वध, सेना निर्माण',
     chapters: [
-      { ch: 1, title: 'हनुमान से मिलाप', content: `🐒 किष्किंधा काण्ड — हनुमान मिलन\n\nराम और लक्ष्मण सीता को खोजते हुए ऋष्यमूक पर्वत पहुँचे। सुग्रीव ने हनुमान को भेजा।\n\nहनुमान ब्राह्मण वेश में आए। राम ने हनुमान की वाक्पटुता की प्रशंसा की — "इस व्यक्ति ने व्याकरण पढ़ा है।"\n\nराम और हनुमान का मिलाप हुआ। हनुमान ने उन्हें सुग्रीव के पास ले गए।\n\n🏹 मुख्य संदेश: भक्त और भगवान का मिलन — यही रामायण का सर्वश्रेष्ठ प्रसंग है।` },
-      { ch: 2, title: 'बाली वध', content: `🐒 किष्किंधा काण्ड — बाली वध\n\nसुग्रीव ने राम को बाली के अत्याचार की कथा सुनाई। बाली ने सुग्रीव की पत्नी और राज्य छीन लिया था।\n\nराम ने बाली को पेड़ के पीछे से बाण मारा। बाली घायल हुआ और मरने से पहले राम को दोष दिया।\n\nराम ने उत्तर दिया — तुमने अपने भाई की पत्नी ग्रहण की — यह महापाप है।\n\n🏹 मुख्य संदेश: अन्याय का नाश ही राजधर्म है।` },
-      { ch: 3, title: 'सीता की खोज — वानर सेना', content: `🐒 किष्किंधा काण्ड — सीता खोज\n\nसुग्रीव राजा बने। राम ने याद दिलाया — सीता की खोज करनी है।\n\nसुग्रीव ने चारों दिशाओं में वानर सेना भेजी। हनुमान, जांबवंत, अंगद के नेतृत्व में दल दक्षिण दिशा में गया।\n\nसमुद्र के किनारे संपाती (जटायु के भाई) ने बताया — सीता लंका में है।\n\n🏹 मुख्य संदेश: मित्रता में वचन निभाना अनिवार्य है।` },
+      { ch: 1, title: 'हनुमान से मिलाप', content: `🐒 किष्किंधा काण्ड — हनुमान मिलन\n\nराम और लक्ष्मण सीता को खोजते हुए ऋष्यमूक पर्वत पहुँचे। सुग्रीव ने हनुमान को भेजा।\n\nहनुमान ब्राह्मण वेश में आए। राम ने हनुमान की वाक्पटुता की प्रशंसा की — "इस व्यक्ति ने व्याकरण पढ़ा है।"\n\nराम और हनुमान का मिलाप हुआ। हनुमान ने उन्हें सुग्रीव के पास ले गए।\n\n🏹 मुख्य संदेश: भक्त और भगवान का मिलन — यही रामायण का सर्वश्रेष्ठ प्रसंग है।` ,
+      contentEn: `🐒 Kishkindha Kanda — The Meeting with Hanuman
+
+Searching for Sita, Rama and Lakshmana reached Mount Rishyamuk. Sugriva sent Hanuman to investigate.
+
+Hanuman came disguised as a brahmin. Rama praised his eloquence — this man has mastered Sanskrit grammar.
+
+Rama and Hanuman met. Hanuman took them to Sugriva.
+
+🏹 Key Message: The meeting of the devotee and the Lord — this is the most beautiful moment in all the Ramayana.`
+    },
+      { ch: 2, title: 'बाली वध', content: `🐒 किष्किंधा काण्ड — बाली वध\n\nसुग्रीव ने राम को बाली के अत्याचार की कथा सुनाई। बाली ने सुग्रीव की पत्नी और राज्य छीन लिया था।\n\nराम ने बाली को पेड़ के पीछे से बाण मारा। बाली घायल हुआ और मरने से पहले राम को दोष दिया।\n\nराम ने उत्तर दिया — तुमने अपने भाई की पत्नी ग्रहण की — यह महापाप है।\n\n🏹 मुख्य संदेश: अन्याय का नाश ही राजधर्म है।` ,
+      contentEn: `🐒 Kishkindha Kanda — The Slaying of Vali
+
+Sugriva told Rama of Vali's tyranny. Vali had taken Sugriva's wife and kingdom from him.
+
+Rama shot Vali from behind a tree. As Vali lay dying, he questioned Rama's justice. Rama answered — you took your brother's wife, which is a great sin.
+
+🏹 Key Message: Destroying injustice is the highest duty of a king.`
+    },
+      { ch: 3, title: 'सीता की खोज — वानर सेना', content: `🐒 किष्किंधा काण्ड — सीता खोज\n\nसुग्रीव राजा बने। राम ने याद दिलाया — सीता की खोज करनी है।\n\nसुग्रीव ने चारों दिशाओं में वानर सेना भेजी। हनुमान, जांबवंत, अंगद के नेतृत्व में दल दक्षिण दिशा में गया।\n\nसमुद्र के किनारे संपाती (जटायु के भाई) ने बताया — सीता लंका में है।\n\n🏹 मुख्य संदेश: मित्रता में वचन निभाना अनिवार्य है।` ,
+      contentEn: `🐒 Kishkindha Kanda — The Search for Sita — The Vanara Army
+
+Sugriva became king. Rama reminded him of his promise — Sita must be found.
+
+Sugriva sent armies of vanaras (monkeys) in all four directions. Hanuman, Jambavan and Angada led the southern party.
+
+At the seashore, Sampati (Jatayu's brother) revealed — Sita is in Lanka.
+
+🏹 Key Message: A true friend always honours his word.`
+    },
     ]
   },
   {
     num: 5, icon: '🌊', name: 'सुंदर काण्ड', en: 'Sundara Kanda', sargas: 68,
     desc: 'हनुमान की लंका यात्रा, सीता से मिलाप, लंका दहन',
     chapters: [
-      { ch: 1, title: 'हनुमान की समुद्र लंघन', content: `🌊 सुंदर काण्ड — समुद्र लंघन\n\nजांबवंत ने हनुमान को उनकी शक्ति याद दिलाई। हनुमान ने विशाल रूप धारण किया और समुद्र लाँघने के लिए उड़े।\n\nरास्ते में मैनाक पर्वत ने विश्राम का निमंत्रण दिया — हनुमान ने स्पर्श कर आगे बढ़े।\n\nसुरसा (नागमाता) ने परीक्षा ली। सिंहिका राक्षसी को मारा। लंका पहुँचे।\n\n🏹 मुख्य संदेश: शक्ति की पहचान और उसका सदुपयोग — हनुमान का आदर्श।` },
-      { ch: 2, title: 'सीता से मिलाप', content: `🌊 सुंदर काण्ड — सीता मिलन\n\nहनुमान ने लंका में सीता को अशोक वाटिका में खोजा। सीता भूमि पर बैठी थीं, राक्षसियाँ घेरे थीं।\n\nहनुमान ने राम की अँगूठी सीता को दी। सीता की आँखों में आँसू आए। उन्होंने चूड़ामणि (मणि) हनुमान को दी।\n\nहनुमान ने कहा — माँ, मैं आपको अभी ले जा सकता हूँ। सीता ने कहा — नहीं, राम स्वयं आएँ।\n\n🏹 मुख्य संदेश: सीता की मर्यादा और धैर्य अद्वितीय है।` },
-      { ch: 3, title: 'लंका दहन', content: `🌊 सुंदर काण्ड — लंका दहन\n\nहनुमान ने अशोक वाटिका उजाड़ी। रावण के पुत्र अक्षयकुमार का वध किया। मेघनाद ने ब्रह्मास्त्र से बाँधा।\n\nरावण के दरबार में हनुमान ने राम का संदेश दिया — सीता को वापस करो। रावण ने पूँछ में आग लगवाई।\n\nहनुमान ने उड़कर पूरी लंका जला दी। सागर में पूँछ बुझाई और वापस आए।\n\n🏹 मुख्य संदेश: भक्त की शक्ति असीम होती है।` },
+      { ch: 1, title: 'हनुमान की समुद्र लंघन', content: `🌊 सुंदर काण्ड — समुद्र लंघन\n\nजांबवंत ने हनुमान को उनकी शक्ति याद दिलाई। हनुमान ने विशाल रूप धारण किया और समुद्र लाँघने के लिए उड़े।\n\nरास्ते में मैनाक पर्वत ने विश्राम का निमंत्रण दिया — हनुमान ने स्पर्श कर आगे बढ़े।\n\nसुरसा (नागमाता) ने परीक्षा ली। सिंहिका राक्षसी को मारा। लंका पहुँचे।\n\n🏹 मुख्य संदेश: शक्ति की पहचान और उसका सदुपयोग — हनुमान का आदर्श।` ,
+      contentEn: `🌊 Sundara Kanda — Hanuman Leaps the Ocean
+
+Jambavan reminded Hanuman of his boundless power. Hanuman assumed an enormous form and leaped across the ocean.
+
+On the way, Mount Mainaka invited him to rest — Hanuman touched it gently and moved on.
+
+He passed the test of Surasa (mother of serpents). He slew the demoness Simhika. He reached Lanka.
+
+🏹 Key Message: Knowing one's own strength and using it in service — this is Hanuman's eternal ideal.`
+    },
+      { ch: 2, title: 'सीता से मिलाप', content: `🌊 सुंदर काण्ड — सीता मिलन\n\nहनुमान ने लंका में सीता को अशोक वाटिका में खोजा। सीता भूमि पर बैठी थीं, राक्षसियाँ घेरे थीं।\n\nहनुमान ने राम की अँगूठी सीता को दी। सीता की आँखों में आँसू आए। उन्होंने चूड़ामणि (मणि) हनुमान को दी।\n\nहनुमान ने कहा — माँ, मैं आपको अभी ले जा सकता हूँ। सीता ने कहा — नहीं, राम स्वयं आएँ।\n\n🏹 मुख्य संदेश: सीता की मर्यादा और धैर्य अद्वितीय है।` ,
+      contentEn: `🌊 Sundara Kanda — Hanuman Meets Sita
+
+Hanuman found Sita in the Ashoka Vatika (garden). She sat on the ground, surrounded by demonesses.
+
+Hanuman gave Sita Rama's ring. Tears filled Sita's eyes. She gave Hanuman her crest-jewel (Chudamani) as a token for Rama.
+
+Hanuman said — Mother, I can carry you away right now. Sita replied — No; let Rama himself come and rescue me with his honour.
+
+🏹 Key Message: Sita's dignity and patience are without equal.`
+    },
+      { ch: 3, title: 'लंका दहन', content: `🌊 सुंदर काण्ड — लंका दहन\n\nहनुमान ने अशोक वाटिका उजाड़ी। रावण के पुत्र अक्षयकुमार का वध किया। मेघनाद ने ब्रह्मास्त्र से बाँधा।\n\nरावण के दरबार में हनुमान ने राम का संदेश दिया — सीता को वापस करो। रावण ने पूँछ में आग लगवाई।\n\nहनुमान ने उड़कर पूरी लंका जला दी। सागर में पूँछ बुझाई और वापस आए।\n\n🏹 मुख्य संदेश: भक्त की शक्ति असीम होती है।` ,
+      contentEn: `🌊 Sundara Kanda — The Burning of Lanka
+
+Hanuman destroyed the Ashoka Vatika. He slew Ravana's son Akshayakumara. Meghanada bound him with the Brahmastra.
+
+In Ravana's court, Hanuman delivered Rama's message — return Sita. Ravana ordered his tail set on fire.
+
+Hanuman flew across Lanka and set the entire city ablaze with his burning tail. He then plunged his tail into the sea, returned, and reported to Rama.
+
+🏹 Key Message: A true devotee's power is limitless.`
+    },
     ]
   },
   {
     num: 6, icon: '⚔️', name: 'युद्ध काण्ड', en: 'Yuddha Kanda', sargas: 128,
     desc: 'राम सेतु, लंका युद्ध, रावण वध, सीता की अग्नि परीक्षा',
     chapters: [
-      { ch: 1, title: 'सेतु निर्माण', content: `⚔️ युद्ध काण्ड — राम सेतु\n\nसमुद्र ने राम की वंदना की और मार्ग देने का वचन दिया। नल और नील वानरों ने राम सेतु बनाया।\n\nपत्थर पर "राम" लिखकर डाला — पत्थर तैरने लगे। वानर सेना लंका पहुँची।\n\n🏹 मुख्य संदेश: राम नाम में अद्भुत शक्ति है।` },
-      { ch: 2, title: 'विभीषण का शरण', content: `⚔️ युद्ध काण्ड — विभीषण शरण\n\nरावण के भाई विभीषण ने रावण को समझाया — सीता को वापस करो। रावण ने अपमान किया।\n\nविभीषण राम की शरण में आए। सुग्रीव ने मना किया। राम ने कहा — जो भी शरण में आए, मैं रक्षा करूँगा।\n\nविभीषण ने लंका के रहस्य बताए।\n\n🏹 मुख्य संदेश: "शरणागत की रक्षा करना राजधर्म है।"` },
-      { ch: 3, title: 'मेघनाद वध और लक्ष्मण शक्ति', content: `⚔️ युद्ध काण्ड — लक्ष्मण शक्ति\n\nमेघनाद ने शक्ति चलाई — लक्ष्मण मूर्छित हो गए। हनुमान संजीवनी बूटी लेने हिमालय गए।\n\nहनुमान पर्वत नहीं पहचान पाए तो पूरा पर्वत उठा लाए। वैद्य सुषेण ने संजीवनी से लक्ष्मण को जीवित किया।\n\nलक्ष्मण ने मेघनाद का वध किया।\n\n🏹 मुख्य संदेश: हनुमान की भक्ति और समर्पण अतुलनीय है।` },
-      { ch: 4, title: 'रावण वध', content: `⚔️ युद्ध काण्ड — रावण वध\n\nरावण और राम का महायुद्ध हुआ। राम के बाण से रावण का सिर कटता था पर फिर उग आता था।\n\nविभीषण ने बताया — रावण की नाभि में अमृत है। राम ने ब्रह्मास्त्र चलाया जो नाभि में लगा।\n\nरावण का वध हुआ। देवताओं ने पुष्पवर्षा की।\n\n🏹 मुख्य संदेश: "यतो धर्मस्ततो जयः" — जहाँ धर्म है, वहीं विजय है।` },
-      { ch: 5, title: 'सीता की अग्नि परीक्षा', content: `⚔️ युद्ध काण्ड — अग्नि परीक्षा\n\nरावण वध के बाद विभीषण का राज्याभिषेक हुआ। सीता को लाया गया।\n\nराम ने सीता को स्वीकार नहीं किया — मर्यादा की रक्षा के लिए। सीता ने अग्निप्रवेश किया।\n\nअग्निदेव ने सीता को पुष्पमाला के साथ वापस दिया — "सीता पवित्र हैं।"\n\n🏹 मुख्य संदेश: सत्य सदा विजयी होता है।` },
+      { ch: 1, title: 'सेतु निर्माण', content: `⚔️ युद्ध काण्ड — राम सेतु\n\nसमुद्र ने राम की वंदना की और मार्ग देने का वचन दिया। नल और नील वानरों ने राम सेतु बनाया।\n\nपत्थर पर "राम" लिखकर डाला — पत्थर तैरने लगे। वानर सेना लंका पहुँची।\n\n🏹 मुख्य संदेश: राम नाम में अद्भुत शक्ति है।` ,
+      contentEn: `⚔️ Yuddha Kanda — The Building of the Bridge
+
+The ocean God appeared before Rama and promised a path. Nala and Nila — blessed with the power to make stones float — led the vanaras in building the great bridge.
+
+Stones were inscribed with the name of Rama and cast into the sea — they floated. The vanara army crossed to Lanka.
+
+🏹 Key Message: The name of Rama holds miraculous power.`
+    },
+      { ch: 2, title: 'विभीषण का शरण', content: `⚔️ युद्ध काण्ड — विभीषण शरण\n\nरावण के भाई विभीषण ने रावण को समझाया — सीता को वापस करो। रावण ने अपमान किया।\n\nविभीषण राम की शरण में आए। सुग्रीव ने मना किया। राम ने कहा — जो भी शरण में आए, मैं रक्षा करूँगा।\n\nविभीषण ने लंका के रहस्य बताए।\n\n🏹 मुख्य संदेश: "शरणागत की रक्षा करना राजधर्म है।"` ,
+      contentEn: `⚔️ Yuddha Kanda — Vibhishana Seeks Refuge
+
+Ravana's brother Vibhishana tried to counsel Ravana — return Sita; you are on the path to ruin. Ravana humiliated and banished him.
+
+Vibhishana came to seek Rama's shelter. Sugriva urged caution. Rama said — whoever comes to me for refuge, I will protect them.
+
+Vibhishana revealed the secrets of Lanka.
+
+🏹 Key Message: Protecting those who surrender — this is the highest royal duty.`
+    },
+      { ch: 3, title: 'मेघनाद वध और लक्ष्मण शक्ति', content: `⚔️ युद्ध काण्ड — लक्ष्मण शक्ति\n\nमेघनाद ने शक्ति चलाई — लक्ष्मण मूर्छित हो गए। हनुमान संजीवनी बूटी लेने हिमालय गए।\n\nहनुमान पर्वत नहीं पहचान पाए तो पूरा पर्वत उठा लाए। वैद्य सुषेण ने संजीवनी से लक्ष्मण को जीवित किया।\n\nलक्ष्मण ने मेघनाद का वध किया।\n\n🏹 मुख्य संदेश: हनुमान की भक्ति और समर्पण अतुलनीय है।` ,
+      contentEn: `⚔️ Yuddha Kanda — Lakshmana Is Struck Down
+
+Meghanada hurled the Shakti weapon — Lakshmana fell unconscious. Hanuman flew to the Himalayas for the Sanjeevani herb.
+
+Unable to identify the herb, Hanuman uprooted the entire mountain and carried it back. The physician Sushena restored Lakshmana to life.
+
+Lakshmana then slew Meghanada.
+
+🏹 Key Message: Hanuman's devotion and total commitment are beyond compare.`
+    },
+      { ch: 4, title: 'रावण वध', content: `⚔️ युद्ध काण्ड — रावण वध\n\nरावण और राम का महायुद्ध हुआ। राम के बाण से रावण का सिर कटता था पर फिर उग आता था।\n\nविभीषण ने बताया — रावण की नाभि में अमृत है। राम ने ब्रह्मास्त्र चलाया जो नाभि में लगा।\n\nरावण का वध हुआ। देवताओं ने पुष्पवर्षा की।\n\n🏹 मुख्य संदेश: "यतो धर्मस्ततो जयः" — जहाँ धर्म है, वहीं विजय है।` ,
+      contentEn: `⚔️ Yuddha Kanda — The Slaying of Ravana
+
+The great war between Rama and Ravana raged. Rama's arrows cut off Ravana's heads — but they kept growing back.
+
+Vibhishana revealed the secret — a vessel of nectar (amrit) is stored in Ravana's navel. Rama shot the Brahmastra directly into Ravana's navel.
+
+Ravana fell. The gods showered flowers from the heavens.
+
+🏹 Key Message: Yato dharmah tato jayah — Where there is righteousness, there is victory.`
+    },
+      { ch: 5, title: 'सीता की अग्नि परीक्षा', content: `⚔️ युद्ध काण्ड — अग्नि परीक्षा\n\nरावण वध के बाद विभीषण का राज्याभिषेक हुआ। सीता को लाया गया।\n\nराम ने सीता को स्वीकार नहीं किया — मर्यादा की रक्षा के लिए। सीता ने अग्निप्रवेश किया।\n\nअग्निदेव ने सीता को पुष्पमाला के साथ वापस दिया — "सीता पवित्र हैं।"\n\n🏹 मुख्य संदेश: सत्य सदा विजयी होता है।` ,
+      contentEn: `⚔️ Yuddha Kanda — Sita's Trial by Fire
+
+After Ravana's death, Vibhishana was crowned king of Lanka. Sita was brought forward to be reunited with Rama.
+
+Rama refused to accept her before the world, saying her honour must be established publicly. Sita entered the fire.
+
+Agni Dev (the God of Fire) emerged, holding Sita in his arms, and declared — Sita is pure. Rama received her with joy.
+
+🏹 Key Message: Truth always triumphs in the end.`
+    },
     ]
   },
   {
     num: 7, icon: '👑', name: 'उत्तर काण्ड', en: 'Uttara Kanda', sargas: 111,
     desc: 'अयोध्या वापसी, राम राज्य, सीता का वनवास, राम का निर्वाण',
     chapters: [
-      { ch: 1, title: 'अयोध्या वापसी — राम राज्याभिषेक', content: `👑 उत्तर काण्ड — अयोध्या वापसी\n\nपुष्पक विमान से राम, सीता और लक्ष्मण अयोध्या वापस आए। भरत ने राम की पादुकाएँ वापस कीं।\n\nराम का राज्याभिषेक हुआ। "राम राज्य" आरंभ हुआ:\n• कोई दुखी नहीं\n• कोई रोगी नहीं\n• कोई गरीब नहीं\n• धर्म की स्थापना\n\n🏹 मुख्य संदेश: आदर्श राज्य वह है जहाँ सभी सुखी हों।` },
-      { ch: 2, title: 'सीता का वनवास', content: `👑 उत्तर काण्ड — सीता वनवास\n\nएक धोबी ने अपनी पत्नी को कहा — "मैं राम नहीं जो लंका से लाई स्त्री को घर रखूँ।"\n\nराम ने यह सुना। मर्यादा की रक्षा के लिए सीता को वनवास दिया। लक्ष्मण ने वाल्मीकि के आश्रम छोड़ा।\n\nसीता ने आश्रम में लव और कुश को जन्म दिया।\n\n🏹 मुख्य संदेश: राम राजा के रूप में प्रजा की भावना को सर्वोच्च मानते थे।` },
-      { ch: 3, title: 'अश्वमेध यज्ञ और लव-कुश', content: `👑 उत्तर काण्ड — लव कुश\n\nराम ने अश्वमेध यज्ञ किया। यज्ञ का घोड़ा वाल्मीकि के आश्रम पहुँचा। लव और कुश ने घोड़े को पकड़ा।\n\nसेना से युद्ध किया — लक्ष्मण, भरत सब हार गए। राम स्वयं आए। पिता-पुत्र का आमना-सामना।\n\nवाल्मीकि ने बताया — ये आपके पुत्र हैं। सीता को बुलाया गया।\n\n🏹 मुख्य संदेश: सत्य कभी छिपता नहीं।` },
-      { ch: 4, title: 'सीता की पृथ्वी में समाई', content: `👑 उत्तर काण्ड — सीता समाई\n\nराम ने सीता को वापस स्वीकार करना चाहा। सीता ने कहा — अगर मैं पवित्र हूँ तो पृथ्वी माता मुझे स्वीकार करें।\n\nभूमि फटी, पृथ्वी की गोद में से सिंहासन निकला। सीता उसमें बैठकर पृथ्वी में समा गईं।\n\nराम शोक में डूब गए।\n\n🏹 मुख्य संदेश: सीता — त्याग और पवित्रता की प्रतिमूर्ति।` },
-      { ch: 5, title: 'राम का निर्वाण — रामायण समापन', content: `👑 उत्तर काण्ड — राम निर्वाण\n\nसमय आने पर यमराज राम के पास आए। राम ने अयोध्या की प्रजा और भाइयों को अंतिम उपदेश दिया।\n\nराम सरयू नदी में प्रवेश कर परमधाम को गए। सभी भाई और प्रजा साथ गई।\n\nब्रह्मा ने कहा — "राम, आप विष्णु के अवतार हैं। आपका कार्य पूर्ण हुआ।"\n\n🏹 अंतिम संदेश:\n"रामं दशरथं विद्धि, मां विद्धि जनकात्मजाम्।"\nराम को दशरथ पुत्र जानो, मुझे जानकी जानो।\n\n🙏 रामो विग्रहवान् धर्मः — राम ही साक्षात् धर्म हैं।\n\n🏹 इति वाल्मीकि रामायण सम्पूर्ण 🏹` },
+      { ch: 1, title: 'अयोध्या वापसी — राम राज्याभिषेक', content: `👑 उत्तर काण्ड — अयोध्या वापसी\n\nपुष्पक विमान से राम, सीता और लक्ष्मण अयोध्या वापस आए। भरत ने राम की पादुकाएँ वापस कीं।\n\nराम का राज्याभिषेक हुआ। "राम राज्य" आरंभ हुआ:\n• कोई दुखी नहीं\n• कोई रोगी नहीं\n• कोई गरीब नहीं\n• धर्म की स्थापना\n\n🏹 मुख्य संदेश: आदर्श राज्य वह है जहाँ सभी सुखी हों।` ,
+      contentEn: `👑 Uttara Kanda — Return to Ayodhya — Rama's Coronation
+
+Rama, Sita and Lakshmana returned to Ayodhya in the Pushpaka Vimana (flying chariot). Bharata returned the sandals and welcomed Rama.
+
+Rama was crowned king. The age of Rama Rajya (Rama's Rule) began:
+• No one was in sorrow
+• No one was ill
+• No one lived in poverty
+• Righteousness reigned everywhere
+
+🏹 Key Message: The ideal kingdom is one where all live in happiness.`
+    },
+      { ch: 2, title: 'सीता का वनवास', content: `👑 उत्तर काण्ड — सीता वनवास\n\nएक धोबी ने अपनी पत्नी को कहा — "मैं राम नहीं जो लंका से लाई स्त्री को घर रखूँ।"\n\nराम ने यह सुना। मर्यादा की रक्षा के लिए सीता को वनवास दिया। लक्ष्मण ने वाल्मीकि के आश्रम छोड़ा।\n\nसीता ने आश्रम में लव और कुश को जन्म दिया।\n\n🏹 मुख्य संदेश: राम राजा के रूप में प्रजा की भावना को सर्वोच्च मानते थे।` ,
+      contentEn: `👑 Uttara Kanda — Sita's Exile
+
+A washerman said to his wife — I am not like Rama, to keep a woman who has lived in another's house.
+
+Rama heard of this. For the sake of public honour, he sent Sita into exile. Lakshmana left her at the hermitage of Sage Valmiki.
+
+Sita gave birth to the twins Lava and Kusha in the forest hermitage.
+
+🏹 Key Message: Rama, as king, placed the perception of his people above his own personal happiness.`
+    },
+      { ch: 3, title: 'अश्वमेध यज्ञ और लव-कुश', content: `👑 उत्तर काण्ड — लव कुश\n\nराम ने अश्वमेध यज्ञ किया। यज्ञ का घोड़ा वाल्मीकि के आश्रम पहुँचा। लव और कुश ने घोड़े को पकड़ा।\n\nसेना से युद्ध किया — लक्ष्मण, भरत सब हार गए। राम स्वयं आए। पिता-पुत्र का आमना-सामना।\n\nवाल्मीकि ने बताया — ये आपके पुत्र हैं। सीता को बुलाया गया।\n\n🏹 मुख्य संदेश: सत्य कभी छिपता नहीं।` ,
+      contentEn: `👑 Uttara Kanda — The Ashwamedha Yagna and Lava-Kusha
+
+Rama performed the great Ashwamedha Yagna (horse sacrifice). The sacred horse arrived at Valmiki's hermitage. Lava and Kusha captured it.
+
+They defeated the entire army — Lakshmana, Bharata, all fell before them. Rama himself came. Father and sons faced each other.
+
+Valmiki revealed — these are your sons. Sita was summoned.
+
+🏹 Key Message: Truth can never be hidden for long.`
+    },
+      { ch: 4, title: 'सीता की पृथ्वी में समाई', content: `👑 उत्तर काण्ड — सीता समाई\n\nराम ने सीता को वापस स्वीकार करना चाहा। सीता ने कहा — अगर मैं पवित्र हूँ तो पृथ्वी माता मुझे स्वीकार करें।\n\nभूमि फटी, पृथ्वी की गोद में से सिंहासन निकला। सीता उसमें बैठकर पृथ्वी में समा गईं।\n\nराम शोक में डूब गए।\n\n🏹 मुख्य संदेश: सीता — त्याग और पवित्रता की प्रतिमूर्ति।` ,
+      contentEn: `👑 Uttara Kanda — Sita Returns to the Earth
+
+Rama wished to accept Sita back. Sita spoke — if I am pure, let Mother Earth receive me.
+
+The earth split open. A divine throne rose from within. Sita sat upon it and descended into the earth.
+
+Rama was plunged into grief.
+
+🏹 Key Message: Sita — the eternal embodiment of sacrifice and purity.`
+    },
+      { ch: 5, title: 'राम का निर्वाण — रामायण समापन', content: `👑 उत्तर काण्ड — राम निर्वाण\n\nसमय आने पर यमराज राम के पास आए। राम ने अयोध्या की प्रजा और भाइयों को अंतिम उपदेश दिया।\n\nराम सरयू नदी में प्रवेश कर परमधाम को गए। सभी भाई और प्रजा साथ गई।\n\nब्रह्मा ने कहा — "राम, आप विष्णु के अवतार हैं। आपका कार्य पूर्ण हुआ।"\n\n🏹 अंतिम संदेश:\n"रामं दशरथं विद्धि, मां विद्धि जनकात्मजाम्।"\nराम को दशरथ पुत्र जानो, मुझे जानकी जानो।\n\n🙏 रामो विग्रहवान् धर्मः — राम ही साक्षात् धर्म हैं।\n\n🏹 इति वाल्मीकि रामायण सम्पूर्ण 🏹` ,
+      contentEn: `👑 Uttara Kanda — Rama's Departure — The End of the Ramayana
+
+When the time came, Yama (the God of Death) came to Rama. Rama gave his final teachings to the people of Ayodhya and his brothers.
+
+Rama entered the sacred Sarayu River and passed into the divine realm. His brothers and the people of Ayodhya followed.
+
+Brahma declared — Rama, you are the incarnation of Vishnu. Your mission is complete.
+
+🏹 Final Message:
+"Ramo vigrahavan dharmah" — Rama is dharma in human form.
+
+🙏 Thus ends the Valmiki Ramayana 🙏
+Jay Shri Ram`
+    },
     ]
   },
 ];
@@ -2297,7 +2910,10 @@ function showRamKanda(num) {
     var btn = document.createElement('button');
     btn.style.cssText = 'background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.2);border-radius:12px;padding:14px 16px;text-align:left;cursor:pointer;display:flex;align-items:center;gap:12px;width:100%;';
     btn.innerHTML = '<span style="background:rgba(212,175,55,0.2);border-radius:8px;padding:4px 10px;font-size:11px;color:var(--gold);font-weight:700;min-width:36px;text-align:center;">' + ch.ch + '</span><div style="font-size:13px;color:rgba(255,255,255,0.9);font-weight:600;">' + ch.title + '</div>';
-    btn.addEventListener('click', function() { showRamChapter(ch.title, ch.content); });
+    btn.addEventListener('click', function() {
+      var displayContent = (currentLang === 'en' && ch.contentEn) ? ch.contentEn : ch.content;
+      showRamChapter(ch.title, displayContent);
+    });
     list.appendChild(btn);
   });
   document.querySelectorAll('.screen').forEach(function(s) { s.classList.remove('active'); });
@@ -2312,68 +2928,323 @@ const shivPuranData = [
     num: 1, icon: '📜', name: 'विद्येश्वर संहिता', en: 'Vidyeshvara Samhita', adhyaya: 25,
     desc: 'शिव की महिमा, शिवलिंग पूजा का महत्व',
     chapters: [
-      { ch: 1, title: 'शिव पुराण की महिमा', content: `📜 विद्येश्वर संहिता — अध्याय १\n\nशिव पुराण की रचना महर्षि वेदव्यास ने की। इसमें भगवान शिव की महिमा, उनके स्वरूप और उपासना का विस्तृत वर्णन है।\n\nशिव पुराण में ७ संहिताएँ और २४,००० श्लोक हैं।\n\n🔱 मुख्य संदेश: भगवान शिव ही सृष्टि के आदि, मध्य और अंत हैं।` },
-      { ch: 2, title: 'शिवलिंग की उत्पत्ति', content: `📜 विद्येश्वर संहिता — अध्याय २\n\nब्रह्मा और विष्णु में श्रेष्ठता का विवाद हुआ। तभी एक अनंत ज्योतिर्लिंग प्रकट हुआ।\n\nब्रह्मा ऊपर और विष्णु नीचे इसका अंत खोजने गए — दोनों असफल रहे। शिव ने बताया — मैं ही आदि और अंत हूँ।\n\n🔱 मुख्य संदेश: शिवलिंग में ब्रह्मांड की संपूर्ण ऊर्जा समाहित है।` },
-      { ch: 3, title: 'शिव पूजा विधि', content: `📜 विद्येश्वर संहिता — अध्याय ३\n\nशिव पूजा की सही विधि:\n• स्नान करके शुद्ध वस्त्र पहनें\n• बेलपत्र, धतूरा, आकड़े के फूल चढ़ाएँ\n• जल और दूध से अभिषेक करें\n• ॐ नमः शिवाय का जप करें\n\n🔱 विशेष: सोमवार को शिव पूजा विशेष फलदायी है।` },
-      { ch: 4, title: 'शिव के नाम', content: `📜 विद्येश्वर संहिता — अध्याय ४\n\nभगवान शिव के १,००८ नाम हैं। मुख्य नाम:\n• महादेव — देवों के देव\n• शंकर — सुख देने वाले\n• भोलेनाथ — भोले स्वभाव वाले\n• नीलकंठ — नीले कंठ वाले\n• त्रिनेत्र — तीन नेत्रों वाले\n• पशुपति — सभी प्राणियों के स्वामी\n\n🔱 मुख्य संदेश: शिव के नाम का जप सभी पापों को नष्ट करता है।` },
-      { ch: 5, title: 'शिव महिमा', content: `📜 विद्येश्वर संहिता — अध्याय ५\n\nशिव त्रिकालदर्शी हैं — भूत, भविष्य और वर्तमान सब जानते हैं। वे कैलाश पर्वत पर निवास करते हैं।\n\nशिव का परिवार:\n• माता पार्वती — शक्ति स्वरूपा\n• पुत्र गणेश — विघ्नहर्ता\n• पुत्र कार्तिकेय — देवसेना के स्वामी\n• नंदी — शिव का वाहन और द्वारपाल\n\n🔱 मुख्य संदेश: शिव परिवार समस्त संसार का आदर्श है।` },
+      { ch: 1, title: 'शिव पुराण की महिमा', content: `📜 विद्येश्वर संहिता — अध्याय १\n\nशिव पुराण की रचना महर्षि वेदव्यास ने की। इसमें भगवान शिव की महिमा, उनके स्वरूप और उपासना का विस्तृत वर्णन है।\n\nशिव पुराण में ७ संहिताएँ और २४,००० श्लोक हैं।\n\n🔱 मुख्य संदेश: भगवान शिव ही सृष्टि के आदि, मध्य और अंत हैं।` ,
+      contentEn: `📜 Vidyeshvara Samhita — Chapter 1: The Glory of the Shiva Purana
+
+The Shiva Purana was composed by Sage Veda Vyasa. It describes Lord Shiva's glory, His divine form and the methods of His worship in great detail.
+
+The Shiva Purana contains 7 Samhitas and 24,000 shlokas.
+
+🔱 Key Message: Lord Shiva is the beginning, the middle and the end of all creation.`
+    },
+      { ch: 2, title: 'शिवलिंग की उत्पत्ति', content: `📜 विद्येश्वर संहिता — अध्याय २\n\nब्रह्मा और विष्णु में श्रेष्ठता का विवाद हुआ। तभी एक अनंत ज्योतिर्लिंग प्रकट हुआ।\n\nब्रह्मा ऊपर और विष्णु नीचे इसका अंत खोजने गए — दोनों असफल रहे। शिव ने बताया — मैं ही आदि और अंत हूँ।\n\n🔱 मुख्य संदेश: शिवलिंग में ब्रह्मांड की संपूर्ण ऊर्जा समाहित है।` ,
+      contentEn: `📜 Vidyeshvara Samhita — Chapter 2: The Origin of the Shivalinga
+
+Brahma and Vishnu argued about who was supreme. Suddenly an infinite pillar of divine light (Jyotirlinga) appeared before them.
+
+Brahma flew upward and Vishnu dove downward to find its end — both failed. Shiva revealed Himself and declared: I am the beginning and the end.
+
+🔱 Key Message: The Shivalinga contains the total energy of the entire universe.`
+    },
+      { ch: 3, title: 'शिव पूजा विधि', content: `📜 विद्येश्वर संहिता — अध्याय ३\n\nशिव पूजा की सही विधि:\n• स्नान करके शुद्ध वस्त्र पहनें\n• बेलपत्र, धतूरा, आकड़े के फूल चढ़ाएँ\n• जल और दूध से अभिषेक करें\n• ॐ नमः शिवाय का जप करें\n\n🔱 विशेष: सोमवार को शिव पूजा विशेष फलदायी है।` ,
+      contentEn: `📜 Vidyeshvara Samhita — Chapter 3: The Method of Shiva Worship
+
+The correct method of Shiva worship:
+• Bathe and wear clean clothes
+• Offer Belpatra (bilva leaves), Dhatura and Aak flowers
+• Perform Abhisheka (anointing) with water and milk
+• Chant: Om Namah Shivaya
+
+🔱 Special: Worship on Monday is especially fruitful for Shiva devotees.`
+    },
+      { ch: 4, title: 'शिव के नाम', content: `📜 विद्येश्वर संहिता — अध्याय ४\n\nभगवान शिव के १,००८ नाम हैं। मुख्य नाम:\n• महादेव — देवों के देव\n• शंकर — सुख देने वाले\n• भोलेनाथ — भोले स्वभाव वाले\n• नीलकंठ — नीले कंठ वाले\n• त्रिनेत्र — तीन नेत्रों वाले\n• पशुपति — सभी प्राणियों के स्वामी\n\n🔱 मुख्य संदेश: शिव के नाम का जप सभी पापों को नष्ट करता है।` ,
+      contentEn: `📜 Vidyeshvara Samhita — Chapter 4: The Names of Shiva
+
+Lord Shiva has 1,008 sacred names. His principal names include:
+• Mahadeva — Lord of all gods
+• Shankara — The giver of happiness
+• Bholenath — The innocent and compassionate one
+• Neelakantha — The blue-throated one
+• Trinetra — The three-eyed one
+• Pashupati — Lord of all living beings
+
+🔱 Key Message: Chanting the names of Shiva destroys all sin.`
+    },
+      { ch: 5, title: 'शिव महिमा', content: `📜 विद्येश्वर संहिता — अध्याय ५\n\nशिव त्रिकालदर्शी हैं — भूत, भविष्य और वर्तमान सब जानते हैं। वे कैलाश पर्वत पर निवास करते हैं।\n\nशिव का परिवार:\n• माता पार्वती — शक्ति स्वरूपा\n• पुत्र गणेश — विघ्नहर्ता\n• पुत्र कार्तिकेय — देवसेना के स्वामी\n• नंदी — शिव का वाहन और द्वारपाल\n\n🔱 मुख्य संदेश: शिव परिवार समस्त संसार का आदर्श है।` ,
+      contentEn: `📜 Vidyeshvara Samhita — Chapter 5: The Glory of Shiva
+
+Shiva is Trikaldarshi — He knows the past, present and future. He resides on Mount Kailash.
+
+Shiva's divine family:
+• Mother Parvati — the embodiment of Shakti (divine power)
+• Son Ganesha — the remover of obstacles
+• Son Kartikeya — commander of the divine army
+• Nandi — Shiva's vehicle and doorkeeper
+
+🔱 Key Message: The family of Shiva is the ideal model for all of existence.`
+    },
     ]
   },
   {
     num: 2, icon: '🌙', name: 'रुद्र संहिता', en: 'Rudra Samhita', adhyaya: 181,
     desc: 'शिव-पार्वती विवाह, सती कथा, तारकासुर वध — सबसे बड़ी संहिता',
     chapters: [
-      { ch: 1, title: 'सृष्टि खण्ड — सृष्टि रचना', content: `🌙 रुद्र संहिता — सृष्टि खण्ड\n\nब्रह्मा जी ने सृष्टि रचना शुरू की। उन्होंने शिव का ध्यान किया। शिव ने कहा — मैं तुम्हारे हृदय से प्रकट हुआ हूँ।\n\nशिव ने ब्रह्मा को आज्ञा दी — सृष्टि का विस्तार करो। ब्रह्मा ने मानस पुत्रों की रचना की।\n\n🔱 मुख्य संदेश: शिव सृष्टि के मूल कारण हैं।` },
-      { ch: 2, title: 'सती खण्ड — सती की कथा', content: `🌙 रुद्र संहिता — सती खण्ड\n\nदक्ष प्रजापति की पुत्री सती ने शिव से विवाह किया। दक्ष ने यज्ञ किया और शिव को आमंत्रित नहीं किया।\n\nसती अपने पिता के यज्ञ में गई। दक्ष ने शिव का अपमान किया। सती ने यज्ञकुंड में अपने प्राण त्याग दिए।\n\nशिव ने क्रोध में आकर दक्ष का सिर काट दिया। बाद में दक्ष को बकरे का सिर लगाया।\n\n🔱 मुख्य संदेश: पति का अपमान पत्नी के लिए असहनीय होता है।` },
-      { ch: 3, title: 'पार्वती खण्ड — पार्वती की तपस्या', content: `🌙 रुद्र संहिता — पार्वती खण्ड\n\nसती ने हिमाचल के घर पार्वती के रूप में जन्म लिया। पार्वती ने शिव को पाने के लिए घोर तपस्या की।\n\nपार्वती ने गर्मी में पंचाग्नि तपस्या, सर्दी में जल में खड़े रहकर तपस्या की। इंद्र ने सप्तऋषियों को भेजकर पार्वती को रोकने का प्रयास किया।\n\nशिव ने ब्राह्मण वेश में आकर खुद की बुराई की — पार्वती ने क्रोध से उत्तर दिया। शिव प्रसन्न हुए और विवाह को तैयार हुए।\n\n🔱 मुख्य संदेश: सच्ची भक्ति और तपस्या से ईश्वर अवश्य मिलते हैं।` },
-      { ch: 4, title: 'कुमार खण्ड — कार्तिकेय जन्म', content: `🌙 रुद्र संहिता — कुमार खण्ड\n\nतारकासुर के अत्याचारों से देवता परेशान थे। ब्रह्मा ने कहा — शिव-पार्वती के पुत्र से ही तारक का वध होगा।\n\nशिव और पार्वती के तेज से कार्तिकेय का जन्म हुआ। उनका पालन-पोषण कृत्तिका नक्षत्र की छह देवियों ने किया — इसलिए षड्मुख (छह मुख) हुए।\n\nकार्तिकेय ने तारकासुर का वध किया और देवताओं को मुक्त कराया।\n\n🔱 मुख्य संदेश: धर्म की रक्षा के लिए ईश्वर हर युग में अवतार लेते हैं।` },
-      { ch: 5, title: 'युद्ध खण्ड — तारकासुर वध', content: `🌙 रुद्र संहिता — युद्ध खण्ड\n\nकार्तिकेय देवताओं के सेनापति बने। देवासुर संग्राम हुआ। तारकासुर बहुत शक्तिशाली था।\n\nकार्तिकेय ने अपनी शक्ति (भाला) से तारकासुर का वध किया। देवता प्रसन्न हुए।\n\n🔱 मुख्य संदेश: बुराई कितनी भी शक्तिशाली हो — अंत में धर्म की ही जीत होती है।` },
+      { ch: 1, title: 'सृष्टि खण्ड — सृष्टि रचना', content: `🌙 रुद्र संहिता — सृष्टि खण्ड\n\nब्रह्मा जी ने सृष्टि रचना शुरू की। उन्होंने शिव का ध्यान किया। शिव ने कहा — मैं तुम्हारे हृदय से प्रकट हुआ हूँ।\n\nशिव ने ब्रह्मा को आज्ञा दी — सृष्टि का विस्तार करो। ब्रह्मा ने मानस पुत्रों की रचना की।\n\n🔱 मुख्य संदेश: शिव सृष्टि के मूल कारण हैं।` ,
+      contentEn: `🌙 Rudra Samhita — Creation Section: The Creation of the Universe
+
+Brahma began the creation of the universe and meditated on Shiva. Shiva said: I have emerged from your own heart.
+
+Shiva instructed Brahma: Expand creation. Brahma created his mind-born sons (Manasputras).
+
+🔱 Key Message: Shiva is the fundamental cause of all creation.`
+    },
+      { ch: 2, title: 'सती खण्ड — सती की कथा', content: `🌙 रुद्र संहिता — सती खण्ड\n\nदक्ष प्रजापति की पुत्री सती ने शिव से विवाह किया। दक्ष ने यज्ञ किया और शिव को आमंत्रित नहीं किया।\n\nसती अपने पिता के यज्ञ में गई। दक्ष ने शिव का अपमान किया। सती ने यज्ञकुंड में अपने प्राण त्याग दिए।\n\nशिव ने क्रोध में आकर दक्ष का सिर काट दिया। बाद में दक्ष को बकरे का सिर लगाया।\n\n🔱 मुख्य संदेश: पति का अपमान पत्नी के लिए असहनीय होता है।` ,
+      contentEn: `🌙 Rudra Samhita — Sati Section: The Story of Sati
+
+Daksha Prajapati's daughter Sati married Lord Shiva. Daksha performed a great Yagna and did not invite Shiva.
+
+Sati attended her father's Yagna uninvited. Daksha insulted Shiva. Unable to bear the dishonour of her husband, Sati immolated herself in the sacrificial fire.
+
+Shiva in His grief and fury severed Daksha's head. Later, Daksha was revived with the head of a goat.
+
+🔱 Key Message: Insulting one's husband is unbearable for a devoted wife.`
+    },
+      { ch: 3, title: 'पार्वती खण्ड — पार्वती की तपस्या', content: `🌙 रुद्र संहिता — पार्वती खण्ड\n\nसती ने हिमाचल के घर पार्वती के रूप में जन्म लिया। पार्वती ने शिव को पाने के लिए घोर तपस्या की।\n\nपार्वती ने गर्मी में पंचाग्नि तपस्या, सर्दी में जल में खड़े रहकर तपस्या की। इंद्र ने सप्तऋषियों को भेजकर पार्वती को रोकने का प्रयास किया।\n\nशिव ने ब्राह्मण वेश में आकर खुद की बुराई की — पार्वती ने क्रोध से उत्तर दिया। शिव प्रसन्न हुए और विवाह को तैयार हुए।\n\n🔱 मुख्य संदेश: सच्ची भक्ति और तपस्या से ईश्वर अवश्य मिलते हैं।` ,
+      contentEn: `🌙 Rudra Samhita — Parvati Section: Parvati's Penance
+
+Sati was reborn as Parvati, the daughter of the Himalayas. She performed intense tapas (penance) for thousands of years to win Shiva as her husband.
+
+Shiva tested her by coming in the disguise of a brahmin and speaking ill of Shiva. Parvati stood firm in her devotion. Shiva revealed himself and accepted her.
+
+🔱 Key Message: True devotion is unshakeable — it cannot be diminished by any test.`
+    },
+      { ch: 4, title: 'कुमार खण्ड — कार्तिकेय जन्म', content: `🌙 रुद्र संहिता — कुमार खण्ड\n\nतारकासुर के अत्याचारों से देवता परेशान थे। ब्रह्मा ने कहा — शिव-पार्वती के पुत्र से ही तारक का वध होगा।\n\nशिव और पार्वती के तेज से कार्तिकेय का जन्म हुआ। उनका पालन-पोषण कृत्तिका नक्षत्र की छह देवियों ने किया — इसलिए षड्मुख (छह मुख) हुए।\n\nकार्तिकेय ने तारकासुर का वध किया और देवताओं को मुक्त कराया।\n\n🔱 मुख्य संदेश: धर्म की रक्षा के लिए ईश्वर हर युग में अवतार लेते हैं।` ,
+      contentEn: `🌙 Rudra Samhita — War Section: The Marriage of Shiva and Parvati
+
+All the gods came to celebrate the divine wedding of Shiva and Parvati. The procession was magnificent — Shiva came riding the bull Nandi, accompanied by ghosts, ganas and divine beings.
+
+Parvati's mother Maina was initially frightened by Shiva's appearance. But when Shiva revealed his divine form, all were overwhelmed with joy.
+
+🔱 Key Message: The wedding of Shiva and Parvati is the cosmic union of consciousness and energy.`
+    },
+      { ch: 5, title: 'युद्ध खण्ड — तारकासुर वध', content: `🌙 रुद्र संहिता — युद्ध खण्ड\n\nकार्तिकेय देवताओं के सेनापति बने। देवासुर संग्राम हुआ। तारकासुर बहुत शक्तिशाली था।\n\nकार्तिकेय ने अपनी शक्ति (भाला) से तारकासुर का वध किया। देवता प्रसन्न हुए।\n\n🔱 मुख्य संदेश: बुराई कितनी भी शक्तिशाली हो — अंत में धर्म की ही जीत होती है।` ,
+      contentEn: `🌙 Rudra Samhita — The Slaying of Tarakasura
+
+The demon Tarakasura had obtained a boon that he could only be killed by the son of Shiva. As Shiva had been in deep meditation, no son had been born.
+
+The marriage of Shiva and Parvati led to the birth of Kartikeya. Kartikeya slew Tarakasura and restored peace to the three worlds.
+
+🔱 Key Message: Divine purpose is fulfilled only in its proper time.`
+    },
     ]
   },
   {
     num: 3, icon: '🏔️', name: 'शतरुद्र संहिता', en: 'Shatarudra Samhita', adhyaya: 42,
     desc: 'शिव के विभिन्न अवतार और उनकी लीलाएँ',
     chapters: [
-      { ch: 1, title: 'शिव के अवतार', content: `🏔️ शतरुद्र संहिता — शिव अवतार\n\nशिव के प्रमुख अवतार:\n• महाकाल — काल के स्वामी\n• तार — तारने वाले\n• बाल भुवनेश — ब्रह्मांड के स्वामी\n• षोडश भैरवी — सोलह भैरव रूप\n• भैरव — भयंकर रूप\n• छिन्नमस्त — कालिका रूप\n\n🔱 मुख्य संदेश: शिव अपने भक्तों की रक्षा के लिए विभिन्न रूप धारण करते हैं।` },
-      { ch: 2, title: 'शिव का नटराज रूप', content: `🏔️ शतरुद्र संहिता — नटराज\n\nशिव का नटराज रूप सृष्टि के नृत्य का प्रतीक है। उनके तांडव नृत्य से सृष्टि का निर्माण, पालन और संहार होता है।\n\nनटराज के हाथों में:\n• डमरू — सृष्टि का नाद\n• अग्नि — संहार की शक्ति\n• अभय मुद्रा — भक्तों को अभय\n• उठा हुआ चरण — मोक्ष\n\n🔱 मुख्य संदेश: शिव का नृत्य ब्रह्मांड की लय है।` },
-      { ch: 3, title: 'ग्यारह रुद्र', content: `🏔️ शतरुद्र संहिता — एकादश रुद्र\n\nशिव के ११ रुद्र रूप:\n१. कपाली  २. पिंगल  ३. भीम\n४. विरूपाक्ष  ५. विलोहित  ६. शास्ता\n७. अजपाद  ८. आपिर्बुध्न्य  ९. शम्भु\n१०. चण्ड  ११. भव\n\nये ११ रुद्र सृष्टि के विभिन्न कार्यों का संचालन करते हैं।\n\n🔱 मुख्य संदेश: शिव की शक्ति अनंत और असीम है।` },
+      { ch: 1, title: 'शिव के अवतार', content: `🏔️ शतरुद्र संहिता — शिव अवतार\n\nशिव के प्रमुख अवतार:\n• महाकाल — काल के स्वामी\n• तार — तारने वाले\n• बाल भुवनेश — ब्रह्मांड के स्वामी\n• षोडश भैरवी — सोलह भैरव रूप\n• भैरव — भयंकर रूप\n• छिन्नमस्त — कालिका रूप\n\n🔱 मुख्य संदेश: शिव अपने भक्तों की रक्षा के लिए विभिन्न रूप धारण करते हैं।` ,
+      contentEn: `🏔️ Shatrudra Samhita — Chapter 1: The Avatars of Shiva
+
+The principal avatars (divine forms) of Shiva:
+• Mahakala — Lord of Time and Death
+• Tara — The deliverer who carries across
+• Bhuvaneshvara — Lord of the Universe
+• Bhairava — The fierce and terrible form
+• Chandrashekhara — The one who wears the moon
+
+🔱 Key Message: Shiva assumes different forms to protect His devotees according to their needs.`
+    },
+      { ch: 2, title: 'शिव का नटराज रूप', content: `🏔️ शतरुद्र संहिता — नटराज\n\nशिव का नटराज रूप सृष्टि के नृत्य का प्रतीक है। उनके तांडव नृत्य से सृष्टि का निर्माण, पालन और संहार होता है।\n\nनटराज के हाथों में:\n• डमरू — सृष्टि का नाद\n• अग्नि — संहार की शक्ति\n• अभय मुद्रा — भक्तों को अभय\n• उठा हुआ चरण — मोक्ष\n\n🔱 मुख्य संदेश: शिव का नृत्य ब्रह्मांड की लय है।` ,
+      contentEn: `🏔️ Shatrudra Samhita — Chapter 2: Shiva as Mahakala
+
+Mahakala is the form of Shiva as the absolute ruler of time. Nothing in creation is beyond His authority — not even Brahma or Vishnu.
+
+The Mahakala temple in Ujjain is one of the twelve Jyotirlingas. Mahakala's power destroys all fear of death in His devotees.
+
+🔱 Key Message: One who worships Mahakala transcends the fear of death itself.`
+    },
+      { ch: 3, title: 'ग्यारह रुद्र', content: `🏔️ शतरुद्र संहिता — एकादश रुद्र\n\nशिव के ११ रुद्र रूप:\n१. कपाली  २. पिंगल  ३. भीम\n४. विरूपाक्ष  ५. विलोहित  ६. शास्ता\n७. अजपाद  ८. आपिर्बुध्न्य  ९. शम्भु\n१०. चण्ड  ११. भव\n\nये ११ रुद्र सृष्टि के विभिन्न कार्यों का संचालन करते हैं।\n\n🔱 मुख्य संदेश: शिव की शक्ति अनंत और असीम है।` ,
+      contentEn: `🏔️ Shatrudra Samhita — Chapter 3: Shiva as Bhairava
+
+Bhairava is the fierce and formidable aspect of Shiva — the guardian of the dharma, the punisher of the wicked.
+
+There are eight principal Bhairavas. Kala Bhairava is the guardian of the sacred city of Varanasi (Kashi).
+
+🔱 Key Message: The fierce form of God protects the righteous and destroys adharma.`
+    },
     ]
   },
   {
     num: 4, icon: '💫', name: 'कोटिरुद्र संहिता', en: 'Kotirudra Samhita', adhyaya: 43,
     desc: 'द्वादश ज्योतिर्लिंग — १२ ज्योतिर्लिंगों का वर्णन',
     chapters: [
-      { ch: 1, title: 'द्वादश ज्योतिर्लिंग', content: `💫 कोटिरुद्र संहिता — द्वादश ज्योतिर्लिंग\n\nभारत के १२ ज्योतिर्लिंग:\n\n१. सोमनाथ — गुजरात (प्रभास)\n२. मल्लिकार्जुन — आंध्र प्रदेश (श्रीशैल)\n३. महाकालेश्वर — मध्यप्रदेश (उज्जैन)\n४. ओंकारेश्वर — मध्यप्रदेश\n५. केदारनाथ — उत्तराखंड\n६. भीमाशंकर — महाराष्ट्र\n७. काशी विश्वनाथ — वाराणसी\n८. त्र्यम्बकेश्वर — नासिक\n९. वैद्यनाथ — देवघर (झारखंड)\n१०. नागेश्वर — द्वारका (गुजरात)\n११. रामेश्वरम् — तमिलनाडु\n१२. घृष्णेश्वर — औरंगाबाद\n\n🔱 मुख्य संदेश: इन बारह ज्योतिर्लिंगों के दर्शन से जन्म-जन्मांतर के पाप नष्ट हो जाते हैं।` },
-      { ch: 2, title: 'सोमनाथ ज्योतिर्लिंग', content: `💫 कोटिरुद्र संहिता — सोमनाथ\n\nचंद्रमा (सोम) ने प्रजापति दक्ष की २७ पुत्रियों से विवाह किया। उन्होंने रोहिणी से अधिक प्रेम किया।\n\nदक्ष ने श्राप दिया — तेरा तेज घटता जाएगा। चंद्रमा ने शिव की आराधना की। शिव ने वरदान दिया — पक्ष में घटोगे-बढ़ोगे।\n\nवह स्थान सोमनाथ कहलाया।\n\n🔱 मुख्य संदेश: शिव की भक्ति से असंभव भी संभव हो जाता है।` },
-      { ch: 3, title: 'काशी विश्वनाथ', content: `💫 कोटिरुद्र संहिता — काशी विश्वनाथ\n\nकाशी (वाराणसी) शिव की नगरी है। यहाँ विश्वनाथ ज्योतिर्लिंग विराजमान है।\n\nकाशी में मरने वाले को शिव स्वयं कान में तारक मंत्र (राम नाम) बोलते हैं, इसलिए काशी में मोक्ष निश्चित है।\n\nगंगा यहाँ उल्टी (उत्तर) दिशा में बहती है — यह शिव की कृपा का प्रतीक है।\n\n🔱 मुख्य संदेश: काशी पृथ्वी पर सबसे पवित्र स्थान है।` },
-      { ch: 4, title: 'केदारनाथ ज्योतिर्लिंग', content: `💫 कोटिरुद्र संहिता — केदारनाथ\n\nकेदारनाथ हिमालय में स्थित है। यहाँ शिव ने भैंसे का रूप धारण किया था।\n\nमहाभारत युद्ध के बाद पांडव शिव के दर्शन के लिए आए। शिव ने भैंसे का रूप लेकर भूमि में धँसना चाहा।\n\nभीम ने पकड़ा — शिव का कूबड़ (पीठ) वहाँ रह गया। यही केदारनाथ ज्योतिर्लिंग है।\n\n🔱 मुख्य संदेश: सच्चे भक्त ईश्वर को ढूंढ ही लेते हैं।` },
+      { ch: 1, title: 'द्वादश ज्योतिर्लिंग', content: `💫 कोटिरुद्र संहिता — द्वादश ज्योतिर्लिंग\n\nभारत के १२ ज्योतिर्लिंग:\n\n१. सोमनाथ — गुजरात (प्रभास)\n२. मल्लिकार्जुन — आंध्र प्रदेश (श्रीशैल)\n३. महाकालेश्वर — मध्यप्रदेश (उज्जैन)\n४. ओंकारेश्वर — मध्यप्रदेश\n५. केदारनाथ — उत्तराखंड\n६. भीमाशंकर — महाराष्ट्र\n७. काशी विश्वनाथ — वाराणसी\n८. त्र्यम्बकेश्वर — नासिक\n९. वैद्यनाथ — देवघर (झारखंड)\n१०. नागेश्वर — द्वारका (गुजरात)\n११. रामेश्वरम् — तमिलनाडु\n१२. घृष्णेश्वर — औरंगाबाद\n\n🔱 मुख्य संदेश: इन बारह ज्योतिर्लिंगों के दर्शन से जन्म-जन्मांतर के पाप नष्ट हो जाते हैं।` ,
+      contentEn: `💫 Kotirudra Samhita — Chapter 1: The Twelve Jyotirlingas
+
+The Twelve sacred Jyotirlingas of India:
+
+1. Somnath — Gujarat (Prabhas)
+2. Mallikarjuna — Andhra Pradesh (Srishaila)
+3. Mahakaleshvara — Madhya Pradesh (Ujjain)
+4. Omkareshvara — Madhya Pradesh
+5. Kedarnath — Uttarakhand
+6. Bhimashankar — Maharashtra
+7. Kashi Vishvanath — Varanasi
+8. Tryambakeshvara — Nashik
+9. Vaidyanath — Deoghar (Jharkhand)
+10. Nageshvara — Dwarka (Gujarat)
+11. Rameshvaram — Tamil Nadu
+12. Grishneshvara — Aurangabad
+
+🔱 Key Message: Pilgrimage to these twelve Jyotirlingas washes away the sins of countless lifetimes.`
+    },
+      { ch: 2, title: 'सोमनाथ ज्योतिर्लिंग', content: `💫 कोटिरुद्र संहिता — सोमनाथ\n\nचंद्रमा (सोम) ने प्रजापति दक्ष की २७ पुत्रियों से विवाह किया। उन्होंने रोहिणी से अधिक प्रेम किया।\n\nदक्ष ने श्राप दिया — तेरा तेज घटता जाएगा। चंद्रमा ने शिव की आराधना की। शिव ने वरदान दिया — पक्ष में घटोगे-बढ़ोगे।\n\nवह स्थान सोमनाथ कहलाया।\n\n🔱 मुख्य संदेश: शिव की भक्ति से असंभव भी संभव हो जाता है।` ,
+      contentEn: `💫 Kotirudra Samhita — Chapter 2: The Glory of Somnath
+
+Somnath is the first and most ancient of the twelve Jyotirlingas. The Moon God (Soma) himself installed this Shivalinga after being afflicted by a curse.
+
+Somnath has been destroyed and rebuilt seventeen times — yet it has stood as an eternal symbol of faith and resilience.
+
+🔱 Key Message: Devotion to Shiva cannot be destroyed — no matter what power rises against it.`
+    },
+      { ch: 3, title: 'काशी विश्वनाथ', content: `💫 कोटिरुद्र संहिता — काशी विश्वनाथ\n\nकाशी (वाराणसी) शिव की नगरी है। यहाँ विश्वनाथ ज्योतिर्लिंग विराजमान है।\n\nकाशी में मरने वाले को शिव स्वयं कान में तारक मंत्र (राम नाम) बोलते हैं, इसलिए काशी में मोक्ष निश्चित है।\n\nगंगा यहाँ उल्टी (उत्तर) दिशा में बहती है — यह शिव की कृपा का प्रतीक है।\n\n🔱 मुख्य संदेश: काशी पृथ्वी पर सबसे पवित्र स्थान है।` ,
+      contentEn: `💫 Kotirudra Samhita — Chapter 3: The Sacred City of Kashi
+
+Kashi (Varanasi) is Shiva's own city — the city of light. The Kashi Vishvanath temple is one of the most sacred places on earth.
+
+It is said that one who dies in Kashi receives the Taraka Mantra directly from Shiva — and attains liberation regardless of their karma.
+
+🔱 Key Message: Kashi is not merely a city — it is the doorway to liberation.`
+    },
+      { ch: 4, title: 'केदारनाथ ज्योतिर्लिंग', content: `💫 कोटिरुद्र संहिता — केदारनाथ\n\nकेदारनाथ हिमालय में स्थित है। यहाँ शिव ने भैंसे का रूप धारण किया था।\n\nमहाभारत युद्ध के बाद पांडव शिव के दर्शन के लिए आए। शिव ने भैंसे का रूप लेकर भूमि में धँसना चाहा।\n\nभीम ने पकड़ा — शिव का कूबड़ (पीठ) वहाँ रह गया। यही केदारनाथ ज्योतिर्लिंग है।\n\n🔱 मुख्य संदेश: सच्चे भक्त ईश्वर को ढूंढ ही लेते हैं।` ,
+      contentEn: `💫 Kotirudra Samhita — Chapter 4: Kedarnath
+
+Kedarnath in the Himalayas is one of the most sacred Jyotirlingas and one of the four Dhams.
+
+The Pandavas went to Kedarnath to seek Shiva's forgiveness after the Kurukshetra War. Shiva, not wishing to face them, dived into the earth in the form of a bull. The hump remained above ground — and that is the Kedarnath Shivalinga.
+
+🔱 Key Message: Even God tests the sincerity of the seeker before granting his grace.`
+    },
     ]
   },
   {
     num: 5, icon: '🌺', name: 'उमा संहिता', en: 'Uma Samhita', adhyaya: 51,
     desc: 'पार्वती (उमा) की महिमा, स्त्री धर्म',
     chapters: [
-      { ch: 1, title: 'उमा की महिमा', content: `🌺 उमा संहिता — उमा महिमा\n\nपार्वती (उमा) शक्ति की देवी हैं। वे शिव की अर्धांगिनी हैं। "अर्धनारीश्वर" रूप में शिव और शक्ति एक हैं।\n\nउमा के नाम:\n• पार्वती — पर्वतराज की पुत्री\n• गौरी — गोरे रंग वाली\n• दुर्गा — दुर्गम की स्वामिनी\n• काली — काल की शक्ति\n• अम्बा — माता\n\n🔱 मुख्य संदेश: शिव और शक्ति अभिन्न हैं।` },
-      { ch: 2, title: 'स्त्री धर्म', content: `🌺 उमा संहिता — स्त्री धर्म\n\nपार्वती ने स्त्रियों के लिए धर्म का उपदेश दिया:\n• पति की सेवा सर्वोच्च धर्म है\n• व्रत और पूजा से सौभाग्य मिलता है\n• सास-ससुर की सेवा करो\n• सत्य बोलो, दान करो\n\nसोमवार व्रत, सोलह सोमवार व्रत, मंगलागौरी व्रत — ये सब स्त्रियों के लिए विशेष फलदायी हैं।\n\n🔱 मुख्य संदेश: सती स्त्री का तेज सूर्य से भी अधिक है।` },
-      { ch: 3, title: 'गणेश की उत्पत्ति', content: `🌺 उमा संहिता — गणेश जन्म\n\nपार्वती ने अपने शरीर के मैल से एक बालक बनाया और द्वारपाल बनाया। शिव आए — बालक ने रोका।\n\nशिव ने क्रोध में बालक का सिर काट दिया। पार्वती रोईं। शिव ने आज्ञा दी — उत्तर दिशा में जो पहला प्राणी मिले उसका सिर लाओ।\n\nहाथी का सिर लाया गया। गणेश जीवित हुए। शिव ने उन्हें प्रथम पूज्य बनाया।\n\n🔱 मुख्य संदेश: हर कार्य में पहले गणेश की पूजा करें।` },
+      { ch: 1, title: 'उमा की महिमा', content: `🌺 उमा संहिता — उमा महिमा\n\nपार्वती (उमा) शक्ति की देवी हैं। वे शिव की अर्धांगिनी हैं। "अर्धनारीश्वर" रूप में शिव और शक्ति एक हैं।\n\nउमा के नाम:\n• पार्वती — पर्वतराज की पुत्री\n• गौरी — गोरे रंग वाली\n• दुर्गा — दुर्गम की स्वामिनी\n• काली — काल की शक्ति\n• अम्बा — माता\n\n🔱 मुख्य संदेश: शिव और शक्ति अभिन्न हैं।` ,
+      contentEn: `🌺 Uma Samhita — Chapter 1: The Glory of Uma (Parvati)
+
+Parvati (Uma) is the Goddess of Power — the eternal consort of Shiva. In the Ardhanarishvara form, Shiva and Shakti are one — inseparable.
+
+Parvati's principal names:
+• Parvati — daughter of the mountain king
+• Gauri — the radiant fair one
+• Durga — the invincible one
+• Kali — the power of time
+• Amba — the universal mother
+
+🔱 Key Message: Shiva and Shakti are not two — they are one, inseparable reality.`
+    },
+      { ch: 2, title: 'स्त्री धर्म', content: `🌺 उमा संहिता — स्त्री धर्म\n\nपार्वती ने स्त्रियों के लिए धर्म का उपदेश दिया:\n• पति की सेवा सर्वोच्च धर्म है\n• व्रत और पूजा से सौभाग्य मिलता है\n• सास-ससुर की सेवा करो\n• सत्य बोलो, दान करो\n\nसोमवार व्रत, सोलह सोमवार व्रत, मंगलागौरी व्रत — ये सब स्त्रियों के लिए विशेष फलदायी हैं।\n\n🔱 मुख्य संदेश: सती स्त्री का तेज सूर्य से भी अधिक है।` ,
+      contentEn: `🌺 Uma Samhita — Chapter 2: The Power of Shakti
+
+Shakti (divine feminine energy) is the creative force of the universe. Without Shakti, Shiva is Shava (a corpse) — inert and powerless.
+
+All the goddesses — Lakshmi, Saraswati, Durga — are manifestations of the one supreme Shakti.
+
+🔱 Key Message: The divine feminine is not merely a companion — she is the animating force of all existence.`
+    },
+      { ch: 3, title: 'गणेश की उत्पत्ति', content: `🌺 उमा संहिता — गणेश जन्म\n\nपार्वती ने अपने शरीर के मैल से एक बालक बनाया और द्वारपाल बनाया। शिव आए — बालक ने रोका।\n\nशिव ने क्रोध में बालक का सिर काट दिया। पार्वती रोईं। शिव ने आज्ञा दी — उत्तर दिशा में जो पहला प्राणी मिले उसका सिर लाओ।\n\nहाथी का सिर लाया गया। गणेश जीवित हुए। शिव ने उन्हें प्रथम पूज्य बनाया।\n\n🔱 मुख्य संदेश: हर कार्य में पहले गणेश की पूजा करें।` ,
+      contentEn: `🌺 Uma Samhita — Chapter 3: The Navratri and the Nine Forms
+
+The nine forms of the Goddess (Navadurga) worshipped during Navratri:
+1. Shailaputri 2. Brahmacharini 3. Chandraghanta
+4. Kushmanda 5. Skandamata 6. Katyayani
+7. Kalaratri 8. Mahagauri 9. Siddhidatri
+
+Navratri (nine sacred nights) is the greatest festival of Shakti worship.
+
+🔱 Key Message: Worshipping the Divine Mother in Her nine forms grants all blessings.`
+    },
     ]
   },
   {
     num: 6, icon: '🔥', name: 'कैलाश संहिता', en: 'Kailash Samhita', adhyaya: 23,
     desc: 'शिव योग, तंत्र और मोक्ष का मार्ग',
     chapters: [
-      { ch: 1, title: 'शिव योग', content: `🔥 कैलाश संहिता — शिव योग\n\nशिव ने पार्वती को योग का उपदेश दिया:\n\nपाँच प्रकार के योग:\n• मंत्र योग — मंत्र जप से ईश्वर प्राप्ति\n• लय योग — ध्यान से आत्मा का ईश्वर में लय\n• हठ योग — शरीर और प्राण पर नियंत्रण\n• राज योग — मन पर नियंत्रण\n• ज्ञान योग — ब्रह्म ज्ञान से मोक्ष\n\n🔱 मुख्य संदेश: योग से आत्मा परमात्मा से मिलती है।` },
-      { ch: 2, title: 'पंचाक्षर मंत्र', content: `🔥 कैलाश संहिता — पंचाक्षर मंत्र\n\n"ॐ नमः शिवाय" — यह पंचाक्षर मंत्र है।\n\nपाँच अक्षर और पाँच तत्व:\n• न — पृथ्वी तत्व\n• म — जल तत्व\n• शि — अग्नि तत्व\n• वा — वायु तत्व\n• य — आकाश तत्व\n\nइस मंत्र के जप से पाँचों तत्व शुद्ध होते हैं और मोक्ष मिलता है।\n\n🔱 मुख्य संदेश: "ॐ नमः शिवाय" — यही सर्वश्रेष्ठ मंत्र है।` },
-      { ch: 3, title: 'मोक्ष का मार्ग', content: `🔥 कैलाश संहिता — मोक्ष\n\nशिव ने बताया मोक्ष के चार मार्ग:\n• सालोक्य — शिवलोक में निवास\n• सामीप्य — शिव के समीप रहना\n• सारूप्य — शिव जैसा रूप पाना\n• सायुज्य — शिव में विलीन होना (परम मोक्ष)\n\nशिव भक्त को इन चारों में से एक मोक्ष अवश्य मिलता है।\n\n🔱 मुख्य संदेश: शिव भक्ति ही मोक्ष का सरल मार्ग है।` },
+      { ch: 1, title: 'शिव योग', content: `🔥 कैलाश संहिता — शिव योग\n\nशिव ने पार्वती को योग का उपदेश दिया:\n\nपाँच प्रकार के योग:\n• मंत्र योग — मंत्र जप से ईश्वर प्राप्ति\n• लय योग — ध्यान से आत्मा का ईश्वर में लय\n• हठ योग — शरीर और प्राण पर नियंत्रण\n• राज योग — मन पर नियंत्रण\n• ज्ञान योग — ब्रह्म ज्ञान से मोक्ष\n\n🔱 मुख्य संदेश: योग से आत्मा परमात्मा से मिलती है।` ,
+      contentEn: `🔥 Kailasa Samhita — Chapter 1: The Yoga of Shiva
+
+Shiva taught Parvati the five types of Yoga:
+
+• Mantra Yoga — attaining God through the power of sacred chanting
+• Laya Yoga — dissolving the individual consciousness into the Supreme through meditation
+• Hatha Yoga — mastering the body and the vital breath (prana)
+• Raja Yoga — controlling and transcending the mind
+• Jnana Yoga — attaining liberation through the knowledge of Brahman
+
+🔱 Key Message: All paths of Yoga lead to the one destination — reunion of the soul with God.`
+    },
+      { ch: 2, title: 'पंचाक्षर मंत्र', content: `🔥 कैलाश संहिता — पंचाक्षर मंत्र\n\n"ॐ नमः शिवाय" — यह पंचाक्षर मंत्र है।\n\nपाँच अक्षर और पाँच तत्व:\n• न — पृथ्वी तत्व\n• म — जल तत्व\n• शि — अग्नि तत्व\n• वा — वायु तत्व\n• य — आकाश तत्व\n\nइस मंत्र के जप से पाँचों तत्व शुद्ध होते हैं और मोक्ष मिलता है।\n\n🔱 मुख्य संदेश: "ॐ नमः शिवाय" — यही सर्वश्रेष्ठ मंत्र है।` ,
+      contentEn: `🔥 Kailasa Samhita — Chapter 2: The Importance of Meditation
+
+Shiva is the supreme master of meditation (Adi Yogi). He sat in samadhi (deep meditation) for thousands of years on Mount Kailash.
+
+The practice of Shiva meditation:
+• Sit in a quiet place
+• Focus the mind on the image or nature of Shiva
+• Chant Om Namah Shivaya
+• Let all thoughts dissolve in the pure consciousness of Shiva
+
+🔱 Key Message: Meditation is the most direct path to experiencing the divine.`
+    },
+      { ch: 3, title: 'मोक्ष का मार्ग', content: `🔥 कैलाश संहिता — मोक्ष\n\nशिव ने बताया मोक्ष के चार मार्ग:\n• सालोक्य — शिवलोक में निवास\n• सामीप्य — शिव के समीप रहना\n• सारूप्य — शिव जैसा रूप पाना\n• सायुज्य — शिव में विलीन होना (परम मोक्ष)\n\nशिव भक्त को इन चारों में से एक मोक्ष अवश्य मिलता है।\n\n🔱 मुख्य संदेश: शिव भक्ति ही मोक्ष का सरल मार्ग है।` ,
+      contentEn: `🔥 Kailasa Samhita — Chapter 3: Shiva and the Path of Knowledge
+
+Shiva is known as Dakshinamurti — the supreme teacher who sits facing south, teaching through silence.
+
+Under the Banyan tree, the young Shiva instructed the four ancient sages (Sanaka, Sanandana, Sanatkumara, Sanatsujata) through silent wisdom alone.
+
+🔱 Key Message: The highest wisdom transcends words — it is transmitted in silence.`
+    },
     ]
   },
   {
     num: 7, icon: '🌊', name: 'वायवीय संहिता', en: 'Vayaviya Samhita', adhyaya: 112,
     desc: 'ब्रह्म तत्व, शिव का परब्रह्म स्वरूप — अंतिम संहिता',
     chapters: [
-      { ch: 1, title: 'शिव का परब्रह्म स्वरूप', content: `🌊 वायवीय संहिता — परब्रह्म शिव\n\nवायुदेव ने ऋषियों को शिव के परब्रह्म स्वरूप का वर्णन किया।\n\nशिव निर्गुण और सगुण दोनों हैं:\n• निर्गुण — बिना गुण के, निराकार\n• सगुण — गुणों सहित, साकार\n\nशिव सत-चित-आनंद स्वरूप हैं। वे माया से परे हैं।\n\n🔱 मुख्य संदेश: शिव ही ब्रह्म हैं — "शिवोहम्"।` },
-      { ch: 2, title: 'शिव गीता', content: `🌊 वायवीय संहिता — शिव गीता\n\nशिव ने अपने भक्त को ज्ञान का उपदेश दिया:\n\n"मैं ही आत्मा हूँ, मैं ही परमात्मा हूँ।\nजो मुझे जानता है, वह स्वयं शिव हो जाता है।\nमेरी भक्ति से बड़ा कोई धर्म नहीं।\nमेरे नाम का जप सभी यज्ञों से बड़ा है।"\n\n🔱 मुख्य संदेश: शिव ज्ञान और मोक्ष दोनों के दाता हैं।` },
-      { ch: 3, title: 'शिव पुराण का फल', content: `🌊 वायवीय संहिता — फल श्रुति\n\nशिव पुराण पढ़ने, सुनने और सुनाने के फल:\n• सभी पाप नष्ट होते हैं\n• जन्म-मरण के बंधन से मुक्ति\n• मनोकामनाएँ पूर्ण होती हैं\n• मृत्यु के बाद शिवलोक की प्राप्ति\n\nशिव पुराण का पाठ विशेष रूप से सोमवार, शिवरात्रि और सावन माह में करना चाहिए।\n\n🔱 अंतिम संदेश:\n"हर हर महादेव!"\nशिव की जय — मोक्ष का द्वार सदा खुला है।\n\n🔱 इति श्री शिव पुराण सम्पूर्ण 🔱` },
+      { ch: 1, title: 'शिव का परब्रह्म स्वरूप', content: `🌊 वायवीय संहिता — परब्रह्म शिव\n\nवायुदेव ने ऋषियों को शिव के परब्रह्म स्वरूप का वर्णन किया।\n\nशिव निर्गुण और सगुण दोनों हैं:\n• निर्गुण — बिना गुण के, निराकार\n• सगुण — गुणों सहित, साकार\n\nशिव सत-चित-आनंद स्वरूप हैं। वे माया से परे हैं।\n\n🔱 मुख्य संदेश: शिव ही ब्रह्म हैं — "शिवोहम्"।` ,
+      contentEn: `🌊 Vayaviya Samhita — Chapter 1: Shiva as the Supreme Brahman
+
+Vayu (the Wind God) described to the assembled sages the supreme nature of Shiva as the Absolute Brahman.
+
+Shiva is both Nirguna (without qualities, formless) and Saguna (with qualities, with form):
+• Nirguna — pure, formless, beyond all description
+• Saguna — the divine form that devotees can worship and love
+
+🔱 Key Message: Shiva transcends all duality — He is both the personal God and the impersonal Absolute.`
+    },
+      { ch: 2, title: 'शिव गीता', content: `🌊 वायवीय संहिता — शिव गीता\n\nशिव ने अपने भक्त को ज्ञान का उपदेश दिया:\n\n"मैं ही आत्मा हूँ, मैं ही परमात्मा हूँ।\nजो मुझे जानता है, वह स्वयं शिव हो जाता है।\nमेरी भक्ति से बड़ा कोई धर्म नहीं।\nमेरे नाम का जप सभी यज्ञों से बड़ा है।"\n\n🔱 मुख्य संदेश: शिव ज्ञान और मोक्ष दोनों के दाता हैं।` ,
+      contentEn: `🌊 Vayaviya Samhita — Chapter 2: Shiva and the Vedas
+
+The Vedas were born from Shiva's breath. The sacred syllable Om is the sound-form of Shiva.
+
+Shiva is called Srikantha in the Vedas. The entire Vedic tradition flows from His grace.
+
+🔱 Key Message: All sacred knowledge has its source in Shiva.`
+    },
+      { ch: 3, title: 'शिव पुराण का फल', content: `🌊 वायवीय संहिता — फल श्रुति\n\nशिव पुराण पढ़ने, सुनने और सुनाने के फल:\n• सभी पाप नष्ट होते हैं\n• जन्म-मरण के बंधन से मुक्ति\n• मनोकामनाएँ पूर्ण होती हैं\n• मृत्यु के बाद शिवलोक की प्राप्ति\n\nशिव पुराण का पाठ विशेष रूप से सोमवार, शिवरात्रि और सावन माह में करना चाहिए।\n\n🔱 अंतिम संदेश:\n"हर हर महादेव!"\nशिव की जय — मोक्ष का द्वार सदा खुला है।\n\n🔱 इति श्री शिव पुराण सम्पूर्ण 🔱` ,
+      contentEn: `🌊 Vayaviya Samhita — Chapter 3: The Creation and Dissolution of the Universe
+
+Shiva performs the five divine acts (Panchakriya):
+• Srishti — Creation (through Brahma)
+• Sthiti — Preservation (through Vishnu)
+• Samhara — Dissolution
+• Tirodhana — Concealment (maya)
+• Anugraha — Grace and liberation
+
+🔱 Key Message: Shiva is not merely the destroyer — He is the master of all five cosmic functions.`
+    },
     ]
   },
 ];
@@ -2415,7 +3286,10 @@ function showShivSamhita(num) {
     const btn = document.createElement('button');
     btn.style.cssText = 'background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.2);border-radius:12px;padding:14px 16px;text-align:left;cursor:pointer;display:flex;align-items:center;gap:12px;width:100%;';
     btn.innerHTML = '<span style="background:rgba(212,175,55,0.2);border-radius:8px;padding:4px 10px;font-size:11px;color:var(--gold);font-weight:700;min-width:36px;text-align:center;">' + ch.ch + '</span><div style="font-size:13px;color:rgba(255,255,255,0.9);font-weight:600;">' + ch.title + '</div>';
-    btn.addEventListener('click', () => showShivChapter(ch.title, ch.content));
+    btn.addEventListener('click', () => {
+      const displayContent = (currentLang === 'en' && ch.contentEn) ? ch.contentEn : ch.content;
+      showShivChapter(ch.title, displayContent);
+    });
     list.appendChild(btn);
   });
 
@@ -2432,150 +3306,499 @@ const mahabharataParvas = [
     num: 1, icon: '📜', name: 'आदि पर्व', en: 'Adi Parva', adhyaya: 225,
     desc: 'महाभारत का प्रारंभ — कुरु वंश की उत्पत्ति, पांडवों और कौरवों का जन्म',
     chapters: [
-      { ch: 1, title: 'अनुक्रमणिका पर्व', content: `📜 आदि पर्व — अनुक्रमणिका\n\nमहाभारत की रचना महर्षि वेदव्यास ने की। उन्होंने गणेश जी को लेखक बनाया। महाभारत में १,०००,००० श्लोक हैं जो १८ पर्वों में विभाजित हैं।\n\nमहाभारत को "पंचम वेद" भी कहा जाता है। इसमें धर्म, अर्थ, काम और मोक्ष — चारों पुरुषार्थों का वर्णन है।\n\n📿 मुख्य संदेश: "धर्मो रक्षति रक्षितः" — जो धर्म की रक्षा करता है, धर्म उसकी रक्षा करता है।` },
-      { ch: 2, title: 'पौष्य पर्व', content: `📜 आदि पर्व — पौष्य पर्व\n\nऋषि उत्तंक की कथा। उत्तंक ने अपने गुरु की पत्नी को रानी के कुण्डल लाकर दिए। सर्पों के राजा तक्षक ने कुण्डल चुरा लिए।\n\nउत्तंक ने इंद्र की सहायता से कुण्डल वापस पाए और तक्षक से बदला लेने का संकल्प किया।\n\n📿 मुख्य संदेश: गुरु की सेवा और आज्ञापालन सर्वोच्च धर्म है।` },
-      { ch: 3, title: 'पुलोमा पर्व', content: `📜 आदि पर्व — पुलोमा पर्व\n\nमहर्षि भृगु और उनकी पत्नी पुलोमा की कथा। राक्षस पुलोमन ने भृगु-पत्नी का हरण करने का प्रयास किया।\n\nभृगु के पुत्र च्यवन ऋषि का जन्म हुआ। अग्निदेव ने सत्य बोला जिससे भृगु क्रोधित हुए।\n\n📿 मुख्य संदेश: सत्य सदा बोलना चाहिए, चाहे परिणाम कुछ भी हो।` },
-      { ch: 4, title: 'आस्तीक पर्व', content: `📜 आदि पर्व — आस्तीक पर्व\n\nसर्पों की माता कद्रू और विनता की शर्त। गरुड़ का जन्म और अमृत लाने की कथा।\n\nजनमेजय के सर्पयज्ञ में आस्तीक मुनि ने सर्पों की रक्षा की। तक्षक सर्प को बचाया गया।\n\n📿 मुख्य संदेश: किसी भी प्राणी की हत्या पाप है। करुणा और क्षमा महान गुण हैं।` },
-      { ch: 5, title: 'संभव पर्व', content: `📜 आदि पर्व — संभव पर्व\n\nकुरु वंश की उत्पत्ति का वर्णन। राजा शांतनु, भीष्म की प्रतिज्ञा, सत्यवती से विवाह।\n\nधृतराष्ट्र, पांडु और विदुर का जन्म। पांडु का राजा बनना। पांडवों और कौरवों का जन्म।\n\n📿 मुख्य संदेश: वंश की रक्षा के लिए किया गया बलिदान महान होता है।` },
+      { ch: 1, title: 'अनुक्रमणिका पर्व', content: `📜 आदि पर्व — अनुक्रमणिका\n\nमहाभारत की रचना महर्षि वेदव्यास ने की। उन्होंने गणेश जी को लेखक बनाया। महाभारत में १,०००,००० श्लोक हैं जो १८ पर्वों में विभाजित हैं।\n\nमहाभारत को "पंचम वेद" भी कहा जाता है। इसमें धर्म, अर्थ, काम और मोक्ष — चारों पुरुषार्थों का वर्णन है।\n\n📿 मुख्य संदेश: "धर्मो रक्षति रक्षितः" — जो धर्म की रक्षा करता है, धर्म उसकी रक्षा करता है।` ,
+      contentEn: `📖 Adi Parva — The Introduction (Anukramanika Sub-Parva)
+
+The Mahabharata is the world's longest epic — composed by Sage Veda Vyasa. It contains 100,000 shlokas across 18 parvas.
+
+Sage Vaishampayana narrated it to King Janamejaya at a great snake sacrifice. The story begins with the origins of the Bharata dynasty.
+
+Key themes: righteousness (dharma), duty, the eternal conflict between good and evil.
+
+⚔️ Key Message: The Mahabharata is not merely a story — it is a complete guide to life.`
+    },
+      { ch: 2, title: 'पौष्य पर्व', content: `📜 आदि पर्व — पौष्य पर्व\n\nऋषि उत्तंक की कथा। उत्तंक ने अपने गुरु की पत्नी को रानी के कुण्डल लाकर दिए। सर्पों के राजा तक्षक ने कुण्डल चुरा लिए।\n\nउत्तंक ने इंद्र की सहायता से कुण्डल वापस पाए और तक्षक से बदला लेने का संकल्प किया।\n\n📿 मुख्य संदेश: गुरु की सेवा और आज्ञापालन सर्वोच्च धर्म है।` ,
+      contentEn: `📖 Adi Parva — Paushya Sub-Parva
+
+Sage Veda Vyasa's son Shuka was born enlightened. The story of King Janamejaya's father Parikshit begins here.
+
+Parikshit was cursed by the sage Shringi — you shall die from a snake bite within seven days. Parikshit spent those seven days listening to the Bhagavata from Sage Shuka.
+
+⚔️ Key Message: Even at the hour of death, spiritual knowledge brings peace.`
+    },
+      { ch: 3, title: 'पुलोमा पर्व', content: `📜 आदि पर्व — पुलोमा पर्व\n\nमहर्षि भृगु और उनकी पत्नी पुलोमा की कथा। राक्षस पुलोमन ने भृगु-पत्नी का हरण करने का प्रयास किया।\n\nभृगु के पुत्र च्यवन ऋषि का जन्म हुआ। अग्निदेव ने सत्य बोला जिससे भृगु क्रोधित हुए।\n\n📿 मुख्य संदेश: सत्य सदा बोलना चाहिए, चाहे परिणाम कुछ भी हो।` ,
+      contentEn: `📖 Adi Parva — The Story of the Serpents (Puloma Sub-Parva)
+
+Sage Bhrigu's wife Puloma was abducted by a demon. Their son Chyavana was born during this ordeal.
+
+From this lineage came the great sages and warriors of the Mahabharata era.
+
+⚔️ Key Message: The noble lineage carries the duty of protecting righteousness.`
+    },
+      { ch: 4, title: 'आस्तीक पर्व', content: `📜 आदि पर्व — आस्तीक पर्व\n\nसर्पों की माता कद्रू और विनता की शर्त। गरुड़ का जन्म और अमृत लाने की कथा।\n\nजनमेजय के सर्पयज्ञ में आस्तीक मुनि ने सर्पों की रक्षा की। तक्षक सर्प को बचाया गया।\n\n📿 मुख्य संदेश: किसी भी प्राणी की हत्या पाप है। करुणा और क्षमा महान गुण हैं।` ,
+      contentEn: `📖 Adi Parva — The Great Snake Sacrifice (Astika Sub-Parva)
+
+King Janamejaya performed a great snake sacrifice to avenge his father Parikshit's death from the snake Takshaka.
+
+The young sage Astika intervened and stopped the sacrifice, saving the serpents. Thus the Mahabharata was first narrated at this very sacrifice.
+
+⚔️ Key Message: Compassion is greater than revenge.`
+    },
+      { ch: 5, title: 'संभव पर्व', content: `📜 आदि पर्व — संभव पर्व\n\nकुरु वंश की उत्पत्ति का वर्णन। राजा शांतनु, भीष्म की प्रतिज्ञा, सत्यवती से विवाह।\n\nधृतराष्ट्र, पांडु और विदुर का जन्म। पांडु का राजा बनना। पांडवों और कौरवों का जन्म।\n\n📿 मुख्य संदेश: वंश की रक्षा के लिए किया गया बलिदान महान होता है।` ,
+      contentEn: `📖 Adi Parva — The Origins of the Kuru Dynasty (Sambhava Sub-Parva)
+
+The origins of the great Kuru dynasty: from Brahma to Daksha to the great king Bharata, from whom all of India (Bharatvarsha) takes its name.
+
+Bishma, Dhritarashtra, Pandu — the key figures of the dynasty are introduced. The seeds of the great war are sown.
+
+⚔️ Key Message: Every great conflict has its roots in pride and desire for power.`
+    },
     ]
   },
   {
     num: 2, icon: '🎲', name: 'सभा पर्व', en: 'Sabha Parva', adhyaya: 72,
     desc: 'इंद्रप्रस्थ की स्थापना, द्यूत क्रीड़ा, द्रौपदी का अपमान',
     chapters: [
-      { ch: 1, title: 'सभाक्रिया पर्व', content: `🎲 सभा पर्व — सभाक्रिया पर्व\n\nमय दानव ने पांडवों के लिए इंद्रप्रस्थ में अद्भुत सभा भवन बनाया। इस भवन में पानी जैसी जमीन और जमीन जैसा पानी था।\n\nदुर्योधन इस सभा में आया और भ्रम में पड़कर जल में गिर गया। द्रौपदी ने हँसकर कहा — "अंधे का पुत्र अंधा"। इससे दुर्योधन को गहरा अपमान लगा।\n\n📿 मुख्य संदेश: दूसरों का उपहास करने से वैर बढ़ता है। अहंकार पतन का कारण है।` },
-      { ch: 2, title: 'लोकपाल सभाख्यान पर्व', content: `🎲 सभा पर्व — लोकपाल सभाख्यान\n\nनारद मुनि ने युधिष्ठिर को स्वर्ग, यमलोक आदि की सभाओं का वर्णन किया।\n\nइंद्र की सभा में देवता, गंधर्व और ऋषि रहते हैं। यमराज की सभा में सभी मृत राजाओं की आत्माएँ हैं।\n\n📿 मुख्य संदेश: न्यायपूर्ण शासन करने वाले राजा मृत्यु के बाद स्वर्ग पाते हैं।` },
-      { ch: 3, title: 'राजसूय पर्व', content: `🎲 सभा पर्व — राजसूय पर्व\n\nयुधिष्ठिर ने राजसूय यज्ञ करने का निश्चय किया। श्रीकृष्ण ने कहा कि पहले जरासंध का वध करना होगा।\n\nभीम ने मल्लयुद्ध में जरासंध का वध किया। युधिष्ठिर का राजसूय यज्ञ सम्पन्न हुआ और सभी राजाओं ने उन्हें सम्राट माना।\n\n📿 मुख्य संदेश: न्यायपूर्ण राजा की शक्ति से अत्याचारी का नाश होता है।` },
-      { ch: 4, title: 'द्यूत पर्व', content: `🎲 सभा पर्व — द्यूत पर्व\n\nशकुनि की चाल से दुर्योधन ने पांडवों को जुए में बुलाया। युधिष्ठिर ने अपना राज्य, धन, भाइयों और द्रौपदी को दाँव पर लगाया और हार गए।\n\nदुःशासन ने द्रौपदी को बालों से खींचकर सभा में लाया। दुर्योधन ने अपनी जाँघ थपथपाई। द्रौपदी ने श्रीकृष्ण को पुकारा और उनकी लाज बची।\n\n📿 मुख्य संदेश: जुआ सर्वनाश का कारण है। स्त्री का अपमान महापाप है।` },
-      { ch: 5, title: 'अनुद्यूत पर्व', content: `🎲 सभा पर्व — अनुद्यूत पर्व\n\nधृतराष्ट्र ने द्रौपदी को तीन वर माँगने को कहा। द्रौपदी ने पांडवों की मुक्ति और उनके अस्त्र-शस्त्र माँगे।\n\nफिर दोबारा जुआ हुआ — शर्त थी कि हारने वाला १२ वर्ष वनवास और १ वर्ष अज्ञातवास करेगा। पांडव फिर हारे और वनवास को गए।\n\n📿 मुख्य संदेश: बुरे समय में भी धैर्य और धर्म का साथ नहीं छोड़ना चाहिए।` },
+      { ch: 1, title: 'सभाक्रिया पर्व', content: `🎲 सभा पर्व — सभाक्रिया पर्व\n\nमय दानव ने पांडवों के लिए इंद्रप्रस्थ में अद्भुत सभा भवन बनाया। इस भवन में पानी जैसी जमीन और जमीन जैसा पानी था।\n\nदुर्योधन इस सभा में आया और भ्रम में पड़कर जल में गिर गया। द्रौपदी ने हँसकर कहा — "अंधे का पुत्र अंधा"। इससे दुर्योधन को गहरा अपमान लगा।\n\n📿 मुख्य संदेश: दूसरों का उपहास करने से वैर बढ़ता है। अहंकार पतन का कारण है।` ,
+      contentEn: `📖 Sabha Parva — The Hall of Assembly
+
+Maya the divine architect built a magnificent palace for the Pandavas. Yudhishthira ruled Indraprastha in prosperity.
+
+Duryodhana visited and was humiliated — he mistook a glass floor for water and fell. He returned to Hastinapur consumed with jealousy.
+
+⚔️ Key Message: Envy of another's prosperity is the seed of all great conflicts.`
+    },
+      { ch: 2, title: 'लोकपाल सभाख्यान पर्व', content: `🎲 सभा पर्व — लोकपाल सभाख्यान\n\nनारद मुनि ने युधिष्ठिर को स्वर्ग, यमलोक आदि की सभाओं का वर्णन किया।\n\nइंद्र की सभा में देवता, गंधर्व और ऋषि रहते हैं। यमराज की सभा में सभी मृत राजाओं की आत्माएँ हैं।\n\n📿 मुख्य संदेश: न्यायपूर्ण शासन करने वाले राजा मृत्यु के बाद स्वर्ग पाते हैं।` ,
+      contentEn: `📖 Sabha Parva — The Celestial Assemblies
+
+Narada Muni described the magnificent divine assemblies of the gods, ancestors and serpents.
+
+This inspired Yudhishthira to perform the great Rajasuya Yagna to become an emperor.
+
+⚔️ Key Message: Ambition must always be guided by righteousness.`
+    },
+      { ch: 3, title: 'राजसूय पर्व', content: `🎲 सभा पर्व — राजसूय पर्व\n\nयुधिष्ठिर ने राजसूय यज्ञ करने का निश्चय किया। श्रीकृष्ण ने कहा कि पहले जरासंध का वध करना होगा।\n\nभीम ने मल्लयुद्ध में जरासंध का वध किया। युधिष्ठिर का राजसूय यज्ञ सम्पन्न हुआ और सभी राजाओं ने उन्हें सम्राट माना।\n\n📿 मुख्य संदेश: न्यायपूर्ण राजा की शक्ति से अत्याचारी का नाश होता है।` ,
+      contentEn: `📖 Sabha Parva — The Rajasuya Yagna
+
+Yudhishthira performed the Rajasuya Yagna. All kings paid tribute. Krishna was honoured as the greatest guest.
+
+Shishupala, who harboured a lifelong hatred of Krishna, was slain by Krishna's Sudarshana Chakra when he insulted him for the hundredth time.
+
+⚔️ Key Message: Even the most patient person has a limit — and evil eventually meets its end.`
+    },
+      { ch: 4, title: 'द्यूत पर्व', content: `🎲 सभा पर्व — द्यूत पर्व\n\nशकुनि की चाल से दुर्योधन ने पांडवों को जुए में बुलाया। युधिष्ठिर ने अपना राज्य, धन, भाइयों और द्रौपदी को दाँव पर लगाया और हार गए।\n\nदुःशासन ने द्रौपदी को बालों से खींचकर सभा में लाया। दुर्योधन ने अपनी जाँघ थपथपाई। द्रौपदी ने श्रीकृष्ण को पुकारा और उनकी लाज बची।\n\n📿 मुख्य संदेश: जुआ सर्वनाश का कारण है। स्त्री का अपमान महापाप है।` ,
+      contentEn: `📖 Sabha Parva — The Dice Game
+
+Duryodhana invited the Pandavas to a game of dice. Shakuni played on his behalf — a game rigged from the start.
+
+Yudhishthira lost everything — his kingdom, wealth, his brothers, himself. Finally, in a moment of total blindness, he staked Draupadi.
+
+Draupadi was dragged to the assembly and Dushasana attempted to disrobe her. Krishna miraculously protected her honour with an endless sari.
+
+⚔️ Key Message: Gambling and blind attachment lead to complete ruin.`
+    },
+      { ch: 5, title: 'अनुद्यूत पर्व', content: `🎲 सभा पर्व — अनुद्यूत पर्व\n\nधृतराष्ट्र ने द्रौपदी को तीन वर माँगने को कहा। द्रौपदी ने पांडवों की मुक्ति और उनके अस्त्र-शस्त्र माँगे।\n\nफिर दोबारा जुआ हुआ — शर्त थी कि हारने वाला १२ वर्ष वनवास और १ वर्ष अज्ञातवास करेगा। पांडव फिर हारे और वनवास को गए।\n\n📿 मुख्य संदेश: बुरे समय में भी धैर्य और धर्म का साथ नहीं छोड़ना चाहिए।` ,
+      contentEn: `📖 Sabha Parva — The Second Game and Exile
+
+Dhritarashtra returned everything, overwhelmed by remorse. But Duryodhana insisted on a second game.
+
+The condition: the losers would live in forest exile for twelve years, followed by one year in disguise. If discovered, another twelve years of exile.
+
+The Pandavas lost again. Their twelve years of forest exile began.
+
+⚔️ Key Message: Compromise with injustice always leads to greater injustice.`
+    },
     ]
   },
   {
     num: 3, icon: '🌿', name: 'वन पर्व', en: 'Vana Parva', adhyaya: 299,
     desc: 'पांडवों का वनवास — १२ वर्ष, तीर्थ यात्राएँ, कई कथाएँ',
     chapters: [
-      { ch: 1, title: 'अरण्य पर्व', content: `🌿 वन पर्व — अरण्य पर्व\n\nपांडव वन में आए। ब्राह्मणों और प्रजा ने साथ आना चाहा। युधिष्ठिर ने मना किया।\n\nसूर्यदेव ने युधिष्ठिर को अक्षयपात्र दिया जिससे प्रतिदिन भोजन मिलता था।\n\n📿 मुख्य संदेश: विपत्ति में भी दूसरों की चिंता करने वाला महान होता है।` },
-      { ch: 2, title: 'किर्मीर वध पर्व', content: `🌿 वन पर्व — किर्मीर वध\n\nकाम्यक वन में राक्षस किर्मीर ने पांडवों को रोका। वह बकासुर का भाई था।\n\nभीम ने किर्मीर का वध किया और पांडव आगे बढ़े।\n\n📿 मुख्य संदेश: सत्य और धर्म के मार्ग पर चलने वाले को कोई नहीं रोक सकता।` },
-      { ch: 3, title: 'अर्जुन की तपस्या', content: `🌿 वन पर्व — अर्जुन की तपस्या\n\nव्यास जी ने युधिष्ठिर से कहा कि अर्जुन को दिव्यास्त्र प्राप्त करने के लिए इंद्र के पास जाना होगा।\n\nअर्जुन ने तपस्या की। शिव जी किरात (शिकारी) के वेश में आए। अर्जुन ने उनसे युद्ध किया और शिव प्रसन्न होकर पाशुपतास्त्र दिया।\n\n📿 मुख्य संदेश: सच्ची तपस्या और वीरता से देवताओं की कृपा प्राप्त होती है।` },
-      { ch: 4, title: 'नलोपाख्यान पर्व', content: `🌿 वन पर्व — नलोपाख्यान\n\nराजा नल और दमयंती की प्रेम कथा। नल भी जुए में सब कुछ हार गए। वन में गए। पत्नी से बिछड़े।\n\nअंततः ज्ञान और धैर्य से नल ने अपना राज्य वापस पाया और दमयंती से मिलाप हुआ।\n\n📿 मुख्य संदेश: कठिन समय में धैर्य रखें — अच्छे दिन अवश्य आते हैं।` },
-      { ch: 5, title: 'यक्ष-युधिष्ठिर संवाद', content: `🌿 वन पर्व — यक्ष प्रश्न\n\nयक्ष ने पांडवों को सरोवर से पानी लेने से रोका। एक-एक करके सब मूर्छित हो गए।\n\nयुधिष्ठिर ने यक्ष के सभी प्रश्नों का सही उत्तर दिया। यक्ष (धर्मराज) ने सब भाइयों को जीवित किया।\n\n📿 प्रसिद्ध प्रश्नोत्तर:\nप्रश्न: संसार में सबसे बड़ा आश्चर्य क्या है?\nउत्तर: प्रतिदिन प्राणी मरते देखकर भी मनुष्य सोचता है कि वह नहीं मरेगा।` },
+      { ch: 1, title: 'अरण्य पर्व', content: `🌿 वन पर्व — अरण्य पर्व\n\nपांडव वन में आए। ब्राह्मणों और प्रजा ने साथ आना चाहा। युधिष्ठिर ने मना किया।\n\nसूर्यदेव ने युधिष्ठिर को अक्षयपात्र दिया जिससे प्रतिदिन भोजन मिलता था।\n\n📿 मुख्य संदेश: विपत्ति में भी दूसरों की चिंता करने वाला महान होता है।` ,
+      contentEn: `📖 Vana Parva — Life in the Forest
+
+The Pandavas went to the Kamyaka forest. Great sages came to meet them. Yudhishthira accepted the hardship of exile with equanimity.
+
+Sage Dhaumya reminded them: This too shall pass. Righteousness is your greatest strength in this forest.
+
+⚔️ Key Message: Adversity reveals the true character of a person.`
+    },
+      { ch: 2, title: 'किर्मीर वध पर्व', content: `🌿 वन पर्व — किर्मीर वध\n\nकाम्यक वन में राक्षस किर्मीर ने पांडवों को रोका। वह बकासुर का भाई था।\n\nभीम ने किर्मीर का वध किया और पांडव आगे बढ़े।\n\n📿 मुख्य संदेश: सत्य और धर्म के मार्ग पर चलने वाले को कोई नहीं रोक सकता।` ,
+      contentEn: `📖 Vana Parva — The Slaying of Kirmira
+
+The demon Kirmira — brother of the terrible Bakasura — blocked the Pandavas' path in the dark forest.
+
+Bhima recognised him and slew him in a fierce fight, protecting his brothers and Draupadi.
+
+⚔️ Key Message: A true protector never lets danger reach his family.`
+    },
+      { ch: 3, title: 'अर्जुन की तपस्या', content: `🌿 वन पर्व — अर्जुन की तपस्या\n\nव्यास जी ने युधिष्ठिर से कहा कि अर्जुन को दिव्यास्त्र प्राप्त करने के लिए इंद्र के पास जाना होगा।\n\nअर्जुन ने तपस्या की। शिव जी किरात (शिकारी) के वेश में आए। अर्जुन ने उनसे युद्ध किया और शिव प्रसन्न होकर पाशुपतास्त्र दिया।\n\n📿 मुख्य संदेश: सच्ची तपस्या और वीरता से देवताओं की कृपा प्राप्त होती है।` ,
+      contentEn: `📖 Vana Parva — Arjuna's Great Penance
+
+The Pandavas needed divine weapons to win the coming war. Arjuna set out alone for a great penance.
+
+Arjuna meditated on Mount Indrakila. Lord Shiva came in the disguise of a hunter. They fought — Arjuna was defeated. Shiva revealed himself and gave Arjuna the Pashupatastra.
+
+Indra and other gods also gave Arjuna their divine weapons.
+
+⚔️ Key Message: Sincere spiritual effort is rewarded by divine grace.`
+    },
+      { ch: 4, title: 'नलोपाख्यान पर्व', content: `🌿 वन पर्व — नलोपाख्यान\n\nराजा नल और दमयंती की प्रेम कथा। नल भी जुए में सब कुछ हार गए। वन में गए। पत्नी से बिछड़े।\n\nअंततः ज्ञान और धैर्य से नल ने अपना राज्य वापस पाया और दमयंती से मिलाप हुआ।\n\n📿 मुख्य संदेश: कठिन समय में धैर्य रखें — अच्छे दिन अवश्य आते हैं।` ,
+      contentEn: `📖 Vana Parva — The Story of Nala and Damayanti
+
+Sage Brihadashwa narrated the story of King Nala to comfort Yudhishthira in his exile.
+
+Nala, the greatest king of his time, lost his kingdom in a dice game — just as the Pandavas had. Through hardship and perseverance, Nala eventually won everything back.
+
+⚔️ Key Message: Fate tests the great — but those who endure are always restored.`
+    },
+      { ch: 5, title: 'यक्ष-युधिष्ठिर संवाद', content: `🌿 वन पर्व — यक्ष प्रश्न\n\nयक्ष ने पांडवों को सरोवर से पानी लेने से रोका। एक-एक करके सब मूर्छित हो गए।\n\nयुधिष्ठिर ने यक्ष के सभी प्रश्नों का सही उत्तर दिया। यक्ष (धर्मराज) ने सब भाइयों को जीवित किया।\n\n📿 प्रसिद्ध प्रश्नोत्तर:\nप्रश्न: संसार में सबसे बड़ा आश्चर्य क्या है?\nउत्तर: प्रतिदिन प्राणी मरते देखकर भी मनुष्य सोचता है कि वह नहीं मरेगा।` ,
+      contentEn: `📖 Vana Parva — The Yaksha's Questions (Yaksha Prashna)
+
+At a lake, a Yaksha (divine spirit) stopped the Pandava brothers from drinking unless they could answer his questions. One by one the brothers fell until only Yudhishthira remained.
+
+The Yaksha asked: What is swifter than the wind? What is more numerous than grass? The answer to all was: The mind. Yudhishthira's answers freed his brothers.
+
+⚔️ Key Message: Wisdom and dharma are the greatest powers in the universe.`
+    },
     ]
   },
   {
     num: 4, icon: '🕵️', name: 'विराट पर्व', en: 'Virata Parva', adhyaya: 67,
     desc: 'अज्ञातवास — विराट राजा के यहाँ एक वर्ष, कीचक वध',
     chapters: [
-      { ch: 1, title: 'पांडवों का अज्ञातवास', content: `🕵️ विराट पर्व — अज्ञातवास\n\nपांडवों ने १ वर्ष अज्ञातवास राजा विराट के यहाँ बिताया। सभी ने भेष बदला:\n• युधिष्ठिर — कंक (ब्राह्मण/द्यूतकार)\n• भीम — बल्लव (रसोइया)\n• अर्जुन — बृहन्नला (नपुंसक नर्तक)\n• नकुल — ग्रंथिक (घोड़ों का देखभालकर्ता)\n• सहदेव — तंतिपाल (गायों का देखभालकर्ता)\n• द्रौपदी — सैरंध्री (दासी)\n\n📿 मुख्य संदेश: धर्म की रक्षा के लिए बड़े से बड़ा त्याग करना पड़ता है।` },
-      { ch: 2, title: 'कीचक वध', content: `🕵️ विराट पर्व — कीचक वध\n\nविराट के सेनापति कीचक ने द्रौपदी पर बुरी दृष्टि डाली और उसे लात मारी। भीम ने रात को कीचक का वध किया।\n\n📿 मुख्य संदेश: स्त्री का अपमान करने वाले का नाश अवश्य होता है।` },
-      { ch: 3, title: 'गोग्रहण पर्व', content: `🕵️ विराट पर्व — गोग्रहण\n\nकौरवों ने विराट की गायें चुरा लीं। अर्जुन ने बृहन्नला के वेश में सब कौरवों को पराजित किया और गायें वापस लाए।\n\nभीष्म, द्रोण, कर्ण, दुर्योधन — सभी बड़े-बड़े योद्धा अर्जुन से हार गए।\n\n📿 मुख्य संदेश: सत्य और कर्तव्य की शक्ति से बड़े-बड़े योद्धा भी परास्त हो जाते हैं।` },
+      { ch: 1, title: 'पांडवों का अज्ञातवास', content: `🕵️ विराट पर्व — अज्ञातवास\n\nपांडवों ने १ वर्ष अज्ञातवास राजा विराट के यहाँ बिताया। सभी ने भेष बदला:\n• युधिष्ठिर — कंक (ब्राह्मण/द्यूतकार)\n• भीम — बल्लव (रसोइया)\n• अर्जुन — बृहन्नला (नपुंसक नर्तक)\n• नकुल — ग्रंथिक (घोड़ों का देखभालकर्ता)\n• सहदेव — तंतिपाल (गायों का देखभालकर्ता)\n• द्रौपदी — सैरंध्री (दासी)\n\n📿 मुख्य संदेश: धर्म की रक्षा के लिए बड़े से बड़ा त्याग करना पड़ता है।` ,
+      contentEn: `📖 Virata Parva — The Year of Disguise
+
+After twelve years of forest exile, the Pandavas began their thirteenth year — to be spent in disguise without discovery.
+
+They entered the kingdom of King Virata, each assuming a new identity:
+• Yudhishthira as Kanka — a counsellor and dice player
+• Bhima as Ballava — royal cook
+• Arjuna as Brihannala — dance and music teacher
+
+⚔️ Key Message: True greatness does not diminish even in humility.`
+    },
+      { ch: 2, title: 'कीचक वध', content: `🕵️ विराट पर्व — कीचक वध\n\nविराट के सेनापति कीचक ने द्रौपदी पर बुरी दृष्टि डाली और उसे लात मारी। भीम ने रात को कीचक का वध किया।\n\n📿 मुख्य संदेश: स्त्री का अपमान करने वाले का नाश अवश्य होता है।` ,
+      contentEn: `📖 Virata Parva — Bhima Slays Kichaka
+
+Kichaka — the commander-in-chief of Virata's army — became infatuated with Draupadi (disguised as Sairandhri, a maid).
+
+Kichaka harassed Draupadi. That night, Bhima came to the trysting place in her place and killed Kichaka.
+
+⚔️ Key Message: A husband who cannot protect his wife's honour fails his highest duty.`
+    },
+      { ch: 3, title: 'गोग्रहण पर्व', content: `🕵️ विराट पर्व — गोग्रहण\n\nकौरवों ने विराट की गायें चुरा लीं। अर्जुन ने बृहन्नला के वेश में सब कौरवों को पराजित किया और गायें वापस लाए।\n\nभीष्म, द्रोण, कर्ण, दुर्योधन — सभी बड़े-बड़े योद्धा अर्जुन से हार गए।\n\n📿 मुख्य संदेश: सत्य और कर्तव्य की शक्ति से बड़े-बड़े योद्धा भी परास्त हो जाते हैं।` ,
+      contentEn: `📖 Virata Parva — The Cattle Raid
+
+Duryodhana's spies suspected the Pandavas might be in Virata's kingdom. The Kauravas attacked Virata's cattle to provoke a response.
+
+Arjuna, still in disguise as Brihannala, drove the young prince Uttara's chariot into battle. He revealed himself, retrieved his weapons from the Shami tree, and single-handedly defeated the entire Kaurava army including Bhishma, Drona and Karna.
+
+⚔️ Key Message: Even in disguise, a great warrior's true nature cannot be concealed.`
+    },
     ]
   },
   {
     num: 5, icon: '🕊️', name: 'उद्योग पर्व', en: 'Udyoga Parva', adhyaya: 186,
     desc: 'युद्ध की तैयारी, कृष्ण का शांति प्रस्ताव, कर्ण का रहस्य',
     chapters: [
-      { ch: 1, title: 'संजय का दूत बनना', content: `🕊️ उद्योग पर्व — संजय का दूत बनना\n\nअज्ञातवास पूरा होने पर पांडवों ने अपना राज्य वापस माँगा। दुर्योधन ने मना किया।\n\nसंजय दूत बनकर पांडवों के पास गया। युधिष्ठिर ने कहा — केवल पाँच गाँव दे दो, युद्ध नहीं होगा।\n\n📿 मुख्य संदेश: शांति के लिए हर संभव प्रयास करना चाहिए।` },
-      { ch: 2, title: 'श्रीकृष्ण का दूत बनना', content: `🕊️ उद्योग पर्व — कृष्ण दूत\n\nश्रीकृष्ण स्वयं शांति दूत बनकर हस्तिनापुर गए। दुर्योधन ने एक सूई की नोक के बराबर भी जमीन देने से मना किया।\n\nकृष्ण ने विश्वरूप दिखाया। कर्ण को कुंती पुत्र होने का रहस्य बताया।\n\n📿 मुख्य संदेश: अहंकारी दुर्योधन ने शांति का अवसर गँवाया और विनाश को आमंत्रित किया।` },
-      { ch: 3, title: 'कर्ण का रहस्य', content: `🕊️ उद्योग पर्व — कर्ण कथा\n\nकुंती ने कर्ण से मिलकर रहस्य बताया कि वह उनका ज्येष्ठ पुत्र है। कर्ण ने कहा — मैं दुर्योधन का साथ नहीं छोड़ूँगा।\n\nकर्ण ने वचन दिया — अर्जुन को छोड़कर किसी पांडव को नहीं मारूँगा।\n\n📿 मुख्य संदेश: मित्रता के प्रति निष्ठा एक महान गुण है — भले ही परिणाम कुछ भी हो।` },
+      { ch: 1, title: 'संजय का दूत बनना', content: `🕊️ उद्योग पर्व — संजय का दूत बनना\n\nअज्ञातवास पूरा होने पर पांडवों ने अपना राज्य वापस माँगा। दुर्योधन ने मना किया।\n\nसंजय दूत बनकर पांडवों के पास गया। युधिष्ठिर ने कहा — केवल पाँच गाँव दे दो, युद्ध नहीं होगा।\n\n📿 मुख्य संदेश: शांति के लिए हर संभव प्रयास करना चाहिए।` ,
+      contentEn: `📖 Udyoga Parva — Preparations and Diplomacy
+
+Before the war, all parties made great preparations. Alliances were formed on both sides.
+
+The Pandavas had: the Panchala kingdom, Virata, the Yadavas and many others. The Kauravas had: Bhishma, Drona, Karna and the support of many kings.
+
+⚔️ Key Message: Preparation — both material and moral — is essential before any great undertaking.`
+    },
+      { ch: 2, title: 'श्रीकृष्ण का दूत बनना', content: `🕊️ उद्योग पर्व — कृष्ण दूत\n\nश्रीकृष्ण स्वयं शांति दूत बनकर हस्तिनापुर गए। दुर्योधन ने एक सूई की नोक के बराबर भी जमीन देने से मना किया।\n\nकृष्ण ने विश्वरूप दिखाया। कर्ण को कुंती पुत्र होने का रहस्य बताया।\n\n📿 मुख्य संदेश: अहंकारी दुर्योधन ने शांति का अवसर गँवाया और विनाश को आमंत्रित किया।` ,
+      contentEn: `📖 Udyoga Parva — Krishna's Peace Mission
+
+Krishna went as a peace ambassador to Hastinapur on behalf of the Pandavas, proposing: give the Pandavas just five villages.
+
+Duryodhana refused — I will not give even a needlepoint of land without war. Some even tried to arrest Krishna. Krishna revealed his divine Universal Form in the assembly.
+
+⚔️ Key Message: When the path of peace is exhausted, war for righteousness becomes unavoidable.`
+    },
+      { ch: 3, title: 'कर्ण का रहस्य', content: `🕊️ उद्योग पर्व — कर्ण कथा\n\nकुंती ने कर्ण से मिलकर रहस्य बताया कि वह उनका ज्येष्ठ पुत्र है। कर्ण ने कहा — मैं दुर्योधन का साथ नहीं छोड़ूँगा।\n\nकर्ण ने वचन दिया — अर्जुन को छोड़कर किसी पांडव को नहीं मारूँगा।\n\n📿 मुख्य संदेश: मित्रता के प्रति निष्ठा एक महान गुण है — भले ही परिणाम कुछ भी हो।` ,
+      contentEn: `📖 Udyoga Parva — Karna's Secret
+
+Kunti came secretly to Karna. She revealed: you are my firstborn son — born before the Pandavas.
+
+Karna said — I cannot betray Duryodhana. But I promise: I will not kill any Pandava except Arjuna. You will always have five sons.
+
+⚔️ Key Message: Loyalty can sometimes demand the ultimate personal sacrifice.`
+    },
     ]
   },
   {
     num: 6, icon: '⚔️', name: 'भीष्म पर्व', en: 'Bhishma Parva', adhyaya: 117,
     desc: 'कुरुक्षेत्र युद्ध प्रारंभ, भगवद्गीता, भीष्म का पतन',
     chapters: [
-      { ch: 1, title: 'भूमि पर्व', content: `⚔️ भीष्म पर्व — भूमि पर्व\n\nकुरुक्षेत्र का वर्णन। संजय को दिव्यदृष्टि मिली। दोनों सेनाएँ आमने-सामने खड़ी हुईं।\n\n📿 कुरुक्षेत्र की पवित्रता:\nयह वह भूमि है जहाँ पितामह महाभारत से पूर्व भी यज्ञ हुए थे। यहाँ मरने वाला मोक्ष को प्राप्त होता है।` },
-      { ch: 2, title: 'श्रीमद्भगवद्गीता', content: `⚔️ भीष्म पर्व — श्रीमद्भगवद्गीता\n\nअर्जुन ने युद्धभूमि में अपने स्वजनों को देख कर अस्त्र छोड़ दिए। श्रीकृष्ण ने १८ अध्यायों में गीता का उपदेश दिया।\n\nगीता के १८ अध्याय:\n१. अर्जुन विषाद योग\n२. सांख्य योग\n३. कर्म योग\n४. ज्ञान कर्म संन्यास योग\n५. कर्म संन्यास योग\n६. आत्मसंयम योग\n७. ज्ञान विज्ञान योग\n८. अक्षरब्रह्म योग\n९. राजविद्या राजगुह्य योग\n१०. विभूति योग\n११. विश्वरूप दर्शन योग\n१२. भक्ति योग\n१३. क्षेत्र क्षेत्रज्ञ विभाग योग\n१४. गुणत्रय विभाग योग\n१५. पुरुषोत्तम योग\n१६. दैवासुर सम्पद् विभाग योग\n१७. श्रद्धात्रय विभाग योग\n१८. मोक्ष संन्यास योग\n\n📿 मुख्य संदेश: "कर्म करो, फल की चिंता मत करो।"` },
-      { ch: 3, title: 'भीष्म का पतन', content: `⚔️ भीष्म पर्व — भीष्म पतन\n\n१० दिनों तक भीष्म ने पांडवों की सेना को तहस-नहस किया। श्रीकृष्ण ने शिखण्डी को आगे करने की योजना बताई।\n\nशिखण्डी को देखकर भीष्म ने अस्त्र नहीं उठाए। अर्जुन के बाणों से भीष्म रथ से गिरे। वे बाणों की शय्या पर लेट गए — उत्तरायण की प्रतीक्षा में।\n\n📿 मुख्य संदेश: भीष्म ने इच्छामृत्यु का वरदान पाया था — धर्म के लिए जीना और धर्म के लिए मरना।` },
+      { ch: 1, title: 'भूमि पर्व', content: `⚔️ भीष्म पर्व — भूमि पर्व\n\nकुरुक्षेत्र का वर्णन। संजय को दिव्यदृष्टि मिली। दोनों सेनाएँ आमने-सामने खड़ी हुईं।\n\n📿 कुरुक्षेत्र की पवित्रता:\nयह वह भूमि है जहाँ पितामह महाभारत से पूर्व भी यज्ञ हुए थे। यहाँ मरने वाला मोक्ष को प्राप्त होता है।` ,
+      contentEn: `📖 Bhishma Parva — The Bhagavad Gita
+
+Arjuna saw his own kinsmen — Bhishma, Drona, cousins, teachers — arrayed against him and lost the will to fight.
+
+Krishna then delivered the Bhagavad Gita — the song of God. All 18 chapters. The eternal teaching on the soul, duty, devotion and liberation.
+
+⚔️ Key Message: The Gita is the greatest gift to humanity — a complete guide to righteous living.`
+    },
+      { ch: 2, title: 'श्रीमद्भगवद्गीता', content: `⚔️ भीष्म पर्व — श्रीमद्भगवद्गीता\n\nअर्जुन ने युद्धभूमि में अपने स्वजनों को देख कर अस्त्र छोड़ दिए। श्रीकृष्ण ने १८ अध्यायों में गीता का उपदेश दिया।\n\nगीता के १८ अध्याय:\n१. अर्जुन विषाद योग\n२. सांख्य योग\n३. कर्म योग\n४. ज्ञान कर्म संन्यास योग\n५. कर्म संन्यास योग\n६. आत्मसंयम योग\n७. ज्ञान विज्ञान योग\n८. अक्षरब्रह्म योग\n९. राजविद्या राजगुह्य योग\n१०. विभूति योग\n११. विश्वरूप दर्शन योग\n१२. भक्ति योग\n१३. क्षेत्र क्षेत्रज्ञ विभाग योग\n१४. गुणत्रय विभाग योग\n१५. पुरुषोत्तम योग\n१६. दैवासुर सम्पद् विभाग योग\n१७. श्रद्धात्रय विभाग योग\n१८. मोक्ष संन्यास योग\n\n📿 मुख्य संदेश: "कर्म करो, फल की चिंता मत करो।"` ,
+      contentEn: `📖 Bhishma Parva — The War Begins
+
+The eighteen-day Kurukshetra War began. Bhishma commanded the Kaurava forces brilliantly for ten days.
+
+On the first day Arjuna slew Bhishma's charioteer, Bhishma killed ten thousand warriors. The sound of conches and war drums filled Kurukshetra.
+
+⚔️ Key Message: In war, even the most righteous face impossible choices.`
+    },
+      { ch: 3, title: 'भीष्म का पतन', content: `⚔️ भीष्म पर्व — भीष्म पतन\n\n१० दिनों तक भीष्म ने पांडवों की सेना को तहस-नहस किया। श्रीकृष्ण ने शिखण्डी को आगे करने की योजना बताई।\n\nशिखण्डी को देखकर भीष्म ने अस्त्र नहीं उठाए। अर्जुन के बाणों से भीष्म रथ से गिरे। वे बाणों की शय्या पर लेट गए — उत्तरायण की प्रतीक्षा में।\n\n📿 मुख्य संदेश: भीष्म ने इच्छामृत्यु का वरदान पाया था — धर्म के लिए जीना और धर्म के लिए मरना।` ,
+      contentEn: `📖 Bhishma Parva — Abhimanyu's Entry
+
+Abhimanyu — Arjuna's young son — displayed extraordinary courage in battle from the very first day.
+
+He had learned the art of entering the Chakravyuha (wheel formation) in his mother's womb — but had not learned how to exit it.
+
+⚔️ Key Message: Incomplete knowledge is dangerous — but courage without it is fatal.`
+    },
     ]
   },
   {
     num: 7, icon: '🎯', name: 'द्रोण पर्व', en: 'Drona Parva', adhyaya: 173,
     desc: 'द्रोणाचार्य का सेनापतित्व, अभिमन्यु वध, चक्रव्यूह',
     chapters: [
-      { ch: 1, title: 'द्रोण का सेनापतित्व', content: `🎯 द्रोण पर्व\n\nभीष्म के पतन के बाद द्रोणाचार्य कौरव सेना के सेनापति बने।\n\nद्रोण ने युधिष्ठिर को पकड़ने की प्रतिज्ञा की। वे अपराजेय योद्धा थे।` },
-      { ch: 2, title: 'अभिमन्यु वध', content: `🎯 द्रोण पर्व — अभिमन्यु वध\n\nद्रोण ने चक्रव्यूह की रचना की। केवल अभिमन्यु को इसमें प्रवेश का ज्ञान था — निकलने का नहीं।\n\nअभिमन्यु अकेले सात महारथियों से लड़े। जयद्रथ ने बाकी पांडवों को रोका। अंत में सातों ने मिलकर निहत्थे अभिमन्यु को मारा।\n\n📿 मुख्य संदेश: अधर्म से की गई जीत जीत नहीं होती। अभिमन्यु की वीरता अमर है।` },
-      { ch: 3, title: 'द्रोण वध', content: `🎯 द्रोण पर्व — द्रोण वध\n\nअर्जुन ने जयद्रथ का वध किया। द्रोण को रोकने के लिए युधिष्ठिर ने कहा — "अश्वत्थामा हतो हत:" (हाथी मारा गया था)।\n\nद्रोण ने अस्त्र रख दिए। धृष्टद्युम्न ने उनका सिर काट दिया।\n\n📿 मुख्य संदेश: जो गुरु के प्रति विश्वासघात करता है, वह भी पाप का भागी होता है।` },
+      { ch: 1, title: 'द्रोण का सेनापतित्व', content: `🎯 द्रोण पर्व\n\nभीष्म के पतन के बाद द्रोणाचार्य कौरव सेना के सेनापति बने।\n\nद्रोण ने युधिष्ठिर को पकड़ने की प्रतिज्ञा की। वे अपराजेय योद्धा थे।` ,
+      contentEn: `📖 Drona Parva — Drona Takes Command
+
+After Bhishma fell, Drona was appointed Supreme Commander of the Kauravas.
+
+Drona vowed to capture Yudhishthira alive — for Duryodhana wanted to play dice again with him as prisoner.
+
+⚔️ Key Message: Even the wisest teacher can be used as an instrument of adharma.`
+    },
+      { ch: 2, title: 'अभिमन्यु वध', content: `🎯 द्रोण पर्व — अभिमन्यु वध\n\nद्रोण ने चक्रव्यूह की रचना की। केवल अभिमन्यु को इसमें प्रवेश का ज्ञान था — निकलने का नहीं।\n\nअभिमन्यु अकेले सात महारथियों से लड़े। जयद्रथ ने बाकी पांडवों को रोका। अंत में सातों ने मिलकर निहत्थे अभिमन्यु को मारा।\n\n📿 मुख्य संदेश: अधर्म से की गई जीत जीत नहीं होती। अभिमन्यु की वीरता अमर है।` ,
+      contentEn: `📖 Drona Parva — Abhimanyu's Last Stand
+
+Drona formed the deadly Chakravyuha — a spiral battle formation that almost no one could penetrate or escape from.
+
+Only Abhimanyu knew how to enter but not exit. He entered alone. Jayadratha blocked the other Pandavas from following.
+
+Abhimanyu fought all alone against the greatest warriors — Drona, Karna, Dushasana, Ashvatthama — and was finally slain unfairly by multiple warriors attacking together.
+
+⚔️ Key Message: Abhimanyu's death — the greatest tragedy of the Mahabharata.`
+    },
+      { ch: 3, title: 'द्रोण वध', content: `🎯 द्रोण पर्व — द्रोण वध\n\nअर्जुन ने जयद्रथ का वध किया। द्रोण को रोकने के लिए युधिष्ठिर ने कहा — "अश्वत्थामा हतो हत:" (हाथी मारा गया था)।\n\nद्रोण ने अस्त्र रख दिए। धृष्टद्युम्न ने उनका सिर काट दिया।\n\n📿 मुख्य संदेश: जो गुरु के प्रति विश्वासघात करता है, वह भी पाप का भागी होता है।` ,
+      contentEn: `📖 Drona Parva — Arjuna's Oath
+
+Arjuna learned of Abhimanyu's death. He made a terrible oath: I will kill Jayadratha before sunset tomorrow, or enter fire myself.
+
+Krishna protected Arjuna through the night. The next day's battle was the most intense of the war.
+
+⚔️ Key Message: A father's love and grief can become his most powerful weapon.`
+    },
     ]
   },
   {
     num: 8, icon: '🏹', name: 'कर्ण पर्व', en: 'Karna Parva', adhyaya: 69,
     desc: 'कर्ण का सेनापतित्व और अर्जुन से महायुद्ध, कर्ण वध',
     chapters: [
-      { ch: 1, title: 'कर्ण का सेनापतित्व', content: `🏹 कर्ण पर्व\n\nद्रोण के बाद कर्ण कौरव सेना के सेनापति बने। कर्ण दानवीर और अद्वितीय योद्धा थे।\n\nकर्ण ने कहा — "जो मेरा कवच और कुण्डल माँगे, मैं दे दूँगा — चाहे कुछ भी हो।"` },
-      { ch: 2, title: 'कर्ण-अर्जुन महायुद्ध', content: `🏹 कर्ण पर्व — कर्ण वध\n\nकर्ण और अर्जुन के बीच महायुद्ध हुआ। कर्ण का रथ पहिया जमीन में धँस गया।\n\nकर्ण ने अस्त्र रखकर पहिया निकालने को कहा। श्रीकृष्ण ने अर्जुन से कहा — यही अवसर है। अर्जुन ने कर्ण का वध किया।\n\n📿 मुख्य संदेश: कर्ण महाभारत का सबसे दुखद पात्र है — जन्म से लेकर मृत्यु तक अन्याय का शिकार।` },
+      { ch: 1, title: 'कर्ण का सेनापतित्व', content: `🏹 कर्ण पर्व\n\nद्रोण के बाद कर्ण कौरव सेना के सेनापति बने। कर्ण दानवीर और अद्वितीय योद्धा थे।\n\nकर्ण ने कहा — "जो मेरा कवच और कुण्डल माँगे, मैं दे दूँगा — चाहे कुछ भी हो।"` ,
+      contentEn: `📖 Karna Parva — Karna Takes Command
+
+After Drona's fall, Karna was appointed Supreme Commander. Duryodhana's faith was now entirely in Karna.
+
+Karna had always been the greatest rival of Arjuna — the confrontation of a lifetime was about to take place.
+
+⚔️ Key Message: The moment of greatest destiny arrives after the longest preparation.`
+    },
+      { ch: 2, title: 'कर्ण-अर्जुन महायुद्ध', content: `🏹 कर्ण पर्व — कर्ण वध\n\nकर्ण और अर्जुन के बीच महायुद्ध हुआ। कर्ण का रथ पहिया जमीन में धँस गया।\n\nकर्ण ने अस्त्र रखकर पहिया निकालने को कहा। श्रीकृष्ण ने अर्जुन से कहा — यही अवसर है। अर्जुन ने कर्ण का वध किया।\n\n📿 मुख्य संदेश: कर्ण महाभारत का सबसे दुखद पात्र है — जन्म से लेकर मृत्यु तक अन्याय का शिकार।` ,
+      contentEn: `📖 Karna Parva — Karna's Generosity
+
+Karna was known for his extraordinary generosity — he never refused anyone who came to him at sunrise.
+
+Indra, knowing Karna's divine armour (Kavacha-Kundala) made him invincible, came disguised as a brahmin and asked for it. Karna gave it away, knowing it was Indra.
+
+⚔️ Key Message: True generosity continues even when you know it will cost you everything.`
+    },
     ]
   },
   {
     num: 9, icon: '🌊', name: 'शल्य पर्व', en: 'Shalya Parva', adhyaya: 59,
     desc: 'शल्य का सेनापतित्व, दुर्योधन का पतन',
     chapters: [
-      { ch: 1, title: 'शल्य सेनापति', content: `🌊 शल्य पर्व\n\nकर्ण के बाद शल्य कौरव सेना के सेनापति बने। शल्य नकुल-सहदेव के मामा थे।\n\nयुधिष्ठिर ने शल्य का वध किया।` },
-      { ch: 2, title: 'दुर्योधन का पतन', content: `🌊 शल्य पर्व — दुर्योधन पतन\n\nदुर्योधन एक सरोवर में छिप गया। पांडवों ने ललकारा। दुर्योधन निकला।\n\nभीम और दुर्योधन में गदायुद्ध हुआ। भीम ने दुर्योधन की जाँघ तोड़ी — वही जाँघ जो उसने द्रौपदी को दिखाई थी।\n\n📿 मुख्य संदेश: जो बोया, वही काटा। कर्म का फल अवश्य मिलता है।` },
+      { ch: 1, title: 'शल्य सेनापति', content: `🌊 शल्य पर्व\n\nकर्ण के बाद शल्य कौरव सेना के सेनापति बने। शल्य नकुल-सहदेव के मामा थे।\n\nयुधिष्ठिर ने शल्य का वध किया।` ,
+      contentEn: `📖 Shalya Parva — Shalya Takes Command
+
+With Bhishma, Drona and Karna gone, Shalya — Nakula and Sahadeva's maternal uncle — was made the Kaurava commander.
+
+Yudhishthira slew Shalya himself in battle on the very first day of his command.
+
+⚔️ Key Message: War knows no bonds of family — duty overrides all personal relationships.`
+    },
+      { ch: 2, title: 'दुर्योधन का पतन', content: `🌊 शल्य पर्व — दुर्योधन पतन\n\nदुर्योधन एक सरोवर में छिप गया। पांडवों ने ललकारा। दुर्योधन निकला।\n\nभीम और दुर्योधन में गदायुद्ध हुआ। भीम ने दुर्योधन की जाँघ तोड़ी — वही जाँघ जो उसने द्रौपदी को दिखाई थी।\n\n📿 मुख्य संदेश: जो बोया, वही काटा। कर्म का फल अवश्य मिलता है।` ,
+      contentEn: `📖 Shalya Parva — Duryodhana's Last Stand
+
+The Kaurava army was destroyed. Duryodhana alone remained, hiding in a lake using his power to solidify water.
+
+The Pandavas found him. Duryodhana challenged any one of them to single combat with a weapon of his choice.
+
+⚔️ Key Message: Even in total defeat, a warrior's pride remains intact.`
+    },
     ]
   },
   {
     num: 10, icon: '🌙', name: 'सौप्तिक पर्व', en: 'Sauptika Parva', adhyaya: 18,
     desc: 'अश्वत्थामा का रात्रि आक्रमण, ब्रह्मास्त्र',
     chapters: [
-      { ch: 1, title: 'अश्वत्थामा का प्रतिशोध', content: `🌙 सौप्तिक पर्व\n\nअश्वत्थामा ने रात को सोए हुए पांडव शिविर पर आक्रमण किया। द्रौपदी के पाँचों पुत्रों और धृष्टद्युम्न को मारा।\n\nअर्जुन ने पकड़ा। द्रौपदी ने दया की। श्रीकृष्ण ने अश्वत्थामा की मणि निकाली और उसे श्राप दिया।\n\n📿 मुख्य संदेश: प्रतिशोध की आग में दोनों पक्ष जलते हैं।` },
+      { ch: 1, title: 'अश्वत्थामा का प्रतिशोध', content: `🌙 सौप्तिक पर्व\n\nअश्वत्थामा ने रात को सोए हुए पांडव शिविर पर आक्रमण किया। द्रौपदी के पाँचों पुत्रों और धृष्टद्युम्न को मारा।\n\nअर्जुन ने पकड़ा। द्रौपदी ने दया की। श्रीकृष्ण ने अश्वत्थामा की मणि निकाली और उसे श्राप दिया।\n\n📿 मुख्य संदेश: प्रतिशोध की आग में दोनों पक्ष जलते हैं।` ,
+      contentEn: `📖 Sauptika Parva — The Night Massacre
+
+Ashvatthama, consumed by grief and rage over his father Drona's death, planned a night attack on the sleeping Pandava camp.
+
+Owls attacking sleeping crows inspired him. He prayed to Shiva, who granted him power for the terrible deed.
+
+⚔️ Key Message: Grief without guidance becomes destruction.`
+    },
     ]
   },
   {
     num: 11, icon: '😢', name: 'स्त्री पर्व', en: 'Stri Parva', adhyaya: 27,
     desc: 'गांधारी का विलाप, मृत वीरों का अंतिम संस्कार',
     chapters: [
-      { ch: 1, title: 'गांधारी का विलाप', content: `😢 स्त्री पर्व\n\nयुद्ध समाप्त हुआ। धृतराष्ट्र और गांधारी युद्धभूमि पर आए। गांधारी के १०० पुत्र मारे गए।\n\nगांधारी ने श्रीकृष्ण को श्राप दिया — "जैसे मेरे कुल का नाश हुआ, वैसे ही यदुवंश का भी नाश होगा।"\n\n📿 मुख्य संदेश: युद्ध में कोई नहीं जीतता — सबका नुकसान होता है।` },
+      { ch: 1, title: 'गांधारी का विलाप', content: `😢 स्त्री पर्व\n\nयुद्ध समाप्त हुआ। धृतराष्ट्र और गांधारी युद्धभूमि पर आए। गांधारी के १०० पुत्र मारे गए।\n\nगांधारी ने श्रीकृष्ण को श्राप दिया — "जैसे मेरे कुल का नाश हुआ, वैसे ही यदुवंश का भी नाश होगा।"\n\n📿 मुख्य संदेश: युद्ध में कोई नहीं जीतता — सबका नुकसान होता है।` ,
+      contentEn: `📖 Stri Parva — The Grief of the Women
+
+The women — Gandhari, Kunti, Draupadi and hundreds of others — came to the battlefield of Kurukshetra to mourn the dead.
+
+The scene: a vast plain covered with the bodies of countless kings, warriors, elephants and horses. The most heartbreaking passage in all of Sanskrit literature.
+
+⚔️ Key Message: War's true cost is measured in the tears of those left behind.`
+    },
     ]
   },
   {
     num: 12, icon: '📿', name: 'शांति पर्व', en: 'Shanti Parva', adhyaya: 339,
     desc: 'भीष्म का राजधर्म उपदेश — सबसे बड़ा पर्व',
     chapters: [
-      { ch: 1, title: 'राजधर्म', content: `📿 शांति पर्व — राजधर्म\n\nबाणों की शय्या पर लेटे भीष्म ने युधिष्ठिर को राजधर्म का उपदेश दिया।\n\nराजा के कर्तव्य:\n• प्रजा की रक्षा करना\n• न्यायपूर्वक शासन करना\n• दुष्टों को दंड देना\n• साधुओं की रक्षा करना\n\n📿 मुख्य संदेश: राजा का धर्म प्रजा की सेवा है।` },
-      { ch: 2, title: 'मोक्षधर्म', content: `📿 शांति पर्व — मोक्षधर्म\n\nभीष्म ने मोक्ष प्राप्ति के मार्ग बताए:\n• ज्ञान योग — ब्रह्म को जानना\n• भक्ति योग — ईश्वर की भक्ति\n• कर्म योग — निष्काम कर्म\n• सांख्य — प्रकृति और पुरुष का विवेक\n\n📿 मुख्य संदेश: मोक्ष ही जीवन का परम लक्ष्य है।` },
+      { ch: 1, title: 'राजधर्म', content: `📿 शांति पर्व — राजधर्म\n\nबाणों की शय्या पर लेटे भीष्म ने युधिष्ठिर को राजधर्म का उपदेश दिया।\n\nराजा के कर्तव्य:\n• प्रजा की रक्षा करना\n• न्यायपूर्वक शासन करना\n• दुष्टों को दंड देना\n• साधुओं की रक्षा करना\n\n📿 मुख्य संदेश: राजा का धर्म प्रजा की सेवा है।` ,
+      contentEn: `📖 Shanti Parva — Yudhishthira's Coronation
+
+After long deliberation, Yudhishthira was crowned king of Hastinapur. The kingdom was in ruins — but the duty of rebuilding it fell to him.
+
+Krishna reminded him: The dead cannot be brought back. But the living need a just king.
+
+⚔️ Key Message: Grief must be transformed into responsibility.`
+    },
+      { ch: 2, title: 'मोक्षधर्म', content: `📿 शांति पर्व — मोक्षधर्म\n\nभीष्म ने मोक्ष प्राप्ति के मार्ग बताए:\n• ज्ञान योग — ब्रह्म को जानना\n• भक्ति योग — ईश्वर की भक्ति\n• कर्म योग — निष्काम कर्म\n• सांख्य — प्रकृति और पुरुष का विवेक\n\n📿 मुख्य संदेश: मोक्ष ही जीवन का परम लक्ष्य है।` ,
+      contentEn: `📖 Shanti Parva — Bhishma's Teachings on Dharma
+
+Yudhishthira went to the dying Bhishma on his bed of arrows to receive his final teachings on statecraft and dharma.
+
+Bhishma spoke for days — covering the duties of kings, the nature of righteousness, the proper administration of justice, and the eternal truths of existence.
+
+⚔️ Key Message: The greatest knowledge is passed from the dying to the living — this is the chain of civilisation.`
+    },
     ]
   },
   {
     num: 13, icon: '🙏', name: 'अनुशासन पर्व', en: 'Anushasana Parva', adhyaya: 154,
     desc: 'भीष्म का दान, धर्म, आचार का उपदेश',
     chapters: [
-      { ch: 1, title: 'दान का महत्व', content: `🙏 अनुशासन पर्व — दान\n\nभीष्म ने दान की महिमा बताई:\n• अन्नदान सर्वश्रेष्ठ दान है\n• गौदान से स्वर्ग मिलता है\n• विद्यादान सबसे बड़ा दान है\n• भूमिदान से पितर तृप्त होते हैं\n\n📿 मुख्य संदेश: "दान करने वाले का हाथ सदा ऊपर रहता है।"` },
-      { ch: 2, title: 'भीष्म की मृत्यु', content: `🙏 अनुशासन पर्व — भीष्म निर्वाण\n\nउत्तरायण के आने पर भीष्म ने प्राण त्यागे। उन्होंने श्रीकृष्ण का स्मरण किया।\n\nभीष्म ने कहा — "मैंने जीवन भर धर्म का पालन किया। मेरे मन में कोई पश्चाताप नहीं।"\n\n📿 मुख्य संदेश: धर्मपूर्ण जीवन जीने वाले की मृत्यु भी महान होती है।` },
+      { ch: 1, title: 'दान का महत्व', content: `🙏 अनुशासन पर्व — दान\n\nभीष्म ने दान की महिमा बताई:\n• अन्नदान सर्वश्रेष्ठ दान है\n• गौदान से स्वर्ग मिलता है\n• विद्यादान सबसे बड़ा दान है\n• भूमिदान से पितर तृप्त होते हैं\n\n📿 मुख्य संदेश: "दान करने वाले का हाथ सदा ऊपर रहता है।"` ,
+      contentEn: `📖 Anushasana Parva — Bhishma's Continued Teachings
+
+Bhishma continued his great teachings on dharma — covering charity (dana), truth (satya), and compassion (karuna).
+
+He taught: Of all forms of charity, the gift of knowledge (Jnana Dana) is the greatest. Of all paths, truth is the most sacred.
+
+⚔️ Key Message: Generosity of spirit surpasses all material generosity.`
+    },
+      { ch: 2, title: 'भीष्म की मृत्यु', content: `🙏 अनुशासन पर्व — भीष्म निर्वाण\n\nउत्तरायण के आने पर भीष्म ने प्राण त्यागे। उन्होंने श्रीकृष्ण का स्मरण किया।\n\nभीष्म ने कहा — "मैंने जीवन भर धर्म का पालन किया। मेरे मन में कोई पश्चाताप नहीं।"\n\n📿 मुख्य संदेश: धर्मपूर्ण जीवन जीने वाले की मृत्यु भी महान होती है।` ,
+      contentEn: `📖 Anushasana Parva — The Teachings on Dharma
+
+Bhishma taught the eternal truths of dharma through hundreds of stories and parables.
+
+Key teaching: Dharma is subtle. Even the wisest cannot always determine what is right. In times of doubt, choose the path of non-violence and truth.
+
+⚔️ Key Message: In every dilemma, the deepest dharma is always non-violence and compassion.`
+    },
     ]
   },
   {
     num: 14, icon: '🐎', name: 'अश्वमेधिक पर्व', en: 'Ashvamedhika Parva', adhyaya: 96,
     desc: 'युधिष्ठिर का अश्वमेध यज्ञ',
     chapters: [
-      { ch: 1, title: 'अश्वमेध यज्ञ', content: `🐎 अश्वमेधिक पर्व\n\nयुधिष्ठिर के मन में युद्ध के पापों का प्रायश्चित करने की इच्छा हुई। श्रीकृष्ण के परामर्श से अश्वमेध यज्ञ किया।\n\nअर्जुन यज्ञ के घोड़े के साथ पूरी पृथ्वी पर विजय करते हुए गए। जो राजा घोड़े को रोके, उससे युद्ध किया।\n\n📿 मुख्य संदेश: पाप के प्रायश्चित से मन शुद्ध होता है।` },
+      { ch: 1, title: 'अश्वमेध यज्ञ', content: `🐎 अश्वमेधिक पर्व\n\nयुधिष्ठिर के मन में युद्ध के पापों का प्रायश्चित करने की इच्छा हुई। श्रीकृष्ण के परामर्श से अश्वमेध यज्ञ किया।\n\nअर्जुन यज्ञ के घोड़े के साथ पूरी पृथ्वी पर विजय करते हुए गए। जो राजा घोड़े को रोके, उससे युद्ध किया।\n\n📿 मुख्य संदेश: पाप के प्रायश्चित से मन शुद्ध होता है।` ,
+      contentEn: `📖 Ashvamedhika Parva — The Horse Sacrifice
+
+To cleanse the sins of the great war and to establish his sovereignty, Yudhishthira performed the Ashvamedha Yagna (Horse Sacrifice).
+
+Arjuna followed the sacred horse across the land, fighting any king who stopped it.
+
+⚔️ Key Message: Atonement and rebuilding must follow even a just war.`
+    },
     ]
   },
   {
     num: 15, icon: '🌳', name: 'आश्रमवासिक पर्व', en: 'Ashramavasika Parva', adhyaya: 42,
     desc: 'धृतराष्ट्र और गांधारी का वन गमन',
     chapters: [
-      { ch: 1, title: 'वन गमन', content: `🌳 आश्रमवासिक पर्व\n\nधृतराष्ट्र, गांधारी, कुंती और विदुर वन में तपस्या के लिए गए।\n\nवन में अग्नि लग गई और धृतराष्ट्र, गांधारी और कुंती ने अग्नि में प्रवेश कर मोक्ष प्राप्त किया।\n\n📿 मुख्य संदेश: जीवन के अंत में वैराग्य और ईश्वर-भक्ति ही सच्चा मार्ग है।` },
+      { ch: 1, title: 'वन गमन', content: `🌳 आश्रमवासिक पर्व\n\nधृतराष्ट्र, गांधारी, कुंती और विदुर वन में तपस्या के लिए गए।\n\nवन में अग्नि लग गई और धृतराष्ट्र, गांधारी और कुंती ने अग्नि में प्रवेश कर मोक्ष प्राप्त किया।\n\n📿 मुख्य संदेश: जीवन के अंत में वैराग्य और ईश्वर-भक्ति ही सच्चा मार्ग है।` ,
+      contentEn: `📖 Ashramavasika Parva — Dhritarashtra Goes to the Forest
+
+After fifteen years of being cared for by the Pandavas, the aged Dhritarashtra decided to go to the forest (vanaprastha) to spend his final days in meditation.
+
+Gandhari, Kunti and Vidura accompanied him. Yudhishthira was heartbroken.
+
+⚔️ Key Message: The final stage of life belongs to silence and surrender.`
+    },
     ]
   },
   {
     num: 16, icon: '💧', name: 'मौसल पर्व', en: 'Mausala Parva', adhyaya: 8,
     desc: 'यदुवंश का नाश, श्रीकृष्ण का निर्वाण',
     chapters: [
-      { ch: 1, title: 'यदुवंश नाश', content: `💧 मौसल पर्व\n\nगांधारी के श्राप से यदुवंश का नाश हुआ। यादव आपस में लड़कर मारे गए।\n\nश्रीकृष्ण के बड़े भाई बलराम ने समाधि ली। श्रीकृष्ण वन में गए और एक शिकारी के बाण से उनके चरण में लगा — वे परमधाम गए।\n\n📿 मुख्य संदेश: श्रीकृष्ण ने अपने धर्म का पालन करते हुए इस लोक से विदा ली।` },
+      { ch: 1, title: 'यदुवंश नाश', content: `💧 मौसल पर्व\n\nगांधारी के श्राप से यदुवंश का नाश हुआ। यादव आपस में लड़कर मारे गए।\n\nश्रीकृष्ण के बड़े भाई बलराम ने समाधि ली। श्रीकृष्ण वन में गए और एक शिकारी के बाण से उनके चरण में लगा — वे परमधाम गए।\n\n📿 मुख्य संदेश: श्रीकृष्ण ने अपने धर्म का पालन करते हुए इस लोक से विदा ली।` ,
+      contentEn: `📖 Mausala Parva — The Destruction of the Yadavas
+
+Sages cursed some young Yadavas for disrespecting them. The curse: an iron club would destroy the Yadava clan.
+
+At a feast at Prabhasa, the Yadavas quarrelled and began killing each other with clubs made from lakeside reeds — fulfilling the curse. Even Balarama's son was killed.
+
+⚔️ Key Message: Those who disrespect wisdom ultimately destroy themselves.`
+    },
     ]
   },
   {
     num: 17, icon: '🚶', name: 'महाप्रस्थानिक पर्व', en: 'Mahaprasthanika Parva', adhyaya: 3,
     desc: 'पांडवों की स्वर्ग यात्रा',
     chapters: [
-      { ch: 1, title: 'स्वर्ग यात्रा', content: `🚶 महाप्रस्थानिक पर्व\n\nकृष्ण के जाने के बाद पांडवों ने राज्य परीक्षित को दिया और हिमालय की ओर चल दिए।\n\nएक-एक करके सब गिरते गए — पहले द्रौपदी, फिर सहदेव, नकुल, अर्जुन, भीम। केवल युधिष्ठिर और एक कुत्ता (जो यमराज थे) चलते रहे।\n\n📿 मुख्य संदेश: अंत में अकेले ही जाना होता है। धर्म ही एकमात्र साथी है।` },
+      { ch: 1, title: 'स्वर्ग यात्रा', content: `🚶 महाप्रस्थानिक पर्व\n\nकृष्ण के जाने के बाद पांडवों ने राज्य परीक्षित को दिया और हिमालय की ओर चल दिए।\n\nएक-एक करके सब गिरते गए — पहले द्रौपदी, फिर सहदेव, नकुल, अर्जुन, भीम। केवल युधिष्ठिर और एक कुत्ता (जो यमराज थे) चलते रहे।\n\n📿 मुख्य संदेश: अंत में अकेले ही जाना होता है। धर्म ही एकमात्र साथी है।` ,
+      contentEn: `📖 Mahaprasthanika Parva — The Great Journey Begins
+
+The Pandavas, knowing their time was complete, crowned Parikshit (Arjuna's grandson) king of Hastinapur.
+
+They dressed in bark cloth, gave away everything, and set out on their final journey — the Mahaprasthana (the Great Departure) — walking northward toward the Himalayas.
+
+⚔️ Key Message: The greatest kings are those who know when to surrender power.`
+    },
     ]
   },
   {
     num: 18, icon: '🌟', name: 'स्वर्गारोहण पर्व', en: 'Svargarohana Parva', adhyaya: 5,
     desc: 'युधिष्ठिर का स्वर्ग में प्रवेश — महाभारत का समापन',
     chapters: [
-      { ch: 1, title: 'स्वर्ग दर्शन', content: `🌟 स्वर्गारोहण पर्व — महाभारत का समापन\n\nइंद्र ने युधिष्ठिर को स्वर्ग ले जाने आए। युधिष्ठिर ने कुत्ते को साथ लेने की जिद की — यह यमराज थे जो उनकी परीक्षा ले रहे थे।\n\nस्वर्ग में युधिष्ठिर ने दुर्योधन को देखा और आश्चर्यचकित हुए। इंद्र ने समझाया — कुरुक्षेत्र में मरने से दुर्योधन को वीरगति मिली।\n\nअंत में युधिष्ठिर ने अपने सभी भाइयों और द्रौपदी को स्वर्ग में पाया।\n\n📿 अंतिम संदेश:\n"नासतो विद्यते भावो नाभावो विद्यते सतः"\nजो सत्य है वह कभी नष्ट नहीं होता।\nमहाभारत का सार — धर्म की जय और अधर्म का नाश।\n\n🙏 इति श्री महाभारत सम्पूर्ण 🙏` },
+      { ch: 1, title: 'स्वर्ग दर्शन', content: `🌟 स्वर्गारोहण पर्व — महाभारत का समापन\n\nइंद्र ने युधिष्ठिर को स्वर्ग ले जाने आए। युधिष्ठिर ने कुत्ते को साथ लेने की जिद की — यह यमराज थे जो उनकी परीक्षा ले रहे थे।\n\nस्वर्ग में युधिष्ठिर ने दुर्योधन को देखा और आश्चर्यचकित हुए। इंद्र ने समझाया — कुरुक्षेत्र में मरने से दुर्योधन को वीरगति मिली।\n\nअंत में युधिष्ठिर ने अपने सभी भाइयों और द्रौपदी को स्वर्ग में पाया।\n\n📿 अंतिम संदेश:\n"नासतो विद्यते भावो नाभावो विद्यते सतः"\nजो सत्य है वह कभी नष्ट नहीं होता।\nमहाभारत का सार — धर्म की जय और अधर्म का नाश।\n\n🙏 इति श्री महाभारत सम्पूर्ण 🙏` ,
+      contentEn: `📖 Svargarohana Parva — Yudhishthira in Heaven
+
+Yudhishthira arrived in the divine realm. He saw Duryodhana seated on a golden throne, radiant. He was told — Duryodhana died a warrior's death; he has his reward.
+
+Yudhishthira asked — where are my brothers? He was shown a dark, suffering place.
+
+⚔️ Key Message: Divine justice is beyond human comprehension — the same act can lead to different outcomes in different contexts.`
+    },
     ]
   },
 ];
@@ -2613,7 +3836,10 @@ function showMbParva(num) {
     var btn = document.createElement('button');
     btn.style.cssText = 'background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.2);border-radius:12px;padding:14px 16px;text-align:left;cursor:pointer;display:flex;align-items:center;gap:12px;width:100%;';
     btn.innerHTML = '<span style="background:rgba(212,175,55,0.2);border-radius:8px;padding:4px 10px;font-size:11px;color:var(--gold);font-weight:700;min-width:36px;text-align:center;">' + ch.ch + '</span><div style="font-size:13px;color:rgba(255,255,255,0.9);font-weight:600;">' + ch.title + '</div>';
-    btn.addEventListener('click', function() { showMbChapter(ch.title, ch.content); });
+    btn.addEventListener('click', function() {
+      var displayContent = (currentLang === 'en' && ch.contentEn) ? ch.contentEn : ch.content;
+      showMbChapter(ch.title, displayContent);
+    });
     list.appendChild(btn);
   });
   document.querySelectorAll('.screen').forEach(function(s) { s.classList.remove('active'); });
@@ -2735,6 +3961,28 @@ const garudaChapterContent = {
   }
 };
 
+const garudaChapterContentEn = {
+  purva: {
+    1: '🦅 Garuda Purana — Purva Khanda Chapter 1: The Creation of the Universe\n\nLord Vishnu told Garuda how this creation came into being. In the beginning only the Supreme Being existed — no sky, no earth, no water, no fire.\n\nFrom the Supreme Being\'s will arose Mahat-tattva (cosmic intelligence). From that came Ahamkara (ego), from Ahamkara the five Tanmatras, and from those the five Mahabhutas — Earth, Water, Fire, Air and Space.\n\nBrahma first created the four Sanakadi sages, then Marichi, Atri, Angira, Pulastya, Pulaha, Kratu, Pracheta, Vasishtha, Bhrigu and Narada — these ten mind-born sons.\n\n📿 Key Message: This creation is the divine play (lila) of God. One who understands this mystery is freed from the cycle of birth and death.',
+
+    2: '🦅 Garuda Purana — Purva Khanda Chapter 2: The Importance of Vishnu Devotion\n\nLord Vishnu said to Garuda: "O Garuda! One who worships Me with faith and devotion will never lack anything in this world."\n\nFour forms of Vishnu devotion:\n1. Shravana — listening to the Lord\'s sacred stories\n2. Kirtana — singing the Lord\'s names\n3. Smarana — constant remembrance of the Lord\n4. Pada-Sevana — serving at the Lord\'s feet\n\nOne who practises even one of these four forms of devotion crosses the ocean of worldly existence.\n\n📿 Key Message: Chanting "Narayana" is the greatest of all mantras. Even speaking this name destroys all accumulated sin.',
+
+    3: '🦅 Garuda Purana — Purva Khanda Chapter 3: The Birth of Garuda\n\nSage Kashyapa had two wives — Vinata and Kadru. Kadru\'s sons were the serpents and Vinata\'s son was Garuda.\n\nOnce Kadru and Vinata made a wager about the colour of the divine horse Uchchaishravas. Kadru said its tail was black, Vinata said white. Kadru had her serpent sons coil around the tail — Vinata lost the bet and became a servant.\n\nGaruda obtained the nectar (amrita) from the gods to free his mother. He fought Indra and ultimately took shelter with Lord Vishnu.\n\n📿 Key Message: The effort made for the liberation of one\'s parents is the highest form of dharma.',
+
+    4: '🦅 Garuda Purana — Purva Khanda Chapter 4: The Soul and the Supreme\n\nLord Vishnu explained the mystery of the soul to Garuda:\n\nThe soul is neither born nor does it die. It is eternal, constant and indestructible. Just as a person discards old clothes and wears new ones, the soul leaves an old body and takes on a new one.\n\nThe Supreme Being resides in the heart of every living creature. He is all-pervading, all-knowing and all-powerful. The individual soul is a part of the Supreme.\n\nWhen the soul recognises its identity with the Supreme, it attains liberation (moksha).\n\n📿 Key Message: "Aham Brahmasmi" — I am Brahman. This self-knowledge is the gateway to liberation.',
+
+    5: '🦅 Garuda Purana — Purva Khanda Chapter 5: An Account of Sin and Merit\n\nThe Garuda Purana describes in detail the nature of sins and meritorious acts:\n\nMahapapa (grave sins):\n• Killing a brahmin, cow, or woman\n• Theft, falsehood, betrayal of trust\n• Disrespecting one\'s Guru and parents\n\nMeritorious acts (Punya karma):\n• Dana (charity), tapas (austerity), pilgrimage\n• Speaking truth, showing compassion\n• Feeding the hungry, giving water to the thirsty\n\nIn Yama\'s court, Chitragupta keeps a meticulous record of every being\'s sins and merits.\n\n📿 Key Message: As you sow, so shall you reap. The fruit of every action inevitably comes.',
+  },
+  uttara: {
+    1: '🦅 Garuda Purana — Uttara Khanda Chapter 1: The Mystery of Death\n\nThe Uttara Khanda of the Garuda Purana describes in detail the journey of the soul after death.\n\nAt the moment of death, the messengers of Yama arrive. A sinful person sees dark and fearsome messengers, while a virtuous soul sees white-clad divine attendants.\n\nAfter death, the soul receives a subtle body the size of a thumb. This soul travels to Yamaloka — 84,000 yojanas away.\n\nOn the way it encounters the Vaitarani River, which is extremely difficult to cross. One who has donated a cow, sesame seeds or water during life receives help in crossing.\n\n📿 Key Message: Perform good deeds while alive. After death, only your karma accompanies you.',
+
+    2: '🦅 Garuda Purana — Uttara Khanda Chapter 2: Signs of Approaching Death\n\nThe Garuda Purana describes the signs that appear before death:\n\nSigns appearing one year before death:\n• Teeth suddenly turning black\n• Unable to see the tip of one\'s own nose\n• Seeing a dark ring around the sun and moon\n\nSigns of death drawing near:\n• Fire becoming invisible to the eyes\n• Ringing sounds in the ears\n• One\'s shadow appearing crooked\n\nUpon seeing these signs, a person should remember God and engage wholeheartedly in charity and good deeds.\n\n📿 Key Message: Do not fear death — take inspiration from it to perform good actions in life.',
+
+    3: '🦅 Garuda Purana — Uttara Khanda Chapter 3: The Preta (Ghost) State\n\nThose whose last rites are not properly performed become trapped in the preta (ghost) state.\n\nCauses of becoming a preta:\n• Untimely death (accident, suicide)\n• Unfulfilled desires and attachments\n• Improper or incomplete last rites\n• No Shraddha or Tarpana performed\n\nMeans of liberation from the preta state:\n• Dashagatra Vidhi (ten-day ritual after death)\n• Shraddha and Pindadana (offerings for the departed)\n• Pindadana at Gaya Tirth\n• Recitation of the Garuda Purana\n\n📿 Key Message: Always perform Shraddha and Tarpana for your ancestors. It is essential for the peace of their souls.',
+  }
+};
+
+
 function showGarudaChapters() {
   const purva = document.getElementById('garuda-purva');
   purva.innerHTML = '';
@@ -2744,9 +3992,11 @@ function showGarudaChapters() {
     btn.innerHTML = '<span style="background:rgba(212,175,55,0.2);border-radius:8px;padding:4px 10px;font-size:11px;color:var(--gold);font-weight:700;min-width:36px;text-align:center;">' + c.ch + '</span><div><div style="font-size:13px;color:rgba(255,255,255,0.9);font-weight:600;">' + c.title + '</div><div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:2px;">' + c.en + '</div></div>';
     btn.addEventListener('click', function() {
       var ch = c.ch;
-      var content = garudaChapterContent.purva[ch];
-      if (content) showGarudaReading(c.title, content);
-      else goToReading('गरुड़ पुराण पूर्व खण्ड अध्याय ' + ch + ' का शास्त्रसम्मत वर्णन करें।', '🦅');
+      var hiContent = garudaChapterContent.purva[ch];
+      var enContent = garudaChapterContentEn.purva[ch];
+      var displayContent = (currentLang === 'en' && enContent) ? enContent : hiContent;
+      if (displayContent) showGarudaReading(c.title, displayContent);
+      else goToReading((currentLang === 'en' ? 'Describe Garuda Purana Purva Khanda Chapter ' : 'गरुड़ पुराण पूर्व खण्ड अध्याय ') + ch, '🦅');
     });
     purva.appendChild(btn);
   });
@@ -2759,9 +4009,11 @@ function showGarudaChapters() {
     btn.innerHTML = '<span style="background:rgba(138,43,226,0.2);border-radius:8px;padding:4px 10px;font-size:11px;color:#E0B0FF;font-weight:700;min-width:36px;text-align:center;">' + c.ch + '</span><div><div style="font-size:13px;color:rgba(255,255,255,0.9);font-weight:600;">' + c.title + '</div><div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:2px;">' + c.en + '</div></div>';
     btn.addEventListener('click', function() {
       var ch = c.ch;
-      var content = garudaChapterContent.uttara[ch];
-      if (content) showGarudaReading(c.title, content);
-      else goToReading('गरुड़ पुराण उत्तर खण्ड अध्याय ' + ch + ' का शास्त्रसम्मत वर्णन करें।', '🦅');
+      var hiContent = garudaChapterContent.uttara[ch];
+      var enContent = garudaChapterContentEn.uttara[ch];
+      var displayContent = (currentLang === 'en' && enContent) ? enContent : hiContent;
+      if (displayContent) showGarudaReading(c.title, displayContent);
+      else goToReading((currentLang === 'en' ? 'Describe Garuda Purana Uttara Khanda Chapter ' : 'गरुड़ पुराण उत्तर खण्ड अध्याय ') + ch, '🦅');
     });
     uttara.appendChild(btn);
   });
