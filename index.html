@@ -1466,11 +1466,13 @@ let freeReadingsLeft = 3;
 let totalFreeReadings = 3;
 
 // ========== PREMIUM PLANS ==========
+const PAYMENT_BACKEND = 'https://divine-nakshatra-payment.riponboro21.workers.dev';
+
 const premiumPlans = {
-  week:   { id: 'week',   label: 'Weekly',    days: 7,   inr: '₹1',   usd: '$1',  link: 'https://rzp.io/rzp/kHZHMkm' },
-  month:  { id: 'month',  label: 'Monthly',   days: 30,  inr: '₹49',  usd: '$2',  link: 'https://rzp.io/rzp/kHZHMkm' },
-  half:   { id: 'half',   label: '6 Months',  days: 180, inr: '₹99',  usd: '$4',  link: 'https://rzp.io/rzp/kHZHMkm' },
-  year:   { id: 'year',   label: 'Yearly',    days: 365, inr: '₹149', usd: '$6',  link: 'https://rzp.io/rzp/kHZHMkm' }
+  week:   { id: 'week',   label: 'Weekly',    days: 7,   inr: '₹1',   usd: '$1',  inrPaise: 100,   usdCents: 100 },
+  month:  { id: 'month',  label: 'Monthly',   days: 30,  inr: '₹49',  usd: '$2',  inrPaise: 4900,  usdCents: 200 },
+  half:   { id: 'half',   label: '6 Months',  days: 180, inr: '₹99',  usd: '$4',  inrPaise: 9900,  usdCents: 400 },
+  year:   { id: 'year',   label: 'Yearly',    days: 365, inr: '₹149', usd: '$6',  inrPaise: 14900, usdCents: 600 }
 };
 let selectedPlanId = 'week';
 
@@ -1668,30 +1670,90 @@ async function processPay() {
   const modal = document.getElementById('payment-modal');
   const plan = premiumPlans[selectedPlanId] || premiumPlans.week;
   const priceLabel = userCountry === 'IN' ? plan.inr : plan.usd;
+  const amountInSmallestUnit = userCountry === 'IN' ? plan.inrPaise : plan.usdCents;
+  const currency = userCountry === 'IN' ? 'INR' : 'USD';
 
   btn.textContent = 'Loading...';
   btn.style.opacity = '0.7';
   await loadRazorpayAndPay();
-  btn.textContent = (userCountry === 'IN' ? '👑 SIRF ' : '👑 ONLY ') + priceLabel + ' MEIN ' + plan.label.toUpperCase() + ' PAIYE';
-  btn.style.opacity = '1';
 
-  // Open Razorpay payment link for the selected plan
-  window.open(plan.link, '_blank');
-  showToast('Payment page khul rahi hai... ✨');
-  setTimeout(() => {
-    activatePremium(plan.id);
-    modal.style.display = 'none';
-    showToast(plan.label + ' Premium activated! Unlimited readings enjoy karo 🌟');
-    setTimeout(() => {
-      if (pendingScriptureFn) {
-        const fn = pendingScriptureFn;
-        pendingScriptureFn = null;
-        fn();
-      } else {
-        window.goToReadingWithAI(currentQuestion, currentIcon);
+  try {
+    // 1. Create order via backend
+    const orderRes = await fetch(PAYMENT_BACKEND + '/create-order', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ amount: amountInSmallestUnit, currency: currency })
+    });
+    const orderData = await orderRes.json();
+
+    if (!orderRes.ok || !orderData.orderId) {
+      throw new Error('Order creation failed');
+    }
+
+    btn.textContent = (userCountry === 'IN' ? '👑 SIRF ' : '👑 ONLY ') + priceLabel + ' MEIN ' + plan.label.toUpperCase() + ' PAIYE';
+    btn.style.opacity = '1';
+
+    // 2. Open Razorpay Checkout popup
+    const rzp = new Razorpay({
+      key: orderData.keyId,
+      amount: orderData.amount,
+      currency: orderData.currency,
+      order_id: orderData.orderId,
+      name: 'Divine Nakshatra',
+      description: plan.label + ' Premium',
+      theme: { color: '#D4AF37' },
+      handler: async function (response) {
+        // 3. Verify payment via backend
+        showToast('Payment verify ho raha hai... ⏳');
+        try {
+          const verifyRes = await fetch(PAYMENT_BACKEND + '/verify-payment', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              razorpay_order_id: response.razorpay_order_id,
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_signature: response.razorpay_signature
+            })
+          });
+          const verifyData = await verifyRes.json();
+
+          if (verifyData.verified) {
+            activatePremium(plan.id);
+            modal.style.display = 'none';
+            showToast(plan.label + ' Premium activated! Unlimited readings enjoy karo 🌟');
+            setTimeout(() => {
+              if (pendingScriptureFn) {
+                const fn = pendingScriptureFn;
+                pendingScriptureFn = null;
+                fn();
+              } else {
+                window.goToReadingWithAI(currentQuestion, currentIcon);
+              }
+            }, 800);
+          } else {
+            showToast('Payment verify nahi ho saka. Support se contact karein. ❌');
+          }
+        } catch (err) {
+          showToast('Verification error. Agar paise kat gaye hain toh support se contact karein. ❌');
+        }
+      },
+      modal: {
+        ondismiss: function () {
+          showToast('Payment cancel kar diya gaya.');
+        }
       }
-    }, 800);
-  }, 4000);
+    });
+
+    rzp.on('payment.failed', function (response) {
+      showToast('Payment fail ho gaya. Dobara try karein. ❌');
+    });
+
+    rzp.open();
+  } catch (err) {
+    btn.textContent = (userCountry === 'IN' ? '👑 SIRF ' : '👑 ONLY ') + priceLabel + ' MEIN ' + plan.label.toUpperCase() + ' PAIYE';
+    btn.style.opacity = '1';
+    showToast('Kuch galat ho gaya. Dobara try karein. ❌');
+  }
 }
 
 // ========== STARS ==========
