@@ -1469,10 +1469,10 @@ let totalFreeReadings = 3;
 const PAYMENT_BACKEND = 'https://divine-nakshatra-payment.riponboro21.workers.dev';
 
 const premiumPlans = {
-  week:   { id: 'week',   label: 'Weekly',    days: 7,   inr: '₹1',   usd: '$1',  inrPaise: 100,   usdCents: 100 },
-  month:  { id: 'month',  label: 'Monthly',   days: 30,  inr: '₹49',  usd: '$2',  inrPaise: 4900,  usdCents: 200 },
-  half:   { id: 'half',   label: '6 Months',  days: 180, inr: '₹99',  usd: '$4',  inrPaise: 9900,  usdCents: 400 },
-  year:   { id: 'year',   label: 'Yearly',    days: 365, inr: '₹149', usd: '$6',  inrPaise: 14900, usdCents: 600 }
+  week:   { id: 'week',   label: 'Weekly',    days: 7,   inr: '₹1',   usd: '$1',   inrPaise: 100,   usdCents: 100 },
+  month:  { id: 'month',  label: 'Monthly',   days: 30,  inr: '₹49',  usd: '$99',  inrPaise: 4900,  usdCents: 9900 },
+  half:   { id: 'half',   label: '6 Months',  days: 180, inr: '₹99',  usd: '$499', inrPaise: 9900,  usdCents: 49900 },
+  year:   { id: 'year',   label: 'Yearly',    days: 365, inr: '₹149', usd: '$249', inrPaise: 14900, usdCents: 24900 }
 };
 let selectedPlanId = 'week';
 
@@ -1535,7 +1535,13 @@ function watchRewardAd() {
       closePayment();
       showToast('🎉 +1 free reading mil gayi!');
       setTimeout(() => {
-        window.goToReadingWithAI(currentQuestion, currentIcon);
+        if (pendingScriptureFn) {
+          const fn = pendingScriptureFn;
+          pendingScriptureFn = null;
+          fn();
+        } else {
+          window.goToReadingWithAI(currentQuestion, currentIcon);
+        }
       }, 500);
     }
   }, 1000);
