@@ -839,6 +839,13 @@
   <p class="welcome-sub">Ancient wisdom, celestial guidance</p>
   <div class="india-no1">🇮🇳 India's No.1 Jyotish App</div>
 
+  <!-- Krishna Shloka -->
+  <div id="krishna-shloka" style="text-align:center;margin:14px 20px 6px;padding:10px 16px;background:rgba(212,175,55,0.08);border:1px solid rgba(212,175,55,0.2);border-radius:14px;">
+    <p style="font-size:13px;color:#F5D96B;font-weight:600;margin:0 0 4px;line-height:1.6;">ॐ कृष्णाय वासुदेवाय हरये परमात्मने</p>
+    <p style="font-size:13px;color:#F5D96B;font-weight:600;margin:0 0 6px;line-height:1.6;">प्रणतः क्लेशनाशाय गोविंदाय नमो नमः</p>
+    <p id="shloka-en" style="font-size:11px;color:rgba(255,255,255,0.45);margin:0;font-style:italic;">Om Krishnaya Vasudevaya Haraye Paramatmane, Pranatah Kleshanashaya Govindaya Namo Namah</p>
+  </div>
+
   <!-- Stats Bar -->
   <div style="display:flex;justify-content:center;gap:16px;margin:12px 20px;flex-wrap:wrap;">
     <div style="background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.3);border-radius:999px;padding:6px 16px;display:flex;align-items:center;gap:6px;">
@@ -4117,6 +4124,8 @@ function setLanguage(lang) {
     showToast('हिंदी भाषा चुनी गई! 🇮🇳');
     if (sanatanTitle) sanatanTitle.textContent = '✨ सनातन ही सत्य है';
     if (sanatanSub) sanatanSub.textContent = 'जानिए अपने सनातन धर्म को';
+    const slEn = document.getElementById('shloka-en');
+    if (slEn) slEn.style.display = 'none';
     // Update questions to Hindi
     updateQuestions('hi');
   } else {
@@ -4127,6 +4136,8 @@ function setLanguage(lang) {
     showToast('English language selected! 🌍');
     if (sanatanTitle) sanatanTitle.textContent = '✨ Sanatan Is The Truth';
     if (sanatanSub) sanatanSub.textContent = 'Know Your Sanatan Dharma';
+    const slEnMode = document.getElementById('shloka-en');
+    if (slEnMode) slEnMode.style.display = 'block';
     // Update questions to English
     updateQuestions('en');
   }
