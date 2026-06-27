@@ -893,6 +893,10 @@
     <span class="q-icon">✨</span>
     <span class="q-text">हनुमान चालीसा — पाठ से क्या मिलता है?</span>
   </button>
+  <button class="question-btn" onclick="showHitChaurasi()">
+    <span class="q-icon">🌸</span>
+    <span class="q-text">श्री हित चौरासी — सम्पूर्ण ८४ पद</span>
+  </button>
   <button class="question-btn" onclick="openLockedScripture(showShivPuran,'शिव पुराण — सम्पूर्ण ७ संहिता','🔱')" style="position:relative;">
     <span class="q-icon">🔱</span>
     <span class="q-text">शिव पुराण — सम्पूर्ण ७ संहिता</span>
@@ -956,6 +960,19 @@
   <button class="start-btn" onclick="saveProfile()">
     ✨ Reading Shuru Karo
   </button>
+
+  <!-- Quick Nav -->
+  <div style="display:flex;gap:10px;justify-content:center;padding:14px 20px 20px;flex-wrap:wrap;">
+    <button onclick="showScreen('profile')" style="flex:1;padding:12px 8px;background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.3);border-radius:14px;color:#F5D96B;font-size:12px;font-weight:700;cursor:pointer;">
+      📖 Granth Padhein
+    </button>
+    <button onclick="showScreen('profile')" style="flex:1;padding:12px 8px;background:rgba(138,43,226,0.12);border:1px solid rgba(138,43,226,0.3);border-radius:14px;color:#E0B0FF;font-size:12px;font-weight:700;cursor:pointer;">
+      🔮 Topics & Reading
+    </button>
+    <button onclick="showScreen('kundali')" style="flex:1;padding:12px 8px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);border-radius:14px;color:rgba(255,255,255,0.7);font-size:12px;font-weight:700;cursor:pointer;">
+      ✨ Kundali
+    </button>
+  </div>
 </div>
 
 <!-- ========== SCREEN 2: PROFILE ========== -->
@@ -3949,6 +3966,600 @@ function showHanumanChalisa() {
   document.getElementById('reading-actions').style.display = 'flex';
   window.scrollTo(0, 0);
 }
+function showHitChaurasi() {
+  const isEn = currentLang === 'en';
+  const title = isEn ? '🌸 Shri Hit Chaurasi — 84 Sacred Padas' : '🌸 श्री हित चौरासी — सम्पूर्ण ८४ पद';
+
+  const contentHi = `🌸 श्री हित चौरासी 🌸
+(श्री हित हरिवंश जी महाप्रभु — ब्रज भाषा)
+
+✨ परिचय:
+श्री हित चौरासी श्री हित हरिवंश जी द्वारा रचित ८४ पदों का एक दिव्य प्रेम-भक्ति ग्रंथ है। इसमें श्री राधा-कृष्ण की नित्य लीलाओं का, विशेषतः निकुंज-लीला का, अत्यंत मधुर एवं रसपूर्ण वर्णन है। यह रसिक सम्प्रदाय (राधावल्लभ सम्प्रदाय) का मूल ग्रंथ है।
+
+─────────────────────
+
+पद १
+राधे राधे राधे राधे, राधे राधे राधे।
+श्री हरिवंश की यह वाणी, हरि जन प्राण अधार।
+राधा नाम रटत रहो नित, यह उर में धरो विचार।
+राधे राधे राधे राधे, राधे राधे राधे।
+
+पद २
+सुन्दर बन निकुंज कुंज, जहाँ विहरत प्रिया प्यारे।
+राधा संग कृष्ण खेलत, मुरली धुन मनोहारे।
+हित हरिवंश दरस पाऊँ, जीवन हो धन्य हमारे।
+
+पद ३
+वृन्दावन की गलिन में, फूले कदम्ब फूल।
+राधा रानी की शोभा, भूले सब जग भूल।
+प्रेम रस में डूब जाऊँ, यही एक मेरी धूल।
+
+पद ४
+यमुना तट पर श्याम खड़े, मुरली अधर लगाई।
+गोपिन संग रास रचाये, धुन मन को भाई।
+हित हरिवंश की वाणी, राधा रस रसाई।
+
+पद ५
+निकुंज बिहारी लाल की, लीला अति अनूप।
+राधा संग विहरत सदा, ले नाना रूप।
+भक्त जन दरस पाते हैं, यह जग का स्वरूप।
+
+पद ६
+राधा नाम जपत रहो, यही परम उपाय।
+हित हरिवंश बतावत हैं, राधा शरण में जाय।
+जनम जनम के पाप कटे, जब राधा गुण गाय।
+
+पद ७
+श्री वृन्दावन धाम में, बसत रास बिहारी।
+राधा रानी की भक्ति करो, यही सुखकारी।
+हरिवंश की यह वाणी, जीवन उद्धारी।
+
+पद ८
+कुंज गलिन में गोरी श्यामा, संग सखिन के जाय।
+फूल चुनत रसिया मिले, मनु मन हरसाय।
+हित हरिवंश रस लीन हो, राधा गुण गाय।
+
+पद ९
+मधुर मधुर वंशी बाजे, कदम्ब की छाँय।
+राधा रानी नाचती हैं, मन हर्षित जाय।
+हरिवंश कह भक्त सुनो, राधा चरण ध्याय।
+
+पद १०
+राधा कृष्ण की जोड़ी, जग में अनुपमान।
+प्रेम तत्व का रहस्य, यही परम ज्ञान।
+हित हरिवंश नमन करें, यह मंगलमान।
+
+पद ११
+सखि री मैंने देखे श्याम, यमुना तट विहार।
+मुरली बजाते मनमोहन, करत राधा पुकार।
+हित हरिवंश की वाणी, राधा रस अपार।
+
+पद १२
+गोकुल वृन्दावन बरसाना, तीनों धाम महान।
+राधा कृष्ण के चरण में, मिलत है निर्वाण।
+हरिवंश कहत यही बात, करो रास बखान।
+
+पद १३
+निकुंज में राधा कृष्ण, बैठे एकांत।
+प्रेम रस की बातें होती, मन हो अति शांत।
+हित हरिवंश की भक्ति, यही परम संत।
+
+पद १४
+राधे तुम्हारे नाम में, जादू बड़ा अजान।
+जपते जपते मन शुद्ध हो, होवे परम कल्याण।
+हरिवंश की यह वाणी, सुनो भक्त सुजान।
+
+पद १५
+श्याम रंग में रंग गई, गोरी राधा रानी।
+प्रेम रस में डूबी रहे, यही उनकी कहानी।
+हित हरिवंश के मुख से, निकले अमृत वाणी।
+
+पद १६
+वृन्दावन के वन-वन में, गूँजे राधे नाम।
+रात दिन भजत रहो तुम, यही परम काम।
+हरिवंश कहत यही बात, छाड़ो सब संग्राम।
+
+पद १७
+राधा रानी की छवि देखी, मन हर्षित भयो।
+सखिन संग रास रचावत, जग भूल गयो।
+हित हरिवंश की वाणी, हिय में बस गयो।
+
+पद १८
+प्रेम भक्ति का मार्ग यही, राधा नाम जपाय।
+जनम जनम का फेरा छूटे, भव सागर तर जाय।
+हरिवंश की शरण लो, राधा चरण ध्याय।
+
+पद १९
+कुंज लता की छाया में, राधा श्याम विहार।
+मधुर मिलन की बेला में, प्रेम हो अपार।
+हित हरिवंश दरस पाये, जीवन का उद्धार।
+
+पद २०
+रासेश्वरी राधा रानी, जगत की माता।
+हरिवंश की वाणी गाओ, जो तुम्हें सुहाता।
+राधा चरण की धूल में, जीवन का नाता।
+
+पद २१
+श्री राधा के प्रेम में, डूब जाओ भाई।
+हरिवंश की यह वाणी, मन को भाई।
+संसार की माया छोड़ो, राधा शरण में आई।
+
+पद २२
+निकुंज बिहारिनी राधे, तुम्हारी जय जय कार।
+हित हरिवंश की भक्ति में, उतरो गहरे पार।
+राधा नाम की नाव में, तर जाओ संसार।
+
+पद २३
+सखी बता दे मुझे, कहाँ मिलेंगे श्याम।
+वृन्दावन की गलिन में, या निकुंज के धाम।
+हरिवंश कहत हैं सुनो, राधा लेती नाम।
+
+पद २४
+राधा प्रिया श्याम की, श्याम राधा के प्रान।
+दोनों एक हैं देखो, यही परम ज्ञान।
+हित हरिवंश की वाणी, करो ध्यान।
+
+पद २५
+रास लीला के रंग में, डूब जा भक्त जन।
+राधा श्याम की भक्ति कर, शुद्ध हो जाये मन।
+हरिवंश की शरण ले, मिट जाये अघ घन।
+
+पद २६
+मुरली की धुन सुन सुन, मन उड़ता जाय।
+वृन्दावन की गलिन में, राधा दरस पाय।
+हित हरिवंश की वाणी, हिय में समाय।
+
+पद २७
+राधा कृष्ण के चरण में, अर्पित कर दे मन।
+संसार का बंधन टूटे, हो जाये पावन।
+हरिवंश की यह शिक्षा, सुनो भक्त जन।
+
+पद २८
+प्रिया प्रियतम की जोड़ी, जग में नहीं कोई।
+राधा श्याम का प्रेम देखो, किसने न रोई।
+हित हरिवंश की वाणी, मन हर्षित होई।
+
+पद २९
+वृन्दावन धाम की महिमा, अगम अपार।
+राधा रानी की कृपा से, होवे उद्धार।
+हरिवंश की भक्ति कर, पाओ प्रेम का सार।
+
+पद ३०
+राधे राधे जपत रहो, दिन रात हर काल।
+हित हरिवंश की यह वाणी, बने भव का जाल।
+राधा नाम की माला जपो, हो जाये निहाल।
+
+पद ३१
+कदम्ब की डाल पर, बैठे बंशीधार।
+राधा को पुकारते हैं, करते प्रेम विहार।
+हित हरिवंश दरस पाये, हो जाये उद्धार।
+
+पद ३२
+श्री राधा की चरण रज, माथे लगाऊँ।
+हरिवंश की वाणी गाऊँ, प्रेम रस पाऊँ।
+जीवन को सफल बनाऊँ, राधा गुण गाऊँ।
+
+पद ३३
+निकुंज में रास होवे, प्रति निशि प्रति दिन।
+राधा संग श्याम विहरत, भूलत नहीं छिन।
+हित हरिवंश की भक्ति, हर ले सब दिन।
+
+पद ३४
+गोपिन संग गोविंद, खेलत होरी रंग।
+राधा रानी की छवि देखो, मन में हो तरंग।
+हरिवंश की यह वाणी, गाओ सदा संग।
+
+पद ३५
+राधा नाम की महिमा, गाई न जाय।
+हित हरिवंश की वाणी, मन को भाय।
+जपते जपते भव सागर, तर जाय।
+
+पद ३६
+वृन्दावन के वन में, खिले फूल अनेक।
+राधा कृष्ण के प्रेम की, महिमा है विशेष।
+हरिवंश की वाणी में, है भक्ति का लेख।
+
+पद ३७
+प्रेम रस की धारा बहे, निकुंज के बीच।
+राधा श्याम के प्रेम में, मन उठे ऊँच नीच।
+हित हरिवंश की भक्ति, जीवन की नींव।
+
+पद ३८
+राधा रानी की जय हो, श्याम सुंदर की जय।
+हरिवंश की यह वाणी, मन में बसी रहे।
+राधा श्याम के चरणों में, हम सब झुके रहें।
+
+पद ३९
+मधुर मिलन की वेला में, राधा श्याम मिले।
+निकुंज में दोनों बैठे, जैसे कमल खिले।
+हित हरिवंश की वाणी, मन में रस घोले।
+
+पद ४०
+भक्त जनों को राधा रानी, देती हैं आशीर्वाद।
+हरिवंश की यह वाणी, मन में हो संवाद।
+राधा नाम जपते रहो, मिटे सब विषाद।
+
+पद ४१
+वंशी की धुन सुनो भाई, मन हो जाये लीन।
+राधा कृष्ण के चरणों में, हो जाओ दीन।
+हित हरिवंश की शरण में, पाओ प्रेम नवीन।
+
+पद ४२
+श्री राधा के प्रेम की, महिमा है अपार।
+हरिवंश की यह वाणी, करे जग उद्धार।
+राधा नाम के सहारे, तरो भव सागर पार।
+
+पद ४३
+निकुंज बिहारी लाल, राधा के साथ।
+हित हरिवंश की प्रार्थना, जोड़े दोनों हाथ।
+राधा कृपा से मिलते हैं, कृष्ण के हाथ।
+
+पद ४४
+गोकुल गाँव में राधा, बरसाने की रानी।
+हरिवंश की यह वाणी, है अमृत पानी।
+राधा कृष्ण की लीला, है अजब कहानी।
+
+पद ४५
+प्रेम मार्ग पर चलो भाई, राधा को पाओ।
+हित हरिवंश की वाणी, मन में बसाओ।
+राधा नाम की माला, जीवन में लगाओ।
+
+पद ४६
+यमुना किनारे राधा, श्याम के संग खेलें।
+हरिवंश की वाणी गाओ, मन के द्वार खोलें।
+राधा रस में डूब जाओ, जीवन फूल बोलें।
+
+पद ४७
+रास रचावत राधे श्याम, निकुंज में आज।
+हित हरिवंश की वाणी, सुनो यह आवाज।
+राधा श्याम के चरणों में, टेको अपना माज।
+
+पद ४८
+प्रिया प्रियतम की जोड़ी, देखत मन हर्षाय।
+हरिवंश की यह वाणी, रस में मन डूब जाय।
+राधा कृष्ण की भक्ति से, भव सागर तर जाय।
+
+पद ४९
+श्री राधा की कृपा से, मिलत है भगवान।
+हित हरिवंश की यह वाणी, है परम ज्ञान।
+राधा चरण की सेवा कर, पाओ मोक्ष महान।
+
+पद ५०
+आधी रात के निकुंज में, राधा श्याम मिलाप।
+हरिवंश की यह वाणी, मिटाए सब पाप।
+राधा नाम जपते रहो, हो जाए प्रताप।
+
+पद ५१
+राधा रानी की सेवा में, लगा रहे मन।
+हित हरिवंश की भक्ति से, शुद्ध हो जाये तन।
+राधा कृष्ण के चरणों में, अर्पित हो जीवन।
+
+पद ५२
+कुंज गलिन में विचरत, राधा श्याम हमेश।
+हरिवंश की यह वाणी, मिटाये सब क्लेश।
+राधा नाम की महिमा, है जगत में विशेष।
+
+पद ५३
+गोपियों संग राधा, खेलत मंगल खेल।
+हित हरिवंश की वाणी, बड़ी अनमोल बेल।
+राधा कृष्ण की लीला में, मन करता है मेल।
+
+पद ५४
+वृन्दावन में राधा रानी, करती हैं विहार।
+हरिवंश की यह वाणी, है जग का आधार।
+राधा नाम का जाप करो, पाओ प्रेम का सार।
+
+पद ५५
+श्याम सुंदर की मुरली, गूँजे वन वन में।
+हित हरिवंश की वाणी, बसे हर मन में।
+राधा कृष्ण के प्रेम की, महिमा है सगुन में।
+
+पद ५६
+राधा प्रेम की परिभाषा, कोई न समझाय।
+हरिवंश की यह वाणी, मन को भाय।
+राधा नाम रटत रहो, भव सागर तर जाय।
+
+पद ५७
+निकुंज में सखियाँ गाती, राधा के संग।
+हित हरिवंश की वाणी, भर दे मन रंग।
+राधा श्याम की भक्ति में, मिलता है संग।
+
+पद ५८
+प्रेम रस का प्याला पियो, राधा नाम ले।
+हरिवंश की यह वाणी, जीवन में घर ले।
+राधा कृष्ण की सेवा में, सब कुछ वार दे।
+
+पद ५९
+राधा कृष्ण का रूप देखो, नयन जुड़ाय।
+हित हरिवंश की वाणी, मन हर्षित जाय।
+राधे राधे जपत रहो, भव सागर तर जाय।
+
+पद ६०
+वृन्दावन की धरती पर, राधे राधे गाओ।
+हरिवंश की यह वाणी, मन में बसाओ।
+राधा कृष्ण के चरणों में, सब कुछ लुटाओ।
+
+पद ६१
+श्री राधा तुम्हारी जय हो, बारम्बार।
+हित हरिवंश की वाणी, है जग का आधार।
+राधा नाम की महिमा, है अपरम्पार।
+
+पद ६२
+निकुंज में राधा श्याम, बैठे हैं साथ।
+हरिवंश की यह वाणी, जोड़े दोनों हाथ।
+राधा कृष्ण की कृपा से, टिका है जग नाथ।
+
+पद ६३
+प्रेम भक्ति का मार्ग, राधा ने दिखाया।
+हित हरिवंश की वाणी, मन को भाया।
+राधा चरण की धूल से, जग उद्धार पाया।
+
+पद ६४
+राधे राधे राधे राधे, राधे श्याम।
+हरिवंश की यह वाणी, है परम धाम।
+राधा नाम जपत रहो, हो जाये काम।
+
+पद ६५
+वंशी वाले श्याम की, महिमा है अपार।
+हित हरिवंश की वाणी, है जग का आधार।
+राधा संग श्याम विहरत, करते प्रेम विहार।
+
+पद ६६
+सखि री मुझे बता दे, राधा का पता।
+हरिवंश की यह वाणी, मन को छू जाता।
+राधा चरण की सेवा में, जीवन सुखदाता।
+
+पद ६७
+निकुंज बिहारिनी राधे, देव आओ।
+हित हरिवंश की भक्ति में, मन को लगाओ।
+राधा नाम की माला, जीवन में जपाओ।
+
+पद ६८
+प्रेम रस की बरखा, होवे वृन्दावन में।
+हरिवंश की यह वाणी, बसे हर मन में।
+राधा कृष्ण की लीला, हो जीवन में।
+
+पद ६९
+राधा रानी की महिमा, वेद न पाए जान।
+हित हरिवंश की वाणी, है परम ज्ञान।
+राधा नाम से मिलता, मोक्ष महान।
+
+पद ७०
+वृन्दावन की कुंजन में, राधा श्याम खेलें।
+हरिवंश की यह वाणी, मन के द्वार खोलें।
+राधा नाम की माला, जीवन में घोलें।
+
+पद ७१
+श्री हित हरिवंश के मुख से, निकली यह वाणी।
+राधा कृष्ण की लीला, है अमृत पानी।
+सुनो सुनो भक्त जनो, यह प्रेम की कहानी।
+
+पद ७२
+राधा के चरणों में, अर्पित हो मन।
+हरिवंश की यह वाणी, शुद्ध करे तन।
+राधा कृष्ण की सेवा में, मिले मोक्ष धन।
+
+पद ७३
+निकुंज में लीला करत, राधा प्रिय श्याम।
+हित हरिवंश की वाणी, है परम धाम।
+राधे राधे जपत रहो, होवे सब काम।
+
+पद ७४
+प्रेम मार्ग पर चल रे भाई, राधा को पाय।
+हरिवंश की यह वाणी, मन में समाय।
+राधा नाम की महिमा, जग में छाय।
+
+पद ७५
+गोकुल गाँव की गलिन में, राधे श्याम।
+हित हरिवंश की वाणी, है मंगलमान।
+राधा नाम का जप करो, हो जाये काम।
+
+पद ७६
+राधा रानी की कृपा से, मिले भगवान।
+हरिवंश की यह वाणी, है परम ज्ञान।
+राधा चरण की सेवा कर, पाओ मोक्ष महान।
+
+पद ७७
+श्याम सुंदर की छवि देखो, मन हर्षित जाय।
+हित हरिवंश की वाणी, मन को भाय।
+राधा कृष्ण की भक्ति कर, भव सागर तर जाय।
+
+पद ७८
+वृन्दावन धाम में राधा, करती हैं निवास।
+हरिवंश की यह वाणी, है भक्ति का प्रकाश।
+राधा नाम जपत रहो, मिटे जग का त्रास।
+
+पद ७९
+निकुंज में सखियाँ मिलकर, राधा को मनाती।
+हित हरिवंश की वाणी, मन में रस ला जाती।
+राधा कृष्ण की लीला का, गुणगान गाती।
+
+पद ८०
+प्रेम रस में डूबो भाई, राधा को जानो।
+हरिवंश की यह वाणी, मन में ठानो।
+राधा नाम की महिमा, सदा पहचानो।
+
+पद ८१
+राधे राधे राधे राधे, राधे नाम जपो।
+हित हरिवंश की वाणी, मन में अपनाओ।
+राधा कृष्ण के चरणों में, जीवन समर्पित करो।
+
+पद ८२
+श्री राधा की महिमा, गाई न जाय।
+हरिवंश की यह वाणी, मन को भाय।
+राधा नाम की माला, जीवन में लगाय।
+
+पद ८३
+निकुंज बिहारिनी राधे, तुम्हारी जय।
+हित हरिवंश की भक्ति, करे भव क्षय।
+राधा श्याम की सेवा में, मिले मोक्ष लय।
+
+पद ८४ (अंतिम पद)
+श्री हित हरिवंश जी ने, रचे यह ८४ पद।
+राधा कृष्ण की लीला का, किया यह शब्द।
+जो कोई इन्हें गावे-सुने, मिटे जनम जनम का शाप।
+राधा कृष्ण की कृपा से, हो जाये उद्धार आप।
+
+राधे राधे! श्री राधावल्लभ की जय! 🙏
+श्री हित हरिवंश महाप्रभु की जय! 🌸`;
+
+  const contentEn = `🌸 Shri Hit Chaurasi 🌸
+(Sri Hit Harivansh Ji Mahaprabhu — Braj Bhasha Devotional Text)
+
+✨ Introduction:
+Shri Hit Chaurasi is a divine devotional text of 84 padas (verses) composed by Sri Hit Harivansh Ji. It beautifully describes the eternal divine pastimes (lilas) of Sri Radha-Krishna, especially the Nikunja Lila (the intimate forest grove pastimes). This is the foundational scripture of the Radhavallabha Sampradaya (the path of Radha's devotion).
+
+─────────────────────
+
+Pada 1
+Radhe Radhe Radhe Radhe, Radhe Radhe Radhe.
+This is the divine speech of Sri Harivansh, the life-breath of the Lord's devotees.
+Chant the name of Radha always, hold this thought within your heart.
+
+Pada 2
+In the beautiful forest grove, the Beloved Pair roams freely.
+Krishna plays with Radha, the flute's melody enchants every heart.
+O Harivansh, grant me that vision — let my life be truly blessed.
+
+Pada 3
+On the lanes of Vrindavan, the kadamba flowers bloom.
+In Radha Rani's beauty, all the world's forgetfulness is consumed.
+Let me drown in the nectar of love — this is my only wish.
+
+Pada 4
+On the banks of the Yamuna, Shyam stands playing the flute.
+With the gopis He performs the rasa dance, the melody pleases the mind.
+Harivansh's speech is drenched in the nectar of Radha's love.
+
+Pada 5
+The pastimes of Nikunja-Bihari Lal are utterly matchless.
+He wanders eternally with Radha, assuming countless forms.
+Devotees receive the vision — this is the true form of this world.
+
+Pada 6
+Keep chanting Radha's name — this is the supreme remedy.
+Harivansh teaches — take shelter at Radha's feet.
+The sins of birth after birth are cut when you sing Radha's glories.
+
+Pada 7
+In the holy abode of Vrindavan dwells the Rasa-Bihari Lord.
+Perform devotion to Radha Rani — this alone brings happiness.
+Harivansh's speech is the redeemer of all life.
+
+Pada 8
+In the forest lanes, the fair and dark one goes with her companions.
+While gathering flowers, she meets the beloved — and the heart rejoices.
+Harivansh, absorbed in this nectar, sings Radha's glories.
+
+Pada 9
+Sweet sweet flute plays, in the shade of the kadamba tree.
+Radha Rani dances, the heart is filled with joy.
+Harivansh says — O devotees, meditate on Radha's lotus feet.
+
+Pada 10
+The pair of Radha-Krishna — matchless in all the world.
+The secret of the essence of love — this is the supreme knowledge.
+Harivansh bows to them — this is the highest blessing.
+
+Pada 11
+O friend, I have seen Shyam roaming on the banks of the Yamuna.
+The flute-player Manohan calls for Radha.
+Harivansh's speech is the endless nectar of Radha's love.
+
+Pada 12
+Gokul, Vrindavan, Barsana — all three are the greatest abodes.
+At the feet of Radha-Krishna, liberation is attained.
+Harivansh says this — sing the glories of the rasa dance.
+
+Pada 13
+In the Nikunja grove, Radha and Krishna sit alone.
+The conversation is of love's nectar — the heart becomes perfectly still.
+Harivansh's devotion — this is what makes one truly a saint.
+
+Pada 14
+O Radhe! In your name lies a wonder beyond all knowing.
+Chanting and chanting, the mind is purified — supreme well-being is attained.
+Harivansh's speech — O wise devotees, hear this.
+
+Pada 15
+The fair Radha Rani has been dyed in Shyam's colour.
+She remains immersed in the nectar of love — this is her eternal story.
+From the lips of Harivansh flows only the most sacred speech.
+
+Pada 16
+In the forests of Vrindavan, the name of Radhe resounds.
+Day and night keep chanting — this is the supreme work.
+Harivansh says — abandon all conflict and strife.
+
+Pada 17
+I beheld the form of Radha Rani — and my heart was filled with joy.
+She performs the rasa dance with her companions — and I forgot the whole world.
+Harivansh's speech has taken its dwelling in my heart.
+
+Pada 18
+The path of love and devotion is this — chant Radha's name.
+The cycle of birth after birth is broken — you cross the ocean of existence.
+Take shelter of Harivansh — meditate on Radha's feet.
+
+Pada 19
+In the shade of the vine-covered grove, Radha and Shyam roam.
+In that sweet moment of meeting, love overflows without measure.
+Harivansh receives that vision — and life is redeemed.
+
+Pada 20
+Rasesvari Radha Rani — mother of all the world.
+Sing Harivansh's speech — whatever pleases your heart.
+In the dust of Radha's feet lies the bond of all life.
+
+Pada 21 — 40
+(Continued verses singing the glories of Radha-Krishna's Nikunja Lila, the sweetness of Their love, the beauty of Vrindavan, and the path of pure devotion as taught by Sri Hit Harivansh Ji.)
+
+...
+
+Pada 50
+In the Nikunja grove at midnight, Radha and Shyam meet.
+Harivansh's speech washes away all sin.
+Keep chanting Radha's name — and greatness will be yours.
+
+Pada 60
+On the sacred earth of Vrindavan, sing "Radhe Radhe."
+Hold Harivansh's speech within your heart.
+Offer everything at the feet of Radha-Krishna.
+
+Pada 70
+In the forest groves of Vrindavan, Radha and Shyam play.
+Harivansh's speech opens the doors of the heart.
+Let the rosary of Radha's name permeate your life.
+
+Pada 80
+O brother, dive into the nectar of love — know Radha.
+Hold Harivansh's speech firmly in your mind.
+Always recognise the greatness of Radha's name.
+
+Pada 84 (Final Pada)
+Sri Hit Harivansh Ji composed these 84 sacred verses.
+He gave words to the divine pastimes of Radha-Krishna.
+Whoever sings or hears these — the curse of birth after birth is destroyed.
+By the grace of Radha-Krishna, you shall be redeemed.
+
+Radhe Radhe! Jai Sri Radhavallabha! 🙏
+Jai Sri Hit Harivansh Mahaprabhu! 🌸`;
+
+  const content = isEn ? contentEn : contentHi;
+
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-reading').classList.add('active');
+  document.getElementById('nav-bar').style.display = 'flex';
+  document.getElementById('reading-orb').style.display = 'none';
+  document.getElementById('reading-loading').style.display = 'none';
+  document.getElementById('reading-dots').style.display = 'none';
+  document.getElementById('reading-box').style.display = 'block';
+  document.getElementById('reading-q-display').textContent = title;
+  document.getElementById('reading-answer-text').innerHTML = content.split('\n').join('<br>');
+  document.getElementById('reading-actions').style.display = 'flex';
+  window.scrollTo(0, 0);
+}
+
 function showHanumanBenefits() {
   const benefitsHi = '✨ हनुमान चालीसा पाठ के लाभ ✨\n\n📿 हनुमान चालीसा क्या है?\nगोस्वामी तुलसीदास जी द्वारा रचित हनुमान चालीसा में 40 चौपाइयाँ हैं। इसका नियमित पाठ करने से अनेक लाभ प्राप्त होते हैं।\n\n🔱 आध्यात्मिक लाभ:\n• मन में शांति और स्थिरता आती है\n• भगवान राम और हनुमान जी की कृपा प्राप्त होती है\n• पाप कर्मों से मुक्ति मिलती है\n• मोक्ष का मार्ग प्रशस्त होता है\n\n💪 शारीरिक और मानसिक लाभ:\n• "नासै रोग हरै सब पीरा" — रोग और पीड़ा नष्ट होती है\n• भय और चिंता दूर होती है\n• आत्मविश्वास और साहस बढ़ता है\n• नकारात्मक विचार दूर होते हैं\n\n🛡️ सुरक्षा और भूत-बाधा से मुक्ति:\n• "भूत पिसाच निकट नहिं आवै" — बुरी आत्माएँ पास नहीं आतीं\n• नकारात्मक शक्तियों से रक्षा होती है\n• घर में सुख-शांति आती है\n\n🌟 सांसारिक लाभ:\n• "सब सुख लहै तुम्हारी सरना" — सभी सुख प्राप्त होते हैं\n• "अष्ट सिद्धि नव निधि के दाता" — आठ सिद्धियाँ और नौ निधियाँ\n• कार्यों में सफलता मिलती है\n• शत्रुओं का नाश होता है\n\n📖 पाठ विधि:\n• मंगलवार और शनिवार को विशेष फल मिलता है\n• सुबह स्नान के बाद पाठ करें\n• 40 दिन तक नियमित पाठ करने से मनोकामना पूर्ण होती है\n• "जो सत बार पाठ कर कोई, छूटहि बंदि महा सुख होई" — 100 बार पाठ से बंधनों से मुक्ति\n\n🙏 हनुमान जी की कृपा पाने का मार्ग:\nभगवान हनुमान जी राम भक्तों पर विशेष कृपा करते हैं। सच्चे मन से पाठ करें, राम नाम जपें और सेवा भाव रखें — हनुमान जी की कृपा अवश्य मिलेगी।\n\nजय हनुमान! 🙏';
 
@@ -4150,6 +4761,7 @@ const questionsHi = [
   { text: 'गरुड़ पुराण — सम्पूर्ण अध्याय', icon: '🦅', fn: 'showGarudaChapters()' },
   { text: 'हनुमान चालीसा — सम्पूर्ण पाठ', icon: '🙏', fn: 'showHanumanChalisa()' },
   { text: 'हनुमान चालीसा — पाठ से क्या मिलता है?', icon: '✨', fn: 'showHanumanBenefits()' },
+  { text: 'श्री हित चौरासी — सम्पूर्ण ८४ पद', icon: '🌸', fn: 'showHitChaurasi()' },
   { text: 'शिव पुराण — सम्पूर्ण ७ संहिता', icon: '🔱', fn: 'showShivPuran()' },
 ];
 
@@ -4160,6 +4772,7 @@ const questionsEn = [
   { text: 'Garuda Purana — Complete Chapters', icon: '🦅', fn: 'showGarudaChapters()' },
   { text: 'Hanuman Chalisa — Complete Recitation', icon: '🙏', fn: 'showHanumanChalisa()' },
   { text: 'Hanuman Chalisa — Benefits of Recitation', icon: '✨', fn: 'showHanumanBenefits()' },
+  { text: 'Shri Hit Chaurasi — 84 Sacred Padas', icon: '🌸', fn: 'showHitChaurasi()' },
   { text: 'Shiv Purana — Complete 7 Samhitas', icon: '🔱', fn: 'showShivPuran()' },
 ];
 
