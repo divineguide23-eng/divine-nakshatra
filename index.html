@@ -5573,6 +5573,8 @@ function getVoicesAsync() {
 function stopVoiceReading() {
   window.speechSynthesis.cancel();
   voiceSpeaking = false;
+  voiceChunks = [];
+  voiceChunkIndex = 0;
   if (voiceResumeInterval) { clearInterval(voiceResumeInterval); voiceResumeInterval = null; }
   const btnText = document.getElementById('voice-btn-text');
   const btn = document.getElementById('voice-btn');
@@ -5580,6 +5582,70 @@ function stopVoiceReading() {
   if (btn) btn.style.background = 'linear-gradient(135deg,rgba(138,43,226,0.3),rgba(75,0,130,0.3))';
   const bar = document.getElementById('voice-progress-bar');
   if (bar) bar.style.display = 'none';
+}
+
+// Split text into sentence-level chunks for reliable Chrome reading
+function splitIntoChunks(text, maxLen = 180) {
+  // Split on sentence endings
+  const sentences = text.match(/[^।॥.!?\n]+[।॥.!?\n]*/g) || [text];
+  const chunks = [];
+  let current = '';
+  for (const s of sentences) {
+    if ((current + s).length > maxLen && current.length > 0) {
+      chunks.push(current.trim());
+      current = s;
+    } else {
+      current += s;
+    }
+  }
+  if (current.trim()) chunks.push(current.trim());
+  return chunks.filter(c => c.length > 0);
+}
+
+let voiceChunks = [];
+let voiceChunkIndex = 0;
+let voiceChosenVoice = null;
+
+function speakChunk(index) {
+  if (!voiceSpeaking || index >= voiceChunks.length) {
+    if (voiceSpeaking) {
+      // All done
+      document.getElementById('voice-progress').style.width = '100%';
+      setTimeout(() => {
+        document.getElementById('voice-progress-bar').style.display = 'none';
+        document.getElementById('voice-progress').style.width = '0%';
+      }, 1000);
+      stopVoiceReading();
+    }
+    return;
+  }
+
+  const chunk = voiceChunks[index];
+  const pct = Math.round((index / voiceChunks.length) * 100);
+  const progressEl = document.getElementById('voice-progress');
+  if (progressEl) progressEl.style.width = pct + '%';
+
+  const utt = new SpeechSynthesisUtterance(chunk);
+  utt.lang = voiceChosenVoice ? voiceChosenVoice.lang : (voiceLang === 'hi' ? 'hi-IN' : 'en-US');
+  if (voiceChosenVoice) utt.voice = voiceChosenVoice;
+  utt.rate = voiceSpeeds[voiceSpeedIndex];
+  utt.pitch = 0.9;
+  utt.volume = 1;
+
+  utt.onend = () => {
+    voiceChunkIndex++;
+    speakChunk(voiceChunkIndex);
+  };
+
+  utt.onerror = (e) => {
+    // On error, try next chunk
+    if (e.error !== 'interrupted' && e.error !== 'canceled') {
+      voiceChunkIndex++;
+      speakChunk(voiceChunkIndex);
+    }
+  };
+
+  window.speechSynthesis.speak(utt);
 }
 
 async function toggleVoiceReading() {
@@ -5597,64 +5663,22 @@ async function toggleVoiceReading() {
   }
 
   window.speechSynthesis.cancel();
+  await new Promise(r => setTimeout(r, 100));
 
   const targetLang = voiceLang === 'hi' ? 'hi-IN' : 'en-US';
   const voices = await getVoicesAsync();
-  const chosenVoice = pickBestVoice(voices, targetLang);
+  voiceChosenVoice = pickBestVoice(voices, targetLang);
 
-  voiceUtterance = new SpeechSynthesisUtterance(text);
-  voiceUtterance.lang = chosenVoice ? chosenVoice.lang : targetLang;
-  if (chosenVoice) voiceUtterance.voice = chosenVoice;
-  voiceUtterance.rate = voiceSpeeds[voiceSpeedIndex];
-  // Slightly lower pitch for a deeper, more natural male tone
-  voiceUtterance.pitch = 0.9;
-  voiceUtterance.volume = 1;
+  voiceChunks = splitIntoChunks(text);
+  voiceChunkIndex = 0;
+  voiceSpeaking = true;
 
-  voiceUtterance.onstart = () => {
-    voiceSpeaking = true;
-    document.getElementById('voice-btn-text').textContent = '⏹ Band Karo';
-    document.getElementById('voice-btn').style.background = 'linear-gradient(135deg,rgba(226,43,43,0.4),rgba(130,0,0,0.4))';
-    document.getElementById('voice-progress-bar').style.display = 'block';
+  document.getElementById('voice-btn-text').textContent = '⏹ Band Karo';
+  document.getElementById('voice-btn').style.background = 'linear-gradient(135deg,rgba(226,43,43,0.4),rgba(130,0,0,0.4))';
+  document.getElementById('voice-progress-bar').style.display = 'block';
+  document.getElementById('voice-progress').style.width = '0%';
 
-    // Chrome bug workaround: long utterances auto-pause after ~15s
-    if (voiceResumeInterval) clearInterval(voiceResumeInterval);
-    voiceResumeInterval = setInterval(() => {
-      if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
-        window.speechSynthesis.pause();
-        window.speechSynthesis.resume();
-      }
-    }, 10000);
-  };
-
-  voiceUtterance.onend = () => {
-    document.getElementById('voice-progress').style.width = '100%';
-    setTimeout(() => {
-      document.getElementById('voice-progress-bar').style.display = 'none';
-      document.getElementById('voice-progress').style.width = '0%';
-    }, 1000);
-    stopVoiceReading();
-  };
-
-  voiceUtterance.onerror = () => {
-    stopVoiceReading();
-    showToast('Voice play nahi ho saka — phir try karein ya browser update karein!');
-  };
-
-  voiceUtterance.onboundary = (e) => {
-    if (e.name === 'word' && text.length > 0) {
-      const pct = Math.min((e.charIndex / text.length) * 100, 100);
-      document.getElementById('voice-progress').style.width = pct + '%';
-    }
-  };
-
-  window.speechSynthesis.speak(voiceUtterance);
-
-  // Some mobile webviews need a kick to actually start
-  setTimeout(() => {
-    if (!window.speechSynthesis.speaking && !voiceSpeaking) {
-      window.speechSynthesis.speak(voiceUtterance);
-    }
-  }, 300);
+  speakChunk(0);
 }
 
 function toggleVoiceLang() {
