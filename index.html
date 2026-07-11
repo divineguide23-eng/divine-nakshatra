@@ -899,6 +899,11 @@
     <span class="q-icon">🌸</span>
     <span class="q-text">श्री हित चौरासी — सम्पूर्ण ८४ पद</span>
   </button>
+  <button class="question-btn" onclick="openLockedScripture(showBhavishyaMalika,'भविष्य मालिका — प्रमुख भविष्यवाणियाँ','🔮')" style="position:relative;">
+    <span class="q-icon">🔮</span>
+    <span class="q-text">भविष्य मालिका — प्रमुख भविष्यवाणियाँ</span>
+    <span style="position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:18px;">👑</span>
+  </button>
   <button class="question-btn" onclick="openLockedScripture(showShivPuran,'शिव पुराण — सम्पूर्ण ७ संहिता','🔱')" style="position:relative;">
     <span class="q-icon">🔱</span>
     <span class="q-text">शिव पुराण — सम्पूर्ण ७ संहिता</span>
@@ -1114,22 +1119,24 @@
     <p class="reading-text" id="reading-answer-text"></p>
   </div>
 
-  <div class="reading-actions" id="reading-actions" style="display:none;">
-    <button class="btn-another" onclick="showScreen('welcome')">← Naya Sawaal</button>
-    <button class="btn-premium-reading" onclick="showToast('Unlimited readings — ' + userPrice.label + ' mein join karo!')">👑 ₹1 Mein Unlimited</button>
+  <div class="reading-actions" id="reading-actions" style="display:none;flex-direction:column;gap:10px;">
+    <div style="display:flex;gap:10px;width:100%;">
+      <button class="btn-another" style="flex:1;" onclick="showScreen('welcome')">← Naya Sawaal</button>
+      <button class="btn-premium-reading" style="flex:1;" onclick="showToast('Unlimited readings — ' + userPrice.label + ' mein join karo!')">👑 ₹1 Unlimited</button>
+    </div>
 
     <!-- Voice Controls -->
-    <div style="width:100%;display:flex;gap:10px;margin-top:4px;">
-      <button id="voice-btn" onclick="toggleVoiceReading()" style="flex:1;padding:14px;background:linear-gradient(135deg,rgba(138,43,226,0.3),rgba(75,0,130,0.3));border:1px solid rgba(180,100,255,0.5);border-radius:14px;color:#E0B0FF;font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;">
+    <div style="width:100%;display:flex;gap:10px;">
+      <button id="voice-btn" onclick="toggleVoiceReading()" style="flex:1;padding:16px;background:linear-gradient(135deg,rgba(138,43,226,0.3),rgba(75,0,130,0.3));border:1px solid rgba(180,100,255,0.5);border-radius:14px;color:#E0B0FF;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;">
         🔊 <span id="voice-btn-text">Sunao Reading</span>
       </button>
-      <button id="voice-speed-btn" onclick="changeVoiceSpeed()" style="padding:14px 16px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);border-radius:14px;color:rgba(255,255,255,0.7);font-size:12px;cursor:pointer;">
+      <button id="voice-speed-btn" onclick="changeVoiceSpeed()" style="padding:16px 18px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.2);border-radius:14px;color:rgba(255,255,255,0.8);font-size:14px;font-weight:700;cursor:pointer;">
         <span id="speed-text">1x</span>
       </button>
     </div>
 
     <!-- Voice Progress -->
-    <div id="voice-progress-bar" style="display:none;width:100%;margin-top:8px;">
+    <div id="voice-progress-bar" style="display:none;width:100%;margin-top:4px;">
       <div style="background:rgba(255,255,255,0.1);border-radius:999px;height:4px;overflow:hidden;">
         <div id="voice-progress" style="background:linear-gradient(90deg,#9B59B6,#E0B0FF);height:100%;width:0%;transition:width 0.3s;border-radius:999px;"></div>
       </div>
@@ -1138,6 +1145,9 @@
         <span id="voice-lang-btn" onclick="toggleVoiceLang()" style="font-size:10px;color:#E0B0FF;cursor:pointer;">🇮🇳 Hindi</span>
       </div>
     </div>
+
+    <!-- Extra bottom padding for nav bar -->
+    <div style="height:20px;"></div>
   </div>
 </div>
 
@@ -4693,6 +4703,381 @@ function showHanumanChalisa() {
   document.getElementById('reading-actions').style.display = 'flex';
   window.scrollTo(0, 0);
 }
+function showBhavishyaMalika() {
+  const isEn = currentLang === 'en';
+  const title = isEn ? '🔮 Bhavishya Malika — Key Prophecies' : '🔮 भविष्य मालिका — प्रमुख भविष्यवाणियाँ';
+
+  const contentHi = `🔮 भविष्य मालिका 🔮
+(श्री अच्युतानंद दास जी — पंचसखा संत, ओडिशा — लगभग ५०० वर्ष पूर्व रचित)
+
+✨ परिचय:
+भविष्य मालिका एक दिव्य भविष्यवाणी ग्रंथ है जिसे ओडिशा के महान पंचसखा संत श्री अच्युतानंद दास जी ने लगभग ५०० वर्ष पहले लिखा था। इसमें कलियुग के अंत तक की घटनाओं का सटीक वर्णन है। इसे "ओडिशा का नास्त्रेदमस" भी कहा जाता है।
+
+─────────────────────
+
+🌟 भविष्यवाणी १ — कलियुग का वर्णन
+
+"कलियुग में मनुष्य धर्म भूल जाएगा।
+माता-पिता की सेवा कोई नहीं करेगा।
+बेटा बाप का दुश्मन बनेगा।
+झूठ बोलने वाला राजा कहलाएगा।"
+
+📿 व्याख्या: कलियुग में पारिवारिक मूल्यों का पतन होगा। जो आज हम देख रहे हैं — बुजुर्गों को वृद्धाश्रम भेजना, परिवार टूटना — यही इस भविष्यवाणी की पूर्ति है।
+
+─────────────────────
+
+🌟 भविष्यवाणी २ — विज्ञान और तकनीक
+
+"एक दिन आएगा जब मनुष्य आकाश में उड़ेगा।
+बिना पैर चले वह दूर देश पहुँचेगा।
+एक डिब्बे में बंद होकर बात करेगा।
+दूर बैठे इंसान का चेहरा देखेगा।"
+
+📿 व्याख्या: हवाई जहाज, मोबाइल फोन, वीडियो कॉल — ५०० साल पहले यह सब अकल्पनीय था। संत अच्युतानंद ने यह सब देख लिया था।
+
+─────────────────────
+
+🌟 भविष्यवाणी ३ — धर्म का पतन और उत्थान
+
+"धर्म के नाम पर पाखंड फैलेगा।
+मंदिर तोड़े जाएंगे, देवता रोएंगे।
+लेकिन एक महापुरुष आएगा।
+जो सनातन धर्म को फिर स्थापित करेगा।"
+
+📿 व्याख्या: सनातन धर्म पर अनेक हमले हुए। लेकिन भविष्यवाणी है कि धर्म की पुनर्स्थापना होगी।
+
+─────────────────────
+
+🌟 भविष्यवाणी ४ — कलकी अवतार
+
+"जब कलियुग अपनी चरम सीमा पर होगा।
+पाप का घड़ा भर जाएगा।
+तब भगवान विष्णु कलकी रूप में आएंगे।
+श्वेत घोड़े पर सवार, हाथ में तलवार लेकर।
+अधर्म का नाश करेंगे।
+सतयुग की फिर से स्थापना होगी।"
+
+📿 व्याख्या: कलकी अवतार की यह भविष्यवाणी विष्णु पुराण और भागवत पुराण से मेल खाती है। कलकी का अर्थ है — अंधकार को नष्ट करने वाला।
+
+─────────────────────
+
+🌟 भविष्यवाणी ५ — महायुद्ध
+
+"एक समय आएगा जब पूरी दुनिया में युद्ध होगा।
+आग बरसेगी आकाश से।
+बड़े-बड़े नगर क्षणभर में नष्ट होंगे।
+लाखों मनुष्य काल के गाल में समाएंगे।"
+
+📿 व्याख्या: कुछ विद्वान इसे आणविक युद्ध (Nuclear War) की भविष्यवाणी मानते हैं। यह महायुद्ध कलियुग के अंत का संकेत होगा।
+
+─────────────────────
+
+🌟 भविष्यवाणी ६ — प्राकृतिक आपदाएं
+
+"पृथ्वी डोलेगी, पहाड़ टूटेंगे।
+समुद्र की लहरें शहरों को निगलेंगी।
+बाढ़ आएगी जहाँ कभी रेगिस्तान था।
+सूखा पड़ेगा जहाँ कभी नदियाँ बहती थीं।"
+
+📿 व्याख्या: जलवायु परिवर्तन, सुनामी, भूकंप — ये सब इस भविष्यवाणी की पूर्ति दिख रही है।
+
+─────────────────────
+
+🌟 भविष्यवाणी ७ — नदियों का संकट
+
+"एक समय गंगा का जल कम होगा।
+पवित्र नदियाँ प्रदूषित हो जाएंगी।
+जल के लिए मनुष्य तरसेगा।
+यह देखकर देवता भी दुखी होंगे।"
+
+📿 व्याख्या: गंगा प्रदूषण और जल संकट — आज की वास्तविकता है।
+
+─────────────────────
+
+🌟 भविष्यवाणी ८ — अन्न संकट
+
+"एक काल आएगा जब अन्न महंगा होगा।
+गरीब भूखा मरेगा।
+अमीर पानी की तरह पैसा बहाएगा।
+यह विषमता कलियुग की पहचान है।"
+
+📿 व्याख्या: आज भी विश्व में करोड़ों लोग भूखे सोते हैं।
+
+─────────────────────
+
+🌟 भविष्यवाणी ९ — झूठे गुरुओं का उत्थान
+
+"कलियुग में हजारों गुरु होंगे।
+लेकिन सच्चा ज्ञान कोई नहीं देगा।
+धर्म के नाम पर व्यापार होगा।
+भगवान का नाम लेकर लोग ठगेंगे।"
+
+📿 व्याख्या: आज के समय में कितने पाखंडी बाबा हैं — यह हम सब देख रहे हैं।
+
+─────────────────────
+
+🌟 भविष्यवाणी १० — स्त्रियों की दशा
+
+"एक समय आएगा जब स्त्री पुरुष बराबर होंगे।
+स्त्री हर क्षेत्र में आगे बढ़ेगी।
+लेकिन उसका सम्मान कम होगा।
+शरीर का प्रदर्शन धंधा बन जाएगा।"
+
+📿 व्याख्या: महिला सशक्तिकरण के साथ-साथ वस्तुकरण भी — आज की दोधारी वास्तविकता।
+
+─────────────────────
+
+🌟 भविष्यवाणी ११ — जगन्नाथ और सतयुग की वापसी
+
+"जब पाप का बोझ पृथ्वी न सह पाए।
+जगन्नाथ स्वयं धरती पर प्रकट होंगे।
+सच्चे भक्तों की रक्षा होगी।
+कलियुग का अंत और सतयुग का आरंभ होगा।"
+
+📿 व्याख्या: अच्युतानंद दास जी जगन्नाथ के परम भक्त थे। उनकी भविष्यवाणी में जगन्नाथ की केंद्रीय भूमिका है।
+
+─────────────────────
+
+🌟 भविष्यवाणी १२ — भारत की महानता
+
+"एक समय आएगा जब भारत फिर विश्वगुरु बनेगा।
+सनातन धर्म पूरे विश्व में फैलेगा।
+भारत की संस्कृति का परचम लहराएगा।
+दुनिया भारत से ज्ञान लेगी।"
+
+📿 व्याख्या: यह भविष्यवाणी अभी पूर्ण होने की प्रतीक्षा में है। सनातन धर्म का वैश्विक प्रसार हो रहा है।
+
+─────────────────────
+
+🌟 भविष्यवाणी १३ — अंतिम समय के संकेत
+
+"जब ये संकेत दिखें तो जानो — अंत निकट है:
+• गाय की हत्या आम हो जाए
+• बच्चे माँ-बाप को न पूजें
+• मंदिर सूने हो जाएं
+• नदियाँ जहर बन जाएं
+• आकाश में अजीब चिह्न दिखें
+• मनुष्य पशु जैसा व्यवहार करे
+तब जानो — कलियुग का अंत आ गया।"
+
+📿 व्याख्या: इनमें से कई संकेत आज दिख रहे हैं।
+
+─────────────────────
+
+🌟 भविष्यवाणी १४ — सच्चे भक्तों की सुरक्षा
+
+"जो राम का नाम जपेगा।
+जो धर्म पर चलेगा।
+जो सत्य बोलेगा।
+उसे कलियुग का कोई कष्ट नहीं छू सकेगा।
+ईश्वर की कृपा उसकी रक्षा करेगी।"
+
+📿 व्याख्या: सबसे महत्वपूर्ण संदेश — भक्ति और धर्म ही कलियुग से बचने का एकमात्र उपाय है।
+
+─────────────────────
+
+🔮 अंतिम संदेश:
+"सत्य का नाश नहीं होता।
+धर्म का अंत नहीं होता।
+कितना भी अंधकार हो — सूर्य उदय होता है।
+सनातन धर्म अनादि है, अनंत है।"
+
+🙏 श्री अच्युतानंद दास जी की जय!
+ॐ नमो भगवते वासुदेवाय 🌸`;
+
+  const contentEn = `🔮 Bhavishya Malika 🔮
+(Sri Achyutananda Das Ji — Panchasakha Saint, Odisha — Composed ~500 Years Ago)
+
+✨ Introduction:
+Bhavishya Malika is a divine prophecy text composed by the great Panchasakha saint Sri Achyutananda Das Ji of Odisha, approximately 500 years ago. It describes events up to the end of Kali Yuga with remarkable accuracy. It is often called the "Nostradamus of Odisha."
+
+─────────────────────
+
+🌟 Prophecy 1 — The Description of Kali Yuga
+
+"In Kali Yuga, humans will forget dharma.
+No one will serve their parents.
+Sons will become enemies of their fathers.
+Those who speak lies will be called kings."
+
+📿 Interpretation: The collapse of family values in Kali Yuga. What we see today — abandoning elders in old-age homes, broken families — is the fulfilment of this prophecy.
+
+─────────────────────
+
+🌟 Prophecy 2 — Science and Technology
+
+"A day will come when humans will fly in the sky.
+Without walking, they will reach distant lands.
+Enclosed in a box, they will speak to others.
+They will see the face of a person sitting far away."
+
+📿 Interpretation: Aeroplanes, mobile phones, video calls — all unimaginable 500 years ago. Yet the saint foresaw them all.
+
+─────────────────────
+
+🌟 Prophecy 3 — The Fall and Rise of Dharma
+
+"Hypocrisy will spread in the name of religion.
+Temples will be destroyed, deities will weep.
+But a great soul will come.
+Who will re-establish Sanatan Dharma."
+
+📿 Interpretation: Sanatan Dharma has faced many attacks. But the prophecy promises its restoration.
+
+─────────────────────
+
+🌟 Prophecy 4 — The Kalki Avatar
+
+"When Kali Yuga reaches its extreme.
+When the vessel of sin overflows.
+Lord Vishnu will come in the form of Kalki.
+Riding a white horse, sword in hand.
+He will destroy all adharma.
+And establish Satya Yuga once again."
+
+📿 Interpretation: This prophecy about the Kalki Avatar aligns perfectly with the Vishnu Purana and Bhagavata Purana. Kalki means — the destroyer of darkness.
+
+─────────────────────
+
+🌟 Prophecy 5 — The Great War
+
+"A time will come when war will engulf the entire world.
+Fire will rain from the sky.
+Great cities will be destroyed in moments.
+Millions of humans will be consumed by death."
+
+📿 Interpretation: Many scholars interpret this as a prophecy of nuclear war. This great war will signal the end of Kali Yuga.
+
+─────────────────────
+
+🌟 Prophecy 6 — Natural Disasters
+
+"The earth will shake, mountains will crumble.
+Ocean waves will swallow cities.
+Floods will come where deserts once existed.
+Drought will come where rivers once flowed."
+
+📿 Interpretation: Climate change, tsunamis, earthquakes — all appearing to fulfil this prophecy.
+
+─────────────────────
+
+🌟 Prophecy 7 — The Water Crisis
+
+"A time will come when the waters of the Ganga will diminish.
+Sacred rivers will become polluted.
+Humans will thirst for water.
+Even the gods will grieve to see this."
+
+📿 Interpretation: Ganga pollution and the water crisis — the reality of today.
+
+─────────────────────
+
+🌟 Prophecy 8 — The Food Crisis
+
+"A time will come when food will become expensive.
+The poor will die of hunger.
+The rich will spend money like water.
+This inequality is the hallmark of Kali Yuga."
+
+📿 Interpretation: Even today, hundreds of millions go to sleep hungry every night.
+
+─────────────────────
+
+🌟 Prophecy 9 — The Rise of False Gurus
+
+"In Kali Yuga there will be thousands of gurus.
+But none will give true knowledge.
+Business will be done in the name of religion.
+People will be deceived in the name of God."
+
+📿 Interpretation: The number of fraudulent babas in today's world speaks for itself.
+
+─────────────────────
+
+🌟 Prophecy 10 — The Condition of Women
+
+"A time will come when man and woman will be equal.
+Women will advance in every field.
+But their respect will diminish.
+The display of the body will become a business."
+
+📿 Interpretation: The double-edged reality of today — women's empowerment alongside objectification.
+
+─────────────────────
+
+🌟 Prophecy 11 — Jagannath and the Return of Satya Yuga
+
+"When the earth can no longer bear the burden of sin.
+Jagannath Himself will appear on earth.
+True devotees will be protected.
+Kali Yuga will end and Satya Yuga will begin."
+
+📿 Interpretation: Achyutananda Das Ji was a supreme devotee of Jagannath. His prophecies centre on the Lord of the Universe.
+
+─────────────────────
+
+🌟 Prophecy 12 — India's Greatness
+
+"A time will come when India will become Vishwa Guru again.
+Sanatan Dharma will spread across the entire world.
+The flag of India's culture will fly high.
+The world will receive knowledge from India."
+
+📿 Interpretation: This prophecy awaits fulfilment. The global spread of Sanatan Dharma is already underway.
+
+─────────────────────
+
+🌟 Prophecy 13 — Signs of the Final Time
+
+"When these signs appear — know that the end is near:
+• Killing of cows becomes commonplace
+• Children do not honour their parents
+• Temples fall empty
+• Rivers become poison
+• Strange signs appear in the sky
+• Humans behave like animals
+Then know — the end of Kali Yuga has arrived."
+
+📿 Interpretation: Many of these signs are visible today.
+
+─────────────────────
+
+🌟 Prophecy 14 — Protection of True Devotees
+
+"Whoever chants the name of Rama.
+Whoever walks the path of dharma.
+Whoever speaks the truth.
+No suffering of Kali Yuga can touch them.
+The grace of God will protect them."
+
+📿 Interpretation: The most important message of all — devotion and dharma are the only means of deliverance from Kali Yuga.
+
+─────────────────────
+
+🔮 Final Message:
+"Truth can never be destroyed.
+Dharma can never end.
+No matter how deep the darkness — the sun always rises.
+Sanatan Dharma is without beginning, without end."
+
+🙏 Jai Sri Achyutananda Das Ji!
+Om Namo Bhagavate Vasudevaya 🌸`;
+
+  const content = isEn ? contentEn : contentHi;
+
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-reading').classList.add('active');
+  document.getElementById('nav-bar').style.display = 'flex';
+  document.getElementById('reading-orb').style.display = 'none';
+  document.getElementById('reading-loading').style.display = 'none';
+  document.getElementById('reading-dots').style.display = 'none';
+  document.getElementById('reading-box').style.display = 'block';
+  document.getElementById('reading-q-display').textContent = title;
+  document.getElementById('reading-answer-text').innerHTML = content.split('\n').join('<br>');
+  document.getElementById('reading-actions').style.display = 'flex';
+  window.scrollTo(0, 0);
+}
+
 function showHitChaurasi() {
   const isEn = currentLang === 'en';
   const title = isEn ? '🌸 Shri Hit Chaurasi — 84 Sacred Padas' : '🌸 श्री हित चौरासी — सम्पूर्ण ८४ पद';
@@ -5489,6 +5874,7 @@ const questionsHi = [
   { text: 'हनुमान चालीसा — सम्पूर्ण पाठ', icon: '🙏', fn: 'showHanumanChalisa()' },
   { text: 'हनुमान चालीसा — पाठ से क्या मिलता है?', icon: '✨', fn: 'showHanumanBenefits()' },
   { text: 'श्री हित चौरासी — सम्पूर्ण ८४ पद', icon: '🌸', fn: 'showHitChaurasi()' },
+  { text: 'भविष्य मालिका — प्रमुख भविष्यवाणियाँ', icon: '🔮', fn: 'showBhavishyaMalika()' },
   { text: 'शिव पुराण — सम्पूर्ण ७ संहिता', icon: '🔱', fn: 'showShivPuran()' },
 ];
 
@@ -5500,6 +5886,7 @@ const questionsEn = [
   { text: 'Hanuman Chalisa — Complete Recitation', icon: '🙏', fn: 'showHanumanChalisa()' },
   { text: 'Hanuman Chalisa — Benefits of Recitation', icon: '✨', fn: 'showHanumanBenefits()' },
   { text: 'Shri Hit Chaurasi — 84 Sacred Padas', icon: '🌸', fn: 'showHitChaurasi()' },
+  { text: 'Bhavishya Malika — Key Prophecies', icon: '🔮', fn: 'showBhavishyaMalika()' },
   { text: 'Shiv Purana — Complete 7 Samhitas', icon: '🔱', fn: 'showShivPuran()' },
 ];
 
