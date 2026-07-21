@@ -714,6 +714,48 @@
     transform: scale(1.03);
   }
 
+  /* ===== VISUAL READING MODE ===== */
+  .visual-stage {
+    position: relative;
+    margin: 0 0 4px;
+    padding: 28px 20px 22px;
+    border-radius: 20px;
+    background: radial-gradient(circle at center, rgba(138,43,226,0.18), rgba(10,6,18,0.5));
+    border: 1px solid rgba(180,100,255,0.35);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    overflow: hidden;
+  }
+  .visual-mandala-wrap { position: relative; width: 130px; height: 130px; }
+  .visual-mandala-svg { width: 100%; height: 100%; animation: visual-rotate 24s linear infinite; opacity: 0.45; transition: opacity 0.4s; }
+  .visual-stage.speaking .visual-mandala-svg { animation-duration: 7s; opacity: 0.9; }
+  @keyframes visual-rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  .visual-icon {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    font-size: 42px;
+    filter: drop-shadow(0 0 10px rgba(224,176,255,0.5));
+  }
+  .visual-stage.speaking .visual-icon { animation: visual-pulse 1.3s ease-in-out infinite; }
+  @keyframes visual-pulse {
+    0%, 100% { transform: translate(-50%,-50%) scale(1); }
+    50% { transform: translate(-50%,-50%) scale(1.14); }
+  }
+  .visual-title { font-size: 13.5px; color: #E0B0FF; font-weight: 700; text-align: center; letter-spacing: 0.3px; line-height: 1.5; padding: 0 6px; }
+  .visual-bars { display: flex; align-items: flex-end; gap: 4px; height: 26px; }
+  .visual-bars span { width: 4px; background: linear-gradient(180deg,#E0B0FF,#9B59B6); border-radius: 2px; height: 6px; opacity: 0.35; transition: opacity 0.4s; }
+  .visual-stage.speaking .visual-bars span { animation: visual-bar-bounce 0.9s ease-in-out infinite; opacity: 1; }
+  .visual-bars span:nth-child(1) { animation-delay: 0s; }
+  .visual-bars span:nth-child(2) { animation-delay: 0.15s; }
+  .visual-bars span:nth-child(3) { animation-delay: 0.3s; }
+  .visual-bars span:nth-child(4) { animation-delay: 0.45s; }
+  .visual-bars span:nth-child(5) { animation-delay: 0.6s; }
+  @keyframes visual-bar-bounce {
+    0%, 100% { height: 6px; }
+    50% { height: 24px; }
+  }
+
 </style>
 </head>
 <body>
@@ -919,6 +961,10 @@
     <span class="q-text">शिव पुराण — सम्पूर्ण ७ संहिता</span>
     <span style="position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:18px;">👑</span>
   </button>
+  <button class="question-btn" onclick="showScreen('vedas')">
+    <span class="q-icon">📜</span>
+    <span class="q-text">चारों वेद — परिचय व प्रमुख मंत्र</span>
+  </button>
 
   <!-- Inline profile form on home -->
   <div class="home-form-section">
@@ -1014,27 +1060,30 @@
   <div class="topics-section">
     <p class="topics-title">✦ Topic Chuniye ✦</p>
     <div class="topics-grid">
-      <!-- FREE TOPICS -->
-      <div class="topic-card active" onclick="selectTopicFree(this,'Dainik Jeevan','Aaj aapka din kaisa rahega?','🌅')">
+      <!-- PREMIUM TOPICS -->
+      <div class="topic-card premium" onclick="selectTopicPremium(this,'Dainik Jeevan','Aaj aapka din kaisa rahega?','🌅')">
         <span class="topic-icon">🌅</span>
         <div class="topic-text">
           <div class="hi">दैनिक जीवन</div>
-          <div class="en">Daily Life ✓ Free</div>
+          <div class="en">Daily Life</div>
         </div>
+        <span class="topic-crown">👑</span>
       </div>
-      <div class="topic-card" onclick="selectTopicFree(this,'Lucky Today','Aaj aapka lucky number aur rang kya hai?','🍀')">
+      <div class="topic-card premium" onclick="selectTopicPremium(this,'Lucky Today','Aaj aapka lucky number aur rang kya hai?','🍀')">
         <span class="topic-icon">🍀</span>
         <div class="topic-text">
           <div class="hi">आज का भाग्य</div>
-          <div class="en">Lucky Today ✓ Free</div>
+          <div class="en">Lucky Today</div>
         </div>
+        <span class="topic-crown">👑</span>
       </div>
-      <div class="topic-card" onclick="selectTopicFree(this,'Prem & Dil','Aapke prem jeevan mein kya hone wala hai?','💝')">
+      <div class="topic-card premium" onclick="selectTopicPremium(this,'Prem & Dil','Aapke prem jeevan mein kya hone wala hai?','💝')">
         <span class="topic-icon">💝</span>
         <div class="topic-text">
           <div class="hi">प्रेम & दिल</div>
-          <div class="en">Love & Heart ✓ Free</div>
+          <div class="en">Love & Heart</div>
         </div>
+        <span class="topic-crown">👑</span>
       </div>
 
       <!-- PREMIUM TOPICS -->
@@ -1135,6 +1184,32 @@
       <button class="btn-premium-reading" style="flex:1;" onclick="showToast('Unlimited readings — ' + userPrice.label + ' mein join karo!')">👑 ₹1 Unlimited</button>
     </div>
 
+    <!-- Visual Reading Stage -->
+    <div class="visual-stage" id="visual-stage">
+      <div class="visual-mandala-wrap">
+        <svg class="visual-mandala-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="100" cy="100" r="95" fill="none" stroke="rgba(224,176,255,0.25)" stroke-width="1"/>
+          <circle cx="100" cy="100" r="75" fill="none" stroke="rgba(224,176,255,0.35)" stroke-width="1"/>
+          <circle cx="100" cy="100" r="55" fill="none" stroke="rgba(224,176,255,0.45)" stroke-width="1"/>
+          <g stroke="rgba(224,176,255,0.5)" stroke-width="1">
+            <line x1="100" y1="5" x2="100" y2="195"/>
+            <line x1="5" y1="100" x2="195" y2="100"/>
+            <line x1="29" y1="29" x2="171" y2="171"/>
+            <line x1="171" y1="29" x2="29" y2="171"/>
+          </g>
+          <g fill="rgba(224,176,255,0.6)">
+            <circle cx="100" cy="5" r="3"/><circle cx="100" cy="195" r="3"/>
+            <circle cx="5" cy="100" r="3"/><circle cx="195" cy="100" r="3"/>
+          </g>
+        </svg>
+        <div class="visual-icon" id="visual-icon">🕉️</div>
+      </div>
+      <div class="visual-title" id="visual-title"></div>
+      <div class="visual-bars">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+
     <!-- Voice Controls -->
     <div style="width:100%;display:flex;gap:10px;">
       <button id="voice-btn" onclick="toggleVoiceReading()" style="flex:1;padding:16px;background:linear-gradient(135deg,rgba(138,43,226,0.3),rgba(75,0,130,0.3));border:1px solid rgba(180,100,255,0.5);border-radius:14px;color:#E0B0FF;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;">
@@ -1142,6 +1217,9 @@
       </button>
       <button id="voice-speed-btn" onclick="changeVoiceSpeed()" style="padding:16px 18px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.2);border-radius:14px;color:rgba(255,255,255,0.8);font-size:14px;font-weight:700;cursor:pointer;">
         <span id="speed-text">1x</span>
+      </button>
+      <button id="visual-mode-btn" onclick="toggleVisualMode()" style="padding:16px 16px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.2);border-radius:14px;color:rgba(255,255,255,0.8);font-size:14px;font-weight:700;cursor:pointer;">
+        🎬
       </button>
     </div>
 
@@ -1274,6 +1352,22 @@
       <div style="display:flex;flex-direction:column;gap:8px;" id="garuda-uttara"></div>
     </div>
 
+  </div>
+</div>
+
+<!-- ========== SCREEN: CHAAR VEDA ========== -->
+<div id="screen-vedas" class="screen has-nav">
+  <div class="profile-header">
+    <button onclick="showScreen('welcome')" style="background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.3);border-radius:999px;padding:6px 16px;color:#F5D96B;font-size:12px;cursor:pointer;margin-bottom:10px;">← Wapas</button>
+    <div class="section-icon">📜</div>
+    <h2 class="section-title" id="vedas-screen-title">चारों वेद</h2>
+    <p class="section-sub" id="vedas-screen-sub">परिचय, संरचना व प्रमुख मंत्र — The Four Vedas</p>
+  </div>
+  <div style="max-width:480px;margin:0 auto;padding:16px 20px 100px;">
+    <p id="vedas-screen-intro" style="font-size:12.5px;line-height:1.8;color:rgba(255,255,255,0.6);margin-bottom:18px;text-align:center;">
+      वेद सनातन धर्म के सबसे प्राचीन और पवित्र ग्रंथ हैं — इन्हें "श्रुति" (जो सुना गया) कहा जाता है, क्योंकि ऋषियों ने इन्हें ध्यान अवस्था में साक्षात् अनुभव किया। नीचे चारों वेदों में से किसी एक पर टैप करें।
+    </p>
+    <div style="display:flex;flex-direction:column;gap:10px;" id="vedas-list"></div>
   </div>
 </div>
 
@@ -1880,7 +1974,7 @@ function showScreen(name) {
   navBar.style.display = (name === 'welcome') ? 'none' : 'flex';
   // update nav active
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  const navMap = { profile: 'nav-profile', reading: 'nav-reading', kundali: 'nav-kundali', settings: 'nav-settings', garuda: 'nav-home', privacy: 'nav-settings', terms: 'nav-settings', saved: 'nav-home' };
+  const navMap = { profile: 'nav-profile', reading: 'nav-reading', kundali: 'nav-kundali', settings: 'nav-settings', garuda: 'nav-home', vedas: 'nav-home', privacy: 'nav-settings', terms: 'nav-settings', saved: 'nav-home' };
   if (name === 'settings') {
     const s = document.getElementById('settings-premium-status');
     if (s) s.textContent = localStorage.getItem('dn_premium') === 'true' ? '👑 Active' : '❌ Not Active';
@@ -2609,6 +2703,7 @@ function showChapterContent(icon, title, content) {
   document.getElementById('reading-box').classList.add('show');
   document.getElementById('reading-answer-text').innerHTML = content.split('\n').join('<br>');
   document.getElementById('reading-actions').style.display = 'flex';
+  if (typeof visualModeOn !== 'undefined' && visualModeOn) { updateVisualStageContent(); }
 }
 
 function showGitaChapter(title, content) { showChapterContent('🪷', title, content); }
@@ -2622,195 +2717,307 @@ const ramayanaData = [
       { titleEn: 'The Origin of the Ramayana — Valmiki\'s Composition', ch: 1, title: 'रामायण की उत्पत्ति — वाल्मीकि रचना', content: `👶 बाल काण्ड — रामायण की उत्पत्ति — वाल्मीकि रचना
 
 📖 पृष्ठभूमि:
-महर्षि वाल्मीकि तमसा नदी के तट पर बैठे थे। नारद मुनि ने उन्हें राम की कथा सुनाई — जो सबसे श्रेष्ठ पुरुष हैं, जिनमें सभी गुण हैं।
+महर्षि वाल्मीकि तमसा नदी के तट पर अपने शिष्य भरद्वाज के साथ स्नान करने जा रहे थे। कुछ समय पहले ही देवर्षि नारद उनके आश्रम पधारे थे, और वाल्मीकि ने उनसे पूछा था — "हे मुनिवर! क्या इस संसार में कोई ऐसा पुरुष है जो गुणवान, वीर्यवान, धर्मज्ञ, कृतज्ञ, सत्यवादी और दृढ़-प्रतिज्ञ हो?" नारद मुनि ने मुस्कुराते हुए उत्तर दिया — "हे मुनि! ऐसे अनेक गुण एक साथ मिलना कठिन है, परंतु मैं तुम्हें ऐसे ही एक पुरुष के विषय में बताता हूँ — इक्ष्वाकु वंश में उत्पन्न राजा दशरथ के पुत्र, श्रीराम।" इसके बाद नारद जी ने संक्षेप में सम्पूर्ण रामायण की कथा सुनाई और अंतर्धान हो गए।
 
 🦅 करुणा से जन्मा पहला श्लोक:
-एक दिन वाल्मीकि ने एक क्रौंच पक्षी के जोड़े को देखा। निषाद (शिकारी) ने बाण चलाकर नर पक्षी को मार डाला। मादा पक्षी विलाप करने लगी।
+कुछ समय बाद, एक दिन वाल्मीकि तमसा नदी के तट पर टहल रहे थे, तभी उन्होंने एक क्रौंच पक्षी के जोड़े को प्रेम-क्रीड़ा करते देखा। ठीक उसी क्षण, एक निषाद (शिकारी) ने बाण चलाकर नर क्रौंच को मार डाला। मादा पक्षी करुण विलाप करने लगी, उसका आर्तनाद वाल्मीकि के हृदय को छू गया।
 
-इस करुण दृश्य को देखकर वाल्मीकि के मुख से स्वतः निकला:
+इस करुण दृश्य को देखकर, बिना किसी पूर्व-विचार के, वाल्मीकि के मुख से छंदोबद्ध वाणी स्वतः प्रस्फुटित हुई:
 
 "मा निषाद प्रतिष्ठां त्वमगमः शाश्वतीः समाः।
 यत् क्रौंचमिथुनादेकमवधीः काममोहितम्॥"
 
-(हे निषाद! तुझे कभी शांति न मिले — क्योंकि तूने प्रेम में लीन क्रौंच पक्षी के जोड़े में से एक को मार डाला।)
+(हे निषाद! तुझे कभी शांति न मिले, तू चिरकाल तक अस्थिर रहे — क्योंकि तूने प्रेम में लीन क्रौंच पक्षी के जोड़े में से एक को मार डाला।)
 
-यह संसार का पहला काव्य-श्लोक था। ब्रह्माजी ने वाल्मीकि को आशीर्वाद दिया और रामायण की रचना का आदेश दिया।
+यह संसार का पहला काव्य-श्लोक (आदि-श्लोक) था — जो शोक (दुख) से "श्लोक" के रूप में प्रकट हुआ। वाल्मीकि स्वयं चकित रह गए कि उनके मुख से यह लयबद्ध वाणी कैसे निकली।
+
+🕉️ ब्रह्माजी का आशीर्वाद:
+आश्रम लौटने पर स्वयं ब्रह्माजी वाल्मीकि के सम्मुख प्रकट हुए और कहा — "हे मुनि! यह मेरी ही इच्छा से तुम्हारे मुख से यह श्लोक निकला है। अब तुम इसी छंद में समस्त रामायण की रचना करो। जब तक पर्वत और नदियाँ इस पृथ्वी पर रहेंगी, तब तक यह रामायण-कथा संसार में प्रचलित रहेगी।" ब्रह्माजी ने वाल्मीकि को यह दिव्य दृष्टि भी दी कि वे राम के संपूर्ण जीवन को, गुप्त और प्रकट दोनों रूपों में, यथावत् देख सकें।
 
 📜 रामायण की विशेषता:
-• रामायण में ७ काण्ड हैं
-• इसमें लगभग २४,००० श्लोक हैं
-• यह आदिकाव्य (पहली कविता) है
-• इसे वाल्मीकि रामायण या आदि रामायण कहते हैं
+• रामायण में ७ काण्ड हैं — बाल, अयोध्या, अरण्य, किष्किंधा, सुंदर, युद्ध और उत्तर काण्ड
+• इसमें लगभग २४,००० श्लोक और ५०० सर्ग हैं
+• यह "आदिकाव्य" कहलाता है — संस्कृत साहित्य की पहली कविता (महाकाव्य)
+• वाल्मीकि को इसीलिए "आदिकवि" (प्रथम कवि) कहा जाता है
+• इसे "वाल्मीकि रामायण" या "आदि रामायण" भी कहते हैं, ताकि इसे तुलसीदास कृत "रामचरितमानस" से अलग पहचाना जा सके
 
 🏹 राम का परिचय:
-राम अयोध्या के राजा दशरथ के ज्येष्ठ पुत्र हैं। वे मर्यादा पुरुषोत्तम हैं — यानी जो पुरुषों में सर्वश्रेष्ठ हैं और सदा मर्यादा में रहते हैं।
+राम अयोध्या के राजा दशरथ के ज्येष्ठ पुत्र हैं। वे "मर्यादा पुरुषोत्तम" कहलाते हैं — अर्थात् जो पुरुषों में सर्वश्रेष्ठ हैं और जीवन की हर परिस्थिति में मर्यादा (नैतिक सीमा) का पालन करते हैं, चाहे राजकुमार के रूप में हों, पति के रूप में, पुत्र के रूप में, या राजा के रूप में। भगवान विष्णु ने रावण जैसे अधर्मी राक्षस-राज का वध करने के लिए मनुष्य रूप में अवतार लिया था।
 
-📿 मुख्य संदेश: करुणा ही महान काव्य की जननी है। दूसरे के दुख से द्रवित होना ही सच्चा मानवधर्म है।` ,
-      contentEn: `🪷 Bala Kanda — The Origin of Ramayana
+📿 मुख्य संदेश: करुणा ही महान काव्य की जननी है। दूसरे के दुख से द्रवित होना ही सच्चा मानवधर्म है — और यही भाव वाल्मीकि रामायण की आत्मा है, जो आगे चलकर पूरी कथा में स्थान-स्थान पर परिलक्षित होता है।`,
+      contentEn: `🪷 Bala Kanda — The Origin of the Ramayana — Valmiki's Composition
 
-Sage Narada narrated the story of Rama to Valmiki. One day Valmiki saw a Krauncha bird shot dead by a hunter, while its mate wept nearby.
+📖 Background:
+Sage Valmiki was about to bathe in the river Tamasa with his disciple Bharadvaja. Shortly before this, the celestial sage Narada had visited his hermitage, and Valmiki had asked him: "O sage, is there any man in this world who is virtuous, mighty, righteous, grateful, truthful and firm in his vows?" Narada smiled and replied that such a combination of virtues was rare — but described exactly such a man: Rama, son of King Dasharatha of the Ikshvaku dynasty. Narada then briefly narrated the entire story of Rama before vanishing.
 
-A verse arose spontaneously from Valmiki's lips:
-"Ma nishada pratistham tvam agamah shashvatih samah..."
-(O hunter, you shall never attain peace — for you have killed the Krauncha in the midst of love.)
+🦅 The First Verse, Born of Compassion:
+Some time later, while walking along the banks of the Tamasa, Valmiki saw a pair of Krauncha birds engaged in courtship. At that very moment, a hunter (nishada) shot an arrow and killed the male bird. Its mate cried out in anguish, and her grief moved Valmiki's heart deeply.
 
-This was the first shloka of the Ramayana. Brahma blessed Valmiki and the great epic was composed.
+Overwhelmed by this scene of sorrow, and without any deliberate thought, a rhythmic, metrical verse spontaneously arose from Valmiki's lips:
 
-🏹 Key Message: Compassion is the mother of all poetry.`
+"Ma nishada pratistham tvam agamah shashvatih samah,
+Yat krauncha-mithunad ekam avadhih kama-mohitam"
+
+(O hunter, may you never find peace for all eternity — for you have killed one of a pair of Krauncha birds lost in love.)
+
+This was the very first "shloka" (verse) ever composed in the world — the word "shloka" itself is said to derive from "shoka" (sorrow), since it was born from grief. Valmiki himself was astonished that such measured, musical speech had come from his own mouth.
+
+🕉️ Brahma's Blessing:
+Back at his hermitage, Lord Brahma himself appeared before Valmiki and said: "O sage, it was by my will that this verse arose from your lips. Now compose the entire story of Rama in this very metre. As long as the mountains and rivers endure upon this earth, this Ramayana shall live on among mankind." Brahma also granted Valmiki divine vision, enabling him to perceive Rama's entire life — both its hidden and its manifest events — exactly as it happened.
+
+📜 Features of the Ramayana:
+• It is divided into 7 Kandas — Bala, Ayodhya, Aranya, Kishkindha, Sundara, Yuddha and Uttara
+• It contains around 24,000 verses across roughly 500 chapters (sargas)
+• It is known as the "Adi Kavya" — the first great poem (epic) of Sanskrit literature
+• Valmiki is therefore honoured as the "Adi Kavi" — the first poet
+• It is also called "Valmiki Ramayana" or "Adi Ramayana," to distinguish it from Tulsidas's later "Ramcharitmanas"
+
+🏹 Introducing Rama:
+Rama is the eldest son of King Dasharatha of Ayodhya. He is known as "Maryada Purushottam" — the noblest of men, one who upholds moral boundaries in every role of life, whether as a prince, husband, son, or king. Lord Vishnu took human birth as Rama specifically to destroy the tyranny of the demon-king Ravana.
+
+📿 Key Message: Compassion is the mother of great poetry. To be moved by another's suffering is the truest expression of humanity — and this very spirit forms the soul of the Valmiki Ramayana, echoed again and again throughout the epic.`
     },
       { titleEn: 'King Dasharatha and His Longing for a Son', ch: 2, title: 'राजा दशरथ और पुत्र कामना', content: `👶 बाल काण्ड — राजा दशरथ और पुत्र कामना
 
 📖 अयोध्या का वैभव:
-अयोध्या नगरी अत्यंत समृद्ध थी। राजा दशरथ न्यायप्रिय और पराक्रमी थे। उनकी तीन रानियाँ थीं — कौसल्या, कैकेयी और सुमित्रा।
+सरयू नदी के तट पर बसी अयोध्या नगरी अत्यंत समृद्ध और वैभवशाली थी — इसकी सड़कें चौड़ी थीं, भवन ऊँचे और स्वर्ण-जड़ित थे, और प्रजा सुखी और संतुष्ट थी। राजा दशरथ न्यायप्रिय, पराक्रमी और वेदज्ञ थे — वे सूर्यवंश और इक्ष्वाकु कुल के गौरव थे। उनकी तीन रानियाँ थीं — कौसल्या (पटरानी), कैकेयी (सबसे प्रिय व कैकेय देश की राजकुमारी) और सुमित्रा।
 
 👑 दशरथ की पीड़ा:
-राजा दशरथ की कोई संतान नहीं थी। यह उनके जीवन का सबसे बड़ा दुख था। बिना पुत्र के न वंश चलता, न पितृ-तर्पण होता।
+समस्त ऐश्वर्य और शक्ति के बावजूद, राजा दशरथ की कोई संतान नहीं थी। यह उनके जीवन का सबसे बड़ा दुख था। शास्त्रों के अनुसार बिना पुत्र के न वंश आगे बढ़ता, न पितरों का श्राद्ध-तर्पण संभव होता, न ही मोक्ष का द्वार खुलता। वृद्धावस्था निकट आने पर यह चिंता उन्हें दिन-रात सताने लगी।
 
 🔥 पुत्रकामेष्टि यज्ञ:
-दशरथ ने महर्षि ऋष्यश्रृंग को बुलाया। उनके मार्गदर्शन में एक महायज्ञ किया गया जिसका नाम था "पुत्रकामेष्टि यज्ञ"।
+अपने मंत्री सुमंत्र की सलाह पर दशरथ ने ऋष्यश्रृंग मुनि को आमंत्रित किया, जो अपनी तपस्या और सदाचार के लिए विख्यात थे। सरयू तट पर एक विशाल यज्ञशाला बनवाई गई और गुरु वशिष्ठ तथा अन्य ऋषियों के साथ मिलकर "अश्वमेध यज्ञ" और फिर "पुत्रकामेष्टि यज्ञ" संपन्न किया गया।
 
-यज्ञ की अग्नि से एक दिव्य पुरुष प्रकट हुए। उन्होंने सोने के पात्र में खीर (पायस) दी और कहा — "यह खीर अपनी रानियों को खिलाओ।"
+यज्ञ की पूर्णाहुति के समय, यज्ञ-कुण्ड की अग्नि से एक दिव्य, तेजस्वी पुरुष प्रकट हुआ। उसका शरीर अग्नि के समान चमक रहा था। उसने सोने के एक विशाल पात्र में स्वादिष्ट खीर (पायस) लेकर कहा — "हे राजन्! यह देवताओं द्वारा भेजा गया दिव्य पायस है। इसे अपनी रानियों को खिलाओ, तुम्हें उत्तम संतान प्राप्त होगी।"
 
 🎁 चार पुत्रों का जन्म:
-• कौसल्या से — राम (विष्णु के पूर्ण अवतार)
-• कैकेयी से — भरत
-• सुमित्रा से — लक्ष्मण और शत्रुघ्न
+दशरथ ने वह खीर अपनी रानियों में बाँट दी — आधा भाग कौसल्या को, शेष का आधा कैकेयी को, और बचा हुआ भाग सुमित्रा को दो बार दिया गया। समय आने पर चैत्र शुक्ल नवमी के शुभ दिन, जब पुनर्वसु नक्षत्र और कर्क लग्न था —
 
-पूरी अयोध्या में उत्सव मना। देवताओं ने फूल बरसाए।
+• कौसल्या से — राम (विष्णु के पूर्ण अवतार) का जन्म हुआ
+• कैकेयी से — भरत का जन्म हुआ
+• सुमित्रा से — लक्ष्मण और शत्रुघ्न, दो जुड़वाँ पुत्रों का जन्म हुआ
+
+पूरी अयोध्या नगरी में उत्सव मनाया गया — शंख और नगाड़े बजे, घरों में दीप जलाए गए, देवताओं ने आकाश से पुष्पवर्षा की और गंधर्वों ने गीत गाए, अप्सराओं ने नृत्य किया।
 
 🌟 राम के जन्म का महत्व:
-राम का जन्म चैत्र शुक्ल नवमी को हुआ — जो आज भी राम नवमी के रूप में मनाया जाता है। वे नारायण के पूर्ण अवतार थे — रावण जैसे अधर्मी का नाश करने के लिए।
+राम का जन्म चैत्र शुक्ल नवमी को हुआ — जो आज भी संपूर्ण भारत में "राम नवमी" के रूप में हर्षोल्लास से मनाया जाता है। वे साक्षात् भगवान नारायण के पूर्ण अवतार थे, जो रावण जैसे अधर्मी और अत्याचारी राक्षस-राज का नाश करने तथा पृथ्वी पर धर्म की पुनर्स्थापना के लिए मनुष्य रूप में अवतरित हुए थे। शेषनाग स्वयं लक्ष्मण के रूप में राम की सेवा हेतु अवतरित हुए।
 
-📿 मुख्य संदेश: सच्ची श्रद्धा और भक्ति से की गई प्रार्थना कभी व्यर्थ नहीं जाती।` ,
+📿 मुख्य संदेश: सच्ची श्रद्धा, धैर्य और भक्ति से की गई प्रार्थना कभी व्यर्थ नहीं जाती — समय आने पर फल अवश्य मिलता है।`,
       contentEn: `🪷 Bala Kanda — King Dasharatha and His Longing for a Son
 
-King Dasharatha of Ayodhya had three queens — Kaushalya, Kaikeyi and Sumitra — but no children.
+📖 The Splendour of Ayodhya:
+Set on the banks of the river Sarayu, Ayodhya was a magnificent and prosperous city — wide roads, tall golden buildings, and a happy, contented population. King Dasharatha, a descendant of the illustrious Ikshvaku dynasty, was just, mighty and learned in the scriptures. He had three queens — Kaushalya (the chief queen), Kaikeyi (his most beloved, a princess of Kaikeya) and Sumitra.
 
-Sage Rishyashringa performed the Putrakameshti Yagna (a sacred fire ritual for sons). Divine kheer (sweet rice pudding) emerged from the fire.
+👑 Dasharatha's Sorrow:
+Despite all his wealth and power, King Dasharatha remained childless — the greatest grief of his life. According to scripture, without a son, a lineage cannot continue, ancestral rites cannot be performed, and the gates of liberation remain closed. As old age drew near, this worry consumed him day and night.
 
-From Kaushalya was born Rama; from Kaikeyi, Bharata; and from Sumitra, Lakshmana and Shatrughna.
+🔥 The Putrakameshti Yagna:
+On the advice of his minister Sumantra, Dasharatha invited the sage Rishyashringa, renowned for his austerity and virtue. A grand sacrificial hall was built on the banks of the Sarayu, and with the guidance of Guru Vashishtha and other sages, an Ashvamedha Yagna followed by the "Putrakameshti Yagna" (a sacred fire ritual for sons) was performed.
 
-🏹 Key Message: Sincere devotion and sacred practice fulfil all righteous desires.`
+At the culmination of the ritual, a radiant divine being emerged from the sacrificial fire, his body glowing like flame itself. He held out a great golden vessel of sacred kheer (sweet rice pudding) and declared: "O King, this divine offering is sent by the gods themselves. Feed it to your queens, and you shall be blessed with excellent sons."
+
+🎁 The Birth of Four Sons:
+Dasharatha distributed the kheer among his queens — half to Kaushalya, half of the remainder to Kaikeyi, and the rest, given twice over, to Sumitra. In due time, on the auspicious ninth day of the bright half of Chaitra, under the Punarvasu nakshatra and Karka ascendant —
+
+• From Kaushalya was born Rama — the full incarnation of Lord Vishnu
+• From Kaikeyi was born Bharata
+• From Sumitra were born the twins Lakshmana and Shatrughna
+
+The entire city of Ayodhya erupted in celebration — conches and drums sounded, lamps were lit in every home, the gods showered flowers from the heavens, and gandharvas sang while apsaras danced.
+
+🌟 The Significance of Rama's Birth:
+Rama's birth is celebrated across India to this day as "Rama Navami." He was the complete incarnation of Lord Vishnu himself, taking human form to destroy the tyranny of the demon-king Ravana and to restore righteousness (dharma) upon the earth. Shesha Naga, the divine serpent, incarnated as Lakshmana to serve Rama throughout his life.
+
+📿 Key Message: Sincere devotion, patience and heartfelt prayer are never in vain — in due time, they always bear fruit.`
     },
       { titleEn: 'Rama\'s Childhood and Education', ch: 3, title: 'राम का बचपन और गुरुकुल', content: `👶 बाल काण्ड — राम का बचपन और गुरुकुल
 
 📖 चारों राजकुमार:
-राम, लक्ष्मण, भरत और शत्रुघ्न — चारों भाइयों में अद्भुत प्रेम था। राम और लक्ष्मण, भरत और शत्रुघ्न — दो-दो के जोड़े सदा साथ रहते थे।
+राम, लक्ष्मण, भरत और शत्रुघ्न — चारों भाइयों में अद्भुत, अटूट प्रेम था। राम और लक्ष्मण एक-दूसरे की छाया के समान थे — जहाँ राम जाते, लक्ष्मण साथ होते। इसी तरह भरत और शत्रुघ्न का जोड़ा भी सदा साथ रहता। बाल्यकाल में अयोध्या के राजमहल में चारों भाई मिलकर खेलते, दौड़ लगाते और एक-दूसरे की देखभाल करते थे।
 
 🎓 गुरुकुल की शिक्षा:
-महर्षि वशिष्ठ के आश्रम में चारों राजकुमारों को शिक्षा मिली।
+यथासमय, महर्षि वशिष्ठ के आश्रम-गुरुकुल में चारों राजकुमारों का उपनयन संस्कार करवाया गया और वहीं उनकी संपूर्ण शिक्षा-दीक्षा हुई। गुरुकुल में विद्यार्थी को साधारण जीवन जीना होता — भूमि पर सोना, स्वयं भोजन बनाना-खाना, और गुरु की सेवा करना, चाहे वे राजकुमार ही क्यों न हों।
 
-राम ने सीखा:
-• वेद और शास्त्र
-• धनुर्विद्या (तीरंदाजी)
-• राजनीति और कूटनीति
-• सभी शस्त्र-विद्या
-• नीति और सदाचार
+राम ने वहाँ सीखा:
+• चारों वेद और समस्त शास्त्र — गहन अध्ययन के साथ
+• धनुर्विद्या (तीरंदाजी) — जिसमें वे शीघ्र ही निपुण हो गए
+• राजनीति, कूटनीति और शासन-कला
+• समस्त शस्त्र-विद्या — गदा, तलवार, चक्र आदि
+• नीतिशास्त्र, सदाचार और धर्म के सूक्ष्म सिद्धांत
+• संगीत और कला — जिसमें भी राम पारंगत हुए
 
 🌟 राम के बाल गुण:
-• सत्यवादी — कभी झूठ न बोलते
-• सेवाभावी — माता-पिता की सेवा में तत्पर
-• विनम्र — बड़ों का सम्मान
-• साहसी — किसी से न डरना
-• बुद्धिमान — हर समस्या का हल निकालना
+• सत्यवादी — जीवन में कभी असत्य वचन नहीं बोला
+• सेवाभावी — माता-पिता और गुरुजनों की सेवा में सदा तत्पर
+• विनम्र — बड़ों का सम्मान और छोटों के प्रति स्नेह
+• साहसी — किसी भी संकट से भयभीत न होना
+• बुद्धिमान — हर समस्या का शांत मन से समाधान निकालना
+• संयमी — इंद्रियों पर पूर्ण नियंत्रण, बाल्यकाल से ही
 
-महर्षि वशिष्ठ ने कहा — "राम जैसा शिष्य मैंने कभी नहीं देखा।"
+महर्षि वशिष्ठ प्रायः कहा करते — "राम जैसा शिष्य मैंने अपने पूरे जीवन में नहीं देखा। इसमें समस्त गुण स्वाभाविक रूप से विद्यमान हैं।"
 
 🏹 बाल राम का पराक्रम:
-एक बार बालक राम ने अयोध्या के वन में एक राक्षस को भगाया था। उनके बाण की शक्ति देखकर सब चकित रह गए।
+एक बार बालक राम ने अयोध्या के समीपवर्ती वन में एक उत्पाती राक्षस को अकेले ही भगा दिया था, जबकि वे उस समय अत्यंत छोटे थे। उनके बाण की गति और शक्ति देखकर सेनापति भी चकित रह गए। यह उनकी आने वाली महान वीरता का पहला संकेत था।
 
 🙏 माता-पिता का आशीर्वाद:
-दशरथ राम को देखकर कहते — "यह पुत्र तीनों लोकों में हमारा नाम रोशन करेगा।"
+राजा दशरथ अपने चारों पुत्रों को देखकर अत्यंत गर्वित होते, विशेषकर राम को देखकर उनका हृदय गर्व और स्नेह से भर उठता। वे प्रायः कहते — "यह पुत्र निश्चय ही तीनों लोकों में हमारा नाम रोशन करेगा।" माता कौसल्या राम को अपनी आँखों का तारा मानती थीं और उन्हें हर धार्मिक कथा सुनातीं।
 
-📿 मुख्य संदेश: शिक्षा और सदाचार से ही व्यक्ति महान बनता है। बचपन की नींव जीवन का आधार है।` ,
+📿 मुख्य संदेश: शिक्षा, अनुशासन और सदाचार से ही व्यक्ति महान बनता है। बचपन की सुदृढ़ नींव ही जीवन-भर के चरित्र का आधार बनती है — यही राम के जीवन की पहली शिक्षा है।`,
       contentEn: `🪷 Bala Kanda — Rama's Childhood and Education
 
-All four princes received their education at the hermitage of Guru Vashishtha. Rama was the most gifted of all.
+📖 The Four Princes:
+Rama, Lakshmana, Bharata and Shatrughna shared an extraordinary, unbreakable bond of brotherly love. Rama and Lakshmana were inseparable, like a form and its shadow — wherever Rama went, Lakshmana followed. Likewise, Bharata and Shatrughna remained constant companions. As children in the palace of Ayodhya, all four brothers played, ran and cared for one another with deep affection.
 
-Rama's qualities:
-• Truthful and devoted to righteousness
-• Humble and respectful to all
-• Skilled in the arts of war
-• A master of the Vedas and sacred scriptures
+🎓 Education at the Gurukul:
+In due course, the sacred thread ceremony (Upanayana) was performed for all four princes, and they received their complete education at the hermitage-gurukul of Guru Vashishtha. Life at the gurukul demanded simplicity — sleeping on the ground, cooking one's own food, and serving the teacher — regardless of royal birth.
 
-🏹 Key Message: Education and good values are what make a person truly great.`
+There, Rama mastered:
+• The four Vedas and the entire body of scripture, through deep study
+• The art of archery (Dhanurvidya), in which he quickly excelled
+• Statecraft, diplomacy and the principles of governance
+• Every branch of weaponry — the mace, the sword, the discus and more
+• Ethics (Nitishastra) and the subtle principles of dharma
+• Music and the arts, in which he also became accomplished
+
+🌟 Rama's Childhood Virtues:
+• Truthful — never once uttering a false word
+• Devoted to service — always attending to his parents and teachers
+• Humble — respectful to elders, affectionate to those younger
+• Courageous — unafraid in the face of any danger
+• Wise — solving every problem with a calm and clear mind
+• Self-disciplined — with complete mastery over his senses even as a child
+
+Sage Vashishtha often remarked — "In my entire life, I have never seen a disciple like Rama. Every virtue dwells naturally within him."
+
+🏹 The Valour of the Young Rama:
+Once, as a young boy, Rama single-handedly drove off a troublesome demon that had been terrorising a forest near Ayodhya. The speed and power of his arrow astonished even the seasoned generals of the kingdom — an early sign of the great heroism that lay ahead.
+
+🙏 A Parent's Blessing:
+King Dasharatha took immense pride in all four of his sons, but his heart swelled with special pride and affection whenever he looked upon Rama. He often said — "This son shall surely bring glory to our name across all three worlds." Queen Kaushalya cherished Rama as the light of her eyes, sharing sacred stories with him at every opportunity.
+
+📿 Key Message: It is education, discipline and righteous conduct that make a person truly great. A strong foundation in childhood shapes the character of an entire lifetime — this is the first lesson of Rama's life.`
     },
       { titleEn: 'The Arrival of Vishwamitra', ch: 4, title: 'विश्वामित्र का आगमन', content: `👶 बाल काण्ड — विश्वामित्र का आगमन
 
 📖 राक्षसों का उत्पात:
-महर्षि विश्वामित्र एक महान यज्ञ कर रहे थे। राक्षस मारीच और सुबाहु बार-बार यज्ञ में विघ्न डालते। यज्ञ-कुण्ड में हड्डियाँ और रक्त फेंकते।
+महर्षि विश्वामित्र, जो पूर्व में एक क्षत्रिय राजा थे और तपस्या के बल पर ब्रह्मर्षि पद प्राप्त किया था, अपने आश्रम में एक महान यज्ञ का अनुष्ठान कर रहे थे। किंतु रावण के दो शक्तिशाली राक्षस — मारीच और सुबाहु — बार-बार आकर यज्ञ में विघ्न डालते थे। वे यज्ञ-कुण्ड में हड्डियाँ, मांस और रक्त फेंक देते, जिससे यज्ञ अपवित्र हो जाता और वर्षों की तपस्या व्यर्थ चली जाती।
 
 👤 विश्वामित्र की माँग:
-विश्वामित्र सीधे दशरथ के दरबार में आए और कहा — "मुझे राम चाहिए। मेरे यज्ञ की रक्षा के लिए।"
+अंततः तंग आकर विश्वामित्र सीधे अयोध्या के राजदरबार में पधारे। राजा दशरथ ने उनका भव्य स्वागत किया और पूछा कि वे किस प्रयोजन से पधारे हैं। विश्वामित्र ने कहा — "हे राजन्! मुझे अपने यज्ञ की रक्षा के लिए तुम्हारे पुत्र राम की आवश्यकता है। उसे मेरे साथ भेज दो।"
 
-दशरथ ने मना किया — "राम तो अभी बच्चा है। मैं स्वयं आता हूँ अपनी सेना के साथ।"
+यह सुनकर दशरथ अत्यंत व्याकुल हो उठे — "मुनिवर, राम अभी बालक है, मात्र सोलह वर्ष का। वह राक्षसों से कैसे लड़ेगा? मैं स्वयं अपनी संपूर्ण सेना के साथ आपके यज्ञ की रक्षा हेतु चलता हूँ।"
 
-विश्वामित्र ने कहा — "राम इस काम के लिए भेजे गए हैं। यह उनका धर्म है।"
-
-गुरु वशिष्ठ ने दशरथ को समझाया — "राम को जाने दो।"
+विश्वामित्र क्रोधित हो उठे और बोले — "हे राजन्! यदि तुम अपना वचन तोड़ोगे, तो इक्ष्वाकु वंश का नाम कलंकित होगा। राम इसी कार्य के लिए भेजे गए हैं — यह उनका नियत धर्म है।" तभी गुरु वशिष्ठ ने आगे बढ़कर दशरथ को समझाया — "हे राजन्! विश्वामित्र साधारण मुनि नहीं, वे स्वयं ब्रह्मर्षि हैं। राम को उनके साथ जाने दो, यह राम के हित में ही है।" दशरथ ने भारी मन से अनुमति दे दी।
 
 🏹 राम-लक्ष्मण की वन-यात्रा:
-राम और लक्ष्मण विश्वामित्र के साथ चल पड़े। रास्ते में:
+राम और लक्ष्मण धनुष-बाण लेकर विश्वामित्र के साथ वन की ओर चल पड़े। मार्ग में कई घटनाएँ घटीं:
 
-• ताड़का (एक भयंकर राक्षसी) को राम ने मारा
-• विश्वामित्र ने राम को दिव्यास्त्र दिए
-• बलमोचनी और अतिबला विद्या सिखाई
+• विश्वामित्र ने राम को "बला" और "अतिबला" नामक दो दिव्य विद्याएँ सिखाईं, जिनसे भूख-प्यास-थकान कभी न लगती और सौंदर्य में कभी कमी न आती
+• ताड़का नामक एक भयंकर राक्षसी, जो यक्ष सुकेतु की पुत्री थी परंतु श्राप के कारण राक्षसी बन गई थी, उस वन में उत्पात मचाती थी — विश्वामित्र की आज्ञा से राम ने संकोचपूर्वक (क्योंकि वह स्त्री थी) परंतु धर्मानुसार उसका वध किया
+• आगे विश्वामित्र ने राम को अनेक दिव्यास्त्र प्रदान किए — दण्डचक्र, धर्मचक्र, इंद्रास्त्र, वज्रास्त्र आदि, जिनका आह्वान-विसर्जन विधि भी सिखाई
 
 🌟 राक्षसों का वध:
-मारीच को राम ने बाण से दूर समुद्र में फेंका। सुबाहु का वध किया। यज्ञ सम्पन्न हुआ।
+यज्ञभूमि पर पहुँचकर, जैसे ही यज्ञ आरंभ हुआ, आकाश में मारीच और सुबाहु प्रकट हुए, यज्ञ-कुण्ड में रक्त बरसाने का प्रयत्न करने लगे। राम ने तत्क्षण एक विशेष अस्त्र से मारीच को इतने वेग से मारा कि वह सैकड़ों योजन दूर समुद्र में जा गिरा (परंतु मरा नहीं, यही मारीच आगे चलकर सुवर्ण-मृग बनकर लौटेगा)। सुबाहु को राम ने एक दूसरे बाण से वहीं मार डाला। शेष राक्षस-सेना को लक्ष्मण ने खदेड़ दिया। यज्ञ निर्विघ्न सम्पन्न हुआ।
 
-विश्वामित्र ने कहा — "राम! तुम धन्य हो। तुम्हारे बाण की गति सूर्य के समान है।"
+विश्वामित्र अत्यंत प्रसन्न होकर बोले — "हे राम! तुम धन्य हो। तुम्हारे बाण की गति सूर्य के समान तीव्र है। संसार तुम्हारे पराक्रम को सदा स्मरण रखेगा।"
 
-📿 मुख्य संदेश: गुरु की आज्ञा का पालन ही सर्वोच्च धर्म है। राम ने पिता की आज्ञा और गुरु की सेवा दोनों निभाए।` ,
+📿 मुख्य संदेश: गुरु की आज्ञा का पालन ही सर्वोच्च धर्म है। राम ने पिता की आज्ञा और गुरु की सेवा — दोनों को समान आदर के साथ निभाया, यह दिखाकर कि सच्चा धर्म कभी परस्पर विरोधी नहीं होता।`,
       contentEn: `🪷 Bala Kanda — The Arrival of Vishwamitra
 
-Sage Vishwamitra came to King Dasharatha and asked for Rama to protect his yagna from demons.
+📖 The Menace of the Demons:
+Sage Vishwamitra — once a Kshatriya king who had attained the rank of Brahmarishi through great austerity — was performing a sacred yagna at his hermitage. But two powerful demons under Ravana's command, Maricha and Subahu, repeatedly disrupted it, hurling bones, flesh and blood into the sacrificial fire, defiling years of penance in an instant.
 
-Dasharatha refused at first. Vishwamitra said — Rama belongs to the world more than to you. Dasharatha relented.
+👤 Vishwamitra's Request:
+At last, Vishwamitra travelled to the royal court of Ayodhya. King Dasharatha welcomed him warmly and asked the purpose of his visit. Vishwamitra replied: "O King, I require your son Rama to protect my yagna. Send him with me."
 
-Rama and Lakshmana went to the forest. Rama slew the demoness Tadaka. Vishwamitra bestowed upon him divine celestial weapons.
+Dasharatha was deeply troubled. "Sage, Rama is but a boy of sixteen — how can he face demons? Let me come myself, with my entire army, to protect your sacrifice."
 
-🏹 Key Message: Obedience to the Guru is the highest duty.`
+Vishwamitra grew stern: "If you break your word, O King, the honour of the Ikshvaku dynasty will be tarnished. Rama has been sent into this world precisely for such a purpose — it is his destined duty." Guru Vashishtha then stepped forward and reassured Dasharatha: "Vishwamitra is no ordinary sage — he is a Brahmarishi himself. Let Rama go with him; it is for Rama's own good." Heavy-hearted, Dasharatha granted his permission.
+
+🏹 The Forest Journey of Rama and Lakshmana:
+Bow and arrows in hand, Rama and Lakshmana set off with Vishwamitra toward the forest. Along the way:
+
+• Vishwamitra taught Rama two divine sciences called "Bala" and "Atibala," which freed him from hunger, thirst and fatigue, and preserved his youthful radiance
+• A fearsome demoness named Tadaka — once a yakshini cursed into demonhood — terrorised the forest; on Vishwamitra's instruction, Rama reluctantly (since she was a woman) but righteously slew her
+• Vishwamitra then bestowed upon Rama an array of celestial weapons — the Dandachakra, Dharmachakra, Indrastra, Vajrastra and more — along with the sacred knowledge of how to invoke and withdraw them
+
+🌟 The Slaying of the Demons:
+At the site of the sacrifice, the moment the ritual began, Maricha and Subahu appeared in the sky, attempting once again to defile it with blood. Rama instantly struck Maricha with a special arrow, hurling him hundreds of yojanas away into the ocean — he survived, and would later return in the form of the golden deer. With a second arrow, Rama slew Subahu on the spot, while Lakshmana drove off the remaining demon horde. The yagna was completed without further disruption.
+
+Overjoyed, Vishwamitra declared: "O Rama, you are blessed indeed. The speed of your arrows rivals the sun itself. The world shall forever remember your valour."
+
+📿 Key Message: Obedience to one's teacher is the highest form of duty. Rama honoured both his father's command and his guru's service with equal reverence — showing that true dharma never truly conflicts with itself.`
     },
       { titleEn: 'Sita\'s Swayamvara — The Breaking of Shiva\'s Bow', ch: 5, title: 'सीता स्वयंवर — शिव धनुष भंग', content: `👶 बाल काण्ड — सीता स्वयंवर — शिव धनुष भंग
 
 📖 जनकपुर की यात्रा:
-विश्वामित्र राम और लक्ष्मण को जनकपुर ले गए। वहाँ राजा जनक की पुत्री सीता का स्वयंवर था।
+यज्ञ की सफल समाप्ति के बाद, विश्वामित्र राम और लक्ष्मण को मिथिला (जनकपुर) की ओर ले गए, जहाँ राजा जनक की पुत्री सीता का स्वयंवर होने वाला था। मार्ग में विश्वामित्र ने उन्हें अहिल्या के उद्धार की कथा भी सुनाई — कैसे गौतम ऋषि के श्राप से शिला बनी अहिल्या राम के चरण-स्पर्श मात्र से पुनः जीवित हो उठी।
+
+सीता का जन्म भी अद्भुत था — राजा जनक को हल जोतते समय भूमि से एक कन्या प्राप्त हुई थी, इसीलिए उनका नाम "सीता" (हल की रेखा) पड़ा। जनक ने उन्हें अपनी पुत्री के रूप में स्वीकार किया, और सीता को "जानकी" और "भूमिजा" नामों से भी जाना जाता है।
 
 🏹 शिव का धनुष:
-राजा जनक के पास भगवान शिव का एक अद्भुत धनुष था — "पिनाक"। इसे उठाना तो दूर, हिला पाना भी असंभव था।
+राजा जनक के पास भगवान शिव का एक अद्भुत, अत्यंत भारी धनुष था, जिसे "पिनाक" कहा जाता था — यह धनुष जनक के पूर्वजों को स्वयं देवाधिदेव शिव ने प्रसन्न होकर प्रदान किया था। यह इतना विशाल और भारी था कि इसे उठाना तो दूर, हिला पाना भी सामान्य मनुष्यों के लिए असंभव था — इसे ढोने के लिए पाँच हज़ार बलिष्ठ पुरुष लगते थे, आठ पहियों वाली विशाल पेटी में रखा जाता था।
 
-जनक की प्रतिज्ञा थी — "जो इस धनुष पर प्रत्यंचा चढ़ाएगा, उससे सीता का विवाह होगा।"
+राजा जनक ने प्रतिज्ञा की थी — "जो भी वीर इस धनुष पर प्रत्यंचा चढ़ाएगा, उसी से मेरी पुत्री सीता का विवाह होगा।" यह प्रतिज्ञा इसलिए की गई थी क्योंकि जनक चाहते थे कि सीता का विवाह किसी असाधारण पराक्रमी वीर से ही हो।
 
-देश-देश के राजा आए। एक के बाद एक सभी ने कोशिश की और हार गए। कोई धनुष हिला भी न सका।
+देश-विदेश के अनेक राजा और राजकुमार स्वयंवर में पधारे। एक के बाद एक सभी ने बारी-बारी से प्रयत्न किया और असफल होकर लज्जित हुए — कोई धनुष को उसके स्थान से हिला भी नहीं सका। रावण भी एक बार इस धनुष को उठाने का प्रयास कर चुका था और असफल रहा था।
 
 🌟 राम का पराक्रम:
-विश्वामित्र के आदेश पर राम आगे बढ़े। उन्होंने सहज भाव से उस विशाल धनुष को उठाया।
+जब सभी राजा असफल हो गए, तो राजा जनक निराश होकर बोले — "क्या इस पृथ्वी पर कोई ऐसा वीर नहीं जो इस धनुष को उठा सके? तो फिर यह पृथ्वी वीरविहीन है।" यह सुनकर विश्वामित्र ने राम की ओर संकेत करते हुए कहा — "हे राम! उठो, और इस धनुष को देखो।"
 
-राम ने प्रत्यंचा चढ़ाई — और धनुष टूट गया! उसकी प्रचंड ध्वनि से धरती काँप उठी। आकाश में देवताओं ने फूल बरसाए।
+राम ने गुरु की अनुमति और आशीर्वाद लेकर, अत्यंत सहज और शांत भाव से उस विशाल धनुष के समीप पहुँचे, उसे प्रणाम किया, और सहजता से उठा लिया — मानो कोई साधारण वस्तु उठा रहे हों। समस्त सभा स्तब्ध रह गई।
+
+राम ने प्रत्यंचा चढ़ाना आरंभ किया — और जैसे ही उन्होंने बल लगाया, वह प्राचीन दिव्य धनुष बीच से टूट गया! उसकी प्रचंड ध्वनि से समस्त धरती काँप उठी, पर्वत हिल गए, और उपस्थित अनेक राजा भय से मूर्छित होकर गिर पड़े। आकाश में देवताओं ने हर्षित होकर पुष्पवर्षा की और दुंदुभियाँ बजाईं।
 
 💕 राम-सीता का विवाह:
-जनक ने हर्षित होकर कहा — "राम ने धनुष तोड़ा। अब सीता राम की हैं।"
+राजा जनक अत्यंत हर्षित होकर बोले — "राम ने धनुष तोड़ा है! अब सीता राम की ही होंगी।" उन्होंने तुरंत अयोध्या राजा दशरथ को संदेशवाहक भेजे। दशरथ अपने गुरु वशिष्ठ और समस्त प्रजा के साथ मिथिला पधारे।
 
-सीता ने राम के गले में वरमाला डाली। चारों भाइयों का विवाह एक साथ हुआ:
-• राम — सीता से
-• लक्ष्मण — उर्मिला से
-• भरत — माण्डवी से
-• शत्रुघ्न — श्रुतकीर्ति से
+विधिवत विवाह-मंडप सजाया गया। सीता ने स्वयं राम के गले में वरमाला डाली। इसी शुभ अवसर पर जनक ने प्रस्ताव रखा कि चारों भाइयों का विवाह एक साथ ही सम्पन्न हो — 
 
-परशुराम का क्रोध:
-विवाह के बाद परशुराम आए, बहुत क्रोधित थे। राम ने विनम्रता से उनका क्रोध शांत किया।
+• राम — सीता से (जनक की पुत्री)
+• लक्ष्मण — उर्मिला से (जनक की दूसरी पुत्री)
+• भरत — माण्डवी से (जनक के भाई कुशध्वज की पुत्री)
+• शत्रुघ्न — श्रुतकीर्ति से (कुशध्वज की दूसरी पुत्री)
 
-📿 मुख्य संदेश: राम और सीता का मिलन ब्रह्मांड की नियति थी। धर्म के लिए पराक्रम — यही क्षत्रिय का धर्म है।` ,
+⚔️ परशुराम का क्रोध:
+विवाह सम्पन्न होकर बारात अयोध्या लौट रही थी, तभी मार्ग में भगवान परशुराम प्रकट हुए — वे शिव-धनुष टूटने का समाचार सुनकर अत्यंत क्रोधित थे, क्योंकि वह धनुष उन्हीं की परंपरा से संबंधित था। उन्होंने राम को चुनौती दी कि वे अपना दूसरा दिव्य धनुष (विष्णु-धनुष) उठाकर दिखाएँ। राम ने विनम्रतापूर्वक वह धनुष भी उठा लिया और प्रत्यंचा चढ़ाकर परशुराम का तेज हर लिया, जिससे परशुराम का क्रोध शांत हो गया और उन्होंने राम को अपनी तपस्या का फल भेंट कर आशीर्वाद दिया।
+
+📿 मुख्य संदेश: राम और सीता का मिलन ब्रह्मांड की पूर्व-नियत नियति थी। धर्म की रक्षा के लिए पराक्रम दिखाना ही क्षत्रिय का सच्चा धर्म है, और विनम्रता के साथ शक्ति का प्रदर्शन ही सच्ची वीरता है।`,
       contentEn: `🪷 Bala Kanda — Sita's Swayamvara — The Breaking of Shiva's Bow
 
-At the court of King Janaka of Janakpur, a great contest was held for the hand of Sita — whoever could lift and string the great bow of Lord Shiva would win her.
+📖 The Journey to Janakpur:
+After the successful completion of the yagna, Vishwamitra led Rama and Lakshmana to Mithila (Janakpur), where King Janaka's daughter Sita's swayamvara (bridegroom-choice ceremony) was to be held. Along the way, Vishwamitra also told them the story of Ahalya's redemption — how she, turned to stone by her husband Sage Gautama's curse, was restored to life by the mere touch of Rama's foot.
 
-All the assembled kings failed. Vishwamitra presented Rama. Rama lifted the bow, drew the string — and the bow snapped in two.
+Sita's own birth was equally extraordinary — King Janaka had found her as an infant in a furrow while ploughing a sacrificial field, and so named her "Sita" (furrow). He raised her as his own daughter; she is also known as "Janaki" and "Bhumija" (daughter of the earth).
 
-Sita placed the wedding garland around Rama's neck. The marriage of Rama and Sita was celebrated, and all four brothers were wed.
+🏹 Shiva's Bow:
+King Janaka possessed an extraordinary, immensely heavy bow of Lord Shiva called "Pinaka" — a gift bestowed upon his ancestors by Shiva himself. It was so massive that merely moving it required five thousand strong men and an eight-wheeled cart; lifting it was considered utterly impossible for any ordinary man.
 
-🏹 Key Message: The union of Rama and Sita is the eternal symbol of ideal marriage.`
+King Janaka had vowed: "Whichever hero can string this bow shall marry my daughter Sita." He had made this vow because he wished for Sita to marry a truly extraordinary and mighty warrior. Even Ravana himself had once attempted to lift this bow and failed.
+
+Kings and princes from many lands attended the swayamvara. One after another, they tried and failed, unable even to shift the bow from its place — a source of great humiliation.
+
+🌟 Rama's Feat of Strength:
+When all had failed, King Janaka lamented: "Is there truly no hero on this earth who can lift this bow? Then this earth is bereft of heroes." Hearing this, Vishwamitra gestured toward Rama: "Rise, Rama, and behold this bow."
+
+With his guru's permission and blessing, Rama approached the massive bow calmly and effortlessly, bowed to it in reverence, and lifted it as though it were an ordinary object. The entire assembly fell silent in astonishment.
+
+As Rama began to string the bow, the moment he applied his strength, the ancient divine bow snapped in two! Its thunderous sound shook the very earth, the mountains trembled, and several kings fainted from fear. In the heavens, the gods rejoiced, showering flowers and sounding celestial drums.
+
+💕 The Marriage of Rama and Sita:
+Overjoyed, King Janaka declared: "Rama has broken the bow — Sita is now his." He immediately sent messengers to King Dasharatha in Ayodhya, who arrived in Mithila with Guru Vashishtha and his entire retinue.
+
+A grand wedding pavilion was prepared, and Sita herself placed the wedding garland around Rama's neck. On this same auspicious occasion, Janaka proposed that all four brothers be married together —
+
+• Rama — to Sita (Janaka's daughter)
+• Lakshmana — to Urmila (Janaka's second daughter)
+• Bharata — to Mandavi (daughter of Janaka's brother Kushadhwaja)
+• Shatrughna — to Shrutakirti (Kushadhwaja's second daughter)
+
+⚔️ The Wrath of Parashurama:
+As the wedding procession returned to Ayodhya, Lord Parashurama suddenly appeared on the road, enraged upon hearing that Shiva's bow had been broken — for that bow was tied to his own lineage of teachers. He challenged Rama to string his other divine bow, the bow of Vishnu. Rama humbly lifted this bow as well and drew its string, drawing away Parashurama's spiritual radiance in the process. Parashurama's anger subsided, and he blessed Rama, offering him the merit of his own long penance.
+
+📿 Key Message: The union of Rama and Sita was destined by the cosmos itself. Showing valour in defence of dharma is the true duty of a Kshatriya — and displaying strength with humility is the mark of a true hero.`
     },
     ]
   },
@@ -5837,6 +6044,410 @@ function showGarudaChapters() {
 
 function showGarudaReading(title, content) { showChapterContent('🦅', title, content); }
 
+// ========== CHAAR VEDA ==========
+const vedasData = [
+  {
+    key: 'rigveda', icon: '📕', title: 'ऋग्वेद', en: 'Rigveda — The Veda of Hymns',
+    desc: 'सबसे प्राचीन वेद — देवताओं की स्तुति के सूक्त',
+    descEn: 'The oldest Veda — hymns of praise to the gods',
+    content: `📕 ऋग्वेद — सबसे प्राचीन वेद
+
+📖 परिचय:
+ऋग्वेद चारों वेदों में सबसे प्राचीन और सबसे महत्वपूर्ण माना जाता है। "ऋक्" का अर्थ है स्तुति-मंत्र। यह मुख्यतः देवी-देवताओं (अग्नि, इंद्र, वरुण, सूर्य, सोम, उषा आदि) की स्तुति में रचे गए मंत्रों का विशाल संग्रह है। विद्वानों के अनुसार इसकी रचना लगभग 1500-1200 ईसा पूर्व हुई थी, और यह संस्कृत भाषा की सबसे प्राचीन उपलब्ध रचना मानी जाती है।
+
+📜 संरचना:
+• 10 मंडल (खंड/अध्याय)
+• 1028 सूक्त (स्तुति-समूह)
+• लगभग 10,600 मंत्र (ऋचाएँ)
+• मंडल 2 से 7 तक — "पारिवारिक मंडल" कहलाते हैं, जो प्राचीन ऋषि-कुलों (गृत्समद, विश्वामित्र, वामदेव, अत्रि, भरद्वाज, वसिष्ठ) द्वारा रचित हैं
+• मंडल 1, 8, 9, 10 — बाद में जोड़े गए और अधिक विषय-विविधता लिए हुए हैं
+• मंडल 9 पूरी तरह सोम देवता को समर्पित है
+
+🕉️ प्रमुख देवता:
+• इंद्र — वर्षा, युद्ध और शक्ति के देवता (सबसे अधिक स्तुत, लगभग 250 सूक्त)
+• अग्नि — यज्ञ के माध्यम, देवताओं और मनुष्यों के बीच सेतु (लगभग 200 सूक्त)
+• वरुण — नैतिकता, जल और ब्रह्मांडीय नियम (ऋत) के रक्षक
+• सूर्य व उषा — प्रकाश और नई भोर के प्रतीक
+• सोम — दिव्य रस, जो यज्ञ में अर्पित होता है
+• मरुत्, अश्विनीकुमार, विष्णु, रुद्र — अन्य महत्वपूर्ण देवता, जिनका महत्व बाद के काल में और बढ़ा
+
+✨ गायत्री मंत्र (मंडल ३, सूक्त ६२, मंत्र १०):
+"ॐ भूर्भुवः स्वः तत्सवितुर्वरेण्यं
+भर्गो देवस्य धीमहि धियो यो नः प्रचोदयात्॥"
+
+अर्थ: हम उस सूर्यदेव (सवितृ) के दिव्य तेज का ध्यान करते हैं, जो हमारी बुद्धि को सन्मार्ग की ओर प्रेरित करें। यह मंत्र ऋषि विश्वामित्र द्वारा रचित माना जाता है और इसे "वेद माता" कहा जाता है। संध्या-वंदन में आज भी यह मंत्र प्रतिदिन तीन बार (प्रातः, मध्याह्न, सायं) जपा जाता है।
+
+🌌 पुरुष सूक्त (मंडल १०, सूक्त ९०):
+यह सूक्त सृष्टि की उत्पत्ति का वर्णन करता है — कि किस प्रकार विराट पुरुष (परमात्मा) के यज्ञ से सम्पूर्ण सृष्टि, वर्ण-व्यवस्था और देवता उत्पन्न हुए।
+"सहस्रशीर्षा पुरुषः सहस्राक्षः सहस्रपात्।
+स भूमिं विश्वतो वृत्वात्यतिष्ठद्दशाङ्गुलम्॥"
+अर्थ: उस पुरुष (परमात्मा) के हजारों सिर, हजारों आँखें और हजारों पैर हैं — वह सम्पूर्ण पृथ्वी को घेर कर भी दस अंगुल ऊपर तक व्याप्त है, अर्थात् वह सर्वव्यापी होते हुए भी सृष्टि से परे भी है।
+
+🌑 नासदीय सूक्त (मंडल १०, सूक्त १२९):
+विश्व-साहित्य के सबसे प्राचीन दार्शनिक सूक्तों में से एक, जो सृष्टि से पहले की अवस्था पर गहन चिंतन करता है:
+"नासदासीन्नो सदासीत्तदानीं नासीद्रजो नो व्योमा परो यत्।"
+अर्थ: उस समय न सत् था, न असत् था, न रज (अंतरिक्ष) था, न उससे परे आकाश था...
+यह सूक्त अंततः स्वीकार करता है कि सृष्टि का रहस्य स्वयं परमात्मा भी पूर्णतः नहीं जानते — "को अद्धा वेद, क इह प्र वोचत्" (कौन वास्तव में जानता है, कौन यहाँ बता सकता है?) — यह अद्वितीय बौद्धिक विनम्रता प्रदर्शित करता है और आधुनिक विज्ञान के भी निकट माना जाता है।
+
+🙏 एकं सत् — सनातन सहिष्णुता की नींव (मंडल १, सूक्त १६४, मंत्र ४६):
+"इन्द्रं मित्रं वरुणमग्निमाहुरथो दिव्यः स सुपर्णो गरुत्मान्।
+एकं सद्विप्रा बहुधा वदन्ति अग्निं यमं मातरिश्वानमाहुः॥"
+अर्थ: विद्वान लोग उसी एक सत्य को इंद्र, मित्र, वरुण, अग्नि कहते हैं; वही दिव्य पक्षी गरुत्मान भी है — सत्य एक ही है, विद्वान उसे भिन्न-भिन्न नामों से पुकारते हैं। यही वाक्य सनातन धर्म की उस मूल भावना को दर्शाता है जो सभी उपासना-पद्धतियों को एक ही सत्य की ओर जाने वाले मार्ग मानती है।
+
+🌸 अन्य उल्लेखनीय सूक्त:
+• हिरण्यगर्भ सूक्त (मंडल १०.१२१) — "को देवाय हविषा विधेम" अर्थात् हम किस देवता को हवि अर्पित करें — एक अज्ञात सर्वोच्च सत्ता की खोज, हर मंत्र के अंत में यही प्रश्न दोहराया जाता है
+• नदी सूक्त (मंडल १०.७५) — सप्त सिंधु (सिंधु, सरस्वती, गंगा आदि) और भारतीय नदियों का भूगोल-ऐतिहासिक वर्णन, जो प्राचीन भारत के भूगोल को समझने में सहायक है
+• विवाह सूक्त (मंडल १०.८५) — सूर्या और सोम के विवाह के माध्यम से हिंदू विवाह संस्कार की उत्पत्ति, आज भी विवाह के कई मंत्र यहीं से लिए जाते हैं
+• दान स्तुति (मंडल १०.११७) — दान और उदारता के महत्व पर सूक्त, "मोघमन्नं विन्दते अप्रचेताः" (जो अकेला खाता है और साझा नहीं करता, वह पाप का भागी है)
+
+📚 ब्राह्मण, आरण्यक व उपनिषद परंपरा:
+ऋग्वेद से जुड़े ऐतरेय ब्राह्मण और कौषीतकि ब्राह्मण यज्ञ-विधियों की व्याख्या करते हैं, जबकि ऐतरेय उपनिषद आत्म-ज्ञान की गहन चर्चा करता है — इसी में प्रसिद्ध महावाक्य "प्रज्ञानं ब्रह्म" (चेतना ही ब्रह्म है) आता है, जो चार महावाक्यों में से एक है।
+
+🪔 सांस्कृतिक व ऐतिहासिक महत्व:
+ऋग्वेद न केवल धार्मिक ग्रंथ है, बल्कि प्राचीन भारत के समाज, भूगोल, खगोलशास्त्र, वनस्पति-विज्ञान और भाषा-विज्ञान का भी अमूल्य स्रोत है। इसकी मौखिक परंपरा (श्रुति) हजारों वर्षों तक बिना लिपि के, केवल स्मरण-शक्ति के आधार पर, अत्यंत सटीकता के साथ सुरक्षित रखी गई — पद-पाठ, क्रम-पाठ और घन-पाठ जैसी विशेष पाठ-पद्धतियाँ इसके लिए विकसित की गईं। इसे यूनेस्को द्वारा "वर्ल्ड मेमोरी रजिस्टर" में सम्मिलित किया गया है।`,
+    contentEn: `📕 Rigveda — The Oldest Veda
+
+📖 Introduction:
+The Rigveda is the oldest and most significant of the four Vedas. "Rik" means a verse of praise. It is a vast collection of hymns composed in honour of deities such as Agni, Indra, Varuna, Surya and Ushas. Scholars date its composition to roughly 1500–1200 BCE, making it the oldest surviving composition in the Sanskrit language.
+
+📜 Structure:
+• 10 Mandalas (books)
+• 1,028 Suktas (hymn-groups)
+• Around 10,600 mantras (verses)
+• Mandalas 2–7 are the "family books," composed by ancient sage-lineages (Grtsamada, Vishwamitra, Vamadeva, Atri, Bharadvaja, Vasishtha)
+• Mandalas 1, 8, 9, 10 were added later and cover broader themes
+• Mandala 9 is dedicated entirely to Soma
+
+🕉️ Key Deities:
+• Indra — god of rain, war and strength (most frequently praised, roughly 250 hymns)
+• Agni — the sacrificial fire, mediator between gods and humans (roughly 200 hymns)
+• Varuna — guardian of cosmic order (Rita), morality and water
+• Surya and Ushas — symbols of light and the new dawn
+• Soma — the divine offering used in sacrifices
+• Maruts, Ashvins, Vishnu, Rudra — other important deities who gained greater prominence in later periods
+
+✨ The Gayatri Mantra (Mandala 3, Sukta 62, verse 10):
+"Om Bhur Bhuvah Swah, Tat Savitur Varenyam,
+Bhargo Devasya Dheemahi, Dhiyo Yo Nah Prachodayat"
+
+Meaning: We meditate on the divine radiance of the Sun-god (Savitr), may it inspire our intellect toward the righteous path. Attributed to sage Vishwamitra, it is revered as the "Mother of the Vedas" and is still recited three times daily (morning, noon, evening) during Sandhya Vandana.
+
+🌌 Purusha Sukta (Mandala 10, Sukta 90):
+Describes the origin of creation — how the entire universe, the social order and the gods emerged from the cosmic sacrifice of the Purusha (the primeval being):
+"Sahasra-sheersha Purushah, Sahasraksha Sahasrapat,
+Sa Bhumim Vishvato Vritva Atyatishthad Dashangulam"
+Meaning: That Being has a thousand heads, a thousand eyes, a thousand feet — encompassing the whole earth, yet extending ten fingers' breadth beyond it, signifying that though omnipresent within creation, the Divine also transcends it.
+
+🌑 Nasadiya Sukta (Mandala 10, Sukta 129):
+One of the world's oldest philosophical hymns, contemplating the state before creation:
+"Na asad aseen no sad aseet tadaneem, na aseed rajo no vyoma paro yat"
+Meaning: Then there was neither non-existence nor existence, no realm of space, nor sky beyond it...
+Remarkably, it concludes with "Ko addha veda, ka iha pra vochat" (Who truly knows? Who can declare it here?) — an astonishing display of intellectual humility, often compared to modern scientific inquiry.
+
+🙏 "Truth Is One" — The Root of Sanatan Tolerance (Mandala 1, Sukta 164, verse 46):
+"Indram Mitram Varunam Agnim Ahuh, Atho Divyah Sa Suparno Garutman,
+Ekam Sad Vipra Bahudha Vadanti, Agnim Yamam Matarishvanam Ahuh"
+Meaning: The wise call the one truth by many names — Indra, Mitra, Varuna, Agni, and even the divine bird Garutman. Truth is one; the wise simply call it differently. This single line reflects the core Sanatan belief that all paths of worship lead to the same ultimate truth.
+
+🌸 Other Notable Hymns:
+• Hiranyagarbha Sukta (10.121) — repeatedly asks "Kasmai devaaya havisha vidhema" (To which god shall we offer oblation?) — a search for an unknown supreme power, with the refrain repeated after each verse
+• Nadi Sukta (10.75) — a geographic hymn describing the Sapta Sindhu (Indus, Saraswati, Ganga and other rivers), invaluable for understanding ancient Indian geography
+• Vivaha Sukta (10.85) — describes the marriage of Surya and Soma, the origin of the Hindu marriage ritual; many of its verses are still recited at weddings today
+• Dana Stuti (10.117) — a hymn on charity and generosity: "Moghamannam vindate aprachetah" (One who eats alone without sharing partakes only in sin)
+
+📚 The Brahmana, Aranyaka and Upanishad Tradition:
+The Aitareya Brahmana and Kaushitaki Brahmana, associated with the Rigveda, explain ritual procedure, while the Aitareya Upanishad offers a profound discussion of self-knowledge — containing the famous Mahavakya "Prajnanam Brahma" (Consciousness is Brahman), one of the four great Upanishadic declarations.
+
+🪔 Cultural and Historical Significance:
+Beyond religion, the Rigveda is an invaluable source for the society, geography, astronomy, botany and linguistics of ancient India. Its oral tradition (Shruti) was preserved with astonishing precision for thousands of years without a script, purely through memory — special recitation methods such as Pada-patha, Krama-patha and Ghana-patha were developed to safeguard its accuracy. UNESCO has included it in the "Memory of the World Register."`
+  },
+  {
+    key: 'yajurveda', icon: '📗', title: 'यजुर्वेद', en: 'Yajurveda — The Veda of Rituals',
+    desc: 'यज्ञ-कर्मकांड की विधियाँ और मंत्र',
+    descEn: 'Procedures and mantras for Vedic sacrifice',
+    content: `📗 यजुर्वेद — कर्मकांड का वेद
+
+📖 परिचय:
+यजुर्वेद में यज्ञ करने की विधियाँ, नियम और उनके साथ बोले जाने वाले मंत्र संकलित हैं। "यजुष्" का अर्थ है यज्ञ-कर्म से जुड़ा गद्यात्मक मंत्र। जहाँ ऋग्वेद स्तुति-प्रधान है, वहीं यजुर्वेद क्रिया-प्रधान है — यह पुरोहितों (विशेषकर अध्वर्यु) के लिए यज्ञ के प्रत्येक चरण का व्यावहारिक मार्गदर्शक है, जिसमें वेदी निर्माण से लेकर आहुति तक की हर क्रिया विस्तार से बताई गई है।
+
+📜 संरचना — दो प्रमुख शाखाएँ:
+• शुक्ल यजुर्वेद (वाजसनेयी संहिता) — 40 अध्याय, मंत्र स्पष्ट व पृथक रूप में, याज्ञवल्क्य ऋषि से संबद्ध, माध्यंदिन व काण्व दो उप-शाखाएँ
+• कृष्ण यजुर्वेद (तैत्तिरीय संहिता) — मंत्र और उनकी गद्यात्मक व्याख्या मिश्रित रूप में, वैशम्पायन परंपरा से संबद्ध
+• पौराणिक कथा के अनुसार याज्ञवल्क्य ने अपने गुरु वैशम्पायन से रुष्ट होकर पहले सीखा हुआ ज्ञान वमन कर दिया, जिसे अन्य शिष्यों ने तित्तिर पक्षी बनकर ग्रहण किया — इसीलिए कृष्ण यजुर्वेद को "तैत्तिरीय" कहा जाता है
+• दोनों शाखाओं में कालांतर में सैकड़ों उप-शाखाएँ (चरण) विकसित हुईं, जिनमें से आज केवल कुछ ही जीवित हैं
+
+🔥 यज्ञ-प्रणाली का सार:
+यजुर्वेद के अनुसार यज्ञ पाँच प्रमुख तत्वों पर आधारित है — यजमान (आयोजक), पुरोहित, हवि (आहुति सामग्री), अग्नि (माध्यम) और मंत्र (शब्द-शक्ति)। प्रत्येक यज्ञ का उद्देश्य केवल भौतिक कामना पूर्ति नहीं, बल्कि सृष्टि-चक्र (यज्ञ-वर्षा-अन्न-प्राणी) को संतुलित रखना माना गया है, जैसा गीता के अध्याय ३ में भी वर्णित है — "अन्नाद्भवन्ति भूतानि पर्जन्यादन्नसम्भवः, यज्ञाद्भवति पर्जन्यो यज्ञः कर्मसमुद्भवः।"
+
+✨ शांति मंत्र (यजुर्वेद, तैत्तिरीय उपनिषद से):
+"ॐ सह नाववतु। सह नौ भुनक्तु। सह वीर्यं करवावहै।
+तेजस्विनावधीतमस्तु मा विद्विषावहै॥
+ॐ शान्तिः शान्तिः शान्तिः॥"
+
+अर्थ: हम दोनों (गुरु-शिष्य) की साथ रक्षा हो, साथ पालन हो, हम मिलकर तेजस्वी बनें, हमारा अध्ययन तेजस्वी हो, हमारे बीच द्वेष न हो — त्रिविध ताप (आध्यात्मिक, आधिभौतिक, आधिदैविक) से शांति हो। यह मंत्र आज भी अधिकांश उपनिषद-पाठ के आरंभ में बोला जाता है।
+
+🔱 श्री रुद्रम् (कृष्ण यजुर्वेद, तैत्तिरीय संहिता):
+भगवान शिव की सबसे प्राचीन और शक्तिशाली स्तुति, जिसमें "नमकम्" और "चमकम्" दो भाग हैं। नमकम् में शिव के अनंत रूपों (वनों में, पर्वतों में, नदियों में, चोरों में, वैद्यों में) को नमन किया गया है, जो शिव की सर्वव्यापकता दर्शाता है। इसका प्रसिद्ध मंत्र — महामृत्युंजय मंत्र:
+"त्र्यम्बकं यजामहे सुगन्धिं पुष्टिवर्धनम्।
+उर्वारुकमिव बन्धनान्मृत्योर्मुक्षीय मामृतात्॥"
+अर्थ: हम त्रिनेत्रधारी शिव की उपासना करते हैं, जो सुगंध फैलाने वाले व पोषण देने वाले हैं। जैसे पका फल बेल से अपने आप अलग हो जाता है, वैसे ही हमें मृत्यु के बंधन से मुक्त कर अमरता प्रदान करें।
+
+📿 ईशावास्य उपनिषद (शुक्ल यजुर्वेद का अंतिम अध्याय):
+सबसे संक्षिप्त (केवल 18 मंत्र) परंतु सबसे गूढ़ उपनिषदों में से एक। इसका प्रारंभिक श्लोक:
+"ईशा वास्यमिदं सर्वं यत्किञ्च जगत्यां जगत्।
+तेन त्यक्तेन भुञ्जीथा मा गृधः कस्यस्विद्धनम्॥"
+अर्थ: इस चराचर जगत में जो कुछ भी है, वह सब ईश्वर से व्याप्त है — त्याग-भाव से भोग करो, किसी के धन का लोभ मत करो। महात्मा गांधी इस श्लोक को अत्यंत प्रिय मानते थे और इसे ट्रस्टीशिप के सिद्धांत का आधार बताते थे।
+
+🌾 यज्ञों के प्रकार व सामाजिक महत्व:
+यजुर्वेद में अग्निहोत्र (नित्य यज्ञ), दर्श-पूर्णमास (अमावस्या-पूर्णिमा यज्ञ), चातुर्मास्य (ऋतु-परिवर्तन यज्ञ), राजसूय (राज्याभिषेक यज्ञ), वाजपेय (शक्ति-वर्धन यज्ञ) और अश्वमेध (राष्ट्र-विस्तार यज्ञ) जैसे बड़े यज्ञों की विधियाँ विस्तार से वर्णित हैं, जो राजा और समाज के कल्याण से जुड़े थे। इनमें से कई यज्ञ पूरे समुदाय को एकत्रित करने और सामाजिक समरसता बढ़ाने का माध्यम भी थे।
+
+🕉️ तैत्तिरीय उपनिषद की शिक्षा — पंचकोश सिद्धांत:
+इसी उपनिषद में मनुष्य के पाँच कोशों (अन्नमय, प्राणमय, मनोमय, विज्ञानमय, आनंदमय) का सिद्धांत मिलता है, जो योग व वेदांत दर्शन का आधार बना। साथ ही "सत्यं वद। धर्मं चर।" (सत्य बोलो, धर्म का आचरण करो) जैसे प्रसिद्ध शिक्षा-वाक्य भी यहीं से आते हैं, जो आज भी विद्यालयों में स्नातक-समारोह के उपदेश में उद्धृत होते हैं।
+
+🙏 महत्व:
+यजुर्वेद यह सिखाता है कि कर्मकांड केवल बाह्य क्रिया नहीं, बल्कि श्रद्धा, अनुशासन और आत्मशुद्धि का माध्यम है — "कर्म" और "ज्ञान" दोनों के समन्वय की नींव यहीं से शुरू होती है, जो आगे चलकर गीता के कर्मयोग सिद्धांत में पूर्णता पाती है।`,
+    contentEn: `📗 Yajurveda — The Veda of Rituals
+
+📖 Introduction:
+The Yajurveda compiles the procedures, rules and prose mantras recited during Vedic sacrifices (yajnas). While the Rigveda is praise-oriented, the Yajurveda is action-oriented — a practical manual, chiefly for the Adhvaryu priest, detailing every stage of a ritual from constructing the altar to making offerings.
+
+📜 Structure — Two Main Branches:
+• Shukla Yajurveda (Vajasaneyi Samhita) — 40 chapters, mantras presented separately, associated with sage Yajnavalkya, with two sub-branches (Madhyandina and Kanva)
+• Krishna Yajurveda (Taittiriya Samhita) — mantras interwoven with prose explanation, associated with the Vaishampayana tradition
+• According to legend, Yajnavalkya, having quarrelled with his teacher Vaishampayana, vomited up the knowledge he had learned; other disciples took the form of partridges (Tittiri) to consume it — hence the name "Taittiriya" for the Krishna Yajurveda
+• Both branches later developed into numerous sub-schools (charanas), of which only a few survive today
+
+🔥 The Essence of the Sacrificial System:
+According to the Yajurveda, a yajna rests on five elements — the patron (yajamana), the priest, the offering (havi), fire (the medium) and mantra (the power of sound). The goal was never mere material wish-fulfilment, but sustaining the natural cycle (sacrifice–rain–grain–life), a theme echoed later in Chapter 3 of the Bhagavad Gita: "From food beings arise, from rain food is born, from sacrifice rain arises, and sacrifice is born of action."
+
+✨ The Shanti Mantra (from the Taittiriya Upanishad, Yajurveda):
+"Om Saha Naavavatu, Saha Nau Bhunaktu,
+Saha Veeryam Karavaavahai,
+Tejasvi Naavadheetamastu Maa Vidvishaavahai.
+Om Shanti Shanti Shanti"
+
+Meaning: May we be protected together, nourished together, may we work with great energy, may our study be enlightening, may there be no hostility between us — may there be peace from the three kinds of suffering. This mantra is still recited today at the start of most Upanishad readings.
+
+🔱 Shri Rudram (Krishna Yajurveda, Taittiriya Samhita):
+One of the oldest and most powerful hymns to Lord Shiva, comprising two parts — Namakam and Chamakam. The Namakam salutes Shiva's countless forms — in forests, mountains, rivers, even among thieves and physicians — expressing his omnipresence. Its most famous verse is the Mahamrityunjaya Mantra:
+"Tryambakam Yajamahe Sugandhim Pushtivardhanam,
+Urvarukamiva Bandhanan Mrityor Mukshiya Maamritat"
+Meaning: We worship the three-eyed Lord Shiva, who nourishes and spreads fragrance (of virtue). As a ripe cucumber is freed from its vine, may we be freed from death, unto immortality.
+
+📿 Ishavasya Upanishad (the final chapter of Shukla Yajurveda):
+One of the shortest (only 18 verses) yet most profound Upanishads. Its opening verse:
+"Ishaa vaasyam idam sarvam yat kincha jagatyaam jagat,
+Tena tyaktena bhunjeethaa maa gridhah kasya svid dhanam"
+Meaning: Whatever exists in this changing universe is pervaded by the Divine — enjoy through renunciation, do not covet another's wealth. Mahatma Gandhi held this verse in special regard, citing it as the basis for his principle of trusteeship.
+
+🌾 Types of Sacrifices and Their Social Role:
+The Yajurveda details major rituals such as Agnihotra (a daily fire ritual), Darsha-Purnamasa (new/full moon rites), Chaturmasya (seasonal rites), Rajasuya (royal consecration), Vajapeya (a rite for vigour) and Ashvamedha (a rite associated with the expansion of a kingdom) — many tied to royal duty and public welfare, and several served as occasions that brought entire communities together.
+
+🕉️ The Taittiriya Upanishad's Teaching — The Five Sheaths (Panchakosha):
+This Upanishad introduces the doctrine of the five sheaths of a human being (physical, vital, mental, intellectual, blissful), which became foundational to Yoga and Vedanta philosophy. It also contains the celebrated instruction "Satyam Vada, Dharmam Chara" (Speak the truth, practise righteousness) — still quoted today in graduation ceremonies at Indian institutions.
+
+🙏 Significance:
+The Yajurveda teaches that ritual is not mere external action but a vehicle for devotion, discipline and self-purification — laying the foundation for the later synthesis of karma (action) and jnana (knowledge) that reaches its fullest expression in the Bhagavad Gita's teaching of Karma Yoga.`
+  },
+  {
+    key: 'samveda', icon: '📘', title: 'सामवेद', en: 'Samveda — The Veda of Music',
+    desc: 'संगीतमय मंत्र — भारतीय संगीत का मूल स्रोत',
+    descEn: 'Musical chants — the root of Indian classical music',
+    content: `📘 सामवेद — संगीत का वेद
+
+📖 परिचय:
+सामवेद को "गान का वेद" कहा जाता है। इसके अधिकांश मंत्र (लगभग 1875 में से 1810) ऋग्वेद से ही लिए गए हैं, परंतु उन्हें एक विशेष सुर, लय और गायन-शैली ("साम गान") में प्रस्तुत किया गया है। भारतीय शास्त्रीय संगीत, विशेषकर ध्रुपद गायन-शैली, की उत्पत्ति सामवेद से मानी जाती है।
+
+📜 संरचना:
+• दो प्रमुख भाग — पूर्वार्चिक और उत्तरार्चिक
+• पूर्वार्चिक में अग्नि, इंद्र और सोम देवताओं से संबंधित मंत्र हैं, जो चार खंडों (आग्नेय, ऐन्द्र, पावमान, आरण्यक) में विभाजित हैं
+• उत्तरार्चिक यज्ञ-अनुष्ठान के क्रम के अनुसार व्यवस्थित है, जिसमें 21 अध्याय हैं
+• लगभग 1875 मंत्र, जिनमें से केवल लगभग 75 ही मौलिक (ऋग्वेद से न लिए गए) हैं
+• यज्ञ के समय उद्गातृ पुरोहित इन मंत्रों का गायन करते थे (जबकि होता ऋग्वेद और अध्वर्यु यजुर्वेद का पाठ करते थे) — तीनों मिलकर यज्ञ को पूर्ण करते थे
+
+🎵 स्वर-पद्धति की विशेषता:
+सामवेद के मंत्रों में स्वर-चिह्न (उदात्त — ऊँचा स्वर, अनुदात्त — नीचा स्वर, स्वरित — मध्यम स्वर) अंकित होते हैं, जो बताते हैं कि किस शब्द को किस सुर में गाया जाए। मंत्र गाते समय शब्दों को खींचना, दोहराना और बीच में विशेष ध्वनियाँ (जैसे "हाउ", "हा", "औहोइ") जोड़ना आम था, जिन्हें "स्तोभ" कहा जाता है। यही सप्तक (सा रे ग म प ध नि) और भारतीय राग-पद्धति की आधारशिला मानी जाती है — इसलिए सामवेद को "विश्व के प्राचीनतम संगीत-ग्रंथ" के रूप में भी देखा जाता है।
+
+📚 तीन प्रमुख शाखाएँ:
+• कौथुम शाखा — वर्तमान में सर्वाधिक प्रचलित, मुख्यतः गुजरात व उत्तर भारत में
+• राणायनीय शाखा — मुख्यतः महाराष्ट्र-कर्नाटक क्षेत्र में
+• जैमिनीय शाखा — मुख्यतः दक्षिण भारत (केरल-तमिलनाडु) में प्रचलित, जिसकी गायन-शैली अन्य दो से भिन्न मानी जाती है
+
+✨ भगवद्गीता में उल्लेख:
+भगवान श्रीकृष्ण ने गीता (अध्याय १०, श्लोक २२) में स्वयं कहा है:
+"वेदानां सामवेदोऽस्मि"
+अर्थात् — "वेदों में मैं सामवेद हूँ।" यह इस बात का प्रमाण है कि भगवान ने स्वयं इस वेद को अपनी विभूतियों में सर्वोच्च स्थान दिया — यह दर्शाता है कि भक्ति और संगीत का कितना गहरा आध्यात्मिक संबंध है।
+
+🕉️ छांदोग्य उपनिषद:
+सामवेद से जुड़ा छांदोग्य उपनिषद हिंदू दर्शन के सबसे महत्वपूर्ण ग्रंथों में से एक है, जो 8 अध्यायों में विभाजित है। इसी में प्रसिद्ध महावाक्य आता है:
+"तत्त्वमसि" — "वह (परब्रह्म) तू ही है।"
+यह उपनिषद आत्मा और परमात्मा की एकता (अद्वैत) का सिद्धांत सिखाता है, जो ऋषि उद्दालक अरुणि द्वारा अपने पुत्र श्वेतकेतु को नमक-जल, वृक्ष-बीज व नदी-सागर जैसे सरल उदाहरणों के माध्यम से उपदेशित किया गया था। इसी उपनिषद में सत्यकाम जाबाल की कथा भी आती है, जो सत्यनिष्ठा के महत्व को दर्शाती है।
+
+🎶 केन उपनिषद:
+सामवेद से जुड़ा एक अन्य महत्वपूर्ण उपनिषद, जो "केन एषितं पतति प्रेषितं मनः" (किसके द्वारा प्रेरित होकर मन कार्य करता है?) — इस मूल प्रश्न से आरंभ होता है और ब्रह्म को इंद्रियों व मन से परे बताता है।
+
+🙏 महत्व:
+सामवेद यह सिखाता है कि भक्ति और स्तुति केवल शब्दों में नहीं, बल्कि सुर, लय और भाव में भी व्यक्त होती है — यह संगीत, नृत्य व कला को भी परमात्मा तक पहुँचने का एक पवित्र मार्ग मानता है। यही कारण है कि भारत में संगीत को आज भी "साधना" कहा जाता है, और शास्त्रीय संगीत की हर प्रमुख परंपरा (हिंदुस्तानी व कर्नाटक दोनों) अपनी जड़ें सामवेद तक मानती है।`,
+    contentEn: `📘 Samveda — The Veda of Music
+
+📖 Introduction:
+The Samveda is known as the "Veda of chants." Most of its verses (around 1,810 of 1,875) are drawn from the Rigveda, but set to a distinctive melody, rhythm and singing style called "Sama Gana." Indian classical music — particularly the Dhrupad tradition — is traditionally traced back to the Samveda.
+
+📜 Structure:
+• Two main parts — Purvarchika and Uttararchika
+• Purvarchika contains verses related to Agni, Indra and Soma, divided into four sections (Agneya, Aindra, Pavamana, Aranyaka)
+• Uttararchika is arranged in the sequence of ritual performance, spanning 21 chapters
+• About 1,875 verses in total, of which only around 75 are original (not from the Rigveda)
+• Chanted by the Udgatri priest during yajnas (while the Hota recited Rigveda and the Adhvaryu recited Yajurveda) — together the three completed the ritual
+
+🎵 The Musical Notation System:
+Samveda verses carry tonal markings — Udatta (raised pitch), Anudatta (lowered pitch), Svarita (medium pitch) — indicating precisely how each syllable should be sung. While chanting, words were often stretched, repeated, and interspersed with special filler sounds (like "hau," "ha," "auhoi") called "stobhas." This system is considered the foundation of the seven-note scale (Sa Re Ga Ma Pa Dha Ni) and India's raga tradition — making the Samveda one of the world's oldest surviving music treatises.
+
+📚 Three Main Branches:
+• Kauthuma Shakha — the most widely practiced today, mainly in Gujarat and North India
+• Ranayaniya Shakha — mainly in the Maharashtra–Karnataka region
+• Jaiminiya Shakha — mainly practiced in South India (Kerala–Tamil Nadu), with a chanting style considered distinct from the other two
+
+✨ Mentioned in the Bhagavad Gita:
+In Chapter 10, Verse 22, Krishna declares:
+"Vedanam Samavedo'smi"
+Meaning: "Among the Vedas, I am the Samaveda" — indicating the exalted place Krishna himself assigns to this Veda among his divine manifestations, reflecting the deep spiritual bond between devotion and music.
+
+🕉️ The Chandogya Upanishad:
+Associated with the Samveda, the Chandogya Upanishad is one of the most important texts in Hindu philosophy, spread across 8 chapters. It contains the celebrated Mahavakya:
+"Tat Tvam Asi" — "That (the Supreme) thou art."
+Taught by sage Uddalaka Aruni to his son Shvetaketu through simple examples — salt dissolved in water, a seed within a tree, rivers merging into the ocean — this Upanishad expounds the non-dual (Advaita) unity of the individual soul and the Supreme. It also contains the story of Satyakama Jabala, illustrating the value of truthfulness.
+
+🎶 The Kena Upanishad:
+Another important Upanishad linked to the Samveda, opening with the fundamental question "Kena eshitam patati preshitam manah" (By whom impelled does the mind move to act?), and describing Brahman as that which lies beyond the senses and the mind.
+
+🙏 Significance:
+The Samveda teaches that devotion is expressed not only through words but through melody, rhythm and feeling — treating music, dance and art as sacred paths to the Divine. This is why music is still called "sadhana" (spiritual practice) in India today, and both major classical traditions — Hindustani and Carnatic — trace their roots back to the Samveda.`
+  },
+  {
+    key: 'atharvaveda', icon: '📙', title: 'अथर्ववेद', en: 'Atharvaveda — The Veda of Daily Life',
+    desc: 'दैनिक जीवन, आरोग्य व कल्याण के मंत्र',
+    descEn: 'Hymns for daily life, health and wellbeing',
+    content: `📙 अथर्ववेद — जनजीवन का वेद
+
+📖 परिचय:
+अथर्ववेद अन्य तीन वेदों से भिन्न है — यह यज्ञ-कर्म तक सीमित न होकर सामान्य जनजीवन, स्वास्थ्य, कल्याण, राजनीति और पारिवारिक सुख से जुड़े मंत्रों का विशाल संग्रह है। इसे महर्षि अथर्वा व अंगिरा ऋषियों से जोड़ा जाता है, इसीलिए इसे "अथर्वांगिरस वेद" भी कहा जाता है। प्राचीन काल में इसे कभी-कभी चार वेदों में सम्मिलित नहीं किया जाता था (कई स्थानों पर केवल "त्रयी विद्या" — तीन वेदों — का उल्लेख मिलता है), परंतु बाद में इसे पूर्ण वेद का दर्जा प्राप्त हुआ।
+
+📜 संरचना:
+• 20 कांड (खंड)
+• लगभग 730 सूक्त
+• लगभग 6000 मंत्र, जिनमें से लगभग छठा भाग गद्य में है
+• दो प्रमुख शाखाएँ बची हैं — शौनक शाखा (उत्तर भारत में प्रचलित) और पैप्पलाद शाखा (उड़ीसा-कश्मीर क्षेत्र में मिली पांडुलिपियों पर आधारित)
+
+🌿 विषय-वस्तु — चार प्रमुख श्रेणियाँ:
+• भेषज (चिकित्सा) सूक्त — रोग-निवारण, ज्वर, कुष्ठ, क्षय, विष जैसी व्याधियों के उपचार मंत्र व जड़ी-बूटियों का उल्लेख — आयुर्वेद का प्राचीनतम आधार माना जाता है
+• आयुष्य सूक्त — दीर्घायु, बल और आरोग्य की कामना के मंत्र, जिनमें शतायु (सौ वर्ष जीने) की कामना बार-बार दोहराई जाती है
+• पौष्टिक सूक्त — धन, समृद्धि, कृषि व पशुधन वृद्धि की प्रार्थनाएँ, वर्षा व भूमि-उर्वरता से जुड़े मंत्र
+• सांम्नस्य व राजकर्म सूक्त — पारिवारिक प्रेम, समाज में एकता, प्रेम व वशीकरण से जुड़े मंत्र, तथा राजा के कर्तव्य व शासन-व्यवस्था (राष्ट्र सूक्त)
+
+✨ पृथ्वी सूक्त (कांड १२, सूक्त १) — विश्व की सबसे प्राचीन पर्यावरण-प्रार्थना:
+"माता भूमिः पुत्रोऽहं पृथिव्याः।"
+अर्थ: पृथ्वी मेरी माता है, और मैं उसका पुत्र हूँ।
+इस सूक्त में 63 मंत्र हैं, जिनमें पृथ्वी के पर्वत, नदी, वन, समुद्र, विभिन्न भाषा-भाषी व विभिन्न धर्मों के लोगों और उसकी सहनशीलता की स्तुति की गई है — इसमें एक मंत्र कहता है "यस्यां समुद्र उत सिन्धुरापो यस्यामन्नं कृष्टयः सम्बभूवुः" (जिस पृथ्वी पर समुद्र, नदियाँ और अन्न-कृषि सब कुछ है) — इसे विश्व के प्राचीनतम पारिस्थितिकी (इकोलॉजी) दस्तावेज़ों में गिना जाता है।
+
+🕉️ संकल्प सूक्त — एकता का संदेश (कांड ६, सूक्त ६४):
+"सं गच्छध्वं सं वदध्वं सं वो मनांसि जानताम्।
+देवा भागं यथा पूर्वे संजानाना उपासते॥"
+अर्थ: तुम सब मिलकर चलो, मिलकर बोलो, तुम्हारे मन एक जैसे हों, जैसे प्राचीन देवता मिलकर अपने भाग को स्वीकार करते थे। यह मंत्र आज भी भारतीय संसद के केंद्रीय कक्ष में अंकित है, जो राष्ट्रीय एकता का प्रतीक है।
+
+🏛️ राष्ट्र सूक्त व राजधर्म:
+अथर्ववेद में राजा के गुण, न्यायपूर्ण शासन, सीमा-सुरक्षा और प्रजा-कल्याण के सिद्धांत विस्तार से वर्णित हैं — यह इसे प्राचीन भारत का एक प्रकार का "राजनीति-शास्त्र" भी बनाता है, जो बाद में कौटिल्य के अर्थशास्त्र जैसे ग्रंथों को प्रभावित करता है। राजा के राज्याभिषेक में प्रयुक्त कई मंत्र अथर्ववेद से ही लिए जाते हैं।
+
+📿 गणपति अथर्वशीर्ष:
+अथर्ववेद परंपरा से जुड़ा यह लोकप्रिय स्तोत्र भगवान गणेश की स्तुति करता है और आज भी गणेश चतुर्थी व नित्य गणेश पूजा में अत्यंत लोकप्रिय है — "ॐ नमस्ते गणपतये, त्वमेव प्रत्यक्षं तत्त्वमसि" इसके प्रसिद्ध प्रारंभिक मंत्र हैं, जो गणेश को साक्षात् ब्रह्म के रूप में वर्णित करते हैं।
+
+🧠 मुण्डक व प्रश्न उपनिषद:
+अथर्ववेद से जुड़े मुण्डक उपनिषद में परा-अपरा विद्या (श्रेष्ठ व सांसारिक ज्ञान) का भेद बताया गया है और प्रसिद्ध पंक्ति "सत्यमेव जयते नानृतम्" (सत्य की ही विजय होती है, असत्य की नहीं) यहीं से ली गई है — जो भारत का राष्ट्रीय आदर्श-वाक्य भी है। प्रश्न उपनिषद में छह शिष्यों द्वारा गुरु से पूछे गए गूढ़ प्रश्नों के माध्यम से सृष्टि व आत्मा के रहस्य समझाए गए हैं।
+
+🙏 महत्व:
+अथर्ववेद यह दर्शाता है कि सनातन धर्म केवल आध्यात्मिकता तक सीमित नहीं, बल्कि स्वास्थ्य, समाज, पर्यावरण और शासन-व्यवस्था को भी उतना ही महत्व देता है — यही कारण है कि इसे "जनजीवन का वेद" कहा जाता है, और इसे प्राचीन भारत के विज्ञान, चिकित्सा व समाजशास्त्र की नींव भी माना जाता है।`,
+    contentEn: `📙 Atharvaveda — The Veda of Everyday Life
+
+📖 Introduction:
+The Atharvaveda differs from the other three Vedas — rather than being confined to ritual, it is a vast collection of hymns concerning everyday life, health, wellbeing, governance and family harmony. It is attributed to the sages Atharva and Angira, and is therefore also called "Atharvangirasa Veda." In ancient times it was sometimes excluded from the count of the four Vedas (some texts refer only to the "Trayi Vidya," the three Vedas), but it later gained full recognition as a Veda in its own right.
+
+📜 Structure:
+• 20 Kandas (sections)
+• Around 730 Suktas (hymns)
+• Around 6,000 mantras, roughly a sixth of which are in prose
+• Two surviving branches — Shaunaka Shakha (widely followed in North India) and Paippalada Shakha (based on manuscripts found in the Odisha–Kashmir region)
+
+🌿 Subject Matter — Four Broad Categories:
+• Bhaishajya (medicinal) hymns — remedies for fever, skin ailments, wasting disease and poison, along with references to healing herbs — considered the earliest foundation of Ayurveda
+• Ayushya hymns — prayers for longevity, strength and health, repeatedly invoking a wish to live a full hundred years (Shatayu)
+• Paushtika hymns — prayers for wealth, prosperity, agriculture and livestock, along with verses on rainfall and soil fertility
+• Samanasya and Rajakarma hymns — on family harmony, social unity, love and attraction, and the duties of kings and governance (Rashtra Sukta)
+
+✨ Prithvi Sukta (Kanda 12, Sukta 1) — one of the world's oldest environmental prayers:
+"Mata Bhumih Putro Aham Prithivyah"
+Meaning: "The Earth is my mother, and I am her son."
+This hymn of 63 verses praises the Earth's mountains, rivers, forests, oceans, its people of many languages and faiths, and its patience — one verse notes "Yasyam samudra uta sindhu-aapo yasyam annam krishtayah sambabhuvuh" (on whom the oceans, rivers and cultivated grain all exist) — it is counted among the world's earliest ecological texts.
+
+🕉️ Sankalpa Sukta — A Message of Unity (Kanda 6, Sukta 64):
+"Sam Gacchadhvam Sam Vadadhvam Sam Vo Manaamsi Jaanataam,
+Deva Bhagam Yatha Purve Sanjaanana Upasate"
+Meaning: Walk together, speak together, let your minds be in harmony, just as the ancient gods shared their portion in unity. This verse is inscribed today in the Central Hall of the Indian Parliament as a symbol of national unity.
+
+🏛️ Rashtra Sukta and Statecraft:
+The Atharvaveda elaborates on the qualities of a king, just governance, border security and the welfare of citizens — making it a kind of ancient Indian treatise on statecraft, later influencing texts such as Kautilya's Arthashastra. Several verses used during a king's coronation are drawn directly from the Atharvaveda.
+
+📿 Ganapati Atharvashirsha:
+Associated with the Atharvaveda tradition, this popular hymn praises Lord Ganesha and remains widely recited during Ganesh Chaturthi and daily worship today — its opening lines "Om Namaste Ganapataye, Tvameva Pratyaksham Tattvamasi" describe Ganesha as the very embodiment of ultimate reality.
+
+🧠 The Mundaka and Prashna Upanishads:
+The Mundaka Upanishad, linked to the Atharvaveda, distinguishes between "Para" (higher) and "Apara" (worldly) knowledge, and is the source of India's national motto, "Satyameva Jayate" (Truth alone triumphs, not falsehood). The Prashna Upanishad explains the mysteries of creation and the self through six profound questions posed by disciples to their teacher.
+
+🙏 Significance:
+The Atharvaveda shows that Sanatan Dharma is not confined to spirituality alone but equally values health, society, environment and governance — which is why it is called "the Veda of everyday life," and is regarded as a foundation for ancient India's science, medicine and social thought.`
+  }
+];
+
+function renderVedasList() {
+  const list = document.getElementById('vedas-list');
+  if (!list) return;
+  const isEn = currentLang === 'en';
+
+  const titleEl = document.getElementById('vedas-screen-title');
+  const subEl = document.getElementById('vedas-screen-sub');
+  const introEl = document.getElementById('vedas-screen-intro');
+  if (titleEl) titleEl.textContent = isEn ? 'The Four Vedas' : 'चारों वेद';
+  if (subEl) subEl.textContent = isEn ? 'Overview, Structure & Key Mantras' : 'परिचय, संरचना व प्रमुख मंत्र — The Four Vedas';
+  if (introEl) introEl.textContent = isEn
+    ? 'The Vedas are the oldest and most sacred texts of Sanatan Dharma — called "Shruti" (that which was heard), because the sages directly experienced them in deep meditation. Tap on any of the four Vedas below.'
+    : 'वेद सनातन धर्म के सबसे प्राचीन और पवित्र ग्रंथ हैं — इन्हें "श्रुति" (जो सुना गया) कहा जाता है, क्योंकि ऋषियों ने इन्हें ध्यान अवस्था में साक्षात् अनुभव किया। नीचे चारों वेदों में से किसी एक पर टैप करें।';
+
+  list.innerHTML = '';
+  vedasData.forEach((v) => {
+    const btn = document.createElement('button');
+    btn.style.cssText = 'background:rgba(212,175,55,0.08);border:1px solid rgba(212,175,55,0.3);border-radius:16px;padding:14px 16px;text-align:left;cursor:pointer;display:flex;align-items:center;gap:14px;width:100%;';
+    const nameLine = isEn ? v.en : v.title;
+    const descLine = isEn ? (v.descEn || v.desc) : v.desc;
+    btn.innerHTML = '<span style="font-size:30px;">' + v.icon + '</span><div><div style="font-size:15px;color:#F5D96B;font-weight:700;">' + nameLine + '</div><div style="font-size:11.5px;color:rgba(255,255,255,0.5);margin-top:2px;">' + descLine + '</div></div>';
+    btn.addEventListener('click', function () { showVedaReading(v.key); });
+    list.appendChild(btn);
+  });
+}
+
+function showVedaReading(key) {
+  const v = vedasData.find(function (x) { return x.key === key; });
+  if (!v) return;
+  const isEn = currentLang === 'en';
+  const text = (isEn && v.contentEn) ? v.contentEn : v.content;
+  const title = isEn ? v.en : v.title;
+  showChapterContent(v.icon, title, text);
+}
+
+const _origShowScreenForVedas = showScreen;
+showScreen = function (name) {
+  _origShowScreenForVedas(name);
+  if (name === 'vedas') renderVedasList();
+};
+
 // ========== LANGUAGE SYSTEM ==========
 let currentLang = 'hi'; // default Hindi
 
@@ -5886,6 +6497,7 @@ const questionsHi = [
   { text: 'श्री हित चौरासी — सम्पूर्ण ८४ पद', icon: '🌸', fn: 'showHitChaurasi()' },
   { text: 'भविष्य मालिका — प्रमुख भविष्यवाणियाँ', icon: '🔮', fn: 'showBhavishyaMalika()' },
   { text: 'शिव पुराण — सम्पूर्ण ७ संहिता', icon: '🔱', fn: 'showShivPuran()' },
+  { text: 'चारों वेद — परिचय व प्रमुख मंत्र', icon: '📜', fn: "showScreen('vedas')" },
 ];
 
 const questionsEn = [
@@ -5898,6 +6510,7 @@ const questionsEn = [
   { text: 'Shri Hit Chaurasi — 84 Sacred Padas', icon: '🌸', fn: 'showHitChaurasi()' },
   { text: 'Bhavishya Malika — Key Prophecies', icon: '🔮', fn: 'showBhavishyaMalika()' },
   { text: 'Shiv Purana — Complete 7 Samhitas', icon: '🔱', fn: 'showShivPuran()' },
+  { text: 'The Four Vedas — Overview & Key Mantras', icon: '📜', fn: "showScreen('vedas')" },
 ];
 
 function updateQuestions(lang) {
@@ -5921,28 +6534,54 @@ let voiceSpeedIndex = 0;
 let voiceLang = 'hi'; // independent of app display language
 let voiceResumeInterval = null;
 
-// Known male voice name patterns across browsers/OS (Hindi + English)
+// Known Indian female voice name patterns across browsers/OS (Hindi + Indian English)
+const INDIAN_FEMALE_VOICE_HINTS = [
+  'heera', 'lekha', 'swara', 'neerja', 'veena', 'priya', 'kalpana',
+  'hi-in-x-hia', 'hi-in-x-hic', 'hi-in-x-hie', 'hi-in-x-hig',
+  'en-in-x-ende', 'en-in-x-enf'
+];
+// Known male voice name patterns (used only to actively avoid picking a male voice)
 const MALE_VOICE_HINTS = [
   'male', 'hemant', 'ravi', 'prabhat', 'madhur', 'david', 'mark', 'daniel',
-  'rishi', 'ajit', 'hindi male', 'hi-in-x-hia', 'hi-in-x-hic', 'en-in-x-ene'
+  'rishi', 'ajit', 'hindi male', 'hi-in-x-hib', 'hi-in-x-hid', 'en-in-x-ene'
 ];
-const FEMALE_VOICE_HINTS = ['female', 'heera', 'lekha', 'swara', 'samantha', 'zira', 'priya'];
+// Generic (non-Indian) female voice hints — used as a lower-priority fallback
+const FEMALE_VOICE_HINTS = ['female', 'samantha', 'zira', 'susan', 'karen'];
 
 function pickBestVoice(voices, targetLang) {
   if (!voices || voices.length === 0) return null;
+  const isIndianLang = (l) => l && (l.toLowerCase() === 'hi-in' || l.toLowerCase() === 'en-in' || l.toLowerCase().startsWith('hi'));
   const langMatches = voices.filter(v => v.lang && v.lang.toLowerCase() === targetLang.toLowerCase());
   const baseLangMatches = langMatches.length ? langMatches : voices.filter(v => v.lang && v.lang.toLowerCase().startsWith(targetLang.split('-')[0].toLowerCase()));
   const pool = baseLangMatches.length ? baseLangMatches : voices;
+  // Wider pool covering both hi-IN and en-IN, for cases where the exact targetLang has no female match
+  const indianPool = voices.filter(v => isIndianLang(v.lang));
 
-  // 1. Prefer explicit male voice
-  let pick = pool.find(v => MALE_VOICE_HINTS.some(h => v.name.toLowerCase().includes(h)));
+  // 1. Explicit Indian female voice within the target-language pool
+  let pick = pool.find(v => INDIAN_FEMALE_VOICE_HINTS.some(h => v.name.toLowerCase().includes(h)));
   if (pick) return pick;
 
-  // 2. Avoid known female voices, pick anything else in pool
-  pick = pool.find(v => !FEMALE_VOICE_HINTS.some(h => v.name.toLowerCase().includes(h)));
+  // 2. Explicit Indian female voice anywhere in hi-IN/en-IN voices
+  pick = indianPool.find(v => INDIAN_FEMALE_VOICE_HINTS.some(h => v.name.toLowerCase().includes(h)));
   if (pick) return pick;
 
-  // 3. Fallback - first available in pool
+  // 3. Any Indian-region voice in the target pool that isn't a known male voice
+  pick = pool.find(v => isIndianLang(v.lang) && !MALE_VOICE_HINTS.some(h => v.name.toLowerCase().includes(h)));
+  if (pick) return pick;
+
+  // 4. Any Indian-region voice at all that isn't a known male voice
+  pick = indianPool.find(v => !MALE_VOICE_HINTS.some(h => v.name.toLowerCase().includes(h)));
+  if (pick) return pick;
+
+  // 5. Generic female voice in the target pool
+  pick = pool.find(v => FEMALE_VOICE_HINTS.some(h => v.name.toLowerCase().includes(h)));
+  if (pick) return pick;
+
+  // 6. Anything in pool that isn't explicitly male
+  pick = pool.find(v => !MALE_VOICE_HINTS.some(h => v.name.toLowerCase().includes(h)));
+  if (pick) return pick;
+
+  // 7. Fallback - first available in pool
   return pool[0];
 }
 
@@ -5981,6 +6620,8 @@ function stopVoiceReading() {
   if (btn) btn.style.background = 'linear-gradient(135deg,rgba(138,43,226,0.3),rgba(75,0,130,0.3))';
   const bar = document.getElementById('voice-progress-bar');
   if (bar) bar.style.display = 'none';
+  const stage = document.getElementById('visual-stage');
+  if (stage) stage.classList.remove('speaking');
 }
 
 // Split text into sentence-level chunks for reliable Chrome reading
@@ -6025,10 +6666,10 @@ function speakChunk(index) {
   if (progressEl) progressEl.style.width = pct + '%';
 
   const utt = new SpeechSynthesisUtterance(chunk);
-  utt.lang = voiceChosenVoice ? voiceChosenVoice.lang : (voiceLang === 'hi' ? 'hi-IN' : 'en-US');
+  utt.lang = voiceChosenVoice ? voiceChosenVoice.lang : (voiceLang === 'hi' ? 'hi-IN' : 'en-IN');
   if (voiceChosenVoice) utt.voice = voiceChosenVoice;
   utt.rate = voiceSpeeds[voiceSpeedIndex];
-  utt.pitch = 0.9;
+  utt.pitch = 1.0;
   utt.volume = 1;
 
   utt.onend = () => {
@@ -6064,7 +6705,7 @@ async function toggleVoiceReading() {
   window.speechSynthesis.cancel();
   await new Promise(r => setTimeout(r, 100));
 
-  const targetLang = voiceLang === 'hi' ? 'hi-IN' : 'en-US';
+  const targetLang = voiceLang === 'hi' ? 'hi-IN' : 'en-IN';
   const voices = await getVoicesAsync();
   voiceChosenVoice = pickBestVoice(voices, targetLang);
 
@@ -6077,7 +6718,47 @@ async function toggleVoiceReading() {
   document.getElementById('voice-progress-bar').style.display = 'block';
   document.getElementById('voice-progress').style.width = '0%';
 
+  if (visualModeOn) {
+    updateVisualStageContent();
+    const stage = document.getElementById('visual-stage');
+    if (stage) stage.classList.add('speaking');
+  }
+
   speakChunk(0);
+}
+
+// ========== VISUAL READING MODE ==========
+let visualModeOn = false;
+
+function toggleVisualMode() {
+  visualModeOn = !visualModeOn;
+  const btn = document.getElementById('visual-mode-btn');
+  const stage = document.getElementById('visual-stage');
+  if (visualModeOn) {
+    if (stage) {
+      stage.style.display = 'flex';
+      if (voiceSpeaking) stage.classList.add('speaking');
+    }
+    if (btn) { btn.style.background = 'linear-gradient(135deg,#D4AF37,#F5D96B)'; btn.style.color = '#0A0612'; }
+    updateVisualStageContent();
+    showToast('🎬 Visual Reading Mode ON');
+  } else {
+    if (stage) { stage.style.display = 'none'; stage.classList.remove('speaking'); }
+    if (btn) { btn.style.background = 'rgba(255,255,255,0.07)'; btn.style.color = 'rgba(255,255,255,0.8)'; }
+  }
+}
+
+function updateVisualStageContent() {
+  const titleEl = document.getElementById('visual-title');
+  const iconEl = document.getElementById('visual-icon');
+  const qDisplay = document.getElementById('reading-q-display');
+  if (!qDisplay) return;
+  const txt = qDisplay.textContent || '';
+  if (titleEl) titleEl.textContent = txt.replace(/^[^\w\u0900-\u097F]+/, '').trim() || txt;
+  if (iconEl) {
+    const match = txt.match(/^(\p{Emoji_Presentation}|\p{Extended_Pictographic})/u);
+    iconEl.textContent = match ? match[0] : '🕉️';
+  }
 }
 
 function toggleVoiceLang() {
