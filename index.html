@@ -20,6 +20,18 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Divine Nakshatra">
 <link rel="manifest" href="manifest.json">
+<!-- OneSignal Web Push Notifications -->
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+      appId: "82046943-e4e1-4ab6-9511-31b67d3b717c",
+      allowLocalhostAsSecureOrigin: true,
+      notifyButton: { enable: false }
+    });
+  });
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -1535,6 +1547,18 @@
       <span id="settings-kundali-status" style="color:#4CAF50;font-size:13px;">Checking...</span>
     </div>
 
+    <!-- Notifications -->
+    <div style="background:rgba(43,27,18,0.03);border:1px solid rgba(122,31,31,0.2);border-radius:16px;padding:20px;">
+      <p style="font-size:11px;color:var(--gold);letter-spacing:2px;margin-bottom:14px;">NOTIFICATIONS</p>
+      <div style="display:flex;align-items:center;justify-content:space-between;">
+        <div>
+          <div style="color:rgba(43,27,18,0.85);font-size:14px;font-weight:600;">🔔 Daily Reminders</div>
+          <div id="notif-status-text" style="color:rgba(43,27,18,0.5);font-size:11.5px;margin-top:2px;">Status check ho raha hai...</div>
+        </div>
+        <button id="notif-toggle-btn" onclick="toggleNotifications()" style="padding:9px 18px;background:var(--gold);border:none;border-radius:999px;color:#F8F1DD;font-size:12.5px;font-weight:700;cursor:pointer;white-space:nowrap;">Enable</button>
+      </div>
+    </div>
+
     <!-- Links -->
     <div style="background:rgba(43,27,18,0.03);border:1px solid rgba(122,31,31,0.2);border-radius:16px;overflow:hidden;">
       <div onclick="showScreen('privacy')" style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px;cursor:pointer;border-bottom:1px solid rgba(43,27,18,0.05);">
@@ -2000,6 +2024,7 @@ function showScreen(name) {
     if (s) s.textContent = localStorage.getItem('dn_premium') === 'true' ? '👑 Active' : '❌ Not Active';
     const k = document.getElementById('settings-kundali-status');
     if (k) k.textContent = localStorage.getItem('dn_kundali') === 'true' ? '🔯 Active' : '❌ Not Active';
+    updateNotifStatus();
   }
   if (navMap[name] && document.getElementById(navMap[name])) {
     document.getElementById(navMap[name]).classList.add('active');
@@ -2693,6 +2718,7 @@ function showChapterContent(icon, title, content) {
   document.getElementById('reading-answer-text').innerHTML = content.split('\n').join('<br>');
   document.getElementById('reading-actions').style.display = 'flex';
   if (typeof visualModeOn !== 'undefined' && visualModeOn) { updateVisualStageContent(); }
+  if (typeof maybeShowNotifSoftAsk === 'function') { maybeShowNotifSoftAsk(); }
 }
 
 function showGitaChapter(title, content) { showChapterContent('🪷', title, content); }
@@ -6926,6 +6952,81 @@ if (isPremium) {
 updateFreeCounter();
 
 // (Premium topics & Kundali now properly locked for non-premium users)
+
+// ========== PUSH NOTIFICATIONS (OneSignal) ==========
+function getOneSignalSafe() {
+  return (window.OneSignal && typeof window.OneSignal.Notifications !== 'undefined') ? window.OneSignal : null;
+}
+
+async function updateNotifStatus() {
+  const statusEl = document.getElementById('notif-status-text');
+  const btnEl = document.getElementById('notif-toggle-btn');
+  if (!statusEl || !btnEl) return;
+
+  if (!('Notification' in window)) {
+    statusEl.textContent = 'Is browser mein supported nahi hai';
+    btnEl.style.display = 'none';
+    return;
+  }
+
+  const perm = Notification.permission;
+  if (perm === 'granted') {
+    statusEl.textContent = '✅ Chalu hai — aapko reminders milenge';
+    btnEl.textContent = 'Enabled';
+    btnEl.style.opacity = '0.6';
+    btnEl.style.cursor = 'default';
+  } else if (perm === 'denied') {
+    statusEl.textContent = 'Block ho gaya — browser settings se allow karo';
+    btnEl.textContent = 'Blocked';
+    btnEl.style.opacity = '0.6';
+  } else {
+    statusEl.textContent = 'Abhi band hai — daily readings ka reminder paane ke liye chalu karo';
+    btnEl.textContent = 'Enable';
+    btnEl.style.opacity = '1';
+    btnEl.style.cursor = 'pointer';
+  }
+}
+
+async function toggleNotifications() {
+  if (!('Notification' in window)) {
+    showToast('Aapke browser mein notifications supported nahi hain 😔');
+    return;
+  }
+  if (Notification.permission === 'denied') {
+    showToast('Notifications block hain — browser settings mein jaakar allow karein 🔔');
+    return;
+  }
+  if (Notification.permission === 'granted') {
+    showToast('Notifications already chalu hain ✅');
+    return;
+  }
+  try {
+    const OneSignal = getOneSignalSafe();
+    if (OneSignal) {
+      await OneSignal.Notifications.requestPermission();
+    } else {
+      await Notification.requestPermission();
+    }
+  } catch (e) {
+    // ignore — status will just reflect whatever the browser decided
+  }
+  setTimeout(updateNotifStatus, 500);
+}
+
+// Soft-ask: after the person has actually read something (not on first load),
+// gently invite them to enable reminders — much better opt-in than a cold browser popup.
+function maybeShowNotifSoftAsk() {
+  try {
+    if (!('Notification' in window)) return;
+    if (Notification.permission !== 'default') return; // already decided
+    if (localStorage.getItem('dn_notif_softask_shown') === 'true') return;
+    localStorage.setItem('dn_notif_softask_shown', 'true');
+    setTimeout(() => {
+      showToast('💡 Settings mein jaakar daily reading reminders chalu kar sakte ho');
+    }, 2500);
+  } catch (e) { /* localStorage unavailable — skip silently */ }
+}
+
 </script>
 </body>
 </html>
