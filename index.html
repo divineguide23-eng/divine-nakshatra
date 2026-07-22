@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Divine Nakshatra - India's No.1 Spiritual Readings App</title>
-<meta name="theme-color" content="#0A0612">
+<meta name="theme-color" content="#F3E9D2">
 <meta name="mobile-web-app-capable" content="yes">
 <!-- Google Analytics GA4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-M9QHW4QT9F"></script>
@@ -20,18 +20,19 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Divine Nakshatra">
 <link rel="manifest" href="manifest.json">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --gold: #D4AF37;
-    --gold-light: #F5D96B;
-    --gold-dark: #9A7B1A;
-    --saffron: #FF6B2B;
-    --deep-purple: #0A0612;
-    --mid-purple: #130D24;
-    --card-bg: rgba(255,255,255,0.04);
-    --border: rgba(212,175,55,0.25);
-    --text-dim: rgba(255,255,255,0.55);
+    --gold: #7A1F1F;
+    --gold-light: #9C5024;
+    --gold-dark: #5C1414;
+    --saffron: #C0622B;
+    --deep-purple: #F3E9D2;
+    --mid-purple: #EAD9AE;
+    --card-bg: rgba(43,27,18,0.04);
+    --border: rgba(122,31,31,0.25);
+    --text-dim: rgba(43,27,18,0.6);
+    --ink: #2B1B12;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -40,10 +41,13 @@
 
   body {
     background: var(--deep-purple);
-    color: #fff;
+    color: var(--ink);
     font-family: 'Noto Sans Devanagari', sans-serif;
     min-height: 100vh;
     overflow-x: hidden;
+    background-image:
+      radial-gradient(ellipse at top left, rgba(122,31,31,0.05) 0%, transparent 45%),
+      radial-gradient(ellipse at bottom right, rgba(192,98,43,0.06) 0%, transparent 50%);
   }
 
   /* ========== STARFIELD ========== */
@@ -88,7 +92,7 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: linear-gradient(135deg, rgba(212,175,55,0.15), rgba(255,107,43,0.1));
+    background: linear-gradient(135deg, rgba(122,31,31,0.15), rgba(192,98,43,0.1));
     border: 1px solid var(--border);
     border-radius: 999px;
     padding: 6px 16px;
@@ -100,7 +104,7 @@
   }
 
   .welcome-title {
-    font-family: 'Cinzel Decorative', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: clamp(32px, 8vw, 48px);
     font-weight: 700;
     background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, var(--saffron) 100%);
@@ -123,7 +127,7 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: linear-gradient(135deg, var(--saffron), #FF9500);
+    background: linear-gradient(135deg, var(--saffron), #D9822B);
     border-radius: 999px;
     padding: 4px 14px;
     font-size: 11px;
@@ -153,7 +157,7 @@
     border: 1px solid var(--border);
     border-radius: 14px;
     padding: 16px 20px;
-    color: rgba(255,255,255,0.85);
+    color: rgba(43,27,18,0.85);
     font-family: 'Noto Sans Devanagari', sans-serif;
     font-size: 15px;
     cursor: pointer;
@@ -161,7 +165,7 @@
     text-align: left;
   }
   .question-btn:hover, .question-btn:active {
-    background: rgba(212,175,55,0.1);
+    background: rgba(122,31,31,0.1);
     border-color: var(--gold);
     transform: translateX(4px);
   }
@@ -172,13 +176,13 @@
     width: 100%;
     max-width: 420px;
     margin: 28px auto 0;
-    background: rgba(255,255,255,0.03);
+    background: rgba(43,27,18,0.03);
     border: 1px solid var(--border);
     border-radius: 20px;
     padding: 22px 20px 18px;
   }
   .home-form-title {
-    font-family: 'Cinzel Decorative', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 13px;
     color: var(--gold);
     letter-spacing: 2px;
@@ -201,23 +205,23 @@
   }
   .hf-input, .hf-select {
     width: 100%;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(212,175,55,0.2);
+    background: rgba(43,27,18,0.05);
+    border: 1px solid rgba(122,31,31,0.2);
     border-radius: 10px;
     padding: 11px 12px;
-    color: #fff;
+    color: var(--ink);
     font-family: 'Noto Sans Devanagari', sans-serif;
     font-size: 13px;
     outline: none;
     transition: all 0.2s;
     -webkit-appearance: none;
   }
-  .hf-input::placeholder { color: rgba(255,255,255,0.28); font-size: 12px; }
+  .hf-input::placeholder { color: rgba(43,27,18,0.28); font-size: 12px; }
   .hf-input:focus, .hf-select:focus {
     border-color: var(--gold);
-    background: rgba(212,175,55,0.07);
+    background: rgba(122,31,31,0.07);
   }
-  .hf-select option { background: #1a0f2e; color: #fff; }
+  .hf-select option { background: #F3E9D2; color: var(--ink); }
   .hf-select-wrap { position: relative; }
   .hf-select-wrap::after {
     content: '▾';
@@ -237,16 +241,16 @@
     background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light));
     border: none;
     border-radius: 16px;
-    font-family: 'Cinzel Decorative', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 16px;
     font-weight: 700;
-    color: #0A0612;
+    color: #F3E9D2;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 0 40px rgba(212,175,55,0.3);
+    box-shadow: 0 0 40px rgba(122,31,31,0.3);
     letter-spacing: 1px;
   }
-  .start-btn:hover { transform: scale(1.02); box-shadow: 0 0 60px rgba(212,175,55,0.5); }
+  .start-btn:hover { transform: scale(1.02); box-shadow: 0 0 60px rgba(122,31,31,0.5); }
 
   /* ========== SCREEN 2: PROFILE ========== */
   #screen-profile {
@@ -273,7 +277,7 @@
   }
 
   .section-title {
-    font-family: 'Cinzel Decorative', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: clamp(20px, 5vw, 28px);
     background: linear-gradient(135deg, var(--gold-light), var(--gold));
     -webkit-background-clip: text;
@@ -300,13 +304,13 @@
     border-radius: 999px;
     border: 1px solid var(--border);
     background: var(--card-bg);
-    color: rgba(255,255,255,0.7);
+    color: rgba(43,27,18,0.7);
     font-size: 13px;
     cursor: pointer;
     transition: all 0.2s;
   }
   .lang-btn.active {
-    background: linear-gradient(135deg, rgba(212,175,55,0.2), rgba(255,107,43,0.1));
+    background: linear-gradient(135deg, rgba(122,31,31,0.2), rgba(192,98,43,0.1));
     border-color: var(--gold);
     color: var(--gold-light);
     font-weight: 600;
@@ -333,24 +337,24 @@
 
   .form-input, .form-select {
     width: 100%;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(212,175,55,0.2);
+    background: rgba(43,27,18,0.05);
+    border: 1px solid rgba(122,31,31,0.2);
     border-radius: 12px;
     padding: 14px 16px;
-    color: #fff;
+    color: var(--ink);
     font-family: 'Noto Sans Devanagari', sans-serif;
     font-size: 15px;
     outline: none;
     transition: all 0.2s;
     -webkit-appearance: none;
   }
-  .form-input::placeholder { color: rgba(255,255,255,0.3); }
+  .form-input::placeholder { color: rgba(43,27,18,0.3); }
   .form-input:focus, .form-select:focus {
     border-color: var(--gold);
-    background: rgba(212,175,55,0.07);
-    box-shadow: 0 0 0 3px rgba(212,175,55,0.1);
+    background: rgba(122,31,31,0.07);
+    box-shadow: 0 0 0 3px rgba(122,31,31,0.1);
   }
-  .form-select option { background: #1a0f2e; color: #fff; }
+  .form-select option { background: #F3E9D2; color: var(--ink); }
 
   .select-wrap { position: relative; }
   .select-wrap::after {
@@ -370,7 +374,7 @@
   }
 
   .topics-title {
-    font-family: 'Cinzel Decorative', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 15px;
     color: var(--gold);
     letter-spacing: 2px;
@@ -402,22 +406,22 @@
     position: absolute;
     top: 0; left: -100%;
     width: 100%; height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(212,175,55,0.08), transparent);
+    background: linear-gradient(90deg, transparent, rgba(122,31,31,0.08), transparent);
     transition: left 0.4s ease;
   }
   .topic-card:hover::before { left: 100%; }
   .topic-card:hover, .topic-card.active {
-    background: rgba(212,175,55,0.12);
+    background: rgba(122,31,31,0.12);
     border-color: var(--gold);
     transform: scale(1.02);
   }
   .topic-card.premium {
-    border-color: rgba(212,175,55,0.15);
+    border-color: rgba(122,31,31,0.15);
     opacity: 0.75;
   }
   .topic-icon { font-size: 20px; flex-shrink: 0; }
   .topic-text { font-size: 12px; line-height: 1.4; }
-  .topic-text .hi { color: rgba(255,255,255,0.9); font-size: 12px; }
+  .topic-text .hi { color: rgba(43,27,18,0.9); font-size: 12px; }
   .topic-text .en { color: var(--text-dim); font-size: 10px; }
   .topic-crown {
     position: absolute;
@@ -432,8 +436,8 @@
     padding: 0 20px;
   }
   .premium-card {
-    background: linear-gradient(135deg, rgba(212,175,55,0.12) 0%, rgba(255,107,43,0.08) 100%);
-    border: 1px solid rgba(212,175,55,0.4);
+    background: linear-gradient(135deg, rgba(122,31,31,0.12) 0%, rgba(192,98,43,0.08) 100%);
+    border: 1px solid rgba(122,31,31,0.4);
     border-radius: 18px;
     padding: 20px;
     display: flex;
@@ -447,7 +451,7 @@
   }
   .premium-crown { font-size: 36px; }
   .premium-title {
-    font-family: 'Cinzel Decorative', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 16px;
     color: var(--gold-light);
   }
@@ -459,27 +463,27 @@
     background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light));
     border: none;
     border-radius: 12px;
-    font-family: 'Cinzel Decorative', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 14px;
     font-weight: 700;
-    color: #0A0612;
+    color: #F3E9D2;
     cursor: pointer;
     transition: all 0.25s;
-    box-shadow: 0 4px 20px rgba(212,175,55,0.3);
+    box-shadow: 0 4px 20px rgba(122,31,31,0.3);
   }
-  .btn-join:hover { transform: scale(1.03); box-shadow: 0 4px 30px rgba(212,175,55,0.5); }
+  .btn-join:hover { transform: scale(1.03); box-shadow: 0 4px 30px rgba(122,31,31,0.5); }
   .free-badge {
     display: flex;
     align-items: center;
     gap: 6px;
     padding: 10px 14px;
-    border: 1px solid rgba(255,255,255,0.15);
+    border: 1px solid rgba(43,27,18,0.15);
     border-radius: 12px;
     font-size: 12px;
     color: var(--text-dim);
     white-space: nowrap;
   }
-  .free-dot { width: 8px; height: 8px; background: #FF4444; border-radius: 50%; }
+  .free-dot { width: 8px; height: 8px; background: #A6321F; border-radius: 50%; }
 
   /* ========== SCREEN 3: READING ========== */
   #screen-reading {
@@ -495,7 +499,7 @@
     margin: 0 auto 28px;
     border-radius: 50%;
     background: radial-gradient(circle, var(--gold-light) 0%, var(--gold) 40%, var(--gold-dark) 70%, transparent 100%);
-    box-shadow: 0 0 60px rgba(212,175,55,0.4), 0 0 120px rgba(212,175,55,0.2);
+    box-shadow: 0 0 60px rgba(122,31,31,0.4), 0 0 120px rgba(122,31,31,0.2);
     animation: orb-pulse 2s ease-in-out infinite;
     display: flex;
     align-items: center;
@@ -503,8 +507,8 @@
     font-size: 48px;
   }
   @keyframes orb-pulse {
-    0%, 100% { transform: scale(1); box-shadow: 0 0 60px rgba(212,175,55,0.4); }
-    50% { transform: scale(1.05); box-shadow: 0 0 80px rgba(212,175,55,0.6); }
+    0%, 100% { transform: scale(1); box-shadow: 0 0 60px rgba(122,31,31,0.4); }
+    50% { transform: scale(1.05); box-shadow: 0 0 80px rgba(122,31,31,0.6); }
   }
 
   .reading-loading {
@@ -535,15 +539,30 @@
   }
 
   .reading-box {
+    position: relative;
     max-width: 480px;
     width: 100%;
-    background: linear-gradient(135deg, rgba(212,175,55,0.06), rgba(255,107,43,0.04));
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 28px 24px;
+    background:
+      linear-gradient(135deg, rgba(122,31,31,0.05), rgba(192,98,43,0.03)),
+      #F8F1DD;
+    border: 1px solid rgba(122,31,31,0.35);
+    outline: 1px solid rgba(122,31,31,0.12);
+    outline-offset: 4px;
+    border-radius: 3px;
+    padding: 32px 26px;
     text-align: left;
     display: none;
+    box-shadow: 0 2px 0 rgba(122,31,31,0.08), 0 14px 30px rgba(43,27,18,0.12);
   }
+  .reading-box::before, .reading-box::after {
+    content: '❦';
+    position: absolute;
+    font-size: 15px;
+    color: rgba(122,31,31,0.5);
+    line-height: 1;
+  }
+  .reading-box::before { top: 10px; left: 14px; }
+  .reading-box::after { bottom: 10px; right: 14px; transform: rotate(180deg); }
   .reading-box.show { display: block; animation: fadeUp 0.6s ease forwards; }
   @keyframes fadeUp { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform: translateY(0); } }
 
@@ -557,7 +576,7 @@
   .reading-question {
     font-family: 'Cormorant Garamond', serif;
     font-size: 20px;
-    color: rgba(255,255,255,0.9);
+    color: rgba(43,27,18,0.9);
     margin-bottom: 20px;
     font-style: italic;
   }
@@ -569,7 +588,7 @@
   .reading-text {
     font-size: 15px;
     line-height: 1.8;
-    color: rgba(255,255,255,0.8);
+    color: rgba(43,27,18,0.8);
   }
   .reading-text .highlight {
     color: var(--gold-light);
@@ -589,7 +608,7 @@
     background: var(--card-bg);
     border: 1px solid var(--border);
     border-radius: 12px;
-    color: rgba(255,255,255,0.8);
+    color: rgba(43,27,18,0.8);
     font-family: 'Noto Sans Devanagari', sans-serif;
     font-size: 13px;
     cursor: pointer;
@@ -602,8 +621,8 @@
     background: linear-gradient(135deg, var(--gold-dark), var(--gold));
     border: none;
     border-radius: 12px;
-    color: #0A0612;
-    font-family: 'Cinzel Decorative', serif;
+    color: #F3E9D2;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 12px;
     font-weight: 700;
     cursor: pointer;
@@ -615,7 +634,7 @@
     position: fixed;
     bottom: 0; left: 0; right: 0;
     display: flex;
-    background: rgba(10,6,18,0.95);
+    background: rgba(243,233,210,0.95);
     backdrop-filter: blur(20px);
     border-top: 1px solid var(--border);
     padding: 10px 0 20px;
@@ -645,7 +664,7 @@
     position: fixed;
     bottom: 100px; left: 50%;
     transform: translateX(-50%) translateY(20px);
-    background: rgba(212,175,55,0.15);
+    background: rgba(122,31,31,0.15);
     border: 1px solid var(--gold);
     border-radius: 12px;
     padding: 12px 20px;
@@ -670,12 +689,12 @@
   .glow-1 {
     width: 400px; height: 400px;
     top: -100px; right: -100px;
-    background: radial-gradient(circle, rgba(100,40,180,0.3), transparent 70%);
+    background: radial-gradient(circle, rgba(90,20,20,0.3), transparent 70%);
   }
   .glow-2 {
     width: 300px; height: 300px;
     bottom: 100px; left: -80px;
-    background: radial-gradient(circle, rgba(212,175,55,0.12), transparent 70%);
+    background: radial-gradient(circle, rgba(122,31,31,0.12), transparent 70%);
   }
 
   /* ========== SCROLLBAR ========== */
@@ -696,21 +715,21 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    background: linear-gradient(135deg, rgba(212,175,55,0.2), rgba(255,107,43,0.15));
-    border: 1px solid rgba(212,175,55,0.5);
+    background: linear-gradient(135deg, rgba(122,31,31,0.2), rgba(192,98,43,0.15));
+    border: 1px solid rgba(122,31,31,0.5);
     border-radius: 999px;
     padding: 10px 24px;
-    color: #F5D96B;
+    color: #9C5024;
     font-size: 13px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s;
-    box-shadow: 0 0 20px rgba(212,175,55,0.2);
+    box-shadow: 0 0 20px rgba(122,31,31,0.2);
     letter-spacing: 0.5px;
   }
   .install-btn:hover { 
     border-color: var(--gold); 
-    box-shadow: 0 0 30px rgba(212,175,55,0.4);
+    box-shadow: 0 0 30px rgba(122,31,31,0.4);
     transform: scale(1.03);
   }
 
@@ -720,8 +739,8 @@
     margin: 0 0 4px;
     padding: 28px 20px 22px;
     border-radius: 20px;
-    background: radial-gradient(circle at center, rgba(138,43,226,0.18), rgba(10,6,18,0.5));
-    border: 1px solid rgba(180,100,255,0.35);
+    background: radial-gradient(circle at center, rgba(122,31,31,0.18), rgba(243,233,210,0.5));
+    border: 1px solid rgba(176,58,46,0.35);
     display: none;
     flex-direction: column;
     align-items: center;
@@ -735,16 +754,16 @@
   .visual-icon {
     position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
     font-size: 42px;
-    filter: drop-shadow(0 0 10px rgba(224,176,255,0.5));
+    filter: drop-shadow(0 0 10px rgba(176,58,46,0.5));
   }
   .visual-stage.speaking .visual-icon { animation: visual-pulse 1.3s ease-in-out infinite; }
   @keyframes visual-pulse {
     0%, 100% { transform: translate(-50%,-50%) scale(1); }
     50% { transform: translate(-50%,-50%) scale(1.14); }
   }
-  .visual-title { font-size: 13.5px; color: #E0B0FF; font-weight: 700; text-align: center; letter-spacing: 0.3px; line-height: 1.5; padding: 0 6px; }
+  .visual-title { font-size: 13.5px; color: #B03A2E; font-weight: 700; text-align: center; letter-spacing: 0.3px; line-height: 1.5; padding: 0 6px; }
   .visual-bars { display: flex; align-items: flex-end; gap: 4px; height: 26px; }
-  .visual-bars span { width: 4px; background: linear-gradient(180deg,#E0B0FF,#9B59B6); border-radius: 2px; height: 6px; opacity: 0.35; transition: opacity 0.4s; }
+  .visual-bars span { width: 4px; background: linear-gradient(180deg,#B03A2E,#7A1F1F); border-radius: 2px; height: 6px; opacity: 0.35; transition: opacity 0.4s; }
   .visual-stage.speaking .visual-bars span { animation: visual-bar-bounce 0.9s ease-in-out infinite; opacity: 1; }
   .visual-bars span:nth-child(1) { animation-delay: 0s; }
   .visual-bars span:nth-child(2) { animation-delay: 0.15s; }
@@ -767,61 +786,61 @@
 
 <!-- PAYMENT MODAL -->
 <div id="payment-modal" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,0.85);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:24px;">
-  <div style="background:linear-gradient(145deg,#130D24,#1a0f35);border:1px solid rgba(212,175,55,0.5);border-radius:24px;padding:32px 24px;max-width:360px;width:100%;text-align:center;position:relative;box-shadow:0 0 80px rgba(212,175,55,0.2);">
-    <button onclick="closePayment()" style="position:absolute;top:14px;right:16px;background:none;border:none;color:rgba(255,255,255,0.4);font-size:22px;cursor:pointer;">&#10005;</button>
+  <div style="background:linear-gradient(145deg,#EAD9AE,#EAD9AE);border:1px solid rgba(122,31,31,0.5);border-radius:24px;padding:32px 24px;max-width:360px;width:100%;text-align:center;position:relative;box-shadow:0 0 80px rgba(122,31,31,0.2);">
+    <button onclick="closePayment()" style="position:absolute;top:14px;right:16px;background:none;border:none;color:rgba(43,27,18,0.4);font-size:22px;cursor:pointer;">&#10005;</button>
     <div style="font-size:56px;margin-bottom:12px;">&#128302;</div>
-    <div style="font-family:Cinzel Decorative,serif;font-size:20px;color:#F5D96B;margin-bottom:6px;">Cosmic Answer</div>
-    <div style="font-style:italic;color:rgba(255,255,255,0.5);font-size:14px;margin-bottom:12px;">Aapke saare free readings khatam ho gaye!</div>
-    <div id="modal-question" style="background:rgba(212,175,55,0.08);border:1px solid rgba(212,175,55,0.2);border-radius:12px;padding:12px 16px;font-size:14px;color:rgba(255,255,255,0.8);margin-bottom:20px;"></div>
-    <div style="margin-bottom:4px;"><span id="modal-price" style="font-size:40px;color:#F5D96B;font-weight:900;">&#8377;1</span></div>
-    <div id="modal-price-sub" style="font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:18px;">Unlimited readings · Sabhi topics unlock</div>
+    <div style="font-family:Cormorant Garamond,serif;font-size:20px;color:#9C5024;margin-bottom:6px;">Cosmic Answer</div>
+    <div style="font-style:italic;color:rgba(43,27,18,0.5);font-size:14px;margin-bottom:12px;">Aapke saare free readings khatam ho gaye!</div>
+    <div id="modal-question" style="background:rgba(122,31,31,0.08);border:1px solid rgba(122,31,31,0.2);border-radius:12px;padding:12px 16px;font-size:14px;color:rgba(43,27,18,0.8);margin-bottom:20px;"></div>
+    <div style="margin-bottom:4px;"><span id="modal-price" style="font-size:40px;color:#9C5024;font-weight:900;">&#8377;1</span></div>
+    <div id="modal-price-sub" style="font-size:12px;color:rgba(43,27,18,0.35);margin-bottom:18px;">Unlimited readings · Sabhi topics unlock</div>
     <div style="text-align:left;margin-bottom:18px;">
-      <div style="font-size:13px;color:rgba(255,255,255,0.75);margin-bottom:8px;">&#10022; Unlimited AI-powered readings</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.75);margin-bottom:8px;">&#10022; All 10 premium topics unlocked</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.75);">&#10022; Personalized Nakshatra analysis</div>
+      <div style="font-size:13px;color:rgba(43,27,18,0.75);margin-bottom:8px;">&#10022; Unlimited AI-powered readings</div>
+      <div style="font-size:13px;color:rgba(43,27,18,0.75);margin-bottom:8px;">&#10022; All 10 premium topics unlocked</div>
+      <div style="font-size:13px;color:rgba(43,27,18,0.75);">&#10022; Personalized Nakshatra analysis</div>
     </div>
     <!-- Country Selector -->
     <div style="margin-bottom:14px;">
-      <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:8px;letter-spacing:1px;">SELECT YOUR COUNTRY</div>
+      <div style="font-size:11px;color:rgba(43,27,18,0.4);margin-bottom:8px;letter-spacing:1px;">SELECT YOUR COUNTRY</div>
       <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
-        <button onclick="selectCountry('IN')" id="btn-country-IN" style="padding:8px 16px;border-radius:999px;border:2px solid rgba(212,175,55,0.6);background:rgba(212,175,55,0.15);color:#F5D96B;font-size:13px;cursor:pointer;font-weight:600;transition:all 0.2s;">
+        <button onclick="selectCountry('IN')" id="btn-country-IN" style="padding:8px 16px;border-radius:999px;border:2px solid rgba(122,31,31,0.6);background:rgba(122,31,31,0.15);color:#9C5024;font-size:13px;cursor:pointer;font-weight:600;transition:all 0.2s;">
           &#127470;&#127475; India
         </button>
-        <button onclick="selectCountry('OTHER')" id="btn-country-OTHER" style="padding:8px 16px;border-radius:999px;border:2px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.6);font-size:13px;cursor:pointer;font-weight:600;transition:all 0.2s;">
+        <button onclick="selectCountry('OTHER')" id="btn-country-OTHER" style="padding:8px 16px;border-radius:999px;border:2px solid rgba(43,27,18,0.15);background:rgba(43,27,18,0.05);color:rgba(43,27,18,0.6);font-size:13px;cursor:pointer;font-weight:600;transition:all 0.2s;">
           &#127758; International
         </button>
       </div>
     </div>
     <!-- Plan Selector -->
     <div style="margin-bottom:14px;">
-      <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:8px;letter-spacing:1px;">CHOOSE YOUR PLAN</div>
+      <div style="font-size:11px;color:rgba(43,27,18,0.4);margin-bottom:8px;letter-spacing:1px;">CHOOSE YOUR PLAN</div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-        <div id="plan-card-week" onclick="selectPlan('week')" style="cursor:pointer;border:2px solid #D4AF37;background:rgba(212,175,55,0.18);border-radius:12px;padding:10px 6px;">
-          <div style="font-size:12px;color:rgba(255,255,255,0.6);">Weekly</div>
-          <div id="plan-price-week" style="font-size:18px;color:#F5D96B;font-weight:800;">&#8377;1</div>
+        <div id="plan-card-week" onclick="selectPlan('week')" style="cursor:pointer;border:2px solid #7A1F1F;background:rgba(122,31,31,0.18);border-radius:12px;padding:10px 6px;">
+          <div style="font-size:12px;color:rgba(43,27,18,0.6);">Weekly</div>
+          <div id="plan-price-week" style="font-size:18px;color:#9C5024;font-weight:800;">&#8377;1</div>
         </div>
-        <div id="plan-card-month" onclick="selectPlan('month')" style="cursor:pointer;border:2px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.04);border-radius:12px;padding:10px 6px;">
-          <div style="font-size:12px;color:rgba(255,255,255,0.6);">Monthly</div>
-          <div id="plan-price-month" style="font-size:18px;color:#F5D96B;font-weight:800;">&#8377;49</div>
+        <div id="plan-card-month" onclick="selectPlan('month')" style="cursor:pointer;border:2px solid rgba(43,27,18,0.1);background:rgba(43,27,18,0.04);border-radius:12px;padding:10px 6px;">
+          <div style="font-size:12px;color:rgba(43,27,18,0.6);">Monthly</div>
+          <div id="plan-price-month" style="font-size:18px;color:#9C5024;font-weight:800;">&#8377;49</div>
         </div>
-        <div id="plan-card-half" onclick="selectPlan('half')" style="cursor:pointer;border:2px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.04);border-radius:12px;padding:10px 6px;">
-          <div style="font-size:12px;color:rgba(255,255,255,0.6);">6 Months</div>
-          <div id="plan-price-half" style="font-size:18px;color:#F5D96B;font-weight:800;">&#8377;99</div>
+        <div id="plan-card-half" onclick="selectPlan('half')" style="cursor:pointer;border:2px solid rgba(43,27,18,0.1);background:rgba(43,27,18,0.04);border-radius:12px;padding:10px 6px;">
+          <div style="font-size:12px;color:rgba(43,27,18,0.6);">6 Months</div>
+          <div id="plan-price-half" style="font-size:18px;color:#9C5024;font-weight:800;">&#8377;99</div>
         </div>
-        <div id="plan-card-year" onclick="selectPlan('year')" style="cursor:pointer;border:2px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.04);border-radius:12px;padding:10px 6px;">
-          <div style="font-size:12px;color:rgba(255,255,255,0.6);">Yearly</div>
-          <div id="plan-price-year" style="font-size:18px;color:#F5D96B;font-weight:800;">&#8377;149</div>
+        <div id="plan-card-year" onclick="selectPlan('year')" style="cursor:pointer;border:2px solid rgba(43,27,18,0.1);background:rgba(43,27,18,0.04);border-radius:12px;padding:10px 6px;">
+          <div style="font-size:12px;color:rgba(43,27,18,0.6);">Yearly</div>
+          <div id="plan-price-year" style="font-size:18px;color:#9C5024;font-weight:800;">&#8377;149</div>
         </div>
       </div>
     </div>
-    <div id="modal-country-flag" style="font-size:12px;color:rgba(255,150,50,0.8);margin-bottom:10px;">&#127470;&#127475; India Special Price — &#8377;1 only!</div>
-    <button id="modal-pay-btn" onclick="processPay()" style="width:100%;padding:18px;background:linear-gradient(135deg,#9A7B1A,#D4AF37,#F5D96B);border:none;border-radius:16px;font-size:17px;font-weight:900;color:#0A0612;cursor:pointer;box-shadow:0 0 40px rgba(212,175,55,0.4);margin-bottom:10px;letter-spacing:1px;">
+    <div id="modal-country-flag" style="font-size:12px;color:rgba(196,120,40,0.8);margin-bottom:10px;">&#127470;&#127475; India Special Price — &#8377;1 only!</div>
+    <button id="modal-pay-btn" onclick="processPay()" style="width:100%;padding:18px;background:linear-gradient(135deg,#5C1414,#7A1F1F,#9C5024);border:none;border-radius:16px;font-size:17px;font-weight:900;color:#F3E9D2;cursor:pointer;box-shadow:0 0 40px rgba(122,31,31,0.4);margin-bottom:10px;letter-spacing:1px;">
       &#128081; SIRF &#8377;1 MEIN WEEKLY PAIYE
     </button>
-    <button onclick="watchRewardAd()" style="width:100%;padding:14px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:16px;font-size:14px;font-weight:700;color:rgba(255,255,255,0.8);cursor:pointer;margin-bottom:12px;">
+    <button onclick="watchRewardAd()" style="width:100%;padding:14px;background:rgba(43,27,18,0.06);border:1px solid rgba(43,27,18,0.15);border-radius:16px;font-size:14px;font-weight:700;color:rgba(43,27,18,0.8);cursor:pointer;margin-bottom:12px;">
       &#127909; Ad Dekho — +1 Free Reading
     </button>
-    <div style="font-size:11px;color:rgba(255,255,255,0.3);">UPI &nbsp;|&nbsp; Card &nbsp;|&nbsp; Net Banking &nbsp;|&nbsp; PayPal</div>
+    <div style="font-size:11px;color:rgba(43,27,18,0.3);">UPI &nbsp;|&nbsp; Card &nbsp;|&nbsp; Net Banking &nbsp;|&nbsp; PayPal</div>
   </div>
 </div>
 
@@ -829,8 +848,8 @@
 <div id="reward-ad-modal" style="display:none;position:fixed;inset:0;z-index:1000;background:#000;align-items:center;justify-content:center;flex-direction:column;color:#fff;text-align:center;padding:24px;">
   <div style="font-size:48px;margin-bottom:16px;">&#127909;</div>
   <div style="font-size:18px;font-weight:700;margin-bottom:8px;">Ad chal raha hai...</div>
-  <div style="font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:24px;">Thoda intezaar karein, free reading milne wali hai</div>
-  <div id="reward-ad-count" style="font-size:40px;font-weight:900;color:#F5D96B;">15</div>
+  <div style="font-size:13px;color:rgba(43,27,18,0.5);margin-bottom:24px;">Thoda intezaar karein, free reading milne wali hai</div>
+  <div id="reward-ad-count" style="font-size:40px;font-weight:900;color:#9C5024;">15</div>
 </div>
 
 
@@ -841,12 +860,12 @@
 <div id="screen-welcome" class="screen active">
   <div class="mandala-ring">
     <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="100" cy="100" r="95" fill="none" stroke="rgba(212,175,55,0.15)" stroke-width="1"/>
-      <circle cx="100" cy="100" r="75" fill="none" stroke="rgba(212,175,55,0.25)" stroke-width="1"/>
-      <circle cx="100" cy="100" r="55" fill="none" stroke="rgba(212,175,55,0.35)" stroke-width="1"/>
-      <circle cx="100" cy="100" r="12" fill="rgba(212,175,55,0.8)"/>
+      <circle cx="100" cy="100" r="95" fill="none" stroke="rgba(122,31,31,0.15)" stroke-width="1"/>
+      <circle cx="100" cy="100" r="75" fill="none" stroke="rgba(122,31,31,0.25)" stroke-width="1"/>
+      <circle cx="100" cy="100" r="55" fill="none" stroke="rgba(122,31,31,0.35)" stroke-width="1"/>
+      <circle cx="100" cy="100" r="12" fill="rgba(122,31,31,0.8)"/>
       <!-- Star lines -->
-      <g stroke="rgba(212,175,55,0.6)" stroke-width="1">
+      <g stroke="rgba(122,31,31,0.6)" stroke-width="1">
         <line x1="100" y1="5" x2="100" y2="195"/>
         <line x1="5" y1="100" x2="195" y2="100"/>
         <line x1="29" y1="29" x2="171" y2="171"/>
@@ -857,7 +876,7 @@
         <line x1="195" y1="100" x2="29" y2="29"/>
       </g>
       <!-- Outer dots -->
-      <g fill="rgba(212,175,55,0.7)">
+      <g fill="rgba(122,31,31,0.7)">
         <circle cx="100" cy="5" r="3"/>
         <circle cx="100" cy="195" r="3"/>
         <circle cx="5" cy="100" r="3"/>
@@ -874,9 +893,9 @@
 
   <!-- Language Toggle -->
   <div style="display:flex;justify-content:center;margin-bottom:8px;">
-    <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(212,175,55,0.3);border-radius:999px;padding:4px;display:flex;gap:4px;">
-      <button id="lang-hi" onclick="setLanguage('hi')" style="padding:6px 20px;border-radius:999px;border:none;background:linear-gradient(135deg,#D4AF37,#F5D96B);color:#0A0612;font-size:12px;font-weight:700;cursor:pointer;">🇮🇳 हिंदी</button>
-      <button id="lang-en" onclick="setLanguage('en')" style="padding:6px 20px;border-radius:999px;border:none;background:transparent;color:rgba(255,255,255,0.5);font-size:12px;font-weight:600;cursor:pointer;">🌍 English</button>
+    <div style="background:rgba(43,27,18,0.06);border:1px solid rgba(122,31,31,0.3);border-radius:999px;padding:4px;display:flex;gap:4px;">
+      <button id="lang-hi" onclick="setLanguage('hi')" style="padding:6px 20px;border-radius:999px;border:none;background:linear-gradient(135deg,#7A1F1F,#9C5024);color:#F3E9D2;font-size:12px;font-weight:700;cursor:pointer;">🇮🇳 हिंदी</button>
+      <button id="lang-en" onclick="setLanguage('en')" style="padding:6px 20px;border-radius:999px;border:none;background:transparent;color:rgba(43,27,18,0.5);font-size:12px;font-weight:600;cursor:pointer;">🌍 English</button>
     </div>
   </div>
   <h1 class="welcome-title">Divine<br>Nakshatra</h1>
@@ -884,38 +903,38 @@
   <div class="india-no1">🇮🇳 India's No.1 Spiritual Readings App</div>
 
   <!-- Krishna Shloka -->
-  <div id="krishna-shloka" style="text-align:center;margin:14px 20px 6px;padding:10px 16px;background:rgba(212,175,55,0.08);border:1px solid rgba(212,175,55,0.2);border-radius:14px;">
-    <p style="font-size:13px;color:#F5D96B;font-weight:600;margin:0 0 4px;line-height:1.6;">ॐ कृष्णाय वासुदेवाय हरये परमात्मने</p>
-    <p style="font-size:13px;color:#F5D96B;font-weight:600;margin:0 0 6px;line-height:1.6;">प्रणतः क्लेशनाशाय गोविंदाय नमो नमः</p>
-    <p id="shloka-en" style="font-size:11px;color:rgba(255,255,255,0.45);margin:0;font-style:italic;">Om Krishnaya Vasudevaya Haraye Paramatmane, Pranatah Kleshanashaya Govindaya Namo Namah</p>
+  <div id="krishna-shloka" style="text-align:center;margin:14px 20px 6px;padding:10px 16px;background:rgba(122,31,31,0.08);border:1px solid rgba(122,31,31,0.2);border-radius:14px;">
+    <p style="font-size:13px;color:#9C5024;font-weight:600;margin:0 0 4px;line-height:1.6;">ॐ कृष्णाय वासुदेवाय हरये परमात्मने</p>
+    <p style="font-size:13px;color:#9C5024;font-weight:600;margin:0 0 6px;line-height:1.6;">प्रणतः क्लेशनाशाय गोविंदाय नमो नमः</p>
+    <p id="shloka-en" style="font-size:11px;color:rgba(43,27,18,0.45);margin:0;font-style:italic;">Om Krishnaya Vasudevaya Haraye Paramatmane, Pranatah Kleshanashaya Govindaya Namo Namah</p>
   </div>
 
   <!-- Stats Bar -->
   <div style="display:flex;justify-content:center;gap:16px;margin:12px 20px;flex-wrap:wrap;">
-    <div style="background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.3);border-radius:999px;padding:6px 16px;display:flex;align-items:center;gap:6px;">
+    <div style="background:rgba(122,31,31,0.1);border:1px solid rgba(122,31,31,0.3);border-radius:999px;padding:6px 16px;display:flex;align-items:center;gap:6px;">
       <span style="font-size:14px;">👥</span>
-      <span style="font-size:12px;color:#F5D96B;font-weight:600;">500K+ Visitors</span>
+      <span style="font-size:12px;color:#9C5024;font-weight:600;">500K+ Visitors</span>
     </div>
-    <div style="background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.3);border-radius:999px;padding:6px 16px;display:flex;align-items:center;gap:6px;">
+    <div style="background:rgba(122,31,31,0.1);border:1px solid rgba(122,31,31,0.3);border-radius:999px;padding:6px 16px;display:flex;align-items:center;gap:6px;">
       <span style="font-size:14px;">⭐</span>
-      <span style="font-size:12px;color:#F5D96B;font-weight:600;">4.7 Rating</span>
+      <span style="font-size:12px;color:#9C5024;font-weight:600;">4.7 Rating</span>
     </div>
-    <div style="background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.3);border-radius:999px;padding:6px 16px;display:flex;align-items:center;gap:6px;">
+    <div style="background:rgba(122,31,31,0.1);border:1px solid rgba(122,31,31,0.3);border-radius:999px;padding:6px 16px;display:flex;align-items:center;gap:6px;">
       <span style="font-size:14px;">✅</span>
-      <span style="font-size:12px;color:#F5D96B;font-weight:600;">Trusted App</span>
+      <span style="font-size:12px;color:#9C5024;font-weight:600;">Trusted App</span>
     </div>
   </div>
 
   <p class="question-label" id="sanatan-title" style="font-size:16px;letter-spacing:2px;margin-bottom:6px;">✨ Sanatan Hi Satya Hai</p>
-  <p id="sanatan-subtitle" style="text-align:center;font-style:italic;color:rgba(100,220,100,0.85);font-size:16px;font-weight:600;margin-bottom:14px;">Janiye Apne Sanatan Dharm Ko</p>
-  <div id="free-counter" style="font-size:12px;color:rgba(100,220,100,0.8);margin-bottom:14px;letter-spacing:0.5px;">&#10022; 3 free readings baaki hai</div>
+  <p id="sanatan-subtitle" style="text-align:center;font-style:italic;color:rgba(90,130,70,0.85);font-size:16px;font-weight:600;margin-bottom:14px;">Janiye Apne Sanatan Dharm Ko</p>
+  <div id="free-counter" style="font-size:12px;color:rgba(90,130,70,0.8);margin-bottom:14px;letter-spacing:0.5px;">&#10022; 3 free readings baaki hai</div>
 
   <!-- About Section (unique content) -->
-  <div id="about-section" style="margin:6px 20px 20px;padding:16px 18px;background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.15);border-radius:16px;">
-    <p style="font-size:13.5px;line-height:1.8;color:rgba(255,255,255,0.75);margin:0 0 10px;">
+  <div id="about-section" style="margin:6px 20px 20px;padding:16px 18px;background:rgba(43,27,18,0.03);border:1px solid rgba(122,31,31,0.15);border-radius:16px;">
+    <p style="font-size:13.5px;line-height:1.8;color:rgba(43,27,18,0.75);margin:0 0 10px;">
       Divine Nakshatra एक निःशुल्क वैदिक ज्योतिष और सनातन धर्म ग्रंथ मंच है, जहाँ आप भगवद्गीता, रामायण, महाभारत, गरुड़ पुराण और हनुमान चालीसा जैसे मूल ग्रंथों को हिंदी और अंग्रेज़ी दोनों भाषाओं में पढ़ और सुन सकते हैं। साथ ही जन्म कुंडली विश्लेषण, राशिफल और वैदिक ज्योतिष आधारित मार्गदर्शन भी उपलब्ध है। हमारा उद्देश्य है — प्राचीन भारतीय ज्ञान को आसान, सुलभ और प्रामाणिक रूप में हर व्यक्ति तक पहुँचाना।
     </p>
-    <p style="font-size:12px;line-height:1.7;color:rgba(255,255,255,0.5);margin:0;font-style:italic;">
+    <p style="font-size:12px;line-height:1.7;color:rgba(43,27,18,0.5);margin:0;font-style:italic;">
       Divine Nakshatra is a free Vedic astrology and Sanatan Dharma scripture platform offering complete, authentic texts of the Bhagavad Gita, Ramayana, Mahabharata, Garuda Purana and Hanuman Chalisa in both Hindi and English, with audio narration, birth chart (Kundali) analysis and astrology-based guidance — bringing ancient Indian wisdom to everyone in a simple, accessible form.
     </p>
   </div>
@@ -1026,13 +1045,13 @@
 
   <!-- Quick Nav -->
   <div style="display:flex;gap:10px;justify-content:center;padding:14px 20px 20px;flex-wrap:wrap;">
-    <button onclick="showScreen('profile')" style="flex:1;padding:12px 8px;background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.3);border-radius:14px;color:#F5D96B;font-size:12px;font-weight:700;cursor:pointer;">
+    <button onclick="showScreen('profile')" style="flex:1;padding:12px 8px;background:rgba(122,31,31,0.1);border:1px solid rgba(122,31,31,0.3);border-radius:14px;color:#9C5024;font-size:12px;font-weight:700;cursor:pointer;">
       📖 Granth Padhein
     </button>
-    <button onclick="showScreen('profile')" style="flex:1;padding:12px 8px;background:rgba(138,43,226,0.12);border:1px solid rgba(138,43,226,0.3);border-radius:14px;color:#E0B0FF;font-size:12px;font-weight:700;cursor:pointer;">
+    <button onclick="showScreen('profile')" style="flex:1;padding:12px 8px;background:rgba(122,31,31,0.12);border:1px solid rgba(122,31,31,0.3);border-radius:14px;color:#B03A2E;font-size:12px;font-weight:700;cursor:pointer;">
       🔮 Topics & Reading
     </button>
-    <button onclick="showScreen('kundali')" style="flex:1;padding:12px 8px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);border-radius:14px;color:rgba(255,255,255,0.7);font-size:12px;font-weight:700;cursor:pointer;">
+    <button onclick="showScreen('kundali')" style="flex:1;padding:12px 8px;background:rgba(43,27,18,0.05);border:1px solid rgba(43,27,18,0.15);border-radius:14px;color:rgba(43,27,18,0.7);font-size:12px;font-weight:700;cursor:pointer;">
       ✨ Kundali
     </button>
   </div>
@@ -1048,7 +1067,7 @@
 
   <div class="install-bar">
     <button class="install-btn" id="install-btn" onclick="installApp()">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F5D96B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9C5024" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
         <path d="M12 2L12 14M12 14L8 10M12 14L16 10"/>
         <path d="M3 17v2a2 2 0 002 2h14a2 2 0 002-2v-2"/>
       </svg>
@@ -1144,23 +1163,24 @@
         <span class="topic-crown">👑</span>
       </div>
     </div>
-    <p style="text-align:center;font-size:11px;color:rgba(255,200,80,0.8);margin-top:14px">👑 Premium topics unlock karein — sirf ₹1 se shuru!</p>
+    <p style="text-align:center;font-size:11px;color:rgba(196,120,40,0.8);margin-top:14px">👑 Premium topics unlock karein — sirf ₹1 se shuru!</p>
   </div>
 
-  <!-- PREMIUM CARD -->
+  <!-- ADSENSE AD UNIT -->
   <div class="premium-banner">
-    <div id="ads-banner" style="background:linear-gradient(135deg,rgba(212,175,55,0.1),rgba(255,107,43,0.08));border:1px solid rgba(212,175,55,0.3);border-radius:16px;padding:14px 18px;text-align:center;position:relative;overflow:hidden;">
-      <div style="font-size:9px;color:rgba(255,255,255,0.3);letter-spacing:2px;margin-bottom:6px;">SPONSORED</div>
-      <div id="ad-content" style="min-height:48px;display:flex;align-items:center;justify-content:center;gap:12px;">
-        <div id="ad-icon" style="font-size:28px;">📿</div>
-        <div style="text-align:left;">
-          <div id="ad-title" style="font-size:13px;color:#F5D96B;font-weight:700;margin-bottom:2px;">रुद्राक्ष माला — शक्ति और सुरक्षा</div>
-          <div id="ad-desc" style="font-size:11px;color:rgba(255,255,255,0.6);">असली पंचमुखी रुद्राक्ष — अभी खरीदें</div>
-        </div>
-      </div>
-      <div style="font-size:10px;color:rgba(212,175,55,0.5);margin-top:6px;">👆 Tap to explore</div>
+    <div style="border-radius:16px;overflow:hidden;min-height:100px;text-align:center;">
+      <div style="font-size:9px;color:rgba(43,27,18,0.3);letter-spacing:2px;margin-bottom:6px;">ADVERTISEMENT</div>
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-4323540089186617"
+           data-ad-slot="REPLACE_WITH_YOUR_AD_SLOT_ID"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
     </div>
   </div>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 </div>
 
 <!-- ========== SCREEN 3: READING ========== -->
@@ -1188,16 +1208,16 @@
     <div class="visual-stage" id="visual-stage">
       <div class="visual-mandala-wrap">
         <svg class="visual-mandala-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="100" cy="100" r="95" fill="none" stroke="rgba(224,176,255,0.25)" stroke-width="1"/>
-          <circle cx="100" cy="100" r="75" fill="none" stroke="rgba(224,176,255,0.35)" stroke-width="1"/>
-          <circle cx="100" cy="100" r="55" fill="none" stroke="rgba(224,176,255,0.45)" stroke-width="1"/>
-          <g stroke="rgba(224,176,255,0.5)" stroke-width="1">
+          <circle cx="100" cy="100" r="95" fill="none" stroke="rgba(176,58,46,0.25)" stroke-width="1"/>
+          <circle cx="100" cy="100" r="75" fill="none" stroke="rgba(176,58,46,0.35)" stroke-width="1"/>
+          <circle cx="100" cy="100" r="55" fill="none" stroke="rgba(176,58,46,0.45)" stroke-width="1"/>
+          <g stroke="rgba(176,58,46,0.5)" stroke-width="1">
             <line x1="100" y1="5" x2="100" y2="195"/>
             <line x1="5" y1="100" x2="195" y2="100"/>
             <line x1="29" y1="29" x2="171" y2="171"/>
             <line x1="171" y1="29" x2="29" y2="171"/>
           </g>
-          <g fill="rgba(224,176,255,0.6)">
+          <g fill="rgba(176,58,46,0.6)">
             <circle cx="100" cy="5" r="3"/><circle cx="100" cy="195" r="3"/>
             <circle cx="5" cy="100" r="3"/><circle cx="195" cy="100" r="3"/>
           </g>
@@ -1212,25 +1232,25 @@
 
     <!-- Voice Controls -->
     <div style="width:100%;display:flex;gap:10px;">
-      <button id="voice-btn" onclick="toggleVoiceReading()" style="flex:1;padding:16px;background:linear-gradient(135deg,rgba(138,43,226,0.3),rgba(75,0,130,0.3));border:1px solid rgba(180,100,255,0.5);border-radius:14px;color:#E0B0FF;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;">
+      <button id="voice-btn" onclick="toggleVoiceReading()" style="flex:1;padding:16px;background:linear-gradient(135deg,rgba(122,31,31,0.3),rgba(74,15,15,0.3));border:1px solid rgba(176,58,46,0.5);border-radius:14px;color:#B03A2E;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;">
         🔊 <span id="voice-btn-text">Sunao Reading</span>
       </button>
-      <button id="voice-speed-btn" onclick="changeVoiceSpeed()" style="padding:16px 18px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.2);border-radius:14px;color:rgba(255,255,255,0.8);font-size:14px;font-weight:700;cursor:pointer;">
+      <button id="voice-speed-btn" onclick="changeVoiceSpeed()" style="padding:16px 18px;background:rgba(43,27,18,0.07);border:1px solid rgba(43,27,18,0.2);border-radius:14px;color:rgba(43,27,18,0.8);font-size:14px;font-weight:700;cursor:pointer;">
         <span id="speed-text">1x</span>
       </button>
-      <button id="visual-mode-btn" onclick="toggleVisualMode()" style="padding:16px 16px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.2);border-radius:14px;color:rgba(255,255,255,0.8);font-size:14px;font-weight:700;cursor:pointer;">
+      <button id="visual-mode-btn" onclick="toggleVisualMode()" style="padding:16px 16px;background:rgba(43,27,18,0.07);border:1px solid rgba(43,27,18,0.2);border-radius:14px;color:rgba(43,27,18,0.8);font-size:14px;font-weight:700;cursor:pointer;">
         🎬
       </button>
     </div>
 
     <!-- Voice Progress -->
     <div id="voice-progress-bar" style="display:none;width:100%;margin-top:4px;">
-      <div style="background:rgba(255,255,255,0.1);border-radius:999px;height:4px;overflow:hidden;">
-        <div id="voice-progress" style="background:linear-gradient(90deg,#9B59B6,#E0B0FF);height:100%;width:0%;transition:width 0.3s;border-radius:999px;"></div>
+      <div style="background:rgba(43,27,18,0.1);border-radius:999px;height:4px;overflow:hidden;">
+        <div id="voice-progress" style="background:linear-gradient(90deg,#7A1F1F,#B03A2E);height:100%;width:0%;transition:width 0.3s;border-radius:999px;"></div>
       </div>
       <div style="display:flex;justify-content:space-between;margin-top:4px;">
-        <span id="voice-time" style="font-size:10px;color:rgba(255,255,255,0.4);">0:00</span>
-        <span id="voice-lang-btn" onclick="toggleVoiceLang()" style="font-size:10px;color:#E0B0FF;cursor:pointer;">🇮🇳 Hindi</span>
+        <span id="voice-time" style="font-size:10px;color:rgba(43,27,18,0.4);">0:00</span>
+        <span id="voice-lang-btn" onclick="toggleVoiceLang()" style="font-size:10px;color:#B03A2E;cursor:pointer;">🇮🇳 Hindi</span>
       </div>
     </div>
 
@@ -1242,7 +1262,7 @@
 <!-- ========== SCREEN: BHAGAVAD GITA ========== -->
 <div id="screen-gita" class="screen has-nav">
   <div class="profile-header">
-    <button onclick="showScreen('welcome')" style="background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.3);border-radius:999px;padding:6px 16px;color:#F5D96B;font-size:12px;cursor:pointer;margin-bottom:10px;">← Wapas</button>
+    <button onclick="showScreen('welcome')" style="background:rgba(122,31,31,0.1);border:1px solid rgba(122,31,31,0.3);border-radius:999px;padding:6px 16px;color:#9C5024;font-size:12px;cursor:pointer;margin-bottom:10px;">← Wapas</button>
     <div class="section-icon">🪷</div>
     <h2 class="section-title">श्रीमद्भगवद्गीता</h2>
     <p class="section-sub">सम्पूर्ण १८ अध्याय — All 18 Chapters</p>
@@ -1255,7 +1275,7 @@
 <!-- ========== SCREEN: RAMAYANA ========== -->
 <div id="screen-ramayana" class="screen has-nav">
   <div class="profile-header">
-    <button onclick="showScreen('welcome')" style="background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.3);border-radius:999px;padding:6px 16px;color:#F5D96B;font-size:12px;cursor:pointer;margin-bottom:10px;">← Wapas</button>
+    <button onclick="showScreen('welcome')" style="background:rgba(122,31,31,0.1);border:1px solid rgba(122,31,31,0.3);border-radius:999px;padding:6px 16px;color:#9C5024;font-size:12px;cursor:pointer;margin-bottom:10px;">← Wapas</button>
     <div class="section-icon">🏹</div>
     <h2 class="section-title">वाल्मीकि रामायण</h2>
     <p class="section-sub">सम्पूर्ण ७ काण्ड — All 7 Kandas</p>
@@ -1268,7 +1288,7 @@
 <!-- ========== SCREEN: RAMAYANA KANDA DETAIL ========== -->
 <div id="screen-ram-kanda" class="screen has-nav">
   <div class="profile-header">
-    <button onclick="showScreen('ramayana')" style="background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.3);border-radius:999px;padding:6px 16px;color:#F5D96B;font-size:12px;cursor:pointer;margin-bottom:10px;">← Wapas</button>
+    <button onclick="showScreen('ramayana')" style="background:rgba(122,31,31,0.1);border:1px solid rgba(122,31,31,0.3);border-radius:999px;padding:6px 16px;color:#9C5024;font-size:12px;cursor:pointer;margin-bottom:10px;">← Wapas</button>
     <div class="section-icon" id="ram-kanda-icon">🏹</div>
     <h2 class="section-title" id="ram-kanda-title">Kanda</h2>
     <p class="section-sub" id="ram-kanda-sub">Sargas</p>
@@ -1281,7 +1301,7 @@
 <!-- ========== SCREEN: SHIV PURAN ========== -->
 <div id="screen-shivpuran" class="screen has-nav">
   <div class="profile-header">
-    <button onclick="showScreen('welcome')" style="background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.3);border-radius:999px;padding:6px 16px;color:#F5D96B;font-size:12px;cursor:pointer;margin-bottom:10px;">← Wapas</button>
+    <button onclick="showScreen('welcome')" style="background:rgba(122,31,31,0.1);border:1px solid rgba(122,31,31,0.3);border-radius:999px;padding:6px 16px;color:#9C5024;font-size:12px;cursor:pointer;margin-bottom:10px;">← Wapas</button>
     <div class="section-icon">🔱</div>
     <h2 class="section-title">शिव पुराण</h2>
     <p class="section-sub">सम्पूर्ण ७ संहिता — All 7 Samhitas</p>
@@ -1294,7 +1314,7 @@
 <!-- ========== SCREEN: SHIV PURAN SAMHITA DETAIL ========== -->
 <div id="screen-shiv-samhita" class="screen has-nav">
   <div class="profile-header">
-    <button onclick="showScreen('shivpuran')" style="background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.3);border-radius:999px;padding:6px 16px;color:#F5D96B;font-size:12px;cursor:pointer;margin-bottom:10px;">← Wapas</button>
+    <button onclick="showScreen('shivpuran')" style="background:rgba(122,31,31,0.1);border:1px solid rgba(122,31,31,0.3);border-radius:999px;padding:6px 16px;color:#9C5024;font-size:12px;cursor:pointer;margin-bottom:10px;">← Wapas</button>
     <div class="section-icon" id="shiv-samhita-icon">🔱</div>
     <h2 class="section-title" id="shiv-samhita-title">Samhita</h2>
     <p class="section-sub" id="shiv-samhita-sub">Chapters</p>
@@ -1307,7 +1327,7 @@
 <!-- ========== SCREEN: MAHABHARATA ========== -->
 <div id="screen-mahabharata" class="screen has-nav">
   <div class="profile-header">
-    <button onclick="showScreen('welcome')" style="background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.3);border-radius:999px;padding:6px 16px;color:#F5D96B;font-size:12px;cursor:pointer;margin-bottom:10px;">← Wapas</button>
+    <button onclick="showScreen('welcome')" style="background:rgba(122,31,31,0.1);border:1px solid rgba(122,31,31,0.3);border-radius:999px;padding:6px 16px;color:#9C5024;font-size:12px;cursor:pointer;margin-bottom:10px;">← Wapas</button>
     <div class="section-icon">⚔️</div>
     <h2 class="section-title">महाभारत</h2>
     <p class="section-sub">सम्पूर्ण १८ पर्व — All 18 Parvas</p>
@@ -1320,7 +1340,7 @@
 <!-- ========== SCREEN: MAHABHARATA PARVA DETAIL ========== -->
 <div id="screen-mb-parva" class="screen has-nav">
   <div class="profile-header">
-    <button onclick="showScreen('mahabharata')" style="background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.3);border-radius:999px;padding:6px 16px;color:#F5D96B;font-size:12px;cursor:pointer;margin-bottom:10px;">← Wapas</button>
+    <button onclick="showScreen('mahabharata')" style="background:rgba(122,31,31,0.1);border:1px solid rgba(122,31,31,0.3);border-radius:999px;padding:6px 16px;color:#9C5024;font-size:12px;cursor:pointer;margin-bottom:10px;">← Wapas</button>
     <div class="section-icon" id="mb-parva-icon">⚔️</div>
     <h2 class="section-title" id="mb-parva-title">Parva</h2>
     <p class="section-sub" id="mb-parva-sub">Chapters</p>
@@ -1333,7 +1353,7 @@
 <!-- ========== SCREEN: GARUDA PURAN CHAPTERS ========== -->
 <div id="screen-garuda" class="screen has-nav">
   <div class="profile-header">
-    <button onclick="showScreen('welcome')" style="background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.3);border-radius:999px;padding:6px 16px;color:#F5D96B;font-size:12px;cursor:pointer;margin-bottom:10px;">← Wapas</button>
+    <button onclick="showScreen('welcome')" style="background:rgba(122,31,31,0.1);border:1px solid rgba(122,31,31,0.3);border-radius:999px;padding:6px 16px;color:#9C5024;font-size:12px;cursor:pointer;margin-bottom:10px;">← Wapas</button>
     <div class="section-icon">🦅</div>
     <h2 class="section-title">गरुड़ पुराण</h2>
     <p class="section-sub">सम्पूर्ण अध्याय — Garuda Purana</p>
@@ -1341,14 +1361,14 @@
   <div style="max-width:480px;margin:0 auto;padding:16px 20px 100px;">
 
     <!-- Purva Khanda -->
-    <div style="background:rgba(212,175,55,0.08);border:1px solid rgba(212,175,55,0.3);border-radius:16px;padding:16px;margin-bottom:16px;">
-      <p style="font-family:'Cinzel Decorative',serif;font-size:12px;color:var(--gold);letter-spacing:2px;margin-bottom:12px;">📖 पूर्व खण्ड (PURVA KHANDA)</p>
+    <div style="background:rgba(122,31,31,0.08);border:1px solid rgba(122,31,31,0.3);border-radius:16px;padding:16px;margin-bottom:16px;">
+      <p style="font-family:'Cormorant Garamond',serif;font-size:12px;color:var(--gold);letter-spacing:2px;margin-bottom:12px;">📖 पूर्व खण्ड (PURVA KHANDA)</p>
       <div style="display:flex;flex-direction:column;gap:8px;" id="garuda-purva"></div>
     </div>
 
     <!-- Uttara Khanda -->
-    <div style="background:rgba(212,175,55,0.08);border:1px solid rgba(212,175,55,0.3);border-radius:16px;padding:16px;">
-      <p style="font-family:'Cinzel Decorative',serif;font-size:12px;color:var(--gold);letter-spacing:2px;margin-bottom:12px;">📖 उत्तर खण्ड (UTTARA KHANDA)</p>
+    <div style="background:rgba(122,31,31,0.08);border:1px solid rgba(122,31,31,0.3);border-radius:16px;padding:16px;">
+      <p style="font-family:'Cormorant Garamond',serif;font-size:12px;color:var(--gold);letter-spacing:2px;margin-bottom:12px;">📖 उत्तर खण्ड (UTTARA KHANDA)</p>
       <div style="display:flex;flex-direction:column;gap:8px;" id="garuda-uttara"></div>
     </div>
 
@@ -1358,13 +1378,13 @@
 <!-- ========== SCREEN: CHAAR VEDA ========== -->
 <div id="screen-vedas" class="screen has-nav">
   <div class="profile-header">
-    <button onclick="showScreen('welcome')" style="background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.3);border-radius:999px;padding:6px 16px;color:#F5D96B;font-size:12px;cursor:pointer;margin-bottom:10px;">← Wapas</button>
+    <button onclick="showScreen('welcome')" style="background:rgba(122,31,31,0.1);border:1px solid rgba(122,31,31,0.3);border-radius:999px;padding:6px 16px;color:#9C5024;font-size:12px;cursor:pointer;margin-bottom:10px;">← Wapas</button>
     <div class="section-icon">📜</div>
     <h2 class="section-title" id="vedas-screen-title">चारों वेद</h2>
     <p class="section-sub" id="vedas-screen-sub">परिचय, संरचना व प्रमुख मंत्र — The Four Vedas</p>
   </div>
   <div style="max-width:480px;margin:0 auto;padding:16px 20px 100px;">
-    <p id="vedas-screen-intro" style="font-size:12.5px;line-height:1.8;color:rgba(255,255,255,0.6);margin-bottom:18px;text-align:center;">
+    <p id="vedas-screen-intro" style="font-size:12.5px;line-height:1.8;color:rgba(43,27,18,0.6);margin-bottom:18px;text-align:center;">
       वेद सनातन धर्म के सबसे प्राचीन और पवित्र ग्रंथ हैं — इन्हें "श्रुति" (जो सुना गया) कहा जाता है, क्योंकि ऋषियों ने इन्हें ध्यान अवस्था में साक्षात् अनुभव किया। नीचे चारों वेदों में से किसी एक पर टैप करें।
     </p>
     <div style="display:flex;flex-direction:column;gap:10px;" id="vedas-list"></div>
@@ -1403,85 +1423,85 @@
     <p class="section-sub">Apni janm patrika dekhein</p>
   </div>
   <div style="max-width:480px;margin:0 auto;padding:20px;">
-    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.3);border-radius:20px;padding:20px;margin-bottom:20px;text-align:center;">
-      <p style="font-family:'Cinzel Decorative',serif;font-size:13px;color:var(--gold);letter-spacing:2px;margin-bottom:16px;">✦ KUNDALI CHAKRA ✦</p>
+    <div style="background:rgba(43,27,18,0.03);border:1px solid rgba(122,31,31,0.3);border-radius:20px;padding:20px;margin-bottom:20px;text-align:center;">
+      <p style="font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--gold);letter-spacing:2px;margin-bottom:16px;">✦ KUNDALI CHAKRA ✦</p>
       <svg viewBox="0 0 300 300" width="100%" style="max-width:300px;">
-        <rect x="10" y="10" width="280" height="280" fill="none" stroke="rgba(212,175,55,0.6)" stroke-width="1.5"/>
-        <rect x="75" y="75" width="150" height="150" fill="none" stroke="rgba(212,175,55,0.4)" stroke-width="1"/>
-        <line x1="10" y1="10" x2="75" y2="75" stroke="rgba(212,175,55,0.4)" stroke-width="1"/>
-        <line x1="290" y1="10" x2="225" y2="75" stroke="rgba(212,175,55,0.4)" stroke-width="1"/>
-        <line x1="10" y1="290" x2="75" y2="225" stroke="rgba(212,175,55,0.4)" stroke-width="1"/>
-        <line x1="290" y1="290" x2="225" y2="225" stroke="rgba(212,175,55,0.4)" stroke-width="1"/>
-        <line x1="150" y1="10" x2="150" y2="75" stroke="rgba(212,175,55,0.4)" stroke-width="1"/>
-        <line x1="150" y1="225" x2="150" y2="290" stroke="rgba(212,175,55,0.4)" stroke-width="1"/>
-        <line x1="10" y1="150" x2="75" y2="150" stroke="rgba(212,175,55,0.4)" stroke-width="1"/>
-        <line x1="225" y1="150" x2="290" y2="150" stroke="rgba(212,175,55,0.4)" stroke-width="1"/>
-        <text x="150" y="52" text-anchor="middle" fill="rgba(212,175,55,0.9)" font-size="13" font-family="serif">1</text>
-        <text x="248" y="52" text-anchor="middle" fill="rgba(212,175,55,0.7)" font-size="11" font-family="serif">12</text>
-        <text x="52" y="52" text-anchor="middle" fill="rgba(212,175,55,0.7)" font-size="11" font-family="serif">2</text>
-        <text x="268" y="155" text-anchor="middle" fill="rgba(212,175,55,0.7)" font-size="11" font-family="serif">11</text>
-        <text x="32" y="155" text-anchor="middle" fill="rgba(212,175,55,0.7)" font-size="11" font-family="serif">3</text>
-        <text x="248" y="265" text-anchor="middle" fill="rgba(212,175,55,0.7)" font-size="11" font-family="serif">10</text>
-        <text x="52" y="265" text-anchor="middle" fill="rgba(212,175,55,0.7)" font-size="11" font-family="serif">4</text>
-        <text x="150" y="265" text-anchor="middle" fill="rgba(212,175,55,0.7)" font-size="11" font-family="serif">7</text>
-        <text x="150" y="140" text-anchor="middle" fill="rgba(212,175,55,0.5)" font-size="10" font-family="serif">Lagna</text>
-        <text x="150" y="38" text-anchor="middle" fill="#F5D96B" font-size="11">☉ Sun</text>
-        <text x="255" y="130" text-anchor="middle" fill="#F5D96B" font-size="11">☽ Moon</text>
-        <text x="45" y="200" text-anchor="middle" fill="#FF6B6B" font-size="11">♂ Mars</text>
+        <rect x="10" y="10" width="280" height="280" fill="none" stroke="rgba(122,31,31,0.6)" stroke-width="1.5"/>
+        <rect x="75" y="75" width="150" height="150" fill="none" stroke="rgba(122,31,31,0.4)" stroke-width="1"/>
+        <line x1="10" y1="10" x2="75" y2="75" stroke="rgba(122,31,31,0.4)" stroke-width="1"/>
+        <line x1="290" y1="10" x2="225" y2="75" stroke="rgba(122,31,31,0.4)" stroke-width="1"/>
+        <line x1="10" y1="290" x2="75" y2="225" stroke="rgba(122,31,31,0.4)" stroke-width="1"/>
+        <line x1="290" y1="290" x2="225" y2="225" stroke="rgba(122,31,31,0.4)" stroke-width="1"/>
+        <line x1="150" y1="10" x2="150" y2="75" stroke="rgba(122,31,31,0.4)" stroke-width="1"/>
+        <line x1="150" y1="225" x2="150" y2="290" stroke="rgba(122,31,31,0.4)" stroke-width="1"/>
+        <line x1="10" y1="150" x2="75" y2="150" stroke="rgba(122,31,31,0.4)" stroke-width="1"/>
+        <line x1="225" y1="150" x2="290" y2="150" stroke="rgba(122,31,31,0.4)" stroke-width="1"/>
+        <text x="150" y="52" text-anchor="middle" fill="rgba(122,31,31,0.9)" font-size="13" font-family="serif">1</text>
+        <text x="248" y="52" text-anchor="middle" fill="rgba(122,31,31,0.7)" font-size="11" font-family="serif">12</text>
+        <text x="52" y="52" text-anchor="middle" fill="rgba(122,31,31,0.7)" font-size="11" font-family="serif">2</text>
+        <text x="268" y="155" text-anchor="middle" fill="rgba(122,31,31,0.7)" font-size="11" font-family="serif">11</text>
+        <text x="32" y="155" text-anchor="middle" fill="rgba(122,31,31,0.7)" font-size="11" font-family="serif">3</text>
+        <text x="248" y="265" text-anchor="middle" fill="rgba(122,31,31,0.7)" font-size="11" font-family="serif">10</text>
+        <text x="52" y="265" text-anchor="middle" fill="rgba(122,31,31,0.7)" font-size="11" font-family="serif">4</text>
+        <text x="150" y="265" text-anchor="middle" fill="rgba(122,31,31,0.7)" font-size="11" font-family="serif">7</text>
+        <text x="150" y="140" text-anchor="middle" fill="rgba(122,31,31,0.5)" font-size="10" font-family="serif">Lagna</text>
+        <text x="150" y="38" text-anchor="middle" fill="#9C5024" font-size="11">☉ Sun</text>
+        <text x="255" y="130" text-anchor="middle" fill="#9C5024" font-size="11">☽ Moon</text>
+        <text x="45" y="200" text-anchor="middle" fill="#A6321F" font-size="11">♂ Mars</text>
         <text x="150" y="250" text-anchor="middle" fill="#90EE90" font-size="11">♃ Jup</text>
       </svg>
     </div>
-    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.3);border-radius:20px;padding:20px;margin-bottom:20px;">
-      <p style="font-family:'Cinzel Decorative',serif;font-size:13px;color:var(--gold);letter-spacing:2px;margin-bottom:16px;text-align:center;">✦ NAKSHATRA & RASHI ✦</p>
+    <div style="background:rgba(43,27,18,0.03);border:1px solid rgba(122,31,31,0.3);border-radius:20px;padding:20px;margin-bottom:20px;">
+      <p style="font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--gold);letter-spacing:2px;margin-bottom:16px;text-align:center;">✦ NAKSHATRA & RASHI ✦</p>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-        <div style="background:rgba(212,175,55,0.07);border:1px solid rgba(212,175,55,0.2);border-radius:12px;padding:14px;text-align:center;">
+        <div style="background:rgba(122,31,31,0.07);border:1px solid rgba(122,31,31,0.2);border-radius:12px;padding:14px;text-align:center;">
           <div style="font-size:22px;margin-bottom:6px;">⭐</div>
           <div style="font-size:11px;color:var(--text-dim);margin-bottom:4px;">Janm Nakshatra</div>
           <div id="k-nakshatra" style="font-size:13px;color:var(--gold-light);font-weight:600;">—</div>
         </div>
-        <div style="background:rgba(212,175,55,0.07);border:1px solid rgba(212,175,55,0.2);border-radius:12px;padding:14px;text-align:center;">
+        <div style="background:rgba(122,31,31,0.07);border:1px solid rgba(122,31,31,0.2);border-radius:12px;padding:14px;text-align:center;">
           <div style="font-size:22px;margin-bottom:6px;">♈</div>
           <div style="font-size:11px;color:var(--text-dim);margin-bottom:4px;">Janm Rashi</div>
           <div id="k-rashi" style="font-size:13px;color:var(--gold-light);font-weight:600;">—</div>
         </div>
-        <div style="background:rgba(212,175,55,0.07);border:1px solid rgba(212,175,55,0.2);border-radius:12px;padding:14px;text-align:center;">
+        <div style="background:rgba(122,31,31,0.07);border:1px solid rgba(122,31,31,0.2);border-radius:12px;padding:14px;text-align:center;">
           <div style="font-size:22px;margin-bottom:6px;">🪐</div>
           <div style="font-size:11px;color:var(--text-dim);margin-bottom:4px;">Lagna</div>
           <div id="k-lagna" style="font-size:13px;color:var(--gold-light);font-weight:600;">—</div>
         </div>
-        <div style="background:rgba(212,175,55,0.07);border:1px solid rgba(212,175,55,0.2);border-radius:12px;padding:14px;text-align:center;">
+        <div style="background:rgba(122,31,31,0.07);border:1px solid rgba(122,31,31,0.2);border-radius:12px;padding:14px;text-align:center;">
           <div style="font-size:22px;margin-bottom:6px;">👑</div>
           <div style="font-size:11px;color:var(--text-dim);margin-bottom:4px;">Vartaman Dasha</div>
           <div id="k-dasha" style="font-size:13px;color:var(--gold-light);font-weight:600;">—</div>
         </div>
       </div>
     </div>
-    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.3);border-radius:20px;padding:20px;margin-bottom:20px;">
-      <p style="font-family:'Cinzel Decorative',serif;font-size:13px;color:var(--gold);letter-spacing:2px;margin-bottom:16px;text-align:center;">✦ GRAHA STHITI ✦</p>
+    <div style="background:rgba(43,27,18,0.03);border:1px solid rgba(122,31,31,0.3);border-radius:20px;padding:20px;margin-bottom:20px;">
+      <p style="font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--gold);letter-spacing:2px;margin-bottom:16px;text-align:center;">✦ GRAHA STHITI ✦</p>
       <div id="graha-list" style="display:flex;flex-direction:column;gap:10px;"></div>
     </div>
-    <button onclick="calculateKundali()" style="width:100%;padding:18px;background:linear-gradient(135deg,#9A7B1A,#D4AF37,#F5D96B);border:none;border-radius:16px;font-family:'Cinzel Decorative',serif;font-size:15px;font-weight:700;color:#0A0612;cursor:pointer;box-shadow:0 0 40px rgba(212,175,55,0.3);letter-spacing:1px;">🔯 Kundali Calculate Karo</button>
+    <button onclick="calculateKundali()" style="width:100%;padding:18px;background:linear-gradient(135deg,#5C1414,#7A1F1F,#9C5024);border:none;border-radius:16px;font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:700;color:#F3E9D2;cursor:pointer;box-shadow:0 0 40px rgba(122,31,31,0.3);letter-spacing:1px;">🔯 Kundali Calculate Karo</button>
     <p style="text-align:center;font-size:11px;color:var(--text-dim);margin-top:12px;">Profile mein Date of Birth fill karo accurate reading ke liye</p>
   </div>
 </div>
 
 <!-- KUNDALI PAYMENT MODAL -->
 <div id="kundali-modal" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,0.85);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:24px;">
-  <div style="background:linear-gradient(145deg,#130D24,#1a0f35);border:1px solid rgba(212,175,55,0.5);border-radius:24px;padding:32px 24px;max-width:360px;width:100%;text-align:center;position:relative;">
-    <button onclick="document.getElementById('kundali-modal').style.display='none'" style="position:absolute;top:14px;right:16px;background:none;border:none;color:rgba(255,255,255,0.4);font-size:22px;cursor:pointer;">✕</button>
+  <div style="background:linear-gradient(145deg,#EAD9AE,#EAD9AE);border:1px solid rgba(122,31,31,0.5);border-radius:24px;padding:32px 24px;max-width:360px;width:100%;text-align:center;position:relative;">
+    <button onclick="document.getElementById('kundali-modal').style.display='none'" style="position:absolute;top:14px;right:16px;background:none;border:none;color:rgba(43,27,18,0.4);font-size:22px;cursor:pointer;">✕</button>
     <div style="font-size:56px;margin-bottom:12px;">🔯</div>
-    <div style="font-family:'Cinzel Decorative',serif;font-size:20px;color:#F5D96B;margin-bottom:8px;">Janam Kundali</div>
-    <div style="font-style:italic;color:rgba(255,255,255,0.5);font-size:14px;margin-bottom:20px;">Apni poori janm patrika dekhein</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:20px;color:#9C5024;margin-bottom:8px;">Janam Kundali</div>
+    <div style="font-style:italic;color:rgba(43,27,18,0.5);font-size:14px;margin-bottom:20px;">Apni poori janm patrika dekhein</div>
     <div style="margin-bottom:18px;text-align:left;">
-      <div style="font-size:13px;color:rgba(255,255,255,0.75);margin-bottom:10px;">✦ Kundali Chakra (12 Ghar)</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.75);margin-bottom:10px;">✦ Janm Nakshatra & Rashi</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.75);margin-bottom:10px;">✦ Lagna & Vartaman Dasha</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.75);">✦ 7 Graha ki Sthiti</div>
+      <div style="font-size:13px;color:rgba(43,27,18,0.75);margin-bottom:10px;">✦ Kundali Chakra (12 Ghar)</div>
+      <div style="font-size:13px;color:rgba(43,27,18,0.75);margin-bottom:10px;">✦ Janm Nakshatra & Rashi</div>
+      <div style="font-size:13px;color:rgba(43,27,18,0.75);margin-bottom:10px;">✦ Lagna & Vartaman Dasha</div>
+      <div style="font-size:13px;color:rgba(43,27,18,0.75);">✦ 7 Graha ki Sthiti</div>
     </div>
-    <div style="margin-bottom:6px;"><span style="font-size:40px;color:#F5D96B;font-weight:900;">₹99</span></div>
-    <div style="font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:20px;">Ek baar pay karo — hamesha ke liye unlock</div>
-    <button id="kundali-pay-btn" onclick="processKundaliPay()" style="width:100%;padding:18px;background:linear-gradient(135deg,#9A7B1A,#D4AF37,#F5D96B);border:none;border-radius:16px;font-size:17px;font-weight:900;color:#0A0612;cursor:pointer;margin-bottom:12px;letter-spacing:1px;font-family:'Cinzel Decorative',serif;">🔯 SIRF ₹99 MEIN PAIYE</button>
-    <div style="font-size:11px;color:rgba(255,255,255,0.3);">UPI &nbsp;|&nbsp; Card &nbsp;|&nbsp; Net Banking</div>
+    <div style="margin-bottom:6px;"><span style="font-size:40px;color:#9C5024;font-weight:900;">₹99</span></div>
+    <div style="font-size:12px;color:rgba(43,27,18,0.35);margin-bottom:20px;">Ek baar pay karo — hamesha ke liye unlock</div>
+    <button id="kundali-pay-btn" onclick="processKundaliPay()" style="width:100%;padding:18px;background:linear-gradient(135deg,#5C1414,#7A1F1F,#9C5024);border:none;border-radius:16px;font-size:17px;font-weight:900;color:#F3E9D2;cursor:pointer;margin-bottom:12px;letter-spacing:1px;font-family:'Cormorant Garamond',serif;">🔯 SIRF ₹99 MEIN PAIYE</button>
+    <div style="font-size:11px;color:rgba(43,27,18,0.3);">UPI &nbsp;|&nbsp; Card &nbsp;|&nbsp; Net Banking</div>
   </div>
 </div>
 
@@ -1495,46 +1515,46 @@
   <div style="max-width:480px;margin:0 auto;padding:20px;display:flex;flex-direction:column;gap:12px;">
 
     <!-- App Info -->
-    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.2);border-radius:16px;padding:20px;">
+    <div style="background:rgba(43,27,18,0.03);border:1px solid rgba(122,31,31,0.2);border-radius:16px;padding:20px;">
       <p style="font-size:11px;color:var(--gold);letter-spacing:2px;margin-bottom:14px;">APP INFO</p>
       <div style="display:flex;justify-content:space-between;margin-bottom:10px;">
-        <span style="color:rgba(255,255,255,0.6);font-size:13px;">App Name</span>
-        <span style="color:#F5D96B;font-size:13px;">Divine Nakshatra</span>
+        <span style="color:rgba(43,27,18,0.6);font-size:13px;">App Name</span>
+        <span style="color:#9C5024;font-size:13px;">Divine Nakshatra</span>
       </div>
       <div style="display:flex;justify-content:space-between;margin-bottom:10px;">
-        <span style="color:rgba(255,255,255,0.6);font-size:13px;">Version</span>
-        <span style="color:#F5D96B;font-size:13px;">1.0.0</span>
+        <span style="color:rgba(43,27,18,0.6);font-size:13px;">Version</span>
+        <span style="color:#9C5024;font-size:13px;">1.0.0</span>
       </div>
       <div style="display:flex;justify-content:space-between;">
-        <span style="color:rgba(255,255,255,0.6);font-size:13px;">Premium Status</span>
+        <span style="color:rgba(43,27,18,0.6);font-size:13px;">Premium Status</span>
         <span id="settings-premium-status" style="color:#4CAF50;font-size:13px;">Checking...</span>
       </div>
     </div>
     <div style="display:flex;justify-content:space-between;margin-top:10px;">
-      <span style="color:rgba(255,255,255,0.6);font-size:13px;">Kundali Status</span>
+      <span style="color:rgba(43,27,18,0.6);font-size:13px;">Kundali Status</span>
       <span id="settings-kundali-status" style="color:#4CAF50;font-size:13px;">Checking...</span>
     </div>
 
     <!-- Links -->
-    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.2);border-radius:16px;overflow:hidden;">
-      <div onclick="showScreen('privacy')" style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px;cursor:pointer;border-bottom:1px solid rgba(255,255,255,0.05);">
-        <span style="color:rgba(255,255,255,0.8);font-size:14px;">🔒 Privacy Policy</span>
+    <div style="background:rgba(43,27,18,0.03);border:1px solid rgba(122,31,31,0.2);border-radius:16px;overflow:hidden;">
+      <div onclick="showScreen('privacy')" style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px;cursor:pointer;border-bottom:1px solid rgba(43,27,18,0.05);">
+        <span style="color:rgba(43,27,18,0.8);font-size:14px;">🔒 Privacy Policy</span>
         <span style="color:var(--text-dim);">›</span>
       </div>
       <div onclick="showScreen('terms')" style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px;cursor:pointer;">
-        <span style="color:rgba(255,255,255,0.8);font-size:14px;">📜 Terms & Conditions</span>
+        <span style="color:rgba(43,27,18,0.8);font-size:14px;">📜 Terms & Conditions</span>
         <span style="color:var(--text-dim);">›</span>
       </div>
     </div>
 
     <!-- Contact -->
-    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.2);border-radius:16px;padding:20px;">
+    <div style="background:rgba(43,27,18,0.03);border:1px solid rgba(122,31,31,0.2);border-radius:16px;padding:20px;">
       <p style="font-size:11px;color:var(--gold);letter-spacing:2px;margin-bottom:14px;">CONTACT</p>
-      <p style="color:rgba(255,255,255,0.6);font-size:13px;">Support: <span style="color:#F5D96B;">support@divinenakshatra.com</span></p>
+      <p style="color:rgba(43,27,18,0.6);font-size:13px;">Support: <span style="color:#9C5024;">support@divinenakshatra.com</span></p>
     </div>
 
     <!-- Clear Data -->
-    <button onclick="clearAllData()" style="width:100%;padding:14px;background:rgba(255,80,80,0.08);border:1px solid rgba(255,80,80,0.25);border-radius:12px;color:rgba(255,100,100,0.8);font-size:13px;cursor:pointer;">🗑️ Sab Data Clear Karo</button>
+    <button onclick="clearAllData()" style="width:100%;padding:14px;background:rgba(166,50,36,0.08);border:1px solid rgba(166,50,36,0.25);border-radius:12px;color:rgba(166,50,36,0.8);font-size:13px;cursor:pointer;">🗑️ Sab Data Clear Karo</button>
   </div>
 </div>
 
@@ -1545,25 +1565,25 @@
     <h2 class="section-title">Privacy Policy</h2>
     <p class="section-sub">Aapka data safe hai</p>
   </div>
-  <div style="max-width:480px;margin:0 auto;padding:20px;color:rgba(255,255,255,0.8);font-size:13px;line-height:1.8;display:flex;flex-direction:column;gap:14px;">
-    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.2);border-radius:16px;padding:20px;">
+  <div style="max-width:480px;margin:0 auto;padding:20px;color:rgba(43,27,18,0.8);font-size:13px;line-height:1.8;display:flex;flex-direction:column;gap:14px;">
+    <div style="background:rgba(43,27,18,0.03);border:1px solid rgba(122,31,31,0.2);border-radius:16px;padding:20px;">
       <h3 style="color:var(--gold);margin-bottom:10px;">📋 Hum kya collect karte hain?</h3>
       <p>Aapka naam, janm tithi, aur janam samay sirf aapki Jyotish reading ke liye use hota hai. Hum koi bhi personal data third party ke saath share nahi karte.</p>
     </div>
-    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.2);border-radius:16px;padding:20px;">
+    <div style="background:rgba(43,27,18,0.03);border:1px solid rgba(122,31,31,0.2);border-radius:16px;padding:20px;">
       <h3 style="color:var(--gold);margin-bottom:10px;">💳 Payment Security</h3>
       <p>Sab payments Razorpay ke through hote hain jo 100% secure hai. Hum aapki card ya bank details kabhi store nahi karte.</p>
     </div>
-    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.2);border-radius:16px;padding:20px;">
+    <div style="background:rgba(43,27,18,0.03);border:1px solid rgba(122,31,31,0.2);border-radius:16px;padding:20px;">
       <h3 style="color:var(--gold);margin-bottom:10px;">🍪 Local Storage</h3>
       <p>Hum sirf aapki premium status ko aapke device mein store karte hain. Ye data kabhi server pe nahi jaata.</p>
     </div>
-    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.2);border-radius:16px;padding:20px;">
+    <div style="background:rgba(43,27,18,0.03);border:1px solid rgba(122,31,31,0.2);border-radius:16px;padding:20px;">
       <h3 style="color:var(--gold);margin-bottom:10px;">📧 Contact</h3>
-      <p>Koi bhi sawal ke liye: <span style="color:#F5D96B;">support@divinenakshatra.com</span></p>
+      <p>Koi bhi sawal ke liye: <span style="color:#9C5024;">support@divinenakshatra.com</span></p>
     </div>
     <p style="font-size:11px;color:var(--text-dim);text-align:center;">Last updated: May 2026</p>
-    <button onclick="showScreen('settings')" style="padding:12px;background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.3);border-radius:12px;color:#F5D96B;font-size:13px;cursor:pointer;">← Wapas Settings</button>
+    <button onclick="showScreen('settings')" style="padding:12px;background:rgba(122,31,31,0.1);border:1px solid rgba(122,31,31,0.3);border-radius:12px;color:#9C5024;font-size:13px;cursor:pointer;">← Wapas Settings</button>
   </div>
 </div>
 
@@ -1574,25 +1594,25 @@
     <h2 class="section-title">Terms & Conditions</h2>
     <p class="section-sub">Niyam aur shartein</p>
   </div>
-  <div style="max-width:480px;margin:0 auto;padding:20px;color:rgba(255,255,255,0.8);font-size:13px;line-height:1.8;display:flex;flex-direction:column;gap:14px;">
-    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.2);border-radius:16px;padding:20px;">
+  <div style="max-width:480px;margin:0 auto;padding:20px;color:rgba(43,27,18,0.8);font-size:13px;line-height:1.8;display:flex;flex-direction:column;gap:14px;">
+    <div style="background:rgba(43,27,18,0.03);border:1px solid rgba(122,31,31,0.2);border-radius:16px;padding:20px;">
       <h3 style="color:var(--gold);margin-bottom:10px;">⚠️ Disclaimer</h3>
       <p>Divine Nakshatra ek entertainment aur spiritual guidance app hai. Yahan di gayi readings AI aur Vedic Jyotish par based hain. Inhe professional medical, legal, ya financial advice ka substitute mat samjhein.</p>
     </div>
-    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.2);border-radius:16px;padding:20px;">
+    <div style="background:rgba(43,27,18,0.03);border:1px solid rgba(122,31,31,0.2);border-radius:16px;padding:20px;">
       <h3 style="color:var(--gold);margin-bottom:10px;">💰 Refund Policy</h3>
       <p>₹1 aur ₹99 ke payments non-refundable hain kyunki ye digital service hai. Payment hone ke baad premium features turant unlock ho jaate hain.</p>
     </div>
-    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.2);border-radius:16px;padding:20px;">
+    <div style="background:rgba(43,27,18,0.03);border:1px solid rgba(122,31,31,0.2);border-radius:16px;padding:20px;">
       <h3 style="color:var(--gold);margin-bottom:10px;">✅ User Agreement</h3>
       <p>Is app ka use karke aap agree karte ho ki aap 18 saal ya usse zyada ke hain. App ka use sirf personal purpose ke liye kiya ja sakta hai.</p>
     </div>
-    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.2);border-radius:16px;padding:20px;">
+    <div style="background:rgba(43,27,18,0.03);border:1px solid rgba(122,31,31,0.2);border-radius:16px;padding:20px;">
       <h3 style="color:var(--gold);margin-bottom:10px;">📧 Contact</h3>
-      <p>Complaints ya queries: <span style="color:#F5D96B;">support@divinenakshatra.com</span></p>
+      <p>Complaints ya queries: <span style="color:#9C5024;">support@divinenakshatra.com</span></p>
     </div>
     <p style="font-size:11px;color:var(--text-dim);text-align:center;">Last updated: May 2026</p>
-    <button onclick="showScreen('settings')" style="padding:12px;background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.3);border-radius:12px;color:#F5D96B;font-size:13px;cursor:pointer;">← Wapas Settings</button>
+    <button onclick="showScreen('settings')" style="padding:12px;background:rgba(122,31,31,0.1);border:1px solid rgba(122,31,31,0.3);border-radius:12px;color:#9C5024;font-size:13px;cursor:pointer;">← Wapas Settings</button>
   </div>
 </div>
 
@@ -1647,11 +1667,11 @@ function selectPlan(planId) {
     const card = document.getElementById('plan-card-' + id);
     if (!card) return;
     if (id === planId) {
-      card.style.border = '2px solid #D4AF37';
-      card.style.background = 'rgba(212,175,55,0.18)';
+      card.style.border = '2px solid #7A1F1F';
+      card.style.background = 'rgba(122,31,31,0.18)';
     } else {
-      card.style.border = '2px solid rgba(255,255,255,0.1)';
-      card.style.background = 'rgba(255,255,255,0.04)';
+      card.style.border = '2px solid rgba(43,27,18,0.1)';
+      card.style.background = 'rgba(43,27,18,0.04)';
     }
   });
   updatePriceUI();
@@ -1709,19 +1729,19 @@ function selectCountry(code) {
   const btnOther = document.getElementById('btn-country-OTHER');
   if (btnIN && btnOther) {
     if (code === 'IN') {
-      btnIN.style.border = '2px solid #D4AF37';
-      btnIN.style.background = 'rgba(212,175,55,0.25)';
-      btnIN.style.color = '#F5D96B';
-      btnOther.style.border = '2px solid rgba(255,255,255,0.15)';
-      btnOther.style.background = 'rgba(255,255,255,0.05)';
-      btnOther.style.color = 'rgba(255,255,255,0.5)';
+      btnIN.style.border = '2px solid #7A1F1F';
+      btnIN.style.background = 'rgba(122,31,31,0.25)';
+      btnIN.style.color = '#9C5024';
+      btnOther.style.border = '2px solid rgba(43,27,18,0.15)';
+      btnOther.style.background = 'rgba(43,27,18,0.05)';
+      btnOther.style.color = 'rgba(43,27,18,0.5)';
     } else {
-      btnOther.style.border = '2px solid #D4AF37';
-      btnOther.style.background = 'rgba(212,175,55,0.25)';
-      btnOther.style.color = '#F5D96B';
-      btnIN.style.border = '2px solid rgba(255,255,255,0.15)';
-      btnIN.style.background = 'rgba(255,255,255,0.05)';
-      btnIN.style.color = 'rgba(255,255,255,0.5)';
+      btnOther.style.border = '2px solid #7A1F1F';
+      btnOther.style.background = 'rgba(122,31,31,0.25)';
+      btnOther.style.color = '#9C5024';
+      btnIN.style.border = '2px solid rgba(43,27,18,0.15)';
+      btnIN.style.background = 'rgba(43,27,18,0.05)';
+      btnIN.style.color = 'rgba(43,27,18,0.5)';
     }
   }
   updatePriceUI();
@@ -1756,10 +1776,10 @@ function updatePriceUI() {
   if (flagEl) {
     if (userCountry === 'IN') {
       flagEl.innerHTML = '🇮🇳 India Special Price — ' + p.label + ' / ' + plan.label;
-      flagEl.style.color = 'rgba(255,150,50,0.8)';
+      flagEl.style.color = 'rgba(196,120,40,0.8)';
     } else {
       flagEl.innerHTML = '🌍 International Price — ' + p.label + ' / ' + plan.label;
-      flagEl.style.color = 'rgba(180,180,255,0.6)';
+      flagEl.style.color = 'rgba(176,140,120,0.6)';
     }
   }
 }
@@ -1788,10 +1808,10 @@ function updateFreeCounter() {
   if (el) {
     if (freeReadingsLeft > 0) {
       el.innerHTML = '&#10022; ' + freeReadingsLeft + ' free reading' + (freeReadingsLeft > 1 ? 's' : '') + ' baaki hai';
-      el.style.color = 'rgba(100,220,100,0.8)';
+      el.style.color = 'rgba(90,130,70,0.8)';
     } else {
       el.innerHTML = '&#10022; Free readings khatam — Premium lo!';
-      el.style.color = 'rgba(255,100,100,0.8)';
+      el.style.color = 'rgba(166,50,36,0.8)';
     }
   }
 }
@@ -1847,7 +1867,7 @@ async function processPay() {
       order_id: orderData.orderId,
       name: 'Divine Nakshatra',
       description: plan.label + ' Premium',
-      theme: { color: '#D4AF37' },
+      theme: { color: '#7A1F1F' },
       handler: async function (response) {
         // 3. Verify payment via backend
         showToast('Payment verify ho raha hai... ⏳');
@@ -1914,13 +1934,13 @@ function resizeCanvas() {
 
 function initStars() {
   stars = [];
-  for (let i = 0; i < 200; i++) {
+  for (let i = 0; i < 120; i++) {
     stars.push({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
-      r: Math.random() * 1.5 + 0.2,
+      r: Math.random() * 1.2 + 0.2,
       alpha: Math.random(),
-      speed: Math.random() * 0.005 + 0.002,
+      speed: Math.random() * 0.004 + 0.0015,
       phase: Math.random() * Math.PI * 2
     });
   }
@@ -1929,10 +1949,10 @@ function initStars() {
 function animateStars(t) {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   stars.forEach(s => {
-    s.alpha = 0.3 + 0.7 * Math.abs(Math.sin(s.phase + t * s.speed));
+    s.alpha = 0.08 + 0.14 * Math.abs(Math.sin(s.phase + t * s.speed));
     ctx.beginPath();
     ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(255,255,220,${s.alpha})`;
+    ctx.fillStyle = `rgba(122,31,31,${s.alpha})`;
     ctx.fill();
   });
   requestAnimationFrame(animateStars);
@@ -2151,7 +2171,7 @@ const dashas = ['Surya','Chandra','Mangal','Rahu','Brihaspati','Shani','Budh','K
 const grahas = [
   { name: 'Surya ☉', color: '#FFD700' },
   { name: 'Chandra ☽', color: '#C0C0C0' },
-  { name: 'Mangal ♂', color: '#FF4444' },
+  { name: 'Mangal ♂', color: '#A6321F' },
   { name: 'Budh ☿', color: '#90EE90' },
   { name: 'Brihaspati ♃', color: '#FFA500' },
   { name: 'Shukra ♀', color: '#FFB6C1' },
@@ -2197,7 +2217,7 @@ function showKundaliResult(name, dob) {
   grahaList.innerHTML = '';
   grahas.forEach((g, i) => {
     const rashiPos = (rashiIndex + i * 2) % 12;
-    grahaList.innerHTML += '<div style="display:flex;align-items:center;justify-content:space-between;background:rgba(212,175,55,0.05);border:1px solid rgba(212,175,55,0.15);border-radius:10px;padding:12px 14px;"><span style="color:'+g.color+';font-size:14px;font-weight:600;">'+g.name+'</span><span style="color:rgba(255,255,255,0.7);font-size:12px;">'+rashis[rashiPos]+'</span></div>';
+    grahaList.innerHTML += '<div style="display:flex;align-items:center;justify-content:space-between;background:rgba(122,31,31,0.05);border:1px solid rgba(122,31,31,0.15);border-radius:10px;padding:12px 14px;"><span style="color:'+g.color+';font-size:14px;font-weight:600;">'+g.name+'</span><span style="color:rgba(43,27,18,0.7);font-size:12px;">'+rashis[rashiPos]+'</span></div>';
   });
   showToast(`${name} ji ki Kundali ready hai! 🔯`);
 }
@@ -2226,38 +2246,7 @@ function clearAllData() {
   }
 }
 
-// ========== ROTATING ADS ==========
-const adsList = [
-  { icon: '💊', title: 'Marine Collagen — Skin, Hair, Nails', desc: 'Wellbeing Nutrition — 3K+ log kharid chuke!', url: 'https://www.amazon.in/dp/B09FLFHX1P/?tag=divinenakshat-21' },
-  { icon: '👗', title: 'Printed Leggings — Comfortable & Stylish', desc: 'Best seller — Women fashion deal!', url: 'https://www.amazon.in/dp/B0FGWBVP29/?tag=divinenakshat-21' },
-  { icon: '🛍️', title: 'New Arrivals — Top Deals Today', desc: 'Amazon bestseller — Limited stock!', url: 'https://www.amazon.in/dp/B0FM465WWG/?tag=divinenakshat-21' },
-  { icon: '💄', title: 'Beauty Products — Amazon Bazaar', desc: 'Top beauty brands — Huge discounts!', url: 'https://www.amazon.in/amazon-bazaar/merch?merchPageId=Beauty&tag=divinenakshat-21' },
-  { icon: '✨', title: '2025 Trending Products — Amazon', desc: 'Hottest deals of 2025 — Shop now!', url: 'https://www.amazon.in/amazon-bazaar/merch?merchPageId=2025&tag=divinenakshat-21' },
-  { icon: '✈️', title: 'Flights — Sasta Ticket Book Karo', desc: 'Amazon Flights — Best price guarantee!', url: 'https://www.amazon.in/flights/?tag=divinenakshat-21' },
-  { icon: '🛒', title: 'Amazon Great Sale — 80% OFF', desc: 'Aaj hi order karo — Limited time offer!', url: 'https://www.amazon.in/deals?tag=divinenakshat-21' },
-  { icon: '🏥', title: 'Health Insurance — Best Plans', desc: 'Amazon pe best health plans — Compare karo!', url: 'https://www.amazon.in/s?k=health+insurance&tag=divinenakshat-21' },
-  { icon: '🎓', title: 'Free Online Certificate Course', desc: 'Google, IBM, Meta — Career badlo aaj!', url: 'https://www.coursera.org' },
-  { icon: '💰', title: 'Share Market mein Invest karein', desc: 'Zerodha — Free Demat Account kholo aaj!', url: 'https://zerodha.com' },
-];
-let currentAd = 0;
-function rotateAds() {
-  const ad = adsList[currentAd % adsList.length];
-  const banner = document.getElementById('ads-banner');
-  if (!banner) return;
-  banner.style.opacity = '0';
-  setTimeout(() => {
-    document.getElementById('ad-icon').textContent = ad.icon;
-    document.getElementById('ad-title').textContent = ad.title;
-    document.getElementById('ad-desc').textContent = ad.desc;
-    banner.onclick = () => window.open(ad.url, '_blank');
-    banner.style.cursor = 'pointer';
-    banner.style.opacity = '1';
-    banner.style.transition = 'opacity 0.5s';
-  }, 300);
-  currentAd++;
-}
-rotateAds();
-setInterval(rotateAds, 5000); // Change every 5 seconds
+// ========== ROTATING ADS (disabled — replaced with AdSense unit) ==========
 
 // ========== BHAGAVAD GITA ==========
 const gitaChapters = [
@@ -2671,10 +2660,10 @@ function showBhagavadGita() {
   list.innerHTML = '';
   gitaChapters.forEach((ch) => {
     const btn = document.createElement('button');
-    btn.style.cssText = 'background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.2);border-radius:12px;padding:14px 16px;text-align:left;cursor:pointer;display:flex;align-items:center;gap:12px;width:100%;';
+    btn.style.cssText = 'background:rgba(122,31,31,0.06);border:1px solid rgba(122,31,31,0.2);border-radius:12px;padding:14px 16px;text-align:left;cursor:pointer;display:flex;align-items:center;gap:12px;width:100%;';
     const titleShow = isEn ? ch.en : ch.title;
     const slokaLabel = isEn ? ch.en + ' • ' + ch.shlokas + ' Shlokas' : ch.en + ' • ' + ch.shlokas + ' श्लोक';
-    btn.innerHTML = '<span style="background:rgba(212,175,55,0.2);border-radius:8px;padding:4px 10px;font-size:11px;color:var(--gold);font-weight:700;min-width:36px;text-align:center;">' + ch.ch + '</span><div><div style="font-size:13px;color:rgba(255,255,255,0.9);font-weight:600;">' + titleShow + '</div><div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:2px;">' + slokaLabel + '</div></div>';
+    btn.innerHTML = '<span style="background:rgba(122,31,31,0.2);border-radius:8px;padding:4px 10px;font-size:11px;color:var(--gold);font-weight:700;min-width:36px;text-align:center;">' + ch.ch + '</span><div><div style="font-size:13px;color:rgba(43,27,18,0.9);font-weight:600;">' + titleShow + '</div><div style="font-size:11px;color:rgba(43,27,18,0.4);margin-top:2px;">' + slokaLabel + '</div></div>';
     btn.addEventListener('click', () => {
       const displayContent = (currentLang === 'en' && ch.contentEn) ? ch.contentEn : ch.content;
       showGitaChapter(isEn ? ch.en : ch.title, displayContent);
@@ -3929,10 +3918,10 @@ function showRamayana() {
   container.innerHTML = '';
   ramayanaData.forEach(function(kanda) {
     var div = document.createElement('div');
-    div.style.cssText = 'background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.2);border-radius:14px;overflow:hidden;';
+    div.style.cssText = 'background:rgba(122,31,31,0.06);border:1px solid rgba(122,31,31,0.2);border-radius:14px;overflow:hidden;';
     var label = isEn ? 'Kanda ' + kanda.num + ' — ' + kanda.en : 'काण्ड ' + kanda.num + ' — ' + kanda.name;
     var sub = isEn ? kanda.en + ' • ' + kanda.sargas + ' Sargas' : kanda.en + ' • ' + kanda.sargas + ' सर्ग';
-    div.innerHTML = '<div style="display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;"><span style="font-size:24px;">' + kanda.icon + '</span><div style="flex:1;"><div style="font-size:14px;color:#F5D96B;font-weight:700;">' + label + '</div><div style="font-size:11px;color:rgba(255,255,255,0.5);">' + sub + '</div><div style="font-size:11px;color:rgba(255,255,255,0.6);margin-top:3px;">' + kanda.desc + '</div></div><span style="color:var(--gold);font-size:18px;">›</span></div>';
+    div.innerHTML = '<div style="display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;"><span style="font-size:24px;">' + kanda.icon + '</span><div style="flex:1;"><div style="font-size:14px;color:#9C5024;font-weight:700;">' + label + '</div><div style="font-size:11px;color:rgba(43,27,18,0.5);">' + sub + '</div><div style="font-size:11px;color:rgba(43,27,18,0.6);margin-top:3px;">' + kanda.desc + '</div></div><span style="color:var(--gold);font-size:18px;">›</span></div>';
     div.addEventListener('click', function() { showRamKanda(kanda.num); });
     container.appendChild(div);
   });
@@ -3954,9 +3943,9 @@ function showRamKanda(num) {
   list.innerHTML = '';
   kanda.chapters.forEach(function(ch) {
     var btn = document.createElement('button');
-    btn.style.cssText = 'background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.2);border-radius:12px;padding:14px 16px;text-align:left;cursor:pointer;display:flex;align-items:center;gap:12px;width:100%;';
+    btn.style.cssText = 'background:rgba(122,31,31,0.06);border:1px solid rgba(122,31,31,0.2);border-radius:12px;padding:14px 16px;text-align:left;cursor:pointer;display:flex;align-items:center;gap:12px;width:100%;';
     var displayTitle = (currentLang === 'en' && ch.titleEn) ? ch.titleEn : ch.title;
-    btn.innerHTML = '<span style="background:rgba(212,175,55,0.2);border-radius:8px;padding:4px 10px;font-size:11px;color:var(--gold);font-weight:700;min-width:36px;text-align:center;">' + ch.ch + '</span><div style="font-size:13px;color:rgba(255,255,255,0.9);font-weight:600;">' + displayTitle + '</div>';
+    btn.innerHTML = '<span style="background:rgba(122,31,31,0.2);border-radius:8px;padding:4px 10px;font-size:11px;color:var(--gold);font-weight:700;min-width:36px;text-align:center;">' + ch.ch + '</span><div style="font-size:13px;color:rgba(43,27,18,0.9);font-weight:600;">' + displayTitle + '</div>';
     btn.addEventListener('click', function() {
       var displayContent = (currentLang === 'en' && ch.contentEn) ? ch.contentEn : ch.content;
       showRamChapter(displayTitle, displayContent);
@@ -4302,10 +4291,10 @@ function showShivPuran() {
   container.innerHTML = '';
   shivPuranData.forEach((s) => {
     const div = document.createElement('div');
-    div.style.cssText = 'background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.2);border-radius:14px;overflow:hidden;';
+    div.style.cssText = 'background:rgba(122,31,31,0.06);border:1px solid rgba(122,31,31,0.2);border-radius:14px;overflow:hidden;';
     const samhitaLabel = isEn ? 'Samhita ' + s.num + ' — ' + s.en : 'संहिता ' + s.num + ' — ' + s.name;
     const chapLabel = isEn ? s.en + ' • ' + s.adhyaya + ' Chapters' : s.en + ' • ' + s.adhyaya + ' अध्याय';
-    div.innerHTML = '<div style="display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;"><span style="font-size:24px;">' + s.icon + '</span><div style="flex:1;"><div style="font-size:14px;color:#F5D96B;font-weight:700;">' + samhitaLabel + '</div><div style="font-size:11px;color:rgba(255,255,255,0.5);">' + chapLabel + '</div><div style="font-size:11px;color:rgba(255,255,255,0.6);margin-top:3px;">' + s.desc + '</div></div><span style="color:var(--gold);font-size:18px;">›</span></div>';
+    div.innerHTML = '<div style="display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;"><span style="font-size:24px;">' + s.icon + '</span><div style="flex:1;"><div style="font-size:14px;color:#9C5024;font-weight:700;">' + samhitaLabel + '</div><div style="font-size:11px;color:rgba(43,27,18,0.5);">' + chapLabel + '</div><div style="font-size:11px;color:rgba(43,27,18,0.6);margin-top:3px;">' + s.desc + '</div></div><span style="color:var(--gold);font-size:18px;">›</span></div>';
     div.addEventListener('click', () => showShivSamhita(s.num));
     container.appendChild(div);
   });
@@ -4331,9 +4320,9 @@ function showShivSamhita(num) {
   list.innerHTML = '';
   samhita.chapters.forEach((ch) => {
     const btn = document.createElement('button');
-    btn.style.cssText = 'background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.2);border-radius:12px;padding:14px 16px;text-align:left;cursor:pointer;display:flex;align-items:center;gap:12px;width:100%;';
+    btn.style.cssText = 'background:rgba(122,31,31,0.06);border:1px solid rgba(122,31,31,0.2);border-radius:12px;padding:14px 16px;text-align:left;cursor:pointer;display:flex;align-items:center;gap:12px;width:100%;';
     const shivDisplayTitle = (currentLang === 'en' && ch.titleEn) ? ch.titleEn : ch.title;
-    btn.innerHTML = '<span style="background:rgba(212,175,55,0.2);border-radius:8px;padding:4px 10px;font-size:11px;color:var(--gold);font-weight:700;min-width:36px;text-align:center;">' + ch.ch + '</span><div style="font-size:13px;color:rgba(255,255,255,0.9);font-weight:600;">' + shivDisplayTitle + '</div>';
+    btn.innerHTML = '<span style="background:rgba(122,31,31,0.2);border-radius:8px;padding:4px 10px;font-size:11px;color:var(--gold);font-weight:700;min-width:36px;text-align:center;">' + ch.ch + '</span><div style="font-size:13px;color:rgba(43,27,18,0.9);font-weight:600;">' + shivDisplayTitle + '</div>';
     btn.addEventListener('click', () => {
       const displayContent = (currentLang === 'en' && ch.contentEn) ? ch.contentEn : ch.content;
       showShivChapter(shivDisplayTitle, displayContent);
@@ -4857,10 +4846,10 @@ function showMahabharata() {
   container.innerHTML = '';
   mahabharataParvas.forEach(function(parva) {
     var div = document.createElement('div');
-    div.style.cssText = 'background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.2);border-radius:14px;overflow:hidden;';
+    div.style.cssText = 'background:rgba(122,31,31,0.06);border:1px solid rgba(122,31,31,0.2);border-radius:14px;overflow:hidden;';
     var label = isEn ? 'Parva ' + parva.num + ' — ' + parva.en : 'पर्व ' + parva.num + ' — ' + parva.name;
     var sub = isEn ? parva.en + ' • ' + parva.adhyaya + ' Chapters' : parva.en + ' • ' + parva.adhyaya + ' अध्याय';
-    div.innerHTML = '<div style="display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;"><span style="font-size:24px;">' + parva.icon + '</span><div style="flex:1;"><div style="font-size:14px;color:#F5D96B;font-weight:700;">' + label + '</div><div style="font-size:11px;color:rgba(255,255,255,0.5);">' + sub + '</div><div style="font-size:11px;color:rgba(255,255,255,0.6);margin-top:3px;">' + parva.desc + '</div></div><span style="color:var(--gold);font-size:18px;">›</span></div>';
+    div.innerHTML = '<div style="display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;"><span style="font-size:24px;">' + parva.icon + '</span><div style="flex:1;"><div style="font-size:14px;color:#9C5024;font-weight:700;">' + label + '</div><div style="font-size:11px;color:rgba(43,27,18,0.5);">' + sub + '</div><div style="font-size:11px;color:rgba(43,27,18,0.6);margin-top:3px;">' + parva.desc + '</div></div><span style="color:var(--gold);font-size:18px;">›</span></div>';
     div.addEventListener('click', function() { showMbParva(parva.num); });
     container.appendChild(div);
   });
@@ -4882,9 +4871,9 @@ function showMbParva(num) {
   list.innerHTML = '';
   parva.chapters.forEach(function(ch) {
     var btn = document.createElement('button');
-    btn.style.cssText = 'background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.2);border-radius:12px;padding:14px 16px;text-align:left;cursor:pointer;display:flex;align-items:center;gap:12px;width:100%;';
+    btn.style.cssText = 'background:rgba(122,31,31,0.06);border:1px solid rgba(122,31,31,0.2);border-radius:12px;padding:14px 16px;text-align:left;cursor:pointer;display:flex;align-items:center;gap:12px;width:100%;';
     var mbDisplayTitle = (currentLang === 'en' && ch.titleEn) ? ch.titleEn : ch.title;
-    btn.innerHTML = '<span style="background:rgba(212,175,55,0.2);border-radius:8px;padding:4px 10px;font-size:11px;color:var(--gold);font-weight:700;min-width:36px;text-align:center;">' + ch.ch + '</span><div style="font-size:13px;color:rgba(255,255,255,0.9);font-weight:600;">' + mbDisplayTitle + '</div>';
+    btn.innerHTML = '<span style="background:rgba(122,31,31,0.2);border-radius:8px;padding:4px 10px;font-size:11px;color:var(--gold);font-weight:700;min-width:36px;text-align:center;">' + ch.ch + '</span><div style="font-size:13px;color:rgba(43,27,18,0.9);font-weight:600;">' + mbDisplayTitle + '</div>';
     btn.addEventListener('click', function() {
       var displayContent = (currentLang === 'en' && ch.contentEn) ? ch.contentEn : ch.content;
       showMbChapter(mbDisplayTitle, displayContent);
@@ -6011,8 +6000,8 @@ function showGarudaChapters() {
   purva.innerHTML = '';
   garudaPurvaChapters.forEach((c) => {
     const btn = document.createElement('button');
-    btn.style.cssText = 'background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.2);border-radius:12px;padding:12px 16px;text-align:left;cursor:pointer;display:flex;align-items:center;gap:12px;width:100%;margin-bottom:4px;';
-    btn.innerHTML = '<span style="background:rgba(212,175,55,0.2);border-radius:8px;padding:4px 10px;font-size:11px;color:var(--gold);font-weight:700;min-width:36px;text-align:center;">' + c.ch + '</span><div><div style="font-size:13px;color:rgba(255,255,255,0.9);font-weight:600;">' + c.title + '</div><div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:2px;">' + c.en + '</div></div>';
+    btn.style.cssText = 'background:rgba(122,31,31,0.06);border:1px solid rgba(122,31,31,0.2);border-radius:12px;padding:12px 16px;text-align:left;cursor:pointer;display:flex;align-items:center;gap:12px;width:100%;margin-bottom:4px;';
+    btn.innerHTML = '<span style="background:rgba(122,31,31,0.2);border-radius:8px;padding:4px 10px;font-size:11px;color:var(--gold);font-weight:700;min-width:36px;text-align:center;">' + c.ch + '</span><div><div style="font-size:13px;color:rgba(43,27,18,0.9);font-weight:600;">' + c.title + '</div><div style="font-size:11px;color:rgba(43,27,18,0.4);margin-top:2px;">' + c.en + '</div></div>';
     btn.addEventListener('click', function() {
       var ch = c.ch;
       var hiContent = garudaChapterContent.purva[ch];
@@ -6028,8 +6017,8 @@ function showGarudaChapters() {
   uttara.innerHTML = '';
   garudaUttaraChapters.forEach((c) => {
     const btn = document.createElement('button');
-    btn.style.cssText = 'background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.2);border-radius:12px;padding:12px 16px;text-align:left;cursor:pointer;display:flex;align-items:center;gap:12px;width:100%;margin-bottom:4px;';
-    btn.innerHTML = '<span style="background:rgba(138,43,226,0.2);border-radius:8px;padding:4px 10px;font-size:11px;color:#E0B0FF;font-weight:700;min-width:36px;text-align:center;">' + c.ch + '</span><div><div style="font-size:13px;color:rgba(255,255,255,0.9);font-weight:600;">' + c.title + '</div><div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:2px;">' + c.en + '</div></div>';
+    btn.style.cssText = 'background:rgba(122,31,31,0.06);border:1px solid rgba(122,31,31,0.2);border-radius:12px;padding:12px 16px;text-align:left;cursor:pointer;display:flex;align-items:center;gap:12px;width:100%;margin-bottom:4px;';
+    btn.innerHTML = '<span style="background:rgba(122,31,31,0.2);border-radius:8px;padding:4px 10px;font-size:11px;color:#B03A2E;font-weight:700;min-width:36px;text-align:center;">' + c.ch + '</span><div><div style="font-size:13px;color:rgba(43,27,18,0.9);font-weight:600;">' + c.title + '</div><div style="font-size:11px;color:rgba(43,27,18,0.4);margin-top:2px;">' + c.en + '</div></div>';
     btn.addEventListener('click', function() {
       var ch = c.ch;
       var hiContent = garudaChapterContent.uttara[ch];
@@ -6424,10 +6413,10 @@ function renderVedasList() {
   list.innerHTML = '';
   vedasData.forEach((v) => {
     const btn = document.createElement('button');
-    btn.style.cssText = 'background:rgba(212,175,55,0.08);border:1px solid rgba(212,175,55,0.3);border-radius:16px;padding:14px 16px;text-align:left;cursor:pointer;display:flex;align-items:center;gap:14px;width:100%;';
+    btn.style.cssText = 'background:rgba(122,31,31,0.08);border:1px solid rgba(122,31,31,0.3);border-radius:16px;padding:14px 16px;text-align:left;cursor:pointer;display:flex;align-items:center;gap:14px;width:100%;';
     const nameLine = isEn ? v.en : v.title;
     const descLine = isEn ? (v.descEn || v.desc) : v.desc;
-    btn.innerHTML = '<span style="font-size:30px;">' + v.icon + '</span><div><div style="font-size:15px;color:#F5D96B;font-weight:700;">' + nameLine + '</div><div style="font-size:11.5px;color:rgba(255,255,255,0.5);margin-top:2px;">' + descLine + '</div></div>';
+    btn.innerHTML = '<span style="font-size:30px;">' + v.icon + '</span><div><div style="font-size:15px;color:#9C5024;font-weight:700;">' + nameLine + '</div><div style="font-size:11.5px;color:rgba(43,27,18,0.5);margin-top:2px;">' + descLine + '</div></div>';
     btn.addEventListener('click', function () { showVedaReading(v.key); });
     list.appendChild(btn);
   });
@@ -6461,10 +6450,10 @@ function setLanguage(lang) {
   const sanatanSub = document.getElementById('sanatan-subtitle');
 
   if (lang === 'hi') {
-    hiBtn.style.background = 'linear-gradient(135deg,#D4AF37,#F5D96B)';
-    hiBtn.style.color = '#0A0612';
+    hiBtn.style.background = 'linear-gradient(135deg,#7A1F1F,#9C5024)';
+    hiBtn.style.color = '#F3E9D2';
     enBtn.style.background = 'transparent';
-    enBtn.style.color = 'rgba(255,255,255,0.5)';
+    enBtn.style.color = 'rgba(43,27,18,0.5)';
     showToast('हिंदी भाषा चुनी गई! 🇮🇳');
     if (sanatanTitle) sanatanTitle.textContent = '✨ सनातन ही सत्य है';
     if (sanatanSub) sanatanSub.textContent = 'जानिए अपने सनातन धर्म को';
@@ -6473,10 +6462,10 @@ function setLanguage(lang) {
     // Update questions to Hindi
     updateQuestions('hi');
   } else {
-    enBtn.style.background = 'linear-gradient(135deg,#D4AF37,#F5D96B)';
-    enBtn.style.color = '#0A0612';
+    enBtn.style.background = 'linear-gradient(135deg,#7A1F1F,#9C5024)';
+    enBtn.style.color = '#F3E9D2';
     hiBtn.style.background = 'transparent';
-    hiBtn.style.color = 'rgba(255,255,255,0.5)';
+    hiBtn.style.color = 'rgba(43,27,18,0.5)';
     showToast('English language selected! 🌍');
     if (sanatanTitle) sanatanTitle.textContent = '✨ Sanatan Is The Truth';
     if (sanatanSub) sanatanSub.textContent = 'Know Your Sanatan Dharma';
@@ -6617,7 +6606,7 @@ function stopVoiceReading() {
   const btnText = document.getElementById('voice-btn-text');
   const btn = document.getElementById('voice-btn');
   if (btnText) btnText.textContent = 'Sunao Reading';
-  if (btn) btn.style.background = 'linear-gradient(135deg,rgba(138,43,226,0.3),rgba(75,0,130,0.3))';
+  if (btn) btn.style.background = 'linear-gradient(135deg,rgba(122,31,31,0.3),rgba(74,15,15,0.3))';
   const bar = document.getElementById('voice-progress-bar');
   if (bar) bar.style.display = 'none';
   const stage = document.getElementById('visual-stage');
@@ -6714,7 +6703,7 @@ async function toggleVoiceReading() {
   voiceSpeaking = true;
 
   document.getElementById('voice-btn-text').textContent = '⏹ Band Karo';
-  document.getElementById('voice-btn').style.background = 'linear-gradient(135deg,rgba(226,43,43,0.4),rgba(130,0,0,0.4))';
+  document.getElementById('voice-btn').style.background = 'linear-gradient(135deg,rgba(155,32,24,0.4),rgba(80,15,10,0.4))';
   document.getElementById('voice-progress-bar').style.display = 'block';
   document.getElementById('voice-progress').style.width = '0%';
 
@@ -6739,12 +6728,12 @@ function toggleVisualMode() {
       stage.style.display = 'flex';
       if (voiceSpeaking) stage.classList.add('speaking');
     }
-    if (btn) { btn.style.background = 'linear-gradient(135deg,#D4AF37,#F5D96B)'; btn.style.color = '#0A0612'; }
+    if (btn) { btn.style.background = 'linear-gradient(135deg,#7A1F1F,#9C5024)'; btn.style.color = '#F3E9D2'; }
     updateVisualStageContent();
     showToast('🎬 Visual Reading Mode ON');
   } else {
     if (stage) { stage.style.display = 'none'; stage.classList.remove('speaking'); }
-    if (btn) { btn.style.background = 'rgba(255,255,255,0.07)'; btn.style.color = 'rgba(255,255,255,0.8)'; }
+    if (btn) { btn.style.background = 'rgba(43,27,18,0.07)'; btn.style.color = 'rgba(43,27,18,0.8)'; }
   }
 }
 
@@ -6822,7 +6811,12 @@ function showToast(msg) {
 
 // ========== AI READING via Claude API ==========
 // Track shown readings to avoid repeats
-var shownReadings = JSON.parse(localStorage.getItem('dn_shown_readings') || '{}');
+var shownReadings = {};
+try {
+  shownReadings = JSON.parse(localStorage.getItem('dn_shown_readings') || '{}');
+} catch (e) {
+  shownReadings = {};
+}
 
 async function fetchAIReading(question) {
   try {
