@@ -7001,14 +7001,17 @@ async function toggleNotifications() {
     return;
   }
   try {
-    const OneSignal = getOneSignalSafe();
-    if (OneSignal) {
-      await OneSignal.Notifications.requestPermission();
-    } else {
-      await Notification.requestPermission();
+    // Always use the native browser prompt directly — this is guaranteed to
+    // show a popup. OneSignal's SDK (already initialized) listens for the
+    // permission change in the background and registers the subscription itself.
+    const result = await Notification.requestPermission();
+    if (result === 'granted') {
+      showToast('Notifications chalu ho gaye 🎉');
+    } else if (result === 'denied') {
+      showToast('Aapne block kar diya 😔');
     }
   } catch (e) {
-    // ignore — status will just reflect whatever the browser decided
+    showToast('Kuch galat ho gaya, dobara try karein');
   }
   setTimeout(updateNotifStatus, 500);
 }
